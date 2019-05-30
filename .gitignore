@@ -3,9 +3,9 @@
 Thumbs.db
 
 # Файлы редактора
+.idea
 *.sublime*
 .vscode
-.idea
 
 # Вспомогательные файлы
 *.log*
@@ -13,5 +13,7 @@ node_modules/
 
 # Папка с собранными файлами проекта
 build/
+
+# js-файлы, перекомпилированные через babel в es5
 public/bundle.js
 public/bundle.js.map

@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/app/index.js',
+  entry: './src/components/index.js',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'public'),
@@ -21,11 +21,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
-      },
+      }
     ],
   },
-  devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.tsx'],
+    extensions: ['.js', '.jsx'],
   },
+  devtool: 'source-map'
 };
