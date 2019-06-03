@@ -13,11 +13,12 @@ const propTypes = PropTypes.shape({
     rating: PropTypes.number,
     isPremium: PropTypes.bool,
     isBookmark: PropTypes.bool
-  })
+  }),
+  onTitleClick: PropTypes.func
 }).isRequired;
 
 function PlaceCard(props) {
-  const { card } = props;
+  const { card, onTitleClick } = props;
   const { title, image, price, type, rating, isPremium, isBookmark } = card;
 
   return (
@@ -61,7 +62,9 @@ function PlaceCard(props) {
         <Rating rating={rating} />
 
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <a href="#" onClick={onTitleClick}>
+            {title}
+          </a>
         </h2>
 
         <p className="place-card__type">{type}</p>

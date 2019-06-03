@@ -19,9 +19,9 @@ it('PlaceCard correctly renders', () => {
     .create(
       <PlaceCard
         card={mockCard}
+        onTitleClick={jest.fn()}
       />
-    )
-    .toJSON();
+    ).toJSON();
 
   expect(placeCard).toMatchSnapshot();
 });

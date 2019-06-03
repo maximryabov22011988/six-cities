@@ -21,8 +21,10 @@ const propTypes = {
 function MainPage(props) {
   const { placeCards } = props;
 
+  const handleTitleClick = () => {};
+
   const placeCardItems = placeCards.map(card => (
-    <PlaceCard key={card.id} card={card} />
+    <PlaceCard key={card.id} card={card} onTitleClick={handleTitleClick} />
   ));
 
   return (

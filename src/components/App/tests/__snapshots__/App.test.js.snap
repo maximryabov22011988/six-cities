@@ -352,6 +352,7 @@ Array [
                 >
                   <a
                     href="#"
+                    onClick={[Function]}
                   >
                     Beautiful &amp; luxurious apartment at great location
                   </a>
