@@ -1,15 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import PlaceCard from './components/PlaceCard';
 
-const placeCards = [
-  { id: 1, title: 'Beautiful & luxurious apartment at great location' },
-  { id: 2, title: 'Wood and stone place' },
-  { id: 3, title: 'Canal View Prinsengracht' },
-  { id: 4, title: 'Wood and stone place' }
-];
+const propTypes = {
+  placeCards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      image: PropTypes.string,
+      price: PropTypes.number,
+      type: PropTypes.oneOfType(['Apartment', 'Private room']),
+      rating: PropTypes.number,
+      isPremium: PropTypes.bool,
+      isBookmark: PropTypes.bool
+    })
+  ).isRequired
+};
 
-function MainPage() {
+function MainPage(props) {
+  const { placeCards } = props;
+
   const placeCardItems = placeCards.map(card => (
     <PlaceCard key={card.id} card={card} />
   ));
@@ -159,5 +170,7 @@ function MainPage() {
     </React.Fragment>
   );
 }
+
+MainPage.propTypes = propTypes;
 
 export default MainPage;

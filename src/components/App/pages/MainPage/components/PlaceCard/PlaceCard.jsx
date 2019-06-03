@@ -1,28 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const propTypes = {
-  card: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired
-  }).isRequired
-};
+import Rating from './components/Rating';
+
+const propTypes = PropTypes.shape({
+  id: PropTypes.string,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  price: PropTypes.number,
+  type: PropTypes.oneOfType(['Apartment', 'Private room']),
+  rating: PropTypes.number,
+  isPremium: PropTypes.bool,
+  isBookmark: PropTypes.bool
+});
 
 function PlaceCard(props) {
   const { card } = props;
-  const { title } = card;
+  const { title, image, price, type, rating, isPremium, isBookmark } = card;
 
   return (
     <article className="cities__place-card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+      {isPremium && (
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      )}
 
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img
             className="place-card__image"
-            src="img/apartment-01.jpg"
+            src={image}
             width="260"
             height="200"
             alt="Place image"
@@ -33,10 +41,14 @@ function PlaceCard(props) {
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;120</b>
+            <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
+          <button
+            className={`${isBookmark &&
+              'place-card__bookmark-button--active'} place-card__bookmark-button button`}
+            type="button"
+          >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark" />
             </svg>
@@ -44,18 +56,13 @@ function PlaceCard(props) {
           </button>
         </div>
 
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{ width: '93%' }} />
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+        <Rating rating={rating} />
 
         <h2 className="place-card__name">
           <a href="#">{title}</a>
         </h2>
 
-        <p className="place-card__type">Apartment</p>
+        <p className="place-card__type">{type}</p>
       </div>
     </article>
   );
