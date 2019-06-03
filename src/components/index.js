@@ -57,5 +57,4 @@ const placeCards = [
 ];
 
 const root = document.querySelector('#root');
-
 ReactDOM.render(<App placeCards={placeCards} />, root);

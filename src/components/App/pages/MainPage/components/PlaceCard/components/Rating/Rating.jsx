@@ -10,7 +10,7 @@ const MAX_RATING = 5;
 function getRatingStyles(rating) {
   const ratingInPercent = (rating / MAX_RATING) * 100;
   return {
-    width: `${ratingInPercent}%`
+    width: `${ratingInPercent.toFixed(2)}%`
   };
 }
 

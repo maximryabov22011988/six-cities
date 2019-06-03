@@ -10,7 +10,7 @@ const propTypes = {
       title: PropTypes.string,
       image: PropTypes.string,
       price: PropTypes.number,
-      type: PropTypes.oneOfType(['Apartment', 'Private room']),
+      type: PropTypes.oneOf(['Apartment', 'Private room']),
       rating: PropTypes.number,
       isPremium: PropTypes.bool,
       isBookmark: PropTypes.bool
