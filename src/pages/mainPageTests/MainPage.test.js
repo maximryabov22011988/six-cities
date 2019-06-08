@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import MainPage from '../MainPage';
 
-const mockCard = [
+const offersMock = [
   {
     id: 'card-1',
     title: 'Beautiful &amp; luxurious apartment at great location',
@@ -17,13 +17,7 @@ const mockCard = [
 ];
 
 it('MainPage correctly renders', () => {
-  const mainPage = renderer
-    .create(
-      <MainPage
-        placeCards={mockCard}
-      />
-    )
-    .toJSON();
+  const mainPage = renderer.create(<MainPage offers={offersMock} />).toJSON();
 
   expect(mainPage).toMatchSnapshot();
 });

@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import PlaceCard from '../PlaceCard';
+import PlaceCard from './PlaceCard';
 
-const mockCard = {
+const offerMock = {
   id: 'card-5',
   title: 'Wood and stone place',
   image: 'img/room.jpg',
@@ -18,10 +18,14 @@ it('PlaceCard correctly renders', () => {
   const placeCard = renderer
     .create(
       <PlaceCard
-        card={mockCard}
+        offer={offerMock}
         onTitleClick={jest.fn()}
+        onImageClick={jest.fn()}
+        onMouseEnter={jest.fn()}
+        onMouseLeave={jest.fn()}
       />
-    ).toJSON();
+    )
+    .toJSON();
 
   expect(placeCard).toMatchSnapshot();
 });

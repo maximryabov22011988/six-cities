@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PlaceCard from './mainPage/PlaceCard';
+import PlaceCardList from './mainPage/PlaceCardList';
 
 const propTypes = {
-  placeCards: PropTypes.arrayOf(
+  offers: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
       title: PropTypes.string,
@@ -19,13 +19,7 @@ const propTypes = {
 };
 
 function MainPage(props) {
-  const { placeCards } = props;
-
-  const handleTitleClick = () => {};
-
-  const placeCardItems = placeCards.map(card => (
-    <PlaceCard key={card.id} card={card} onTitleClick={handleTitleClick} />
-  ));
+  const { offers } = props;
 
   return (
     <React.Fragment>
@@ -159,9 +153,8 @@ function MainPage(props) {
                 </select>
                 */}
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {placeCardItems}
-              </div>
+
+              <PlaceCardList offers={offers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />

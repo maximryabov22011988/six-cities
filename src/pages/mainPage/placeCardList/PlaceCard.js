@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import Rating from './placeCard/Rating';
 
 const propTypes = PropTypes.shape({
-  card: PropTypes.shape({
+  offer: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
     image: PropTypes.string,
@@ -14,15 +15,29 @@ const propTypes = PropTypes.shape({
     isPremium: PropTypes.bool,
     isBookmark: PropTypes.bool
   }),
-  onTitleClick: PropTypes.func
+  onTitleClick: PropTypes.func,
+  onImageClick: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func
 }).isRequired;
 
 function PlaceCard(props) {
-  const { card, onTitleClick } = props;
-  const { title, image, price, type, rating, isPremium, isBookmark } = card;
+  const {
+    className,
+    offer,
+    onTitleClick,
+    onImageClick,
+    onMouseEnter,
+    onMouseLeave
+  } = props;
+  const { title, image, price, type, rating, isPremium, isBookmark } = offer;
 
   return (
-    <article className="cities__place-card place-card">
+    <article
+      className={classnames('cities__place-card place-card', className)}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -30,7 +45,7 @@ function PlaceCard(props) {
       )}
 
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <a href="#" onClick={onImageClick(offer)}>
           <img
             className="place-card__image"
             src={image}
@@ -48,8 +63,10 @@ function PlaceCard(props) {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button
-            className={`${isBookmark &&
-              'place-card__bookmark-button--active'} place-card__bookmark-button button`}
+            className={classnames(
+              'place-card__bookmark-button button',
+              isBookmark && 'place-card__bookmark-button--active'
+            )}
             type="button"
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
