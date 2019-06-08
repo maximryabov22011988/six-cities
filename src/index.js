@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
+import MainPage from './pages/MainPage';
 
 const placeCards = [
   {
@@ -56,5 +56,9 @@ const placeCards = [
   }
 ];
 
+function App() {
+  return <MainPage placeCards={placeCards} />;
+}
+
 const root = document.querySelector('#root');
-ReactDOM.render(<App placeCards={placeCards} />, root);
+ReactDOM.render(<App />, root);

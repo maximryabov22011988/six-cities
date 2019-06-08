@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Rating from './components/Rating';
+import Rating from './placeCard/Rating';
 
 const propTypes = PropTypes.shape({
   card: PropTypes.shape({

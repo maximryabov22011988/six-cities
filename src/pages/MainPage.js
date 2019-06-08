@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PlaceCard from './components/PlaceCard';
+import PlaceCard from './mainPage/PlaceCard';
 
 const propTypes = {
   placeCards: PropTypes.arrayOf(

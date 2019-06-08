@@ -7,12 +7,12 @@ const propTypes = {
 
 const MAX_RATING = 5;
 
-function getRatingStyles(rating) {
+const getRatingStyles = (rating) => {
   const ratingInPercent = (rating / MAX_RATING) * 100;
   return {
     width: `${ratingInPercent.toFixed(2)}%`
   };
-}
+};
 
 function Rating(props) {
   const { rating } = props;
