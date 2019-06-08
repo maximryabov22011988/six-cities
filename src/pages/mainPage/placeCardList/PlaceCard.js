@@ -13,7 +13,8 @@ const propTypes = PropTypes.shape({
     type: PropTypes.oneOf(['Apartment', 'Private room']),
     rating: PropTypes.number,
     isPremium: PropTypes.bool,
-    isBookmark: PropTypes.bool
+    isBookmark: PropTypes.bool,
+    location: PropTypes.arrayOf(PropTypes.number)
   }),
   onTitleClick: PropTypes.func,
   onImageClick: PropTypes.func,

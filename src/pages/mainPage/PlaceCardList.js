@@ -13,7 +13,8 @@ const propTypes = {
       type: PropTypes.oneOf(['Apartment', 'Private room']),
       rating: PropTypes.number,
       isPremium: PropTypes.bool,
-      isBookmark: PropTypes.bool
+      isBookmark: PropTypes.bool,
+      location: PropTypes.arrayOf(PropTypes.number)
     })
   ).isRequired
 };

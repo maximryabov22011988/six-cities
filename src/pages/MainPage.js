@@ -2,6 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import PlaceCardList from './mainPage/PlaceCardList';
+import Map from './mainPage/Map';
+
+const cityCoords = {
+  latitude: 52.38333,
+  longitude: 4.9
+};
 
 const propTypes = {
   offers: PropTypes.arrayOf(
@@ -13,7 +19,8 @@ const propTypes = {
       type: PropTypes.oneOf(['Apartment', 'Private room']),
       rating: PropTypes.number,
       isPremium: PropTypes.bool,
-      isBookmark: PropTypes.bool
+      isBookmark: PropTypes.bool,
+      location: PropTypes.arrayOf(PropTypes.number)
     })
   ).isRequired
 };
@@ -157,7 +164,12 @@ function MainPage(props) {
               <PlaceCardList offers={offers} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <section className="cities__map map">
+                <Map
+                  offers={offers}
+                  city={[cityCoords.latitude, cityCoords.longitude]}
+                />
+              </section>
             </div>
           </div>
         </div>
