@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { MainPage } from '../MainPage';
-import Map from '../mainPage/Map';
+import { MainPage } from './MainPage';
+import Map from './mainPage/Map';
 
 const offersMock = [
   {
