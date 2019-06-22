@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+
+import NavItem from './navList/NavItem';
 
 const propTypes = {
   currentCity: PropTypes.string.isRequired,
@@ -17,27 +18,21 @@ const propTypes = {
   onChangeCity: PropTypes.func.isRequired
 };
 
-function LocationList({ currentCity, cities, onChangeCity }) {
+function NavList({ currentCity, cities, onChangeCity }) {
   return (
     <ul className="locations__list tabs__list">
       {cities.map(({ id, city }) => (
-        <li key={id} className="locations__item">
-          <a
-            className={classnames(
-              'locations__item-link tabs__item',
-              city === currentCity && 'tabs__item--active'
-            )}
-            href="#"
-            onClick={onChangeCity(city)}
-          >
-            <span>{city}</span>
-          </a>
-        </li>
+        <NavItem
+          key={id}
+          city={city}
+          currentCity={currentCity}
+          onChangeCity={onChangeCity}
+        />
       ))}
     </ul>
   );
 }
 
-LocationList.propTypes = propTypes;
+NavList.propTypes = propTypes;
 
-export default LocationList;
+export default NavList;

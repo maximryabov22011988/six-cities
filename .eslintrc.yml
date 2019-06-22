@@ -32,15 +32,19 @@ globals:
 
 rules:
   no-shadow: 'off'
-  import/prefer-default-export: 'off'
+  no-underscore-dangle: 0
+  react/prop-types: 0
   react/jsx-filename-extension: [
     1,
     {
       extensions: ['.js', '.jsx']
     }
   ]
-  react/prop-types: 0
-  no-underscore-dangle: 0
+  import/prefer-default-export: 'off'
   import/imports-first: ['error', 'absolute-first']
   import/newline-after-import: 'error'
   import/no-extraneous-dependencies: ['error', devDependencies: true]
+  jsx-a11y/no-noninteractive-tabindex: ['none']
+  jsx-a11y/no-static-element-interactions: ['none']
+  jsx-a11y/no-noninteractive-element-interactions: ['none']
+  jsx-a11y/click-events-have-key-events: 'off'

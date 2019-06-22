@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import LocationList from './LocationList';
+import NavList from './NavList';
 
 const offersMock = [
   {
@@ -14,11 +14,11 @@ const offersMock = [
   }
 ];
 
-it('LocationList correctly render', () => {
+it('NavList correctly render', () => {
   const handleChangeCity = jest.fn();
-  const locationList = renderer
+  const navList = renderer
     .create(
-      <LocationList
+      <NavList
         currentCity="Paris"
         cities={offersMock}
         onChangeCity={handleChangeCity}
@@ -26,5 +26,5 @@ it('LocationList correctly render', () => {
     )
     .toJSON();
 
-  expect(locationList).toMatchSnapshot();
+  expect(navList).toMatchSnapshot();
 });
