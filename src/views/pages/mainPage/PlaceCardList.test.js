@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import PlaceCardList from '../PlaceCardList';
+import PlaceCardList from './PlaceCardList';
 
 const offersMock = [
   {

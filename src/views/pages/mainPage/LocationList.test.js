@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import LocationList from '../LocationList';
+import LocationList from './LocationList';
 
 const offersMock = [
   {

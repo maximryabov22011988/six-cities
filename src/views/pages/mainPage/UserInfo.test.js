@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import UserInfo from '../UserInfo';
+import UserInfo from './UserInfo';
 
 const userMock = {
   avatar: '',

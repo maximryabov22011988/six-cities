@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Header from '../Header';
-import Logo from '../Logo';
-import UserInfo from '../UserInfo';
+import Header from './Header';
+import Logo from './Logo';
+import UserInfo from './UserInfo';
 
 const userMock = {
   avatar: '',
