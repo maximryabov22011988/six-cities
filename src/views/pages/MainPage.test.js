@@ -4,6 +4,13 @@ import renderer from 'react-test-renderer';
 import { MainPage } from './MainPage';
 import Map from './mainPage/Map';
 
+const cityMock = {
+  city: {
+    name: 'Paris',
+    coords: [10, 10]
+  }
+};
+
 const offersMock = [
   {
     city: 'Paris',
@@ -25,7 +32,9 @@ const offersMock = [
 
 it('MainPage correctly render', () => {
   Map.prototype.componentDidMount = jest.fn();
-  const mainPage = renderer.create(<MainPage offers={offersMock} />).toJSON();
+  const mainPage = renderer
+    .create(<MainPage city={cityMock} offers={offersMock} />)
+    .toJSON();
 
   expect(mainPage).toMatchSnapshot();
 });
