@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "7.4.4",
     "@babel/preset-env": "7.4.4",
     "@babel/preset-react": "7.0.0",
     "babel-eslint": "10.0.1",
@@ -46,6 +47,9 @@
     "classnames": "2.2.6",
     "leaflet": "1.5.1",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "react-redux": "7.1.0",
+    "redux": "4.0.1",
+    "reselect": "4.0.0"
   }
 }
