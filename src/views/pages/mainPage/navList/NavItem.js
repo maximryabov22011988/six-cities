@@ -3,19 +3,16 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const propTypes = {
-  currentCity: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   onChangeCity: PropTypes.func.isRequired
 };
 
-function NavItem({ currentCity, city, onChangeCity }) {
+function NavItem({ className, city, onChangeCity }) {
   return (
     <li className="locations__item">
       <a
-        className={classnames(
-          'locations__item-link tabs__item',
-          city === currentCity && 'tabs__item--active'
-        )}
+        className={classnames(className, 'locations__item-link')}
         href="#"
         onClick={onChangeCity(city)}
       >

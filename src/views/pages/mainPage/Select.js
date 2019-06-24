@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+import withActiveItem from '../../hocs/withActiveItem';
+
 import { ENTER, ESC, MOUSE_LEFT_BUTTON } from '../../constants/keyCodes';
 
 const propTypes = {
@@ -84,6 +86,25 @@ class Select extends React.Component {
     }
   };
 
+  renderOptionItems = (options, currentOption) => {
+    return options.map(({ id, name }) => {
+      const Option = props => <li tabIndex="0" {...props} />;
+      const OptionItem = withActiveItem(Option);
+
+      return (
+        <OptionItem
+          key={id}
+          className="places__option"
+          isActive={currentOption === id}
+          onClick={this.handleOptionClick(id)}
+          onKeyUp={this.handleOptionClick(id)}
+        >
+          {name}
+        </OptionItem>
+      );
+    });
+  };
+
   render() {
     const { currentOption, isOpen } = this.state;
     const { caption, options } = this.props;
@@ -117,20 +138,7 @@ class Select extends React.Component {
               isOpen && 'places__options--opened'
             )}
           >
-            {options.map(({ id, name }) => (
-              <li
-                key={id}
-                className={classnames(
-                  'places__option',
-                  currentOption === id && 'places__option--active'
-                )}
-                tabIndex="0"
-                onClick={this.handleOptionClick(id)}
-                onKeyUp={this.handleOptionClick(id)}
-              >
-                {name}
-              </li>
-            ))}
+            {this.renderOptionItems(options, currentOption)}
           </ul>
         )}
       </div>

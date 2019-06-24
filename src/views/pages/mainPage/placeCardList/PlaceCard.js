@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+import withActiveItem from '../../../hocs/withActiveItem';
+import Button from '../../../components/Button';
 import Rating from './placeCard/Rating';
 
 const propTypes = PropTypes.shape({
@@ -33,6 +35,8 @@ function PlaceCard(props) {
   } = props;
   const { title, image, price, type, rating, isPremium, isBookmark } = offer;
 
+  const BookmarkButton = withActiveItem(Button);
+
   return (
     <article
       className={classnames('cities__place-card place-card', className)}
@@ -63,18 +67,16 @@ function PlaceCard(props) {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button
-            className={classnames(
-              'place-card__bookmark-button button',
-              isBookmark && 'place-card__bookmark-button--active'
-            )}
-            type="button"
+
+          <BookmarkButton
+            className="place-card__bookmark-button"
+            isActive={isBookmark}
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark" />
             </svg>
             <span className="visually-hidden">To bookmarks</span>
-          </button>
+          </BookmarkButton>
         </div>
 
         <Rating rating={rating} />
