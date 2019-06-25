@@ -74,7 +74,7 @@ class MainPage extends React.Component {
             </symbol>
           </svg>
         </div>
-        <Header logo={<Logo />} userInfo={<UserInfo user={user} />} />
+        <Header logo={<Logo />} userInfo={<UserInfo email={user.email} />} />
         <Content>
           <Nav>
             <NavList
