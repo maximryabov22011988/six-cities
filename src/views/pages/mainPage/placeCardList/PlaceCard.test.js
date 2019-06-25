@@ -15,14 +15,19 @@ const offerMock = {
 };
 
 it('PlaceCard correctly render', () => {
+  const handleTitleClick = jest.fn();
+  const handleImageClick = jest.fn();
+  const handleMouseEnter = jest.fn();
+  const handleMouseLeave = jest.fn();
+
   const placeCard = renderer
     .create(
       <PlaceCard
         offer={offerMock}
-        onTitleClick={jest.fn()}
-        onImageClick={jest.fn()}
-        onMouseEnter={jest.fn()}
-        onMouseLeave={jest.fn()}
+        onTitleClick={handleTitleClick}
+        onImageClick={handleImageClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       />
     )
     .toJSON();
