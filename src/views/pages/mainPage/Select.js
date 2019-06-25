@@ -89,10 +89,10 @@ class Select extends React.Component {
   renderOptionItems = (options, currentOption) => {
     return options.map(({ id, name }) => {
       const Option = props => <li tabIndex="0" {...props} />;
-      const OptionItem = withActiveItem(Option);
+      const WrappedOption = withActiveItem(Option);
 
       return (
-        <OptionItem
+        <WrappedOption
           key={id}
           className="places__option"
           isActive={currentOption === id}
@@ -100,7 +100,7 @@ class Select extends React.Component {
           onKeyUp={this.handleOptionClick(id)}
         >
           {name}
-        </OptionItem>
+        </WrappedOption>
       );
     });
   };

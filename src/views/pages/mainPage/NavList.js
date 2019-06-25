@@ -23,9 +23,9 @@ function NavList({ currentCity, cities, onChangeCity }) {
   return (
     <ul className="locations__list tabs__list">
       {cities.map(({ id, city }) => {
-        const Item = withActiveItem(NavItem);
+        const WrappedNavItem = withActiveItem(NavItem);
         return (
-          <Item
+          <WrappedNavItem
             key={id}
             className="tabs__item"
             city={city}
