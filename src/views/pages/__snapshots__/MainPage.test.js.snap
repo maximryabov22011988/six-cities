@@ -115,7 +115,7 @@ Array [
             className="locations__item"
           >
             <a
-              className="locations__item-link tabs__item"
+              className="tabs__item locations__item-link"
               href="#"
               onClick={[Function]}
             >
@@ -128,7 +128,7 @@ Array [
             className="locations__item"
           >
             <a
-              className="locations__item-link tabs__item"
+              className="tabs__item locations__item-link"
               href="#"
               onClick={[Function]}
             >
@@ -141,7 +141,7 @@ Array [
             className="locations__item"
           >
             <a
-              className="locations__item-link tabs__item"
+              className="tabs__item locations__item-link"
               href="#"
               onClick={[Function]}
             >
@@ -154,7 +154,7 @@ Array [
             className="locations__item"
           >
             <a
-              className="locations__item-link tabs__item"
+              className="tabs__item locations__item-link"
               href="#"
               onClick={[Function]}
             >
@@ -167,7 +167,7 @@ Array [
             className="locations__item"
           >
             <a
-              className="locations__item-link tabs__item"
+              className="tabs__item locations__item-link"
               href="#"
               onClick={[Function]}
             >
@@ -180,7 +180,7 @@ Array [
             className="locations__item"
           >
             <a
-              className="locations__item-link tabs__item"
+              className="tabs__item locations__item-link"
               href="#"
               onClick={[Function]}
             >

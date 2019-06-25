@@ -89,7 +89,7 @@ exports[`Places correctly render 1`] = `
             </span>
           </div>
           <button
-            className="place-card__bookmark-button button place-card__bookmark-button--active"
+            className="place-card__bookmark-button place-card__bookmark-button--active button"
             type="button"
           >
             <svg

@@ -88,7 +88,16 @@ class Select extends React.Component {
 
   renderOptionItems = (options, currentOption) => {
     return options.map(({ id, name }) => {
-      const Option = props => <li tabIndex="0" {...props} />;
+      const Option = ({ className, onClick, onKeyUp, children }) => (
+        <li
+          className={className}
+          tabIndex="0"
+          onClick={onClick}
+          onKeyUp={onKeyUp}
+        >
+          {children}
+        </li>
+      );
       const WrappedOption = withActiveItem(Option);
 
       return (
