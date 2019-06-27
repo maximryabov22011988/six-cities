@@ -1,8 +1,20 @@
-import { CHANGE_CITY } from './types';
+import * as types from './types';
 
-const changeCity = city => ({
-  type: CHANGE_CITY,
+export const changeCity = city => ({
+  type: types.CHANGE_CITY,
   payload: city
 });
 
-export { changeCity };
+export const requestOffers = () => ({
+  type: types.REQUEST_OFFERS
+});
+
+export const receiveOffers = offers => ({
+  type: types.RECEIVE_OFFERS,
+  payload: offers
+});
+
+export const resourceNotFound = error => ({
+  type: types.RESOURCE_NOT_FOUND,
+  payload: error
+});

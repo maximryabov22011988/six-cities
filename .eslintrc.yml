@@ -32,7 +32,9 @@ globals:
 
 rules:
   no-shadow: 'off'
+  func-names: ['error', 'as-needed']
   no-underscore-dangle: 0
+  import/no-named-as-default: 0
   react/prop-types: 0
   react/jsx-filename-extension: [
     1,

@@ -14,6 +14,7 @@ import Places from './mainPage/Places';
 import Map from './mainPage/Map';
 
 import { changeCity } from '../../state/offers/actions';
+import { fetchOffers } from '../../state/offers/operations';
 import { getCityOffers, getCityCoords } from '../../state/offers/selectors';
 
 import cities from '../mocks/cities';
@@ -37,6 +38,11 @@ const propTypes = {
 };
 
 class MainPage extends React.Component {
+  componentDidMount() {
+    const { fetchOffers } = this.props;
+    fetchOffers();
+  }
+
   get searchResultsText() {
     const { city, offers } = this.props;
     return `${offers.length} places to stay in ${city.name}`;
@@ -107,7 +113,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeCity: city => dispatch(changeCity(city))
+  changeCity: city => dispatch(changeCity(city)),
+  fetchOffers: () => dispatch(fetchOffers())
 });
 
 MainPage.propTypes = propTypes;
