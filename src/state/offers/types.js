@@ -1,5 +1,2 @@
-export const CHANGE_CITY = 'CHANGE_CITY';
 export const REQUEST_OFFERS = 'REQUEST_OFFERS';
 export const RECEIVE_OFFERS = 'RECEIVE_OFFERS';
-
-export const RESOURCE_NOT_FOUND = 'RESOURCE_NOT_FOUND';

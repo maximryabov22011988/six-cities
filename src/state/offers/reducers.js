@@ -1,6 +1,5 @@
-import { combineReducers } from 'redux';
-
 import * as types from './types';
+import { normalizeDataHelper } from '../utils';
 import allOffers from '../../views/mocks/offers';
 
 const city = (state = 'Paris', action) => {
@@ -22,36 +21,16 @@ const offers = (state = allOffers, action) => {
   }
 };
 
-const serverOffers = (state = [], action) => {
-  switch (action.type) {
-    case types.RECEIVE_OFFERS: {
-      return action.payload;
-    }
-    default: {
-      return state;
-    }
-  }
+const offersInitialState = {
+  currentCity: '',
+  byId: {}
 };
-
-const appState = (state = {}, action) => {
+const serverOffers = (state = offersInitialState, action) => {
   switch (action.type) {
-    case types.REQUEST_OFFERS: {
-      return {
-        ...state,
-        loading: true
-      };
-    }
     case types.RECEIVE_OFFERS: {
       return {
         ...state,
-        loading: false
-      };
-    }
-    case types.RESOURCE_NOT_FOUND: {
-      return {
-        ...state,
-        loading: false,
-        errors: action.payload
+        ...normalizeDataHelper(action.payload)
       };
     }
     default: {
@@ -60,9 +39,8 @@ const appState = (state = {}, action) => {
   }
 };
 
-export default combineReducers({
+export default {
   city,
   offers,
-  serverOffers,
-  appState
-});
+  serverOffers
+};

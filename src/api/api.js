@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as actions from '../state/offers/actions';
+import * as actions from '../state/app/actions';
 
 const createAPI = dispatch => {
   const api = axios.create({
@@ -8,16 +8,21 @@ const createAPI = dispatch => {
     withCredentials: true
   });
 
-  const onSuccess = response => response;
+  const onSuccess = response => {
+    dispatch(actions.requestSuccess());
+    return response;
+  };
+
   const onFail = error => {
+    const {
+      data: { error: errorMessage },
+      status
+    } = error.response;
+    dispatch(actions.requestFailure());
     if (error.response.status === 403) {
       // dispatch(actions.requireAuthorization(true));
     }
     if (error.response.status === 404) {
-      const {
-        data: { error: errorMessage },
-        status
-      } = error.response;
       dispatch(actions.resourceNotFound({ status, errorMessage }));
     }
   };

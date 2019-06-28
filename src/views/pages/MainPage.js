@@ -14,7 +14,7 @@ import Places from './mainPage/Places';
 import Map from './mainPage/Map';
 
 import { changeCity } from '../../state/offers/actions';
-import { fetchOffers } from '../../state/offers/operations';
+import { loadOffers } from '../../state/offers/operations';
 import { getCityOffers, getCityCoords } from '../../state/offers/selectors';
 
 import cities from '../mocks/cities';
@@ -39,8 +39,8 @@ const propTypes = {
 
 class MainPage extends React.Component {
   componentDidMount() {
-    const { fetchOffers } = this.props;
-    fetchOffers();
+    const { loadOffers } = this.props;
+    loadOffers();
   }
 
   get searchResultsText() {
@@ -114,7 +114,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   changeCity: city => dispatch(changeCity(city)),
-  fetchOffers: () => dispatch(fetchOffers())
+  loadOffers: () => dispatch(loadOffers())
 });
 
 MainPage.propTypes = propTypes;
