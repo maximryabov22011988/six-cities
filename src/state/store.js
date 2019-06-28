@@ -9,7 +9,7 @@ import offers from './offers';
 import app from './app';
 // import UI from './UI';
 
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable */
 const api = createAPI((...args) => store.dispatch(...args));
 const rootReducer = combineReducers({ ...offers, app });
 
