@@ -33,7 +33,15 @@ function PlaceCard(props) {
     onMouseEnter,
     onMouseLeave
   } = props;
-  const { title, image, price, type, rating, isPremium, isBookmark } = offer;
+  const {
+    title,
+    preview_image: previewImage,
+    price,
+    type,
+    rating,
+    is_premium: isPremium,
+    is_favorite: isFavorite
+  } = offer;
 
   const BookmarkButton = withActiveItem(Button);
 
@@ -53,7 +61,7 @@ function PlaceCard(props) {
         <a href="#" onClick={onImageClick(offer)}>
           <img
             className="place-card__image"
-            src={image}
+            src={previewImage}
             width="260"
             height="200"
             alt="Place image"
@@ -70,7 +78,7 @@ function PlaceCard(props) {
 
           <BookmarkButton
             className="place-card__bookmark-button"
-            isActive={isBookmark}
+            isActive={isFavorite}
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark" />

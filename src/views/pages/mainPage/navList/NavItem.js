@@ -4,7 +4,11 @@ import classnames from 'classnames';
 
 const propTypes = {
   className: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
+  city: PropTypes.shape({
+    name: PropTypes.string,
+    location: PropTypes.arrayOf(PropTypes.number),
+    zoom: PropTypes.number
+  }).isRequired,
   onChangeCity: PropTypes.func.isRequired
 };
 
@@ -16,7 +20,7 @@ function NavItem({ className, city, onChangeCity }) {
         href="#"
         onClick={onChangeCity(city)}
       >
-        <span>{city}</span>
+        <span>{city.name}</span>
       </a>
     </li>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Header from './mainPage/Header';
@@ -13,18 +13,19 @@ import PlacesContainer from './mainPage/PlacesContainer';
 import Places from './mainPage/Places';
 import Map from './mainPage/Map';
 
-import { changeCity } from '../../state/offers/actions';
-import { loadOffers } from '../../state/offers/operations';
-import { getCityOffers, getCityCoords } from '../../state/offers/selectors';
-
-import cities from '../mocks/cities';
+import { changeCity } from '../../state/UI/actions';
+import {
+  getCurrentCity,
+  getCities,
+  getCurrentOffers
+} from '../../state/offers/selectors';
 
 const user = {
   avatar: '',
   email: 'Oliver.conner@gmail.com'
 };
 
-const propTypes = {
+/*const propTypes = {
   city: PropTypes.shape({
     name: PropTypes.string,
     coords: PropTypes.arrayOf(PropTypes.number)
@@ -35,17 +36,12 @@ const propTypes = {
       offers: PropTypes.array
     })
   ).isRequired
-};
+};*/
 
 class MainPage extends React.Component {
-  componentDidMount() {
-    const { loadOffers } = this.props;
-    loadOffers();
-  }
-
   get searchResultsText() {
-    const { city, offers } = this.props;
-    return `${offers.length} places to stay in ${city.name}`;
+    const { currentCity, offers } = this.props;
+    return `${offers.length} places to stay in ${currentCity.name}`;
   }
 
   handleChangeCity = city => evt => {
@@ -55,7 +51,7 @@ class MainPage extends React.Component {
   };
 
   render() {
-    const { city, offers } = this.props;
+    const { currentCity, cities, offers } = this.props;
 
     return (
       <React.Fragment>
@@ -84,7 +80,7 @@ class MainPage extends React.Component {
         <Content>
           <Nav>
             <NavList
-              currentCity={city.name}
+              currentCity={currentCity.name}
               cities={cities}
               onChangeCity={this.handleChangeCity}
             />
@@ -96,7 +92,7 @@ class MainPage extends React.Component {
                 offers={offers}
               />
             }
-            rightPanel={<Map offers={offers} city={city.coords} />}
+            rightPanel={offers && <Map offers={offers} />}
           />
         </Content>
       </React.Fragment>
@@ -105,23 +101,18 @@ class MainPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  city: {
-    name: state.city,
-    coords: getCityCoords(state)
-  },
-  offers: getCityOffers(state)
+  currentCity: getCurrentCity(state),
+  offers: getCurrentOffers(state),
+  cities: getCities(state)
 });
 
-const mapDispatchToProps = dispatch => ({
-  changeCity: city => dispatch(changeCity(city)),
-  loadOffers: () => dispatch(loadOffers())
-});
+const actions = { changeCity };
 
-MainPage.propTypes = propTypes;
+// MainPage.propTypes = propTypes;
 
 export { MainPage };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(MainPage);

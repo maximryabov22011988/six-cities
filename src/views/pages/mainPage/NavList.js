@@ -5,15 +5,11 @@ import withActiveItem from '../../hocs/withActiveItem';
 import NavItem from './navList/NavItem';
 
 const propTypes = {
-  currentCity: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
-      city: PropTypes.string,
-      coords: PropTypes.shape({
-        latitude: PropTypes.number,
-        longitude: PropTypes.number
-      })
+      name: PropTypes.string,
+      location: PropTypes.arrayOf(PropTypes.number),
+      zoom: PropTypes.number
     })
   ).isRequired,
   onChangeCity: PropTypes.func.isRequired
@@ -22,15 +18,14 @@ const propTypes = {
 function NavList({ currentCity, cities, onChangeCity }) {
   return (
     <ul className="locations__list tabs__list">
-      {cities.map(({ id, city }) => {
+      {cities.map(city => {
         const WrappedNavItem = withActiveItem(NavItem);
         return (
           <WrappedNavItem
-            key={id}
+            key={city.name}
             className="tabs__item"
             city={city}
-            currentCity={currentCity}
-            isActive={city === currentCity}
+            isActive={city.name === currentCity}
             onChangeCity={onChangeCity}
           />
         );

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import leaflet from 'leaflet';
+// import PropTypes from 'prop-types';
+import Leaflet from 'leaflet';
 
 const mapStyles = {
   top: '15px',
   height: '794px'
 };
-
-const DEFAULT_MAP_ZOOM = 12;
 
 const LEAFLET_LAYER = {
   URL_TEMPLATE:
@@ -18,65 +16,82 @@ const LEAFLET_LAYER = {
   }
 };
 
-const propTypes = {
-  offers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      title: PropTypes.string,
-      image: PropTypes.string,
-      price: PropTypes.number,
-      type: PropTypes.oneOf(['Apartment', 'Private room']),
-      rating: PropTypes.number,
-      isPremium: PropTypes.bool,
-      isBookmark: PropTypes.bool,
-      location: PropTypes.arrayOf(PropTypes.number)
-    })
-  ).isRequired,
-  city: PropTypes.arrayOf(PropTypes.number).isRequired
-};
+// const propTypes = {
+//   offers: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string,
+//       title: PropTypes.string,
+//       image: PropTypes.string,
+//       price: PropTypes.number,
+//       type: PropTypes.oneOf(['Apartment', 'Private room']),
+//       rating: PropTypes.number,
+//       isPremium: PropTypes.bool,
+//       isBookmark: PropTypes.bool,
+//       location: PropTypes.arrayOf(PropTypes.number)
+//     })
+//   ).isRequired
+// };
 
 class Map extends Component {
-  static get pinIcon() {
-    return leaflet.icon({
-      iconUrl: 'img/pin.svg',
-      iconSize: [30, 40]
-    });
-  }
-
   constructor(props) {
     super(props);
 
-    this.settings = {
-      center: props.city,
-      zoom: DEFAULT_MAP_ZOOM,
-      zoomControl: false,
-      marker: true
-    };
-  }
+    this.leaflet = Leaflet;
 
-  componentDidMount() {
-    this.initCard();
-  }
-
-  addPins() {
-    const { offers } = this.props;
-    const icon = Map.pinIcon;
-    offers.forEach(({ location, title }) => {
-      leaflet.marker(location, { icon, title }).addTo(this.offerMap);
+    this.icon = this.leaflet.icon({
+      iconUrl: 'img/pin.svg',
+      iconSize: [27, 39],
+      iconAnchor: [13, 39]
     });
   }
 
-  initCard() {
-    const { settings } = this;
-    const { city } = this.props;
+  componentDidMount() {
+    const { offers } = this.props;
 
-    this.offerMap = leaflet.map('map', settings);
-    this.offerMap.setView(city, DEFAULT_MAP_ZOOM);
-    leaflet
-      .tileLayer(LEAFLET_LAYER.URL_TEMPLATE, LEAFLET_LAYER.OPTIONS)
-      .addTo(this.offerMap);
+    if (offers.length > 0) {
+      this.map = this.leaflet.map(
+        'map',
+        {
+          center: [
+            offers[0].city.location.latitude,
+            offers[0].city.location.longitude
+          ],
+          zoom: offers[0].city.location.zoom,
+          zoomControl: false,
+          layers: new this.leaflet.TileLayer(
+            LEAFLET_LAYER.URL_TEMPLATE,
+            LEAFLET_LAYER.OPTIONS
+          )
+        },
+        100
+      );
 
-    this.addPins();
+      this.markers = this.leaflet.layerGroup().addTo(this.map);
+      this.addMarkers(offers, this.markers);
+    }
+  }
+
+  componentDidUpdate() {
+    const { offers } = this.props;
+
+    if (this.map) {
+      this.map.setView(
+        [offers[0].city.location.latitude, offers[0].city.location.longitude],
+        offers[0].city.location.zoom
+      );
+      this.markers.clearLayers();
+      this.addMarkers(offers, this.markers);
+    }
+  }
+
+  addMarkers(offers, group) {
+    offers.map(offer => {
+      this.leaflet
+        .marker([offer.location.latitude, offer.location.longitude], {
+          icon: this.icon
+        })
+        .addTo(group);
+    });
   }
 
   render() {
@@ -84,6 +99,6 @@ class Map extends Component {
   }
 }
 
-Map.propTypes = propTypes;
+// Map.propTypes = propTypes;
 
 export default Map;
