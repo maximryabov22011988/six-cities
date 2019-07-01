@@ -1,4 +1,5 @@
 import * as types from './types';
+import * as offerTypes from '../offers/types';
 
 const initialState = {
   api: {
@@ -13,7 +14,8 @@ const initialState = {
 
 const app = (state = initialState, action) => {
   switch (action.type) {
-    case types.REQUEST_OFFERS: {
+    case types.REQUEST_SUCCESS:
+    case offerTypes.REQUEST_OFFERS: {
       return {
         ...state,
         api: {
@@ -21,9 +23,8 @@ const app = (state = initialState, action) => {
         }
       };
     }
-    case types.REQUEST_SUCCESS:
     case types.REQUEST_FAILURE:
-    case types.RECEIVE_OFFERS: {
+    case offerTypes.RECEIVE_OFFERS: {
       return {
         ...state,
         api: {
