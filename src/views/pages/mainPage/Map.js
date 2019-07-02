@@ -47,45 +47,35 @@ class Map extends Component {
 
   componentDidMount() {
     const { offers } = this.props;
+    const { latitude, longitude, zoom } = offers[0].city.location;
 
-    if (offers.length > 0) {
-      this.map = this.leaflet.map(
-        'map',
-        {
-          center: [
-            offers[0].city.location.latitude,
-            offers[0].city.location.longitude
-          ],
-          zoom: offers[0].city.location.zoom,
-          zoomControl: false,
-          layers: new this.leaflet.TileLayer(
-            LEAFLET_LAYER.URL_TEMPLATE,
-            LEAFLET_LAYER.OPTIONS
-          )
-        },
-        100
-      );
+    this.map = this.leaflet.map('map', {
+      center: [latitude, longitude],
+      zoom,
+      zoomControl: false,
+      layers: new this.leaflet.TileLayer(
+        LEAFLET_LAYER.URL_TEMPLATE,
+        LEAFLET_LAYER.OPTIONS
+      )
+    });
 
-      this.markers = this.leaflet.layerGroup().addTo(this.map);
-      this.addMarkers(offers, this.markers);
-    }
+    this.markers = this.leaflet.layerGroup().addTo(this.map);
+    this.addMarkers(offers, this.markers);
   }
 
   componentDidUpdate() {
     const { offers } = this.props;
+    const { latitude, longitude, zoom } = offers[0].city.location;
 
     if (this.map) {
-      this.map.setView(
-        [offers[0].city.location.latitude, offers[0].city.location.longitude],
-        offers[0].city.location.zoom
-      );
+      this.map.setView([latitude, longitude], zoom);
       this.markers.clearLayers();
       this.addMarkers(offers, this.markers);
     }
   }
 
   addMarkers(offers, group) {
-    offers.map(offer => {
+    offers.forEach(offer => {
       this.leaflet
         .marker([offer.location.latitude, offer.location.longitude], {
           icon: this.icon

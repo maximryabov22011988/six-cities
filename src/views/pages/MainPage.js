@@ -14,11 +14,6 @@ import Places from './mainPage/Places';
 import Map from './mainPage/Map';
 
 import { changeCity } from '../../state/UI/actions';
-import {
-  getCurrentCity,
-  getCities,
-  getCurrentOffers
-} from '../../state/offers/selectors';
 
 const user = {
   avatar: '',
@@ -92,19 +87,13 @@ class MainPage extends React.Component {
                 offers={offers}
               />
             }
-            rightPanel={offers && <Map offers={offers} />}
+            rightPanel={<Map offers={offers} />}
           />
         </Content>
       </React.Fragment>
     );
   }
 }
-
-const mapStateToProps = state => ({
-  currentCity: getCurrentCity(state),
-  offers: getCurrentOffers(state),
-  cities: getCities(state)
-});
 
 const actions = { changeCity };
 
@@ -113,6 +102,6 @@ const actions = { changeCity };
 export { MainPage };
 
 export default connect(
-  mapStateToProps,
+  null,
   actions
 )(MainPage);

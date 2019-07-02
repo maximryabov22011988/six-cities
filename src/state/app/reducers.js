@@ -2,6 +2,7 @@ import * as types from './types';
 import * as offerTypes from '../offers/types';
 
 const initialState = {
+  isReady: false,
   api: {
     isLoading: false
   },
@@ -39,6 +40,12 @@ const app = (state = initialState, action) => {
           isLoading: false,
           errors: action.payload
         }
+      };
+    }
+    case types.TOOGLE_READY_APP: {
+      return {
+        ...state,
+        isReady: !state.isReady
       };
     }
     default: {

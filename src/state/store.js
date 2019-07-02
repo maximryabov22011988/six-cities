@@ -4,15 +4,18 @@ import logger from 'redux-logger';
 import { compose } from 'recompose';
 
 import createAPI from '../api/api';
-import { loadOffers } from './offers/operations';
-
-import offers from './offers';
-import app from './app';
-import UI from './UI';
+import nameSpace from './name-spaces';
+import offersReducer from './offers';
+import appReducer from './app';
+import UIReducer from './UI';
 
 /* eslint-disable */
 const api = createAPI((...args) => store.dispatch(...args));
-const rootReducer = combineReducers({ offers, app, UI });
+const rootReducer = combineReducers({
+  [nameSpace.OFFERS]: offersReducer,
+  [nameSpace.APP]: appReducer,
+  [nameSpace.UI]: UIReducer
+});
 
 const reduxDevtools = window.__REDUX_DEVTOOLS_EXTENSION__;
 
@@ -25,7 +28,5 @@ const store = createStore(
   )
 );
 /* eslint-enable */
-
-store.dispatch(loadOffers());
 
 export default store;

@@ -2,9 +2,10 @@ import { createSelector } from 'reselect';
 import { find, filter, reduce } from 'lodash';
 
 import { denormalizeDataHelper } from '../utils';
+import nameSpace from '../name-spaces';
 
-const getOffers = state => state.offers;
-const getCity = state => state.UI.currentCity;
+const getOffers = state => state[nameSpace.OFFERS];
+const getCity = state => state[nameSpace.UI].currentCity;
 
 const getAllOffers = createSelector(
   [getOffers],

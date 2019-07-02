@@ -12,3 +12,7 @@ export const resourceNotFound = error => ({
   type: types.RESOURCE_NOT_FOUND,
   payload: error
 });
+
+export const toogleReadyApp = () => ({
+  type: types.TOOGLE_READY_APP
+});
