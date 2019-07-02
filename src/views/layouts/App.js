@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import MainPage from '../pages/MainPage';
@@ -8,12 +9,29 @@ import {
   getCurrentCity,
   getCurrentOffers
 } from '../../state/offers/selectors';
-import { getReadyApp } from '../../state/app/selectors';
+import { isReadyApp } from '../../state/app/selectors';
 
 import { loadOffers } from '../../state/offers/operations';
 import * as offerActions from '../../state/offers/actions';
 import * as appActions from '../../state/app/actions';
 import * as UIActions from '../../state/UI/actions';
+
+const propTypes = {
+  isReadyApp: PropTypes.bool.isRequired,
+  currentCity: PropTypes.shape({
+    name: PropTypes.string,
+    location: PropTypes.arrayOf(PropTypes.number)
+  }).isRequired,
+  cities: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      location: PropTypes.arrayOf(PropTypes.number),
+      zoom: PropTypes.number
+    })
+  ).isRequired,
+  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  changeCity: PropTypes.func.isRequired
+};
 
 class App extends React.Component {
   componentDidMount() {
@@ -24,11 +42,16 @@ class App extends React.Component {
   }
 
   render() {
-    const { isReadyApp, currentCity, cities, offers } = this.props;
+    const { isReadyApp, currentCity, cities, offers, changeCity } = this.props;
 
     if (isReadyApp) {
       return (
-        <MainPage currentCity={currentCity} cities={cities} offers={offers} />
+        <MainPage
+          currentCity={currentCity}
+          cities={cities}
+          offers={offers}
+          changeCity={changeCity}
+        />
       );
     }
 
@@ -37,10 +60,10 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isReadyApp: getReadyApp(state),
+  isReadyApp: isReadyApp(state),
   currentCity: getCurrentCity(state),
-  offers: getCurrentOffers(state),
-  cities: getCities(state)
+  cities: getCities(state),
+  offers: getCurrentOffers(state)
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -64,8 +87,13 @@ const mapDispatchToProps = dispatch => ({
         dispatch(appActions.toogleReadyApp());
       }
     });
+  },
+  changeCity(city) {
+    dispatch(UIActions.changeCity(city));
   }
 });
+
+App.propTypes = propTypes;
 
 export { App };
 

@@ -4,9 +4,9 @@ import nameSpace from '../name-spaces';
 
 const getReady = state => state[nameSpace.APP].isReady;
 
-const getReadyApp = createSelector(
+const isReadyApp = createSelector(
   [getReady],
   isReady => isReady
 );
 
-export { getReadyApp };
+export { isReadyApp };

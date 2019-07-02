@@ -1,39 +1,54 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { MainPage } from './MainPage';
+import MainPage from './MainPage';
 import Map from './mainPage/Map';
 
-const cityMock = {
-  city: {
-    name: 'Paris',
-    coords: [10, 10]
-  }
+const currentCityMock = {
+  name: 'Cologne',
+  location: [50.938361, 6.959974]
 };
+
+const citiesMock = [
+  {
+    name: 'Cologne',
+    location: [50.938361, 6.959974],
+    zoom: 13
+  }
+];
 
 const offersMock = [
   {
-    city: 'Paris',
-    offers: [
-      {
-        id: 'card-1',
-        title: 'Beautiful &amp; luxurious apartment at great location',
-        image: `img/apartment-01.jpg`,
-        price: 120,
-        type: 'Apartment',
-        rating: 4.6,
-        isPremium: true,
-        isBookmark: false,
-        location: [52.3909553943508, 4.85309666406198]
+    id: 1,
+    city: {
+      name: 'Cologne',
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
       }
-    ]
+    },
+    title: 'The Pondhouse - A Magical Place',
+    preview_image: `img/apartment-01.jpg`,
+    price: 120,
+    type: 'house',
+    rating: 4.6,
+    is_premium: true,
+    is_favorite: false
   }
 ];
 
 it('MainPage correctly render', () => {
   Map.prototype.componentDidMount = jest.fn();
   const mainPage = renderer
-    .create(<MainPage city={cityMock} offers={offersMock} />)
+    .create(
+      <MainPage
+        currentCity={currentCityMock}
+        cities={citiesMock}
+        offers={offersMock}
+        changeCity={jest.fn()}
+      />
+    )
     .toJSON();
 
   expect(mainPage).toMatchSnapshot();

@@ -9,7 +9,7 @@ exports[`NavItem correctly render 1`] = `
     href="#"
   >
     <span>
-      Paris
+      Cologne
     </span>
   </a>
 </li>

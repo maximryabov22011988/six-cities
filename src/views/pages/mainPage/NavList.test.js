@@ -3,14 +3,16 @@ import renderer from 'react-test-renderer';
 
 import NavList from './NavList';
 
-const offersMock = [
+const currentCityMock = {
+  name: 'Cologne',
+  location: [50.938361, 6.959974]
+};
+
+const citiesMock = [
   {
-    id: 1,
-    city: 'Paris',
-    coords: {
-      latitude: 52.38333,
-      longitude: 4.9
-    }
+    name: 'Cologne',
+    location: [50.938361, 6.959974],
+    zoom: 13
   }
 ];
 
@@ -19,8 +21,8 @@ it('NavList correctly render', () => {
   const navList = renderer
     .create(
       <NavList
-        currentCity="Paris"
-        cities={offersMock}
+        currentCity={currentCityMock.name}
+        cities={citiesMock}
         onChangeCity={handleChangeCity}
       />
     )

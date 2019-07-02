@@ -39,7 +39,7 @@ class Select extends React.Component {
     window.addEventListener('keydown', this.handleEscPress);
   }
 
-  get currentOptionText() {
+  getCurrentOptionText() {
     const { currentOption } = this.state;
     const { options } = this.props;
     return options.find(item => item.id === currentOption).name;
@@ -134,7 +134,7 @@ class Select extends React.Component {
           onClick={this.handleOpen}
           onFocus={this.handleOpen}
         >
-          {this.currentOptionText}
+          {this.getCurrentOptionText()}
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select" />
           </svg>

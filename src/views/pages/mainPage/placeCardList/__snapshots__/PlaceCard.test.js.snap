@@ -7,6 +7,13 @@ exports[`PlaceCard correctly render 1`] = `
   onMouseLeave={[MockFunction]}
 >
   <div
+    className="place-card__mark"
+  >
+    <span>
+      Premium
+    </span>
+  </div>
+  <div
     className="cities__image-wrapper place-card__image-wrapper"
   >
     <a
@@ -16,7 +23,7 @@ exports[`PlaceCard correctly render 1`] = `
         alt="Place image"
         className="place-card__image"
         height="200"
-        src="img/room.jpg"
+        src="img/apartment-01.jpg"
         width="260"
       />
     </a>
@@ -34,7 +41,7 @@ exports[`PlaceCard correctly render 1`] = `
           className="place-card__price-value"
         >
           €
-          80
+          120
         </b>
         <span
           className="place-card__price-text"
@@ -43,7 +50,7 @@ exports[`PlaceCard correctly render 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button place-card__bookmark-button--active button"
+        className="place-card__bookmark-button button"
         type="button"
       >
         <svg
@@ -71,7 +78,7 @@ exports[`PlaceCard correctly render 1`] = `
         <span
           style={
             Object {
-              "width": "80.00%",
+              "width": "92.00%",
             }
           }
         />
@@ -89,13 +96,13 @@ exports[`PlaceCard correctly render 1`] = `
         href="#"
         onClick={[MockFunction]}
       >
-        Wood and stone place
+        The Pondhouse - A Magical Place
       </a>
     </h2>
     <p
       className="place-card__type"
     >
-      Private room
+      house
     </p>
   </div>
 </article>

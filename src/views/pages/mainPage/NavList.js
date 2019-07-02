@@ -5,6 +5,7 @@ import withActiveItem from '../../hocs/withActiveItem';
 import NavItem from './navList/NavItem';
 
 const propTypes = {
+  currentCity: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

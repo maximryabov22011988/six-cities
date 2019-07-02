@@ -1,6 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Header from './mainPage/Header';
 import Logo from './mainPage/Logo';
@@ -13,28 +12,29 @@ import PlacesContainer from './mainPage/PlacesContainer';
 import Places from './mainPage/Places';
 import Map from './mainPage/Map';
 
-import { changeCity } from '../../state/UI/actions';
-
 const user = {
   avatar: '',
   email: 'Oliver.conner@gmail.com'
 };
 
-/*const propTypes = {
-  city: PropTypes.shape({
+const propTypes = {
+  currentCity: PropTypes.shape({
     name: PropTypes.string,
-    coords: PropTypes.arrayOf(PropTypes.number)
+    location: PropTypes.arrayOf(PropTypes.number)
   }).isRequired,
-  offers: PropTypes.arrayOf(
+  cities: PropTypes.arrayOf(
     PropTypes.shape({
-      city: PropTypes.string,
-      offers: PropTypes.array
+      name: PropTypes.string,
+      location: PropTypes.arrayOf(PropTypes.number),
+      zoom: PropTypes.number
     })
-  ).isRequired
-};*/
+  ).isRequired,
+  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  changeCity: PropTypes.func.isRequired
+};
 
 class MainPage extends React.Component {
-  get searchResultsText() {
+  getSearchResultsText() {
     const { currentCity, offers } = this.props;
     return `${offers.length} places to stay in ${currentCity.name}`;
   }
@@ -83,7 +83,7 @@ class MainPage extends React.Component {
           <PlacesContainer
             leftPanel={
               <Places
-                searchResultText={this.searchResultsText}
+                searchResultText={this.getSearchResultsText()}
                 offers={offers}
               />
             }
@@ -95,13 +95,6 @@ class MainPage extends React.Component {
   }
 }
 
-const actions = { changeCity };
+MainPage.propTypes = propTypes;
 
-// MainPage.propTypes = propTypes;
-
-export { MainPage };
-
-export default connect(
-  null,
-  actions
-)(MainPage);
+export default MainPage;

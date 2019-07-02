@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Leaflet from 'leaflet';
 
 const mapStyles = {
-  top: '15px',
-  height: '794px'
+  top: 0,
+  height: '792px',
+  zIndex: 100
 };
+
+const mapContainerId = 'map';
 
 const LEAFLET_LAYER = {
   URL_TEMPLATE:
@@ -16,79 +19,93 @@ const LEAFLET_LAYER = {
   }
 };
 
-// const propTypes = {
-//   offers: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string,
-//       title: PropTypes.string,
-//       image: PropTypes.string,
-//       price: PropTypes.number,
-//       type: PropTypes.oneOf(['Apartment', 'Private room']),
-//       rating: PropTypes.number,
-//       isPremium: PropTypes.bool,
-//       isBookmark: PropTypes.bool,
-//       location: PropTypes.arrayOf(PropTypes.number)
-//     })
-//   ).isRequired
-// };
+const propTypes = {
+  offers: PropTypes.arrayOf(
+    PropTypes.shape({
+      bedrooms: PropTypes.number,
+      city: PropTypes.shape({
+        name: PropTypes.string,
+        location: PropTypes.object
+      }),
+      description: PropTypes.string,
+      goods: PropTypes.arrayOf(PropTypes.string),
+      host: PropTypes.shape({
+        avatar_url: PropTypes.string,
+        id: PropTypes.number,
+        is_pro: PropTypes.bool,
+        name: PropTypes.string
+      }),
+      id: PropTypes.number,
+      images: PropTypes.arrayOf(PropTypes.string),
+      is_favorite: PropTypes.bool,
+      is_premium: PropTypes.bool,
+      location: PropTypes.shape({
+        latitude: PropTypes.number,
+        longitude: PropTypes.number,
+        zoom: PropTypes.number
+      }),
+      max_adults: PropTypes.number,
+      preview_image: PropTypes.string,
+      price: PropTypes.number,
+      rating: PropTypes.number,
+      title: PropTypes.string,
+      type: PropTypes.string
+    })
+  ).isRequired
+};
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
-
-    this.leaflet = Leaflet;
-
-    this.icon = this.leaflet.icon({
-      iconUrl: 'img/pin.svg',
-      iconSize: [27, 39],
-      iconAnchor: [13, 39]
-    });
-  }
-
   componentDidMount() {
     const { offers } = this.props;
     const { latitude, longitude, zoom } = offers[0].city.location;
 
-    this.map = this.leaflet.map('map', {
+    const settings = {
       center: [latitude, longitude],
       zoom,
-      zoomControl: false,
-      layers: new this.leaflet.TileLayer(
-        LEAFLET_LAYER.URL_TEMPLATE,
-        LEAFLET_LAYER.OPTIONS
-      )
-    });
+      zoomControl: false
+    };
 
-    this.markers = this.leaflet.layerGroup().addTo(this.map);
-    this.addMarkers(offers, this.markers);
+    this.offerMap = Leaflet.map(mapContainerId, settings);
+    this.offerMap.setView([latitude, longitude], zoom);
+    Leaflet.tileLayer(LEAFLET_LAYER.URL_TEMPLATE, LEAFLET_LAYER.OPTIONS).addTo(
+      this.offerMap
+    );
+    this.pinGroup = Leaflet.layerGroup().addTo(this.offerMap);
+    this.addPins(this.pinGroup);
   }
 
   componentDidUpdate() {
     const { offers } = this.props;
     const { latitude, longitude, zoom } = offers[0].city.location;
 
-    if (this.map) {
-      this.map.setView([latitude, longitude], zoom);
-      this.markers.clearLayers();
-      this.addMarkers(offers, this.markers);
+    if (this.offerMap) {
+      this.offerMap.setView([latitude, longitude], zoom);
+      this.pinGroup.clearLayers();
+      this.addPins(this.pinGroup);
     }
   }
 
-  addMarkers(offers, group) {
-    offers.forEach(offer => {
-      this.leaflet
-        .marker([offer.location.latitude, offer.location.longitude], {
-          icon: this.icon
-        })
-        .addTo(group);
+  get pinIcon() {
+    return Leaflet.icon({
+      iconUrl: 'img/pin.svg',
+      iconSize: [27, 39],
+      iconAnchor: [13, 39]
+    });
+  }
+
+  addPins(group) {
+    const { offers } = this.props;
+    const icon = this.pinIcon;
+    offers.forEach(({ location: { latitude, longitude } }) => {
+      Leaflet.marker([latitude, longitude], { icon }).addTo(group);
     });
   }
 
   render() {
-    return <div id="map" style={mapStyles} />;
+    return <div id={mapContainerId} style={mapStyles} />;
   }
 }
 
-// Map.propTypes = propTypes;
+Map.propTypes = propTypes;
 
 export default Map;

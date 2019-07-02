@@ -12,7 +12,9 @@ const userMock = {
 
 it('Header correctly render', () => {
   const header = renderer
-    .create(<Header logo={<Logo />} userInfo={<UserInfo user={userMock} />} />)
+    .create(
+      <Header logo={<Logo />} userInfo={<UserInfo email={userMock.email} />} />
+    )
     .toJSON();
 
   expect(header).toMatchSnapshot();

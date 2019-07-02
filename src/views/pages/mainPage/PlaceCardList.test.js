@@ -5,14 +5,22 @@ import PlaceCardList from './PlaceCardList';
 
 const offersMock = [
   {
-    id: 'card-5',
-    title: 'Wood and stone place',
-    image: 'img/room.jpg',
-    price: 80,
-    type: 'Private room',
-    rating: 4,
-    isPremium: false,
-    isBookmark: true
+    id: 1,
+    city: {
+      name: 'Cologne',
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    },
+    title: 'The Pondhouse - A Magical Place',
+    preview_image: `img/apartment-01.jpg`,
+    price: 120,
+    type: 'house',
+    rating: 4.6,
+    is_premium: true,
+    is_favorite: false
   }
 ];
 
