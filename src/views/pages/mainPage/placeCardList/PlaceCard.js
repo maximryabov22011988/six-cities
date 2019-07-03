@@ -4,6 +4,7 @@ import classnames from 'classnames';
 
 import withActiveItem from '../../../hocs/withActiveItem';
 import Button from '../../../components/Button';
+import Image from '../../../components/Image';
 import Rating from './placeCard/Rating';
 
 const propTypes = {
@@ -79,12 +80,12 @@ function PlaceCard(props) {
 
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#" onClick={onImageClick(offer)}>
-          <img
+          <Image
             className="place-card__image"
             src={previewImage}
             width="260"
             height="200"
-            alt="Place image"
+            label="Place image"
           />
         </a>
       </div>
