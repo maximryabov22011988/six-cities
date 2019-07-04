@@ -4,15 +4,20 @@ import classnames from 'classnames';
 
 const propTypes = {
   className: PropTypes.string.isRequired,
-  type: PropTypes.string
+  type: PropTypes.string,
+  disabled: PropTypes.bool
 };
 const defaultProps = {
   type: 'button'
 };
 
-function Button({ className, type, children }) {
+function Button({ className, type, disabled, children }) {
   return (
-    <button className={classnames(className, 'button')} type={type}>
+    <button
+      className={classnames(className, 'button')}
+      type={type}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

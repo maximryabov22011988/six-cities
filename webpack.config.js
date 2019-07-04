@@ -8,6 +8,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'public'),
+    historyApiFallback: true, // Настройка необходима чтобы сервер перенаправлял запросы на index.html
     hot: true,
     open: true,
     compress: false,

@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import Header from './Header';
 import Logo from './Logo';
-import UserInfo from './UserInfo';
+import UserInfo from '../pages/mainPage/UserInfo';
 
 const userMock = {
   avatar: '',

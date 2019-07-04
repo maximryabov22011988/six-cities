@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  logo: PropTypes.element.isRequired,
-  userInfo: PropTypes.element.isRequired
+  logo: PropTypes.element,
+  userInfo: PropTypes.element
 };
 
 function Header({ logo, userInfo }) {
