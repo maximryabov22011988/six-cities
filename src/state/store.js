@@ -5,11 +5,11 @@ import { compose } from 'recompose';
 
 import createAPI from '../api/api';
 import nameSpace from './name-spaces';
+
 import offersReducer from './offers';
 import appReducer from './app';
 import UIReducer from './UI';
 
-/* eslint-disable */
 const api = createAPI((...args) => store.dispatch(...args));
 const rootReducer = combineReducers({
   [nameSpace.OFFERS]: offersReducer,
@@ -27,6 +27,5 @@ const store = createStore(
     reduxDevtools && reduxDevtools()
   )
 );
-/* eslint-enable */
 
 export default store;

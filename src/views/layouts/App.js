@@ -6,7 +6,7 @@ import MainPage from '../pages/MainPage';
 
 import {
   getCities,
-  getCurrentCity,
+  transformCurrentCity,
   getCurrentOffers
 } from '../../state/offers/selectors';
 import { isReadyApp } from '../../state/app/selectors';
@@ -61,7 +61,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   isReadyApp: isReadyApp(state),
-  currentCity: getCurrentCity(state),
+  currentCity: transformCurrentCity(state),
   cities: getCities(state),
   offers: getCurrentOffers(state)
 });

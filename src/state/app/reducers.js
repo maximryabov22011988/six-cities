@@ -20,6 +20,7 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         api: {
+          ...state.api,
           isLoading: true
         }
       };
@@ -29,6 +30,7 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         api: {
+          ...state.api,
           isLoading: false
         }
       };
@@ -37,6 +39,7 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         api: {
+          ...state.api,
           isLoading: false,
           errors: action.payload
         }

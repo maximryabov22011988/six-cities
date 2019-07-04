@@ -5,7 +5,7 @@ import { denormalizeDataHelper } from '../utils';
 import nameSpace from '../name-spaces';
 
 const getOffers = state => state[nameSpace.OFFERS];
-const getCity = state => state[nameSpace.UI].currentCity;
+const getCurrentCity = state => state[nameSpace.UI].currentCity;
 
 const getAllOffers = createSelector(
   [getOffers],
@@ -14,6 +14,21 @@ const getAllOffers = createSelector(
 
     if (offers) {
       result = denormalizeDataHelper(offers);
+    } else {
+      result = [];
+    }
+
+    return result;
+  }
+);
+
+const getCurrentOffers = createSelector(
+  [getCurrentCity, getAllOffers],
+  (currentCity, allOffers) => {
+    let result;
+
+    if (currentCity) {
+      result = filter(allOffers, { city: { name: currentCity.name } });
     } else {
       result = [];
     }
@@ -56,8 +71,8 @@ const getCities = createSelector(
   }
 );
 
-const getCurrentCity = createSelector(
-  [getCity],
+const transformCurrentCity = createSelector(
+  [getCurrentCity],
   currentCity => {
     let result;
 
@@ -78,19 +93,4 @@ const getCurrentCity = createSelector(
   }
 );
 
-const getCurrentOffers = createSelector(
-  [getCity, getAllOffers],
-  (currentCity, allOffers) => {
-    let result;
-
-    if (currentCity) {
-      result = filter(allOffers, { city: { name: currentCity.name } });
-    } else {
-      result = [];
-    }
-
-    return result;
-  }
-);
-
-export { getCurrentCity, getCities, getCurrentOffers };
+export { transformCurrentCity, getCities, getCurrentOffers };

@@ -1,7 +1,7 @@
 import * as types from './types';
 
 const UIInitialState = {
-  currentCity: '',
+  currentCity: null,
   filter: '',
   sorting: ''
 };
