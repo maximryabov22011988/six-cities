@@ -88,22 +88,14 @@ class SignIn extends React.Component {
             onSubmit={this.handleSubmit}
           >
             <Field
+              {...field.email}
               classes={fieldClasses}
-              label={field.email.label}
-              type={field.email.type}
-              name={field.email.name}
-              placeholder={field.email.placeholder}
-              required={field.email.required}
               value={email.value}
               onChange={this.handleChange}
             />
             <Field
+              {...field.password}
               classes={fieldClasses}
-              label={field.password.label}
-              type={field.password.type}
-              name={field.password.name}
-              placeholder={field.password.placeholder}
-              required={field.password.required}
               value={password.value}
               onChange={this.handleChange}
             />
