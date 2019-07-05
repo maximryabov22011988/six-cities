@@ -4,7 +4,7 @@ import Leaflet from 'leaflet';
 
 const mapStyles = {
   top: 0,
-  height: '792px',
+  height: '100%',
   zIndex: 100
 };
 

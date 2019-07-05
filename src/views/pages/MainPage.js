@@ -18,6 +18,14 @@ const user = {
 };
 
 const propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    avatar_url: PropTypes.string,
+    is_pro: PropTypes.bool
+  }).isRequired,
+  isAuthUser: PropTypes.bool.isRequired,
   currentCity: PropTypes.shape({
     name: PropTypes.string,
     location: PropTypes.arrayOf(PropTypes.number)
@@ -46,11 +54,14 @@ class MainPage extends React.Component {
   };
 
   render() {
-    const { currentCity, cities, offers } = this.props;
+    const { user, isAuthUser, currentCity, cities, offers } = this.props;
 
     return (
       <div className="page page--gray page--main">
-        <Header logo={<Logo />} userInfo={<UserInfo email={user.email} />} />
+        <Header
+          logo={<Logo />}
+          userInfo={<UserInfo isAuth={isAuthUser} email={user.email} />}
+        />
         <Content>
           <Nav>
             <NavList

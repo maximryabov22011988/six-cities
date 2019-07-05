@@ -1,10 +1,18 @@
 import axios from 'axios';
 import * as actions from '../state/app/actions';
 
+const TIMEOUT = 5000;
+
+const code = {
+  BAD_REQUEST: 400,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404
+};
+
 const createAPI = dispatch => {
   const api = axios.create({
     baseURL: 'https://es31-server.appspot.com/six-cities',
-    timeout: 5000,
+    timeout: TIMEOUT,
     withCredentials: true
   });
 
@@ -18,11 +26,19 @@ const createAPI = dispatch => {
       data: { error: errorMessage },
       status
     } = error.response;
+
     dispatch(actions.requestFailure());
-    if (error.response.status === 403) {
-      // dispatch(actions.requireAuthorization(true));
+
+    if (error.response.status === code.BAD_REQUEST) {
+      dispatch(actions.badRequest({ status, errorMessage }));
     }
-    if (error.response.status === 404) {
+
+    if (error.response.status === code.FORBIDDEN) {
+      dispatch(actions.toogleAuthApp());
+      history.pushState(null, null, '/login'); // TODO Проверить, что работает
+    }
+
+    if (error.response.status === code.NOT_FOUND) {
       dispatch(actions.resourceNotFound({ status, errorMessage }));
     }
   };

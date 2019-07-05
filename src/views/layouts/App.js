@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import SignIn from '../pages/SignIn';
 import MainPage from '../pages/MainPage';
 
 import {
@@ -9,9 +11,10 @@ import {
   transformCurrentCity,
   getCurrentOffers
 } from '../../state/offers/selectors';
-import { isReadyApp } from '../../state/app/selectors';
+import { isReadyApp, isAuthUser, getUser } from '../../state/app/selectors';
 
 import { loadOffers } from '../../state/offers/operations';
+import { signIn } from '../../state/app/operations';
 import * as offerActions from '../../state/offers/actions';
 import * as appActions from '../../state/app/actions';
 import * as UIActions from '../../state/UI/actions';
@@ -41,17 +44,49 @@ class App extends React.Component {
     }
   }
 
+  handleSignIn = (email, password) => {
+    const { signIn } = this.props;
+    signIn(email, password);
+  };
+
   render() {
-    const { isReadyApp, currentCity, cities, offers, changeCity } = this.props;
+    const {
+      isReadyApp,
+      isAuthUser,
+      user,
+      currentCity,
+      cities,
+      offers,
+      changeCity
+    } = this.props;
 
     if (isReadyApp) {
       return (
-        <MainPage
-          currentCity={currentCity}
-          cities={cities}
-          offers={offers}
-          changeCity={changeCity}
-        />
+        <React.Fragment>
+          <Router>
+            <Switch>
+              <Route
+                path="/"
+                exact
+                render={() => (
+                  <MainPage
+                    user={user}
+                    isAuthUser={isAuthUser}
+                    currentCity={currentCity}
+                    cities={cities}
+                    offers={offers}
+                    changeCity={changeCity}
+                  />
+                )}
+              />
+              <Route
+                path="/login"
+                exact
+                render={() => <SignIn onSignIn={this.handleSignIn} />}
+              />
+            </Switch>
+          </Router>
+        </React.Fragment>
       );
     }
 
@@ -61,6 +96,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   isReadyApp: isReadyApp(state),
+  isAuthUser: isAuthUser(state),
+  user: getUser(state),
   currentCity: transformCurrentCity(state),
   cities: getCities(state),
   offers: getCurrentOffers(state)
@@ -85,6 +122,15 @@ const mapDispatchToProps = dispatch => ({
         dispatch(offerActions.receiveOffers(offers));
         dispatch(UIActions.changeCity(city));
         dispatch(appActions.toogleReadyApp());
+      }
+    });
+  },
+  signIn(email, password) {
+    dispatch(signIn(email, password)).then(response => {
+      if (response && response.data) {
+        const user = response.data;
+        dispatch(appActions.toogleAuthApp());
+        dispatch(appActions.receiveSignIn(user));
       }
     });
   },
