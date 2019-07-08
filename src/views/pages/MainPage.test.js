@@ -4,6 +4,11 @@ import renderer from 'react-test-renderer';
 import MainPage from './MainPage';
 import Map from './mainPage/Map';
 
+const userMock = {
+  avatarUrl: '/static/avatar/1.jpg',
+  email: 'Oliver.conner@gmail.com'
+};
+
 const currentCityMock = {
   name: 'Cologne',
   location: [50.938361, 6.959974]
@@ -43,10 +48,12 @@ it('MainPage correctly render', () => {
   const mainPage = renderer
     .create(
       <MainPage
+        user={userMock}
         currentCity={currentCityMock}
         cities={citiesMock}
         offers={offersMock}
         changeCity={jest.fn()}
+        isAuthUser
       />
     )
     .toJSON();

@@ -4,11 +4,8 @@ import { find, filter, reduce } from 'lodash';
 import { denormalizeDataHelper } from '../utils';
 import nameSpace from '../name-spaces';
 
-const getOffers = state => state[nameSpace.OFFERS];
-const getCurrentCity = state => state[nameSpace.UI].currentCity;
-
-const getAllOffers = createSelector(
-  [getOffers],
+const getOffers = createSelector(
+  [state => state[nameSpace.OFFERS]],
   offers => {
     let result;
 
@@ -22,8 +19,10 @@ const getAllOffers = createSelector(
   }
 );
 
+const getCurrentCity = state => state[nameSpace.UI].currentCity;
+
 const getCurrentOffers = createSelector(
-  [getCurrentCity, getAllOffers],
+  [getCurrentCity, getOffers],
   (currentCity, allOffers) => {
     let result;
 
@@ -38,7 +37,7 @@ const getCurrentOffers = createSelector(
 );
 
 const getCities = createSelector(
-  [getAllOffers],
+  [getOffers],
   offers => {
     let result;
 

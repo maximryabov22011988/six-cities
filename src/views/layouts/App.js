@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import SignIn from '../pages/SignIn';
 import MainPage from '../pages/MainPage';
@@ -11,13 +11,10 @@ import {
   transformCurrentCity,
   getCurrentOffers
 } from '../../state/offers/selectors';
-import { isReadyApp, isAuthUser, getUser } from '../../state/app/selectors';
+import { getIsReady, getIsAuth, getUser } from '../../state/app/selectors';
 
-import { loadOffers } from '../../state/offers/operations';
-import { signIn } from '../../state/app/operations';
-import * as offerActions from '../../state/offers/actions';
-import * as appActions from '../../state/app/actions';
-import * as UIActions from '../../state/UI/actions';
+import { init, signIn } from '../../state/app/actions';
+import { changeCity } from '../../state/UI/actions';
 
 const propTypes = {
   isReadyApp: PropTypes.bool.isRequired,
@@ -33,6 +30,8 @@ const propTypes = {
     })
   ).isRequired,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  init: PropTypes.func.isRequired,
+  signIn: PropTypes.func.isRequired,
   changeCity: PropTypes.func.isRequired
 };
 
@@ -63,29 +62,32 @@ class App extends React.Component {
     if (isReadyApp) {
       return (
         <React.Fragment>
-          <Router>
-            <Switch>
-              <Route
-                path="/"
-                exact
-                render={() => (
-                  <MainPage
-                    user={user}
-                    isAuthUser={isAuthUser}
-                    currentCity={currentCity}
-                    cities={cities}
-                    offers={offers}
-                    changeCity={changeCity}
-                  />
-                )}
-              />
-              <Route
-                path="/login"
-                exact
-                render={() => <SignIn onSignIn={this.handleSignIn} />}
-              />
-            </Switch>
-          </Router>
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={() => (
+                <MainPage
+                  user={user}
+                  isAuthUser={isAuthUser}
+                  currentCity={currentCity}
+                  cities={cities}
+                  offers={offers}
+                  changeCity={changeCity}
+                />
+              )}
+            />
+            <Route
+              path="/login"
+              render={() =>
+                isAuthUser ? (
+                  <Redirect to="/" exact />
+                ) : (
+                  <SignIn onSignIn={this.handleSignIn} />
+                )
+              }
+            />
+          </Switch>
         </React.Fragment>
       );
     }
@@ -95,49 +97,19 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isReadyApp: isReadyApp(state),
-  isAuthUser: isAuthUser(state),
+  isReadyApp: getIsReady(state),
+  isAuthUser: getIsAuth(state),
   user: getUser(state),
   currentCity: transformCurrentCity(state),
   cities: getCities(state),
   offers: getCurrentOffers(state)
 });
 
-const mapDispatchToProps = dispatch => ({
-  init() {
-    dispatch(loadOffers()).then(response => {
-      if (response && response.data) {
-        const offers = response.data;
-
-        const initialCity = offers[0].city;
-        const city = {
-          name: initialCity.name,
-          location: [
-            initialCity.location.latitude,
-            initialCity.location.longitude
-          ],
-          zoom: initialCity.location.zoom
-        };
-
-        dispatch(offerActions.receiveOffers(offers));
-        dispatch(UIActions.changeCity(city));
-        dispatch(appActions.toogleReadyApp());
-      }
-    });
-  },
-  signIn(email, password) {
-    dispatch(signIn(email, password)).then(response => {
-      if (response && response.data) {
-        const user = response.data;
-        dispatch(appActions.toogleAuthApp());
-        dispatch(appActions.receiveSignIn(user));
-      }
-    });
-  },
-  changeCity(city) {
-    dispatch(UIActions.changeCity(city));
-  }
-});
+const mapDispatchToProps = {
+  init,
+  signIn,
+  changeCity
+};
 
 App.propTypes = propTypes;
 

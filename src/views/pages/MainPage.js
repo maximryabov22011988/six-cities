@@ -12,11 +12,6 @@ import PlacesContainer from './mainPage/PlacesContainer';
 import Places from './mainPage/Places';
 import Map from './mainPage/Map';
 
-const user = {
-  avatar: '',
-  email: 'Oliver.conner@gmail.com'
-};
-
 const propTypes = {
   user: PropTypes.shape({
     id: PropTypes.number,
@@ -60,7 +55,13 @@ class MainPage extends React.Component {
       <div className="page page--gray page--main">
         <Header
           logo={<Logo />}
-          userInfo={<UserInfo isAuth={isAuthUser} email={user.email} />}
+          userInfo={
+            <UserInfo
+              isAuth={isAuthUser}
+              avatarUrl={user.avatar_url}
+              email={user.email}
+            />
+          }
         />
         <Content>
           <Nav>

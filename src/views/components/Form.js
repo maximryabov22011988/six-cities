@@ -7,7 +7,7 @@ const propTypes = {
   action: PropTypes.string,
   method: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  children: PropTypes.element
+  children: PropTypes.any
 };
 
 const defaultProps = {

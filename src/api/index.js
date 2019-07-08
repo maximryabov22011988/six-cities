@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as actions from '../state/app/actions';
 
+const BASE_URL = 'https://es31-server.appspot.com/six-cities';
 const TIMEOUT = 5000;
 
 const code = {
@@ -11,7 +12,7 @@ const code = {
 
 const createAPI = dispatch => {
   const api = axios.create({
-    baseURL: 'https://es31-server.appspot.com/six-cities',
+    baseURL: BASE_URL,
     timeout: TIMEOUT,
     withCredentials: true
   });
@@ -23,14 +24,14 @@ const createAPI = dispatch => {
 
   const onFail = error => {
     const {
-      data: { error: errorMessage },
+      data: { error: message },
       status
     } = error.response;
 
     dispatch(actions.requestFailure());
 
     if (error.response.status === code.BAD_REQUEST) {
-      dispatch(actions.badRequest({ status, errorMessage }));
+      dispatch(actions.badRequest({ status, message }));
     }
 
     if (error.response.status === code.FORBIDDEN) {
@@ -39,7 +40,7 @@ const createAPI = dispatch => {
     }
 
     if (error.response.status === code.NOT_FOUND) {
-      dispatch(actions.resourceNotFound({ status, errorMessage }));
+      dispatch(actions.resourceNotFound({ status, message }));
     }
   };
 
@@ -47,5 +48,7 @@ const createAPI = dispatch => {
 
   return api;
 };
+
+export { BASE_URL };
 
 export default createAPI;

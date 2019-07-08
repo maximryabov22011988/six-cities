@@ -1,5 +1,11 @@
 import * as types from './types';
 
+import { loadOffers } from '../offers/operations';
+import * as operations from './operations';
+
+import * as UIActions from '../UI/actions';
+import * as offerActions from '../offers/actions';
+
 export const requestSuccess = () => ({
   type: types.REQUEST_SUCCESS
 });
@@ -34,3 +40,30 @@ export const toogleAuthApp = () => ({
 export const toogleReadyApp = () => ({
   type: types.TOOGLE_READY_APP
 });
+
+export const init = () => async dispatch => {
+  const response = await dispatch(loadOffers());
+  const offers = response.data;
+
+  if (offers) {
+    const initialCity = offers[0].city;
+    const city = {
+      name: initialCity.name,
+      location: [initialCity.location.latitude, initialCity.location.longitude],
+      zoom: initialCity.location.zoom
+    };
+
+    dispatch(offerActions.receiveOffers(offers));
+    dispatch(UIActions.changeCity(city));
+    dispatch(toogleReadyApp());
+  }
+};
+
+export const signIn = (email, password) => async dispatch => {
+  const response = await dispatch(operations.signIn(email, password));
+  const user = response.data;
+  if (user) {
+    dispatch(toogleAuthApp());
+    dispatch(receiveSignIn(user));
+  }
+};

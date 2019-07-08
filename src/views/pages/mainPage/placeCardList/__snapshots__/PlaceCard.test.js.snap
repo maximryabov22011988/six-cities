@@ -19,13 +19,32 @@ exports[`PlaceCard correctly render 1`] = `
     <a
       href="#"
     >
-      <img
-        alt="Place image"
-        className="place-card__image"
-        height="200"
-        src="img/apartment-01.jpg"
-        width="260"
-      />
+      <div
+        style={
+          Object {
+            "alignItems": "center",
+            "background": "#e1e1e1",
+            "borderRadius": "4px",
+            "display": "flex",
+            "height": "200px",
+            "justifyContent": "center",
+            "width": "260px",
+          }
+        }
+      >
+        <img
+          alt="Place image"
+          className="place-card__image"
+          height={0}
+          onError={[Function]}
+          onLoad={[Function]}
+          src="img/apartment-01.jpg"
+          width={0}
+        />
+        <span>
+          Loading ...
+        </span>
+      </div>
     </a>
   </div>
   <div

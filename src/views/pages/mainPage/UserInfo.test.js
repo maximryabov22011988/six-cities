@@ -4,13 +4,20 @@ import renderer from 'react-test-renderer';
 import UserInfo from './UserInfo';
 
 const userMock = {
-  avatar: '',
+  isAuth: true,
+  avatarUrl: '/static/avatar/1.jpg',
   email: 'Oliver.conner@gmail.com'
 };
 
 it('UserInfo correctly render', () => {
   const userInfo = renderer
-    .create(<UserInfo email={userMock.email} />)
+    .create(
+      <UserInfo
+        isAuth={userMock.isAuth}
+        avatarUrl={userMock.avatarUrl}
+        email={userMock.email}
+      />
+    )
     .toJSON();
 
   expect(userInfo).toMatchSnapshot();

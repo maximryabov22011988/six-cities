@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { compose } from 'recompose';
 
-import createAPI from '../api/api';
+import createAPI from '../api';
 import nameSpace from './name-spaces';
 
 import offersReducer from './offers';

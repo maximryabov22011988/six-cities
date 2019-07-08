@@ -2,23 +2,19 @@ import { createSelector } from 'reselect';
 
 import nameSpace from '../name-spaces';
 
-const getReadyApp = state => state[nameSpace.APP].isReady;
-const isAuth = state => state[nameSpace.APP].auth.isSignIn;
-const getUserInfo = state => state[nameSpace.APP].auth.user;
-
-const isReadyApp = createSelector(
-  [getReadyApp],
+const getIsReady = createSelector(
+  [state => state[nameSpace.APP].isReady],
   isReady => isReady
 );
 
-const isAuthUser = createSelector(
-  [isAuth],
+const getIsAuth = createSelector(
+  [state => state[nameSpace.APP].auth.isSignIn],
   isAuth => isAuth
 );
 
 const getUser = createSelector(
-  [getUserInfo],
+  [state => state[nameSpace.APP].auth.user],
   user => user
 );
 
-export { isReadyApp, isAuthUser, getUser };
+export { getIsReady, getIsAuth, getUser };
