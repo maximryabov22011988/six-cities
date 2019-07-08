@@ -13,7 +13,7 @@ import {
 } from '../../state/offers/selectors';
 import { getIsReady, getIsAuth, getUser } from '../../state/app/selectors';
 
-import { init, signIn } from '../../state/app/actions';
+import { init, signIn } from '../../state/app/operations';
 import { changeCity } from '../../state/UI/actions';
 
 const propTypes = {
