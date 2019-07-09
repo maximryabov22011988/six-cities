@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Page from '../components/Page';
 import Header from '../components/Header';
 import Logo from '../components/Logo';
+import Content from '../components/Content';
 
-import Content from './signIn/Content';
 import SignInForm from './signIn/SignInForm';
 
 const propTypes = {
@@ -13,12 +14,12 @@ const propTypes = {
 
 function SignIn({ onSignIn }) {
   return (
-    <div className="page page--gray page--login">
-      <Header logo={<Logo />} />
-      <Content>
+    <Page page="login">
+      <Header logo={<Logo position="header" />} />
+      <Content page="login">
         <SignInForm onSignIn={onSignIn} />
       </Content>
-    </div>
+    </Page>
   );
 }
 

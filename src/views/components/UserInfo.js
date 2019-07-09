@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { BASE_URL } from '../../../api';
+import { BASE_URL } from '../../api';
 
 const propTypes = {
   isAuth: PropTypes.bool.isRequired,
@@ -19,7 +19,10 @@ class UserInfo extends React.PureComponent {
         {!isAuth ? (
           <Link to="/login">Sign In</Link>
         ) : (
-          <div className="header__nav-link header__nav-link--profile">
+          <Link
+            to="/favorites"
+            className="header__nav-link header__nav-link--profile"
+          >
             <div className="header__avatar-wrapper user__avatar-wrapper">
               <img
                 className="user__avatar"
@@ -28,7 +31,7 @@ class UserInfo extends React.PureComponent {
               />
             </div>
             <span className="header__user-name user__name">{email}</span>
-          </div>
+          </Link>
         )}
       </li>
     );

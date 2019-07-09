@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Header from '../components/Header';
 import Logo from '../components/Logo';
-import UserInfo from './mainPage/UserInfo';
+import UserInfo from '../components/UserInfo';
 
 import Content from './mainPage/Content';
 import Nav from './mainPage/Nav';
@@ -54,7 +55,7 @@ class MainPage extends React.Component {
     return (
       <div className="page page--gray page--main">
         <Header
-          logo={<Logo />}
+          logo={<Logo position="header" isActive />}
           userInfo={
             <UserInfo
               isAuth={isAuthUser}

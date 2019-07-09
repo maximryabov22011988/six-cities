@@ -5,6 +5,9 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import SignIn from '../pages/SignIn';
 import MainPage from '../pages/MainPage';
+import FavoriteList from '../pages/FavoriteList';
+
+import PrivateRoute from '../utils/PrivateRoute';
 
 import {
   getCities,
@@ -86,6 +89,13 @@ class App extends React.Component {
                   <SignIn onSignIn={this.handleSignIn} />
                 )
               }
+            />
+            <PrivateRoute
+              path="/favorites"
+              isAuth={isAuthUser}
+              component={() => (
+                <FavoriteList isAuthUser={isAuthUser} user={user} />
+              )}
             />
           </Switch>
         </React.Fragment>
