@@ -11,6 +11,8 @@ const propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
   type: PropTypes.string,
+  minLength: PropTypes.number,
+  maxLength: PropTypes.number,
   name: PropTypes.string,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
@@ -22,26 +24,34 @@ const defaultProps = {
   type: 'text'
 };
 
-function Field({
-  classes,
-  label,
-  id,
-  type,
-  name,
-  placeholder,
-  disabled,
-  required,
-  onChange
-}) {
+const Field = function(
+  {
+    classes,
+    label,
+    id,
+    type,
+    minLength,
+    maxLength,
+    name,
+    placeholder,
+    disabled,
+    required,
+    onChange
+  },
+  ref
+) {
   return (
     <div className={classnames(classes.wrap, 'form__input-wrapper')}>
       <label className={classnames(classes.label, 'form__label')} htmlFor={id}>
         {label}
       </label>
       <input
+        ref={ref}
         className={classnames(classes.input, 'form__input')}
         id={id}
         type={type}
+        minLength={minLength}
+        maxLength={maxLength}
         name={name}
         placeholder={placeholder}
         disabled={disabled}
@@ -50,9 +60,9 @@ function Field({
       />
     </div>
   );
-}
+};
 
 Field.propTypes = propTypes;
 Field.defaultProps = defaultProps;
 
-export default Field;
+export default React.forwardRef(Field);

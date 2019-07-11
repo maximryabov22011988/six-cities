@@ -5,8 +5,9 @@ import Form from '../../components/Form';
 import Field from '../../components/Field';
 import Button from '../../components/Button';
 
-const propTypes = {};
-const defaultProps = {};
+const propTypes = {
+  onSignIn: PropTypes.func.isRequired
+};
 
 const fieldClasses = {
   wrap: 'login__input-wrapper',
@@ -17,44 +18,43 @@ const fieldClasses = {
 const field = {
   email: {
     label: 'E-mail',
-    type: 'text',
+    type: 'email',
+    maxLength: 120,
     name: 'email',
     placeholder: 'Email',
     required: true
   },
   password: {
     label: 'Password',
-    type: 'text',
+    type: 'password',
+    minLength: 3,
     name: 'password',
     placeholder: 'Password',
     required: true
   }
 };
 
+const emailRef = React.createRef();
+
 class SignInForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: {
-        value: '',
-        isValid: true
-      },
-      password: {
-        value: '',
-        isValid: true
-      }
+      email: '',
+      password: ''
     };
+  }
+
+  componentDidMount() {
+    emailRef.current.focus();
   }
 
   handleChange = evt => {
     const { name, value } = evt.target;
-    this.setState(prevState => ({
-      [name]: {
-        ...prevState[name],
-        value
-      }
-    }));
+    this.setState({
+      [name]: value
+    });
   };
 
   handleSubmit = evt => {
@@ -64,9 +64,9 @@ class SignInForm extends React.Component {
     onSignIn(user.get('email'), user.get('password'));
   };
 
-  isValidForm() {
+  isLockedButton() {
     const { email, password } = this.state;
-    return !(email.isValid && password.isValid);
+    return !(email.length >= 5 && password.length >= 3);
   }
 
   render() {
@@ -82,6 +82,7 @@ class SignInForm extends React.Component {
         >
           <Field
             {...field.email}
+            ref={emailRef}
             classes={fieldClasses}
             value={email.value}
             onChange={this.handleChange}
@@ -95,7 +96,7 @@ class SignInForm extends React.Component {
           <Button
             className="login__submit form__submit"
             type="submit"
-            disabled={this.isValidForm()}
+            disabled={this.isLockedButton()}
           >
             Sign in
           </Button>
@@ -106,6 +107,5 @@ class SignInForm extends React.Component {
 }
 
 SignInForm.propTypes = propTypes;
-SignInForm.defaultProps = defaultProps;
 
 export default SignInForm;
