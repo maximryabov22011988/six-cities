@@ -27,28 +27,6 @@ function PlaceCard({ isAuthUser, user, offer }) {
     description
   } = offer;
 
-  const renderGallery = images => (
-    <div className="property__gallery-container container">
-      <div className="property__gallery">
-        {images.map((src, i) => (
-          <div key={i} className="property__image-wrapper">
-            <img className="property__image" src={src} alt="Hotel interior" />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
-  const renderInsideList = insides => (
-    <ul className="property__inside-list">
-      {insides.map((inside, i) => (
-        <li key={i} className="property__inside-item">
-          {inside}
-        </li>
-      ))}
-    </ul>
-  );
-
   return (
     <div className="page">
       <Header
@@ -64,7 +42,19 @@ function PlaceCard({ isAuthUser, user, offer }) {
 
       <main className="page__main page__main--property">
         <section className="property">
-          {renderGallery(images)}
+          <div className="property__gallery-container container">
+            <div className="property__gallery">
+              {images.map((src, i) => (
+                <div key={i} className="property__image-wrapper">
+                  <img
+                    className="property__image"
+                    src={src}
+                    alt="Hotel interior"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
           <div className="property__container container">
             <div className="property__wrapper">
@@ -90,6 +80,7 @@ function PlaceCard({ isAuthUser, user, offer }) {
                   <span className="visually-hidden">To bookmarks</span>
                 </button>
               </div>
+
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
                   <span style={{ width: '96%' }} />
@@ -99,6 +90,7 @@ function PlaceCard({ isAuthUser, user, offer }) {
                   {rating}
                 </span>
               </div>
+
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
                   {type}
@@ -110,6 +102,7 @@ function PlaceCard({ isAuthUser, user, offer }) {
                   Max {maxAdults} adults
                 </li>
               </ul>
+
               <div className="property__price">
                 <b className="property__price-value">&euro;{price}</b>
                 <span className="property__price-text">&nbsp;night</span>
@@ -117,11 +110,18 @@ function PlaceCard({ isAuthUser, user, offer }) {
 
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
-                {renderInsideList(goods)}
+                <ul className="property__inside-list">
+                  {goods.map((good, i) => (
+                    <li key={i} className="property__good-item">
+                      {good}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
+
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
                     <img
@@ -135,6 +135,7 @@ function PlaceCard({ isAuthUser, user, offer }) {
                   <span className="property__user-name">Angelina</span>
                   <span className="property__user-status">Pro</span>
                 </div>
+
                 <div className="property__description">
                   <p className="property__text">{description}</p>
                 </div>
@@ -292,6 +293,7 @@ function PlaceCard({ isAuthUser, user, offer }) {
           </div>
           <section className="property__map map" />
         </section>
+
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">
