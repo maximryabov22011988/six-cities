@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
+import Page from '../components/Page';
 import Header from '../components/Header';
 import Logo from '../components/Logo';
 import UserInfo from '../components/UserInfo';
@@ -53,7 +53,7 @@ class MainPage extends React.Component {
     const { user, isAuthUser, currentCity, cities, offers } = this.props;
 
     return (
-      <div className="page page--gray page--main">
+      <Page page="main">
         <Header
           logo={<Logo position="header" isActive />}
           userInfo={
@@ -82,7 +82,7 @@ class MainPage extends React.Component {
             rightPanel={<Map offers={offers} />}
           />
         </Content>
-      </div>
+      </Page>
     );
   }
 }

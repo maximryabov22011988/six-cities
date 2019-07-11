@@ -4,6 +4,11 @@ import { find, filter, reduce } from 'lodash';
 import { denormalizeDataHelper } from '../utils';
 import nameSpace from '../name-spaces';
 
+const getOffer = createSelector(
+  [(state, props) => state[nameSpace.OFFERS][props.match.params.id]],
+  offer => offer
+);
+
 const getOffers = createSelector(
   [state => state[nameSpace.OFFERS]],
   offers => {
@@ -92,4 +97,4 @@ const transformCurrentCity = createSelector(
   }
 );
 
-export { transformCurrentCity, getCities, getCurrentOffers };
+export { transformCurrentCity, getCities, getCurrentOffers, getOffer };

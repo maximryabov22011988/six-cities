@@ -6,6 +6,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import SignIn from '../pages/SignIn';
 import MainPage from '../pages/MainPage';
 import FavoriteList from '../pages/FavoriteList';
+import PlaceCard from '../pages/PlaceCard';
 
 import PrivateRoute from '../utils/PrivateRoute';
 
@@ -67,6 +68,16 @@ class App extends React.Component {
         <React.Fragment>
           <Switch>
             <Route
+              path="/login"
+              render={() =>
+                isAuthUser ? (
+                  <Redirect to="/" exact />
+                ) : (
+                  <SignIn onSignIn={this.handleSignIn} />
+                )
+              }
+            />
+            <Route
               path="/"
               exact
               render={() => (
@@ -81,14 +92,8 @@ class App extends React.Component {
               )}
             />
             <Route
-              path="/login"
-              render={() =>
-                isAuthUser ? (
-                  <Redirect to="/" exact />
-                ) : (
-                  <SignIn onSignIn={this.handleSignIn} />
-                )
-              }
+              path="/offer/:id"
+              render={() => <PlaceCard user={user} isAuthUser={isAuthUser} />}
             />
             <PrivateRoute
               path="/favorites"

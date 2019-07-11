@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import withActiveItem from '../../../hocs/withActiveItem';
@@ -48,13 +49,14 @@ function PlaceCard(props) {
   const {
     className,
     offer,
-    onTitleClick,
+    // onTitleClick,
     onImageClick,
     onMouseEnter,
     onMouseLeave
   } = props;
 
   const {
+    id,
     title,
     preview_image: previewImage,
     price,
@@ -111,9 +113,7 @@ function PlaceCard(props) {
         <Rating rating={rating} />
 
         <h2 className="place-card__name">
-          <a href="#" onClick={onTitleClick}>
-            {title}
-          </a>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
 
         <p className="place-card__type">{type}</p>
