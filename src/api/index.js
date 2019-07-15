@@ -7,25 +7,25 @@ const TIMEOUT = 5000;
 const code = {
   BAD_REQUEST: 400,
   FORBIDDEN: 403,
-  NOT_FOUND: 404
+  NOT_FOUND: 404,
 };
 
-const createAPI = dispatch => {
+const createAPI = (dispatch) => {
   const api = axios.create({
     baseURL: BASE_URL,
     timeout: TIMEOUT,
-    withCredentials: true
+    withCredentials: true,
   });
 
-  const onSuccess = response => {
+  const onSuccess = (response) => {
     dispatch(actions.requestSuccess());
     return response;
   };
 
-  const onFail = error => {
+  const onFail = (error) => {
     const {
       data: { error: message },
-      status
+      status,
     } = error.response;
 
     dispatch(actions.requestFailure());

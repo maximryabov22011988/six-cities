@@ -7,8 +7,8 @@ const initialState = {
   api: {},
   auth: {
     user: {},
-    isSignIn: false
-  }
+    isSignIn: false,
+  },
 };
 
 const app = (state = initialState, action) => {
@@ -18,21 +18,21 @@ const app = (state = initialState, action) => {
     case offerTypes.RECEIVE_OFFERS: {
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
       };
     }
     case types.BAD_REQUEST:
     case types.RESOURCE_NOT_FOUND: {
       return {
         ...state,
-        errors: action.payload
+        errors: action.payload,
       };
     }
     case types.REQUEST_SIGN_IN:
     case offerTypes.REQUEST_OFFERS: {
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     }
     case types.RECEIVE_SIGN_IN: {
@@ -43,9 +43,9 @@ const app = (state = initialState, action) => {
           ...state.auth,
           user: {
             ...state.auth.user,
-            ...userInfo
-          }
-        }
+            ...userInfo,
+          },
+        },
       };
     }
     case types.TOOGLE_AUTH_APP: {
@@ -53,14 +53,14 @@ const app = (state = initialState, action) => {
         ...state,
         auth: {
           ...state.auth,
-          isSignIn: !state.isSignIn
-        }
+          isSignIn: !state.isSignIn,
+        },
       };
     }
     case types.TOOGLE_READY_APP: {
       return {
         ...state,
-        isReady: !state.isReady
+        isReady: !state.isReady,
       };
     }
     default: {

@@ -13,9 +13,9 @@ const Field = function(
     placeholder,
     disabled,
     required,
-    onChange
+    onChange,
   },
-  ref
+  ref,
 ) {
   return (
     <div className={classnames(classes.wrap, 'form__input-wrapper')}>

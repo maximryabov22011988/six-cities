@@ -7,7 +7,7 @@ import { BASE_URL } from '../../api';
 const propTypes = {
   isAuth: PropTypes.bool.isRequired,
   avatarUrl: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),
-  email: PropTypes.oneOfType([PropTypes.string, PropTypes.any])
+  email: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),
 };
 
 class UserInfo extends React.PureComponent {

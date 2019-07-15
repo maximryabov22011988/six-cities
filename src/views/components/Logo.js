@@ -9,14 +9,14 @@ const propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   label: PropTypes.string,
-  isActive: PropTypes.bool
+  isActive: PropTypes.bool,
 };
 
 const defaultProps = {
   src: 'img/logo.svg',
   width: '81',
   height: '41',
-  label: '6 cities logo'
+  label: '6 cities logo',
 };
 
 class Logo extends React.PureComponent {
@@ -25,7 +25,7 @@ class Logo extends React.PureComponent {
 
     const linkClasses = classnames(
       position && `${position}__logo-link`,
-      isActive && `${position}__logo-link--active`
+      isActive && `${position}__logo-link--active`,
     );
     const logoClasses = classnames(position && `${position}__logo`);
 

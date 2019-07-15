@@ -6,12 +6,12 @@ import nameSpace from '../name-spaces';
 
 const getOffer = createSelector(
   [(state, props) => state[nameSpace.OFFERS][props.match.params.id]],
-  offer => offer
+  (offer) => offer,
 );
 
 const getOffers = createSelector(
-  [state => state[nameSpace.OFFERS]],
-  offers => {
+  [(state) => state[nameSpace.OFFERS]],
+  (offers) => {
     let result;
 
     if (offers) {
@@ -21,10 +21,10 @@ const getOffers = createSelector(
     }
 
     return result;
-  }
+  },
 );
 
-const getCurrentCity = state => state[nameSpace.UI].currentCity;
+const getCurrentCity = (state) => state[nameSpace.UI].currentCity;
 
 const getCurrentOffers = createSelector(
   [getCurrentCity, getOffers],
@@ -38,12 +38,12 @@ const getCurrentOffers = createSelector(
     }
 
     return result;
-  }
+  },
 );
 
 const getCities = createSelector(
   [getOffers],
-  offers => {
+  (offers) => {
     let result;
 
     if (offers) {
@@ -58,26 +58,26 @@ const getCities = createSelector(
                   name: item.city.name,
                   location: [
                     item.city.location.latitude,
-                    item.city.location.longitude
+                    item.city.location.longitude,
                   ],
-                  zoom: item.city.location.zoom
-                }
+                  zoom: item.city.location.zoom,
+                },
               ]
             : acc;
         },
-        []
+        [],
       );
     } else {
       result = [];
     }
 
     return result;
-  }
+  },
 );
 
 const transformCurrentCity = createSelector(
   [getCurrentCity],
-  currentCity => {
+  (currentCity) => {
     let result;
 
     if (currentCity) {
@@ -85,16 +85,16 @@ const transformCurrentCity = createSelector(
         name: currentCity.name,
         location: [
           currentCity.location.latitude,
-          currentCity.location.longitude
+          currentCity.location.longitude,
         ],
-        zoom: currentCity.location.zoom
+        zoom: currentCity.location.zoom,
       };
     } else {
       result = {};
     }
 
     return result;
-  }
+  },
 );
 
 export { transformCurrentCity, getCities, getCurrentOffers, getOffer };

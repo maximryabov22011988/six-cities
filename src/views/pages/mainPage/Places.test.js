@@ -11,8 +11,8 @@ const offersMock = [
       location: {
         latitude: 52.37454,
         longitude: 4.897976,
-        zoom: 13
-      }
+        zoom: 13,
+      },
     },
     title: 'The Pondhouse - A Magical Place',
     preview_image: `img/apartment-01.jpg`,
@@ -20,8 +20,8 @@ const offersMock = [
     type: 'house',
     rating: 4.6,
     is_premium: true,
-    is_favorite: false
-  }
+    is_favorite: false,
+  },
 ];
 
 it('Places correctly render', () => {
@@ -30,7 +30,7 @@ it('Places correctly render', () => {
       <Places
         searchResultText="1 places to stay in Paris"
         offers={offersMock}
-      />
+      />,
     )
     .toJSON();
 

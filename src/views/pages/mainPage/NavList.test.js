@@ -5,15 +5,15 @@ import NavList from './NavList';
 
 const currentCityMock = {
   name: 'Cologne',
-  location: [50.938361, 6.959974]
+  location: [50.938361, 6.959974],
 };
 
 const citiesMock = [
   {
     name: 'Cologne',
     location: [50.938361, 6.959974],
-    zoom: 13
-  }
+    zoom: 13,
+  },
 ];
 
 it('NavList correctly render', () => {
@@ -24,7 +24,7 @@ it('NavList correctly render', () => {
         currentCity={currentCityMock.name}
         cities={citiesMock}
         onChangeCity={handleChangeCity}
-      />
+      />,
     )
     .toJSON();
 

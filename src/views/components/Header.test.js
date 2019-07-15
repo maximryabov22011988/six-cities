@@ -8,7 +8,7 @@ import UserInfo from './UserInfo';
 const userMock = {
   isAuth: true,
   avatarUrl: '/static/avatar/1.jpg',
-  email: 'Oliver.conner@gmail.com'
+  email: 'Oliver.conner@gmail.com',
 };
 
 it('Header correctly render', () => {
@@ -23,7 +23,7 @@ it('Header correctly render', () => {
             email={userMock.email}
           />
         }
-      />
+      />,
     )
     .toJSON();
 

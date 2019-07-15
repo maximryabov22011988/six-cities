@@ -6,13 +6,13 @@ import Field from '../../components/Field';
 import Button from '../../components/Button';
 
 const propTypes = {
-  onSignIn: PropTypes.func.isRequired
+  onSignIn: PropTypes.func.isRequired,
 };
 
 const fieldClasses = {
   wrap: 'login__input-wrapper',
   label: 'visually-hidden',
-  input: 'login__input'
+  input: 'login__input',
 };
 
 const field = {
@@ -22,7 +22,7 @@ const field = {
     maxLength: 120,
     name: 'email',
     placeholder: 'Email',
-    required: true
+    required: true,
   },
   password: {
     label: 'Password',
@@ -30,8 +30,8 @@ const field = {
     minLength: 3,
     name: 'password',
     placeholder: 'Password',
-    required: true
-  }
+    required: true,
+  },
 };
 
 const emailRef = React.createRef();
@@ -42,7 +42,7 @@ class SignInForm extends React.Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
     };
   }
 
@@ -50,14 +50,14 @@ class SignInForm extends React.Component {
     emailRef.current.focus();
   }
 
-  handleChange = evt => {
+  handleChange = (evt) => {
     const { name, value } = evt.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  handleSubmit = evt => {
+  handleSubmit = (evt) => {
     const { onSignIn } = this.props;
     evt.preventDefault();
     const user = new FormData(evt.target);

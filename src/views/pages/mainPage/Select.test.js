@@ -14,7 +14,7 @@ it('Select correctly render', () => {
         caption="Sort by"
         options={optionsMock}
         defaultOption={defaultOptionId}
-      />
+      />,
     )
     .toJSON();
 

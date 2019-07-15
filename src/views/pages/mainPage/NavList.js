@@ -10,16 +10,16 @@ const propTypes = {
     PropTypes.shape({
       name: PropTypes.string,
       location: PropTypes.arrayOf(PropTypes.number),
-      zoom: PropTypes.number
-    })
+      zoom: PropTypes.number,
+    }),
   ).isRequired,
-  onChangeCity: PropTypes.func.isRequired
+  onChangeCity: PropTypes.func.isRequired,
 };
 
 function NavList({ currentCity, cities, onChangeCity }) {
   return (
     <ul className="locations__list tabs__list">
-      {cities.map(city => {
+      {cities.map((city) => {
         const WrappedNavItem = withActiveItem(NavItem);
         return (
           <WrappedNavItem

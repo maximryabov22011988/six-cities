@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   className: PropTypes.string,
-  children: PropTypes.element
+  children: PropTypes.element,
 };
 
 const defaultProps = {
-  children: null
+  children: null,
 };
 
 function Footer({ className, children }) {

@@ -13,7 +13,7 @@ import PrivateRoute from '../utils/PrivateRoute';
 import {
   getCities,
   transformCurrentCity,
-  getCurrentOffers
+  getCurrentOffers,
 } from '../../state/offers/selectors';
 import { getIsReady, getIsAuth, getUser } from '../../state/app/selectors';
 
@@ -24,19 +24,19 @@ const propTypes = {
   isReadyApp: PropTypes.bool.isRequired,
   currentCity: PropTypes.shape({
     name: PropTypes.string,
-    location: PropTypes.arrayOf(PropTypes.number)
+    location: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
   cities: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       location: PropTypes.arrayOf(PropTypes.number),
-      zoom: PropTypes.number
-    })
+      zoom: PropTypes.number,
+    }),
   ).isRequired,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
   init: PropTypes.func.isRequired,
   signIn: PropTypes.func.isRequired,
-  changeCity: PropTypes.func.isRequired
+  changeCity: PropTypes.func.isRequired,
 };
 
 class App extends React.Component {
@@ -60,7 +60,7 @@ class App extends React.Component {
       currentCity,
       cities,
       offers,
-      changeCity
+      changeCity,
     } = this.props;
 
     if (isReadyApp) {
@@ -111,19 +111,19 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isReadyApp: getIsReady(state),
   isAuthUser: getIsAuth(state),
   user: getUser(state),
   currentCity: transformCurrentCity(state),
   cities: getCities(state),
-  offers: getCurrentOffers(state)
+  offers: getCurrentOffers(state),
 });
 
 const mapDispatchToProps = {
   init,
   signIn,
-  changeCity
+  changeCity,
 };
 
 App.propTypes = propTypes;
@@ -132,5 +132,5 @@ export { App };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(App);

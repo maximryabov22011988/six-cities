@@ -9,7 +9,7 @@ import Content from '../components/Content';
 import SignInForm from './signIn/SignInForm';
 
 const propTypes = {
-  onSignIn: PropTypes.func.isRequired
+  onSignIn: PropTypes.func.isRequired,
 };
 
 function SignIn({ onSignIn }) {

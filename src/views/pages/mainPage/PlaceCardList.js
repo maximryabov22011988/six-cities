@@ -9,7 +9,7 @@ const propTypes = {
       bedrooms: PropTypes.number,
       city: PropTypes.shape({
         name: PropTypes.string,
-        location: PropTypes.object
+        location: PropTypes.object,
       }),
       description: PropTypes.string,
       goods: PropTypes.arrayOf(PropTypes.string),
@@ -17,7 +17,7 @@ const propTypes = {
         avatar_url: PropTypes.string,
         id: PropTypes.number,
         is_pro: PropTypes.bool,
-        name: PropTypes.string
+        name: PropTypes.string,
       }),
       id: PropTypes.number,
       images: PropTypes.arrayOf(PropTypes.string),
@@ -26,16 +26,16 @@ const propTypes = {
       location: PropTypes.shape({
         latitude: PropTypes.number,
         longitude: PropTypes.number,
-        zoom: PropTypes.number
+        zoom: PropTypes.number,
       }),
       max_adults: PropTypes.number,
       preview_image: PropTypes.string,
       price: PropTypes.number,
       rating: PropTypes.number,
       title: PropTypes.string,
-      type: PropTypes.string
-    })
-  ).isRequired
+      type: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 class PlaceCardList extends React.Component {
@@ -43,27 +43,27 @@ class PlaceCardList extends React.Component {
     super(props);
 
     this.state = {
-      currentOffer: null
+      currentOffer: null,
     };
   }
 
-  handleImageClick = offer => () => {
+  handleImageClick = (offer) => () => {
     this.setState({
-      currentOffer: offer
+      currentOffer: offer,
     });
   };
 
   handleTitleClick = () => {};
 
-  handleMouseEnter = offer => () => {
+  handleMouseEnter = (offer) => () => {
     this.setState({
-      currentOffer: offer
+      currentOffer: offer,
     });
   };
 
   handleMouseLeave = () => {
     this.setState({
-      currentOffer: null
+      currentOffer: null,
     });
   };
 
@@ -72,7 +72,7 @@ class PlaceCardList extends React.Component {
 
     return (
       <div className="cities__places-list places__list tabs__content">
-        {offers.map(offer => (
+        {offers.map((offer) => (
           <PlaceCard
             key={offer.id}
             offer={offer}

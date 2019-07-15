@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 const propTypes = {
   parentClassName: PropTypes.string,
   rating: PropTypes.number.isRequired,
-  showValue: PropTypes.bool
+  showValue: PropTypes.bool,
 };
 
 const MAX_RATING = 5;
 
-const getRatingStyles = rating => {
+const getRatingStyles = (rating) => {
   const ratingInPercent = (rating / MAX_RATING) * 100;
   return {
-    width: `${ratingInPercent.toFixed(2)}%`
+    width: `${ratingInPercent.toFixed(2)}%`,
   };
 };
 

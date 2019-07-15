@@ -15,7 +15,7 @@ const propTypes = {
     bedrooms: PropTypes.number,
     city: PropTypes.shape({
       name: PropTypes.string,
-      location: PropTypes.object
+      location: PropTypes.object,
     }),
     description: PropTypes.string,
     goods: PropTypes.arrayOf(PropTypes.string),
@@ -23,7 +23,7 @@ const propTypes = {
       avatar_url: PropTypes.string,
       id: PropTypes.number,
       is_pro: PropTypes.bool,
-      name: PropTypes.string
+      name: PropTypes.string,
     }),
     id: PropTypes.number,
     images: PropTypes.arrayOf(PropTypes.string),
@@ -32,19 +32,19 @@ const propTypes = {
     location: PropTypes.shape({
       latitude: PropTypes.number,
       longitude: PropTypes.number,
-      zoom: PropTypes.number
+      zoom: PropTypes.number,
     }),
     max_adults: PropTypes.number,
     preview_image: PropTypes.string,
     price: PropTypes.number,
     rating: PropTypes.number,
     title: PropTypes.string,
-    type: PropTypes.string
+    type: PropTypes.string,
   }).isRequired,
   onTitleClick: PropTypes.func.isRequired,
   onImageClick: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired
+  onMouseLeave: PropTypes.func.isRequired,
 };
 
 function PlaceCard({
@@ -53,7 +53,7 @@ function PlaceCard({
   // onTitleClick,
   onImageClick,
   onMouseEnter,
-  onMouseLeave
+  onMouseLeave,
 }) {
   const {
     id,
@@ -63,7 +63,7 @@ function PlaceCard({
     type,
     rating,
     is_premium: isPremium,
-    is_favorite: isFavorite
+    is_favorite: isFavorite,
   } = offer;
 
   const BookmarkButton = withActiveItem(Button);

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const propTypes = {
   isShow: PropTypes.bool.isRequired,
   name: PropTypes.string,
-  parentClassName: PropTypes.string
+  parentClassName: PropTypes.string,
 };
 
 function Label({ isShow, name, parentClassName }) {

@@ -19,22 +19,22 @@ const propTypes = {
     email: PropTypes.string,
     name: PropTypes.string,
     avatar_url: PropTypes.string,
-    is_pro: PropTypes.bool
+    is_pro: PropTypes.bool,
   }).isRequired,
   isAuthUser: PropTypes.bool.isRequired,
   currentCity: PropTypes.shape({
     name: PropTypes.string,
-    location: PropTypes.arrayOf(PropTypes.number)
+    location: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
   cities: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       location: PropTypes.arrayOf(PropTypes.number),
-      zoom: PropTypes.number
-    })
+      zoom: PropTypes.number,
+    }),
   ).isRequired,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  changeCity: PropTypes.func.isRequired
+  changeCity: PropTypes.func.isRequired,
 };
 
 class MainPage extends React.Component {
@@ -43,7 +43,7 @@ class MainPage extends React.Component {
     return `${offers.length} places to stay in ${currentCity.name}`;
   }
 
-  handleChangeCity = city => evt => {
+  handleChangeCity = (city) => (evt) => {
     evt.preventDefault();
     const { changeCity } = this.props;
     changeCity(city);

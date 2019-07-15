@@ -7,9 +7,9 @@ const propTypes = {
   city: PropTypes.shape({
     name: PropTypes.string,
     location: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number
+    zoom: PropTypes.number,
   }).isRequired,
-  onChangeCity: PropTypes.func.isRequired
+  onChangeCity: PropTypes.func.isRequired,
 };
 
 function NavItem({ className, city, onChangeCity }) {

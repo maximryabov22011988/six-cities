@@ -6,7 +6,7 @@ import NavItem from './NavItem';
 const cityMock = {
   name: 'Cologne',
   location: [50.938361, 6.959974],
-  zoom: 13
+  zoom: 13,
 };
 
 it('NavItem correctly render', () => {
@@ -17,7 +17,7 @@ it('NavItem correctly render', () => {
         className="tabs__item"
         city={cityMock}
         onChangeCity={handleChangeCity}
-      />
+      />,
     )
     .toJSON();
 

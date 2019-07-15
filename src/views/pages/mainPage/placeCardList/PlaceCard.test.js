@@ -10,8 +10,8 @@ const offerMock = {
     location: {
       latitude: 52.37454,
       longitude: 4.897976,
-      zoom: 13
-    }
+      zoom: 13,
+    },
   },
   title: 'The Pondhouse - A Magical Place',
   preview_image: `img/apartment-01.jpg`,
@@ -19,7 +19,7 @@ const offerMock = {
   type: 'house',
   rating: 4.6,
   is_premium: true,
-  is_favorite: false
+  is_favorite: false,
 };
 
 it('PlaceCard correctly render', () => {
@@ -36,7 +36,7 @@ it('PlaceCard correctly render', () => {
         onImageClick={handleImageClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-      />
+      />,
     )
     .toJSON();
 

@@ -5,7 +5,7 @@ import Leaflet from 'leaflet';
 const mapStyles = {
   top: 0,
   height: '100%',
-  zIndex: 100
+  zIndex: 100,
 };
 
 const mapContainerId = 'map';
@@ -15,8 +15,8 @@ const LEAFLET_LAYER = {
     'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
   OPTIONS: {
     attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-  }
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  },
 };
 
 const propTypes = {
@@ -25,7 +25,7 @@ const propTypes = {
       bedrooms: PropTypes.number,
       city: PropTypes.shape({
         name: PropTypes.string,
-        location: PropTypes.object
+        location: PropTypes.object,
       }),
       description: PropTypes.string,
       goods: PropTypes.arrayOf(PropTypes.string),
@@ -33,7 +33,7 @@ const propTypes = {
         avatar_url: PropTypes.string,
         id: PropTypes.number,
         is_pro: PropTypes.bool,
-        name: PropTypes.string
+        name: PropTypes.string,
       }),
       id: PropTypes.number,
       images: PropTypes.arrayOf(PropTypes.string),
@@ -42,16 +42,16 @@ const propTypes = {
       location: PropTypes.shape({
         latitude: PropTypes.number,
         longitude: PropTypes.number,
-        zoom: PropTypes.number
+        zoom: PropTypes.number,
       }),
       max_adults: PropTypes.number,
       preview_image: PropTypes.string,
       price: PropTypes.number,
       rating: PropTypes.number,
       title: PropTypes.string,
-      type: PropTypes.string
-    })
-  ).isRequired
+      type: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 class Map extends Component {
@@ -62,13 +62,13 @@ class Map extends Component {
     const settings = {
       center: [latitude, longitude],
       zoom,
-      zoomControl: false
+      zoomControl: false,
     };
 
     this.offerMap = Leaflet.map(mapContainerId, settings);
     this.offerMap.setView([latitude, longitude], zoom);
     Leaflet.tileLayer(LEAFLET_LAYER.URL_TEMPLATE, LEAFLET_LAYER.OPTIONS).addTo(
-      this.offerMap
+      this.offerMap,
     );
     this.pinGroup = Leaflet.layerGroup().addTo(this.offerMap);
     this.addPins(this.pinGroup);
@@ -89,7 +89,7 @@ class Map extends Component {
     return Leaflet.icon({
       iconUrl: 'img/pin.svg',
       iconSize: [27, 39],
-      iconAnchor: [13, 39]
+      iconAnchor: [13, 39],
     });
   }
 

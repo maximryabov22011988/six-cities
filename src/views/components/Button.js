@@ -5,10 +5,10 @@ import classnames from 'classnames';
 const propTypes = {
   className: PropTypes.string.isRequired,
   type: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 const defaultProps = {
-  type: 'button'
+  type: 'button',
 };
 
 function Button({ className, type, disabled, children }) {

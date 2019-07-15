@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
 };
 
 const defaultProps = {
-  children: null
+  children: null,
 };
 
 function Nav({ children }) {

@@ -4,7 +4,7 @@ import * as UIActions from '../UI/actions';
 
 import { loadOffers } from '../offers/operations';
 
-export const init = () => async dispatch => {
+export const init = () => async (dispatch) => {
   const response = await dispatch(loadOffers());
   const offers = response.data;
 
@@ -13,7 +13,7 @@ export const init = () => async dispatch => {
     const city = {
       name: initialCity.name,
       location: [initialCity.location.latitude, initialCity.location.longitude],
-      zoom: initialCity.location.zoom
+      zoom: initialCity.location.zoom,
     };
 
     dispatch(offerActions.receiveOffers(offers));

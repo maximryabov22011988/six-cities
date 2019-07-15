@@ -7,12 +7,12 @@ const propTypes = {
   action: PropTypes.string,
   method: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  children: PropTypes.any
+  children: PropTypes.any,
 };
 
 const defaultProps = {
   action: '#',
-  children: null
+  children: null,
 };
 
 function Form({ className, action, method, onSubmit, children }) {

@@ -6,7 +6,7 @@ import UserInfo from './UserInfo';
 const userMock = {
   isAuth: true,
   avatarUrl: '/static/avatar/1.jpg',
-  email: 'Oliver.conner@gmail.com'
+  email: 'Oliver.conner@gmail.com',
 };
 
 it('UserInfo correctly render', () => {
@@ -16,7 +16,7 @@ it('UserInfo correctly render', () => {
         isAuth={userMock.isAuth}
         avatarUrl={userMock.avatarUrl}
         email={userMock.email}
-      />
+      />,
     )
     .toJSON();
 

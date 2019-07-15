@@ -7,32 +7,32 @@ const propTypes = {
   src: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
 };
 
 const status = {
   LOADING: 'Loading ...',
   SUCCESS: 'Loaded',
-  FAILURE: 'Failed to load :('
+  FAILURE: 'Failed to load :(',
 };
 
 class Image extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      imgStatus: status.LOADING
+      imgStatus: status.LOADING,
     };
   }
 
   handleImageLoaded = () => {
     this.setState({
-      imgStatus: status.SUCCESS
+      imgStatus: status.SUCCESS,
     });
   };
 
   handleImageErrored = () => {
     this.setState({
-      imgStatus: status.FAILURE
+      imgStatus: status.FAILURE,
     });
   };
 
@@ -51,7 +51,7 @@ class Image extends React.PureComponent {
           justifyContent: 'center',
           alignItems: 'center',
           background: '#e1e1e1',
-          borderRadius: '4px'
+          borderRadius: '4px',
         }}
       >
         <img

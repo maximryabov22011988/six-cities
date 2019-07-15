@@ -20,7 +20,7 @@ const propTypes = {
     bedrooms: PropTypes.number,
     city: PropTypes.shape({
       name: PropTypes.string,
-      location: PropTypes.object
+      location: PropTypes.object,
     }),
     description: PropTypes.string,
     goods: PropTypes.arrayOf(PropTypes.string),
@@ -28,7 +28,7 @@ const propTypes = {
       avatar_url: PropTypes.string,
       id: PropTypes.number,
       is_pro: PropTypes.bool,
-      name: PropTypes.string
+      name: PropTypes.string,
     }),
     id: PropTypes.number,
     images: PropTypes.arrayOf(PropTypes.string),
@@ -37,22 +37,22 @@ const propTypes = {
     location: PropTypes.shape({
       latitude: PropTypes.number,
       longitude: PropTypes.number,
-      zoom: PropTypes.number
+      zoom: PropTypes.number,
     }),
     max_adults: PropTypes.number,
     preview_image: PropTypes.string,
     price: PropTypes.number,
     rating: PropTypes.number,
     title: PropTypes.string,
-    type: PropTypes.string
+    type: PropTypes.string,
   }).isRequired,
   user: PropTypes.shape({
     id: PropTypes.number,
     email: PropTypes.string,
     name: PropTypes.string,
     avatar_url: PropTypes.string,
-    is_pro: PropTypes.bool
-  }).isRequired
+    is_pro: PropTypes.bool,
+  }).isRequired,
 };
 const defaultProps = {};
 
@@ -61,7 +61,7 @@ const MAX_IMAGES = 6;
 function PlaceCard({
   isAuthUser,
   user: { avatar_url: userAvatarUrl, email },
-  offer
+  offer,
 }) {
   const {
     images,
@@ -75,7 +75,7 @@ function PlaceCard({
     max_adults: maxAdults,
     rating,
     goods,
-    description
+    description,
   } = offer;
 
   const BookmarkButton = withActiveItem(Button);
@@ -503,7 +503,7 @@ PlaceCard.propTypes = propTypes;
 PlaceCard.defaultProps = defaultProps;
 
 const mapStateToProps = (state, ownProps) => ({
-  offer: getOffer(state, ownProps)
+  offer: getOffer(state, ownProps),
 });
 
 export default withRouter(connect(mapStateToProps)(PlaceCard));

@@ -18,7 +18,7 @@ function withActiveItem(WrappedComponent) {
   }
 
   WithActiveItem.displayName = `WithActiveItem(${getDisplayName(
-    WrappedComponent
+    WrappedComponent,
   )})`;
 
   return WithActiveItem;

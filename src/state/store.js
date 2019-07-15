@@ -14,7 +14,7 @@ const api = createAPI((...args) => store.dispatch(...args));
 const rootReducer = combineReducers({
   [nameSpace.OFFERS]: offersReducer,
   [nameSpace.APP]: appReducer,
-  [nameSpace.UI]: UIReducer
+  [nameSpace.UI]: UIReducer,
 });
 
 const reduxDevtools = window.__REDUX_DEVTOOLS_EXTENSION__;
@@ -24,8 +24,8 @@ const store = createStore(
   compose(
     applyMiddleware(thunk.withExtraArgument(api)),
     applyMiddleware(logger),
-    reduxDevtools && reduxDevtools()
-  )
+    reduxDevtools && reduxDevtools(),
+  ),
 );
 
 export default store;

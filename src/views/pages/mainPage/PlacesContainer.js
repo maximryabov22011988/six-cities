@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   leftPanel: PropTypes.element,
-  rightPanel: PropTypes.element
+  rightPanel: PropTypes.element,
 };
 
 const defaultProps = {
   leftPanel: null,
-  rightPanel: null
+  rightPanel: null,
 };
 
 function PlacesContainer({ leftPanel, rightPanel }) {

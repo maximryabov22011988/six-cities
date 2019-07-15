@@ -8,7 +8,7 @@ const offers = (state = offersInitialState, action) => {
     case types.RECEIVE_OFFERS: {
       return {
         ...state,
-        ...normalizeDataHelper(action.payload)
+        ...normalizeDataHelper(action.payload),
       };
     }
     default: {

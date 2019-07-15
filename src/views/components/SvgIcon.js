@@ -8,7 +8,7 @@ const propTypes = {
   isShowLabel: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string,
-  width: PropTypes.string
+  width: PropTypes.string,
 };
 
 function SvgIcon({ className, height, isShowLabel, label, name, width }) {

@@ -11,10 +11,10 @@ const propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
-      name: PropTypes.string
-    })
+      name: PropTypes.string,
+    }),
   ).isRequired,
-  defaultOption: PropTypes.number.isRequired
+  defaultOption: PropTypes.number.isRequired,
 };
 
 class Select extends React.Component {
@@ -23,7 +23,7 @@ class Select extends React.Component {
 
     this.state = {
       currentOption: props.defaultOption,
-      isOpen: false
+      isOpen: false,
     };
 
     this.selectRef = React.createRef();
@@ -42,22 +42,22 @@ class Select extends React.Component {
   getCurrentOptionText() {
     const { currentOption } = this.state;
     const { options } = this.props;
-    return options.find(item => item.id === currentOption).name;
+    return options.find((item) => item.id === currentOption).name;
   }
 
   handleOpen = () => {
     this.setState({
-      isOpen: true
+      isOpen: true,
     });
   };
 
   handleClose = () => {
     this.setState({
-      isOpen: false
+      isOpen: false,
     });
   };
 
-  handleOutsideClick = evt => {
+  handleOutsideClick = (evt) => {
     evt.preventDefault();
     const { target } = evt;
     const { isOpen } = this.state;
@@ -66,20 +66,20 @@ class Select extends React.Component {
     }
   };
 
-  handleOptionClick = id => evt => {
+  handleOptionClick = (id) => (evt) => {
     const { nativeEvent } = evt;
     if (
       nativeEvent.which === MOUSE_LEFT_BUTTON ||
       nativeEvent.which === ENTER
     ) {
       this.setState({
-        currentOption: id
+        currentOption: id,
       });
       this.handleClose();
     }
   };
 
-  handleEscPress = evt => {
+  handleEscPress = (evt) => {
     const { nativeEvent } = evt;
     if (nativeEvent && nativeEvent.which === ESC) {
       this.handleClose();
@@ -144,7 +144,7 @@ class Select extends React.Component {
           <ul
             className={classnames(
               'places__options places__options--custom',
-              isOpen && 'places__options--opened'
+              isOpen && 'places__options--opened',
             )}
           >
             {this.renderOptionItems(options, currentOption)}

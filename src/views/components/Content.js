@@ -7,11 +7,11 @@ const propTypes = {
   containerClassName: PropTypes.string,
   sectionClassName: PropTypes.string,
   page: PropTypes.string,
-  children: PropTypes.element
+  children: PropTypes.element,
 };
 
 const defaultProps = {
-  children: null
+  children: null,
 };
 
 function Content({
@@ -19,18 +19,18 @@ function Content({
   containerClassName,
   sectionClassName,
   page,
-  children
+  children,
 }) {
   const mainClasses = classnames(
     'page__main',
     mainClassName && `page__main ${mainClassName}`,
-    page && `page__main--${page}`
+    page && `page__main--${page}`,
   );
 
   const containerClasses = classnames(
     'container',
     containerClassName && `container ${containerClassName}`,
-    page && `page__${page}-container`
+    page && `page__${page}-container`,
   );
 
   const sectionClasses = classnames(sectionClassName, page);

@@ -1,4 +1,4 @@
-export const normalizeDataHelper = data => {
+export const normalizeDataHelper = (data) => {
   if (Array.isArray(data)) {
     return data.reduce((acc, item) => {
       acc[item.id] = item;
@@ -7,7 +7,7 @@ export const normalizeDataHelper = data => {
   }
 };
 
-export const denormalizeDataHelper = data => {
+export const denormalizeDataHelper = (data) => {
   if (typeof data === 'object') {
     return Object.values(data);
   }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   logo: PropTypes.element,
-  userInfo: PropTypes.element
+  userInfo: PropTypes.element,
 };
 
 function Header({ logo, userInfo }) {

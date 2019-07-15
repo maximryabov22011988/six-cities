@@ -3,7 +3,7 @@ import * as types from './types';
 const UIInitialState = {
   currentCity: null,
   filter: '',
-  sorting: ''
+  sorting: '',
 };
 
 const UI = (state = UIInitialState, action) => {
@@ -11,7 +11,7 @@ const UI = (state = UIInitialState, action) => {
     case types.CHANGE_CITY: {
       return {
         ...state,
-        currentCity: action.payload
+        currentCity: action.payload,
       };
     }
     default: {

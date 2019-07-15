@@ -11,7 +11,7 @@ import Footer from './favoriteList/Footer';
 
 const propTypes = {
   isAuthUser: PropTypes.bool.isRequired,
-  user: PropTypes.oneOfType([PropTypes.object, PropTypes.any])
+  user: PropTypes.oneOfType([PropTypes.object, PropTypes.any]),
 };
 
 function FavoriteList({ isAuthUser, user }) {

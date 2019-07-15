@@ -4,17 +4,17 @@ import classnames from 'classnames';
 
 const propTypes = {
   className: PropTypes.string,
-  page: PropTypes.string
+  page: PropTypes.string,
 };
 
 const defaultProps = {
-  children: null
+  children: null,
 };
 
 function Page({ className, page, children }) {
   const classes = classnames(
     className,
-    page && `page page--gray page--${page}`
+    page && `page page--gray page--${page}`,
   );
   return <div className={classes}>{children}</div>;
 }

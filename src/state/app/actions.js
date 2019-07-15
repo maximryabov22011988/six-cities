@@ -1,36 +1,36 @@
 import * as types from './types';
 
 export const requestSuccess = () => ({
-  type: types.REQUEST_SUCCESS
+  type: types.REQUEST_SUCCESS,
 });
 
 export const requestFailure = () => ({
-  type: types.REQUEST_FAILURE
+  type: types.REQUEST_FAILURE,
 });
 
-export const badRequest = error => ({
+export const badRequest = (error) => ({
   type: types.BAD_REQUEST,
-  payload: error
+  payload: error,
 });
 
-export const resourceNotFound = error => ({
+export const resourceNotFound = (error) => ({
   type: types.RESOURCE_NOT_FOUND,
-  payload: error
+  payload: error,
 });
 
 export const requestSignIn = () => ({
-  type: types.REQUEST_SIGN_IN
+  type: types.REQUEST_SIGN_IN,
 });
 
-export const receiveSignIn = user => ({
+export const receiveSignIn = (user) => ({
   type: types.RECEIVE_SIGN_IN,
-  payload: user
+  payload: user,
 });
 
 export const toogleAuthApp = () => ({
-  type: types.TOOGLE_AUTH_APP
+  type: types.TOOGLE_AUTH_APP,
 });
 
 export const toogleReadyApp = () => ({
-  type: types.TOOGLE_READY_APP
+  type: types.TOOGLE_READY_APP,
 });
