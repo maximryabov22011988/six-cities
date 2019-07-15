@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import withActiveItem from '../../../hocs/withActiveItem';
+import Label from '../../../components/Label';
 import Button from '../../../components/Button';
 import Image from '../../../components/Image';
-import Rating from './placeCard/Rating';
+import Rating from '../../../components/Rating';
+import SvgIcon from '../../../components/SvgIcon';
 
 const propTypes = {
   offer: PropTypes.shape({
@@ -45,16 +47,14 @@ const propTypes = {
   onMouseLeave: PropTypes.func.isRequired
 };
 
-function PlaceCard(props) {
-  const {
-    className,
-    offer,
-    // onTitleClick,
-    onImageClick,
-    onMouseEnter,
-    onMouseLeave
-  } = props;
-
+function PlaceCard({
+  className,
+  offer,
+  // onTitleClick,
+  onImageClick,
+  onMouseEnter,
+  onMouseLeave
+}) {
   const {
     id,
     title,
@@ -74,11 +74,7 @@ function PlaceCard(props) {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      {isPremium && (
-        <div className="place-card__mark">
-          <span>Premium</span>
-        </div>
-      )}
+      <Label isShow={isPremium} name="Premium" parentClassName="place-card" />
 
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#" onClick={onImageClick(offer)}>
@@ -103,14 +99,18 @@ function PlaceCard(props) {
             className="place-card__bookmark-button"
             isActive={isFavorite}
           >
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark" />
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
+            <SvgIcon
+              className="place-card__bookmark-icon"
+              height="19"
+              isShowLabel={false}
+              label={isFavorite ? 'In bookmarks' : 'To bookmarks'}
+              name="icon-bookmark"
+              width="18"
+            />
           </BookmarkButton>
         </div>
 
-        <Rating rating={rating} />
+        <Rating parentClassName="place-card" rating={rating} />
 
         <h2 className="place-card__name">
           <Link to={`/offer/${id}`}>{title}</Link>

@@ -1,35 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
-
-const propTypes = {
-  classes: PropTypes.shape({
-    wrap: PropTypes.string,
-    label: PropTypes.string,
-    input: PropTypes.string
-  }),
-  label: PropTypes.string,
-  id: PropTypes.string,
-  type: PropTypes.string,
-  minLength: PropTypes.number,
-  maxLength: PropTypes.number,
-  name: PropTypes.string,
-  placeholder: PropTypes.string,
-  disabled: PropTypes.bool,
-  required: PropTypes.bool,
-  onChange: PropTypes.func.isRequired
-};
-
-const defaultProps = {
-  type: 'text'
-};
 
 const Field = function(
   {
     classes,
     label,
     id,
-    type,
+    type = 'text',
     minLength,
     maxLength,
     name,
@@ -61,8 +38,5 @@ const Field = function(
     </div>
   );
 };
-
-Field.propTypes = propTypes;
-Field.defaultProps = defaultProps;
 
 export default React.forwardRef(Field);

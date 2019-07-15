@@ -1,31 +1,84 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import withActiveItem from '../hocs/withActiveItem';
 import Header from '../components/Header';
 import Logo from '../components/Logo';
 import UserInfo from '../components/UserInfo';
+import Label from '../components/Label';
+import Rating from '../components/Rating';
+import Button from '../components/Button';
+import SvgIcon from '../components/SvgIcon';
 
 import { getOffer } from '../../state/offers/selectors';
 
-const propTypes = {};
+const propTypes = {
+  isAuthUser: PropTypes.bool.isRequired,
+  offer: PropTypes.shape({
+    bedrooms: PropTypes.number,
+    city: PropTypes.shape({
+      name: PropTypes.string,
+      location: PropTypes.object
+    }),
+    description: PropTypes.string,
+    goods: PropTypes.arrayOf(PropTypes.string),
+    host: PropTypes.shape({
+      avatar_url: PropTypes.string,
+      id: PropTypes.number,
+      is_pro: PropTypes.bool,
+      name: PropTypes.string
+    }),
+    id: PropTypes.number,
+    images: PropTypes.arrayOf(PropTypes.string),
+    is_favorite: PropTypes.bool,
+    is_premium: PropTypes.bool,
+    location: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      zoom: PropTypes.number
+    }),
+    max_adults: PropTypes.number,
+    preview_image: PropTypes.string,
+    price: PropTypes.number,
+    rating: PropTypes.number,
+    title: PropTypes.string,
+    type: PropTypes.string
+  }).isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    avatar_url: PropTypes.string,
+    is_pro: PropTypes.bool
+  }).isRequired
+};
 const defaultProps = {};
 
-function PlaceCard({ isAuthUser, user, offer }) {
+const MAX_IMAGES = 6;
+
+function PlaceCard({
+  isAuthUser,
+  user: { avatar_url: userAvatarUrl, email },
+  offer
+}) {
   const {
     images,
     title,
     price,
     type,
     bedrooms,
-    // is_favorite: isFavorite,
+    host: { avatar_url: avatarUrl, is_pro: isPro, name },
+    is_favorite: isFavorite,
     is_premium: isPremium,
     max_adults: maxAdults,
     rating,
     goods,
     description
   } = offer;
+
+  const BookmarkButton = withActiveItem(Button);
 
   return (
     <div className="page">
@@ -34,8 +87,8 @@ function PlaceCard({ isAuthUser, user, offer }) {
         userInfo={
           <UserInfo
             isAuth={isAuthUser}
-            avatarUrl={user.avatar_url}
-            email={user.email}
+            avatarUrl={userAvatarUrl}
+            email={email}
           />
         }
       />
@@ -44,52 +97,49 @@ function PlaceCard({ isAuthUser, user, offer }) {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {images.map((src, i) => (
-                <div key={i} className="property__image-wrapper">
-                  <img
-                    className="property__image"
-                    src={src}
-                    alt="Hotel interior"
-                  />
-                </div>
-              ))}
+              {images.map((src, i) => {
+                if (i < MAX_IMAGES) {
+                  return (
+                    <div key={i} className="property__image-wrapper">
+                      <img
+                        className="property__image"
+                        src={src}
+                        alt="Hotel interior"
+                      />
+                    </div>
+                  );
+                }
+                return null;
+              })}
             </div>
           </div>
 
           <div className="property__container container">
             <div className="property__wrapper">
-              {isPremium && (
-                <div className="property__mark">
-                  <span>Premium</span>
-                </div>
-              )}
+              <Label
+                isShow={isPremium}
+                name="Premium"
+                parentClassName="property"
+              />
 
               <div className="property__name-wrapper">
                 <h1 className="property__name">{title}</h1>
-                <button
+                <BookmarkButton
                   className="property__bookmark-button button"
-                  type="button"
+                  isActive={isFavorite}
                 >
-                  <svg
+                  <SvgIcon
                     className="property__bookmark-icon"
-                    width="31"
                     height="33"
-                  >
-                    <use xlinkHref="#icon-bookmark" />
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+                    isShowLabel={false}
+                    label={isFavorite ? 'In bookmarks' : 'To bookmarks'}
+                    name="icon-bookmark"
+                    width="31"
+                  />
+                </BookmarkButton>
               </div>
 
-              <div className="property__rating rating">
-                <div className="property__stars rating__stars">
-                  <span style={{ width: '96%' }} />
-                  <span className="visually-hidden">Rating</span>
-                </div>
-                <span className="property__rating-value rating__value">
-                  {rating}
-                </span>
-              </div>
+              <Rating parentClassName="property" rating={rating} showValue />
 
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
@@ -123,17 +173,20 @@ function PlaceCard({ isAuthUser, user, offer }) {
                 <h2 className="property__host-title">Meet the host</h2>
 
                 <div className="property__host-user user">
-                  <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
+                  <div
+                    className={`property__avatar-wrapper user__avatar-wrapper ${isPro &&
+                      'property__avatar-wrapper--pro'}`}
+                  >
                     <img
                       className="property__avatar user__avatar"
-                      src="img/avatar-angelina.jpg"
+                      src={avatarUrl}
                       width="74"
                       height="74"
                       alt="Host avatar"
                     />
                   </div>
-                  <span className="property__user-name">Angelina</span>
-                  <span className="property__user-status">Pro</span>
+                  <span className="property__user-name">{name}</span>
+                  {isPro && <span className="property__user-status">Pro</span>}
                 </div>
 
                 <div className="property__description">

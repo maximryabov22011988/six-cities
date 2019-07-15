@@ -4,8 +4,7 @@ import classnames from 'classnames';
 
 const propTypes = {
   className: PropTypes.string,
-  page: PropTypes.string,
-  children: PropTypes.element
+  page: PropTypes.string
 };
 
 const defaultProps = {
