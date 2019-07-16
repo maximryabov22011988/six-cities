@@ -10,7 +10,7 @@
     "test": "npm run eslint && jest",
     "jest": "jest",
     "jest:u": "jest -u",
-    "pretty": "prettier --config .prettierrc --write \"./src/**/*.{js,jsx,json}\""
+    "pretty": "prettier --config .prettierrc --write \"./src/**/*.js\""
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
