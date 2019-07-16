@@ -1,5 +1,6 @@
 import * as types from './types';
 import * as offerTypes from '../offers/types';
+import * as reviewsTypes from '../reviews/types';
 
 const initialState = {
   isReady: false,
@@ -15,7 +16,8 @@ const app = (state = initialState, action) => {
   switch (action.type) {
     case types.REQUEST_SUCCESS:
     case types.REQUEST_FAILURE:
-    case offerTypes.RECEIVE_OFFERS: {
+    case offerTypes.RECEIVE_OFFERS:
+    case reviewsTypes.RECEIVE_REVIEWS: {
       return {
         ...state,
         isLoading: false,
@@ -29,7 +31,8 @@ const app = (state = initialState, action) => {
       };
     }
     case types.REQUEST_SIGN_IN:
-    case offerTypes.REQUEST_OFFERS: {
+    case offerTypes.REQUEST_OFFERS:
+    case reviewsTypes.REQUEST_REVIEWS: {
       return {
         ...state,
         isLoading: true,

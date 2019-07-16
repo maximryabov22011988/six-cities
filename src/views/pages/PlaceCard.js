@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import withActiveItem from '../hocs/withActiveItem';
+
 import Header from '../components/Header';
 import Logo from '../components/Logo';
 import UserInfo from '../components/UserInfo';
@@ -11,6 +12,9 @@ import Label from '../components/Label';
 import Rating from '../components/Rating';
 import Button from '../components/Button';
 import SvgIcon from '../components/SvgIcon';
+import Avatar from '../components/Avatar';
+
+import Reviews from './placeCard/Reviews';
 
 import { getOffer } from '../../state/offers/selectors';
 
@@ -64,6 +68,7 @@ function PlaceCard({
   offer,
 }) {
   const {
+    id,
     images,
     title,
     price,
@@ -173,20 +178,16 @@ function PlaceCard({
                 <h2 className="property__host-title">Meet the host</h2>
 
                 <div className="property__host-user user">
-                  <div
-                    className={`property__avatar-wrapper user__avatar-wrapper ${isPro &&
-                      'property__avatar-wrapper--pro'}`}
-                  >
-                    <img
-                      className="property__avatar user__avatar"
-                      src={avatarUrl}
-                      width="74"
-                      height="74"
-                      alt="Host avatar"
-                    />
-                  </div>
-                  <span className="property__user-name">{name}</span>
-                  {isPro && <span className="property__user-status">Pro</span>}
+                  <Avatar
+                    alt="Host avatar"
+                    height="74"
+                    isPro={isPro}
+                    name={name}
+                    parentClassName="property"
+                    showStatus
+                    src={avatarUrl}
+                    width="74"
+                  />
                 </div>
 
                 <div className="property__description">
@@ -195,41 +196,7 @@ function PlaceCard({
               </div>
 
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">
-                  Reviews &middot; <span className="reviews__amount">1</span>
-                </h2>
-                <ul className="reviews__list">
-                  <li className="reviews__item">
-                    <div className="reviews__user user">
-                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img
-                          className="reviews__avatar user__avatar"
-                          src="img/avatar-max.jpg"
-                          width="54"
-                          height="54"
-                          alt="Reviews avatar"
-                        />
-                      </div>
-                      <span className="reviews__user-name">Max</span>
-                    </div>
-                    <div className="reviews__info">
-                      <div className="reviews__rating rating">
-                        <div className="reviews__stars rating__stars">
-                          <span style={{ width: '94%' }} />
-                          <span className="visually-hidden">Rating</span>
-                        </div>
-                      </div>
-                      <p className="reviews__text">
-                        A quiet cozy and picturesque that hides behind a a river
-                        by the unique lightness of Amsterdam. The building is
-                        green and from 18th century.
-                      </p>
-                      <time className="reviews__time" dateTime="2019-04-24">
-                        April 2019
-                      </time>
-                    </div>
-                  </li>
-                </ul>
+                <Reviews hotelId={id} />
                 <form className="reviews__form form" action="#" method="post">
                   <label
                     className="reviews__label form__label"

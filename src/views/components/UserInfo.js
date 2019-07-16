@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import Avatar from './Avatar';
+
 import { BASE_URL } from '../../api';
 
 const propTypes = {
-  isAuth: PropTypes.bool.isRequired,
   avatarUrl: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),
   email: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),
+  isAuth: PropTypes.bool.isRequired,
 };
 
 class UserInfo extends React.PureComponent {
@@ -20,17 +22,15 @@ class UserInfo extends React.PureComponent {
           <Link to="/login">Sign In</Link>
         ) : (
           <Link
-            to="/favorites"
             className="header__nav-link header__nav-link--profile"
+            to="/favorites"
           >
-            <div className="header__avatar-wrapper user__avatar-wrapper">
-              <img
-                className="user__avatar"
-                alt="avatar"
-                src={`${BASE_URL}${avatarUrl}`}
-              />
-            </div>
-            <span className="header__user-name user__name">{email}</span>
+            <Avatar
+              alt="User avatar"
+              name={email}
+              parentClassName="header"
+              src={`${BASE_URL}${avatarUrl}`}
+            />
           </Link>
         )}
       </li>

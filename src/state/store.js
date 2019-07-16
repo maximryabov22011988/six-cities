@@ -7,12 +7,14 @@ import createAPI from '../api';
 import nameSpace from './name-spaces';
 
 import offersReducer from './offers';
+import reviewsReducer from './reviews';
 import appReducer from './app';
 import UIReducer from './UI';
 
 const api = createAPI((...args) => store.dispatch(...args));
 const rootReducer = combineReducers({
   [nameSpace.OFFERS]: offersReducer,
+  [nameSpace.REVIEWS]: reviewsReducer,
   [nameSpace.APP]: appReducer,
   [nameSpace.UI]: UIReducer,
 });
