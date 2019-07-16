@@ -55,10 +55,7 @@ function ReviewItem({
       <div className="reviews__info">
         <Rating parentClassName="reviews" rating={rating} />
         <p className="reviews__text">{comment}</p>
-        <time
-          className="reviews__time"
-          dateTime={get(getDateFormat(date), 'dateTime', '')}
-        >
+        <time className="reviews__time" dateTime={get(getDateFormat(date), 'dateTime', '')}>
           {get(getDateFormat(date), 'text', '')}
         </time>
       </div>

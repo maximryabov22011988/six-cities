@@ -2,19 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 const Field = function(
-  {
-    classes,
-    label,
-    id,
-    type = 'text',
-    minLength,
-    maxLength,
-    name,
-    placeholder,
-    disabled,
-    required,
-    onChange,
-  },
+  { classes, label, id, type = 'text', minLength, maxLength, name, placeholder, disabled, required, onChange },
   ref,
 ) {
   return (
@@ -23,16 +11,16 @@ const Field = function(
         {label}
       </label>
       <input
-        ref={ref}
         className={classnames(classes.input, 'form__input')}
+        disabled={disabled}
         id={id}
-        type={type}
-        minLength={minLength}
         maxLength={maxLength}
+        minLength={minLength}
         name={name}
         placeholder={placeholder}
-        disabled={disabled}
+        ref={ref}
         required={required}
+        type={type}
         onChange={onChange}
       />
     </div>

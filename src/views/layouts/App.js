@@ -10,22 +10,14 @@ import PlaceCard from '../pages/PlaceCard';
 
 import PrivateRoute from '../utils/PrivateRoute';
 
-import {
-  getCities,
-  transformCurrentCity,
-  getCurrentOffers,
-} from '../../state/offers/selectors';
+import { getCities, transformCurrentCity, getCurrentOffers } from '../../state/offers/selectors';
 import { getIsReady, getIsAuth, getUser } from '../../state/app/selectors';
 
 import { init, signIn } from '../../state/app/operations';
 import { changeCity } from '../../state/UI/actions';
 
 const propTypes = {
-  isReadyApp: PropTypes.bool.isRequired,
-  currentCity: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.arrayOf(PropTypes.number),
-  }).isRequired,
+  changeCity: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
@@ -33,10 +25,14 @@ const propTypes = {
       zoom: PropTypes.number,
     }),
   ).isRequired,
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currentCity: PropTypes.shape({
+    name: PropTypes.string,
+    location: PropTypes.arrayOf(PropTypes.number),
+  }).isRequired,
   init: PropTypes.func.isRequired,
+  isReadyApp: PropTypes.bool.isRequired,
+  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
   signIn: PropTypes.func.isRequired,
-  changeCity: PropTypes.func.isRequired,
 };
 
 class App extends React.Component {
@@ -53,15 +49,7 @@ class App extends React.Component {
   };
 
   render() {
-    const {
-      isReadyApp,
-      isAuthUser,
-      user,
-      currentCity,
-      cities,
-      offers,
-      changeCity,
-    } = this.props;
+    const { isReadyApp, isAuthUser, user, currentCity, cities, offers, changeCity } = this.props;
 
     if (isReadyApp) {
       return (
@@ -69,38 +57,27 @@ class App extends React.Component {
           <Switch>
             <Route
               path="/login"
-              render={() =>
-                isAuthUser ? (
-                  <Redirect to="/" exact />
-                ) : (
-                  <SignIn onSignIn={this.handleSignIn} />
-                )
-              }
+              render={() => (isAuthUser ? <Redirect exact to="/" /> : <SignIn onSignIn={this.handleSignIn} />)}
             />
             <Route
-              path="/"
               exact
+              path="/"
               render={() => (
                 <MainPage
-                  user={user}
-                  isAuthUser={isAuthUser}
-                  currentCity={currentCity}
-                  cities={cities}
-                  offers={offers}
                   changeCity={changeCity}
+                  cities={cities}
+                  currentCity={currentCity}
+                  isAuthUser={isAuthUser}
+                  offers={offers}
+                  user={user}
                 />
               )}
             />
-            <Route
-              path="/offer/:id"
-              render={() => <PlaceCard user={user} isAuthUser={isAuthUser} />}
-            />
+            <Route path="/offer/:id" render={() => <PlaceCard isAuthUser={isAuthUser} user={user} />} />
             <PrivateRoute
-              path="/favorites"
+              component={() => <FavoriteList isAuthUser={isAuthUser} user={user} />}
               isAuth={isAuthUser}
-              component={() => (
-                <FavoriteList isAuthUser={isAuthUser} user={user} />
-              )}
+              path="/favorites"
             />
           </Switch>
         </React.Fragment>

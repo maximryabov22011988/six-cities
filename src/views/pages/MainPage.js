@@ -14,18 +14,7 @@ import Places from './mainPage/Places';
 import Map from './mainPage/Map';
 
 const propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.number,
-    email: PropTypes.string,
-    name: PropTypes.string,
-    avatar_url: PropTypes.string,
-    is_pro: PropTypes.bool,
-  }).isRequired,
-  isAuthUser: PropTypes.bool.isRequired,
-  currentCity: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.arrayOf(PropTypes.number),
-  }).isRequired,
+  changeCity: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
@@ -33,8 +22,19 @@ const propTypes = {
       zoom: PropTypes.number,
     }),
   ).isRequired,
+  currentCity: PropTypes.shape({
+    name: PropTypes.string,
+    location: PropTypes.arrayOf(PropTypes.number),
+  }).isRequired,
+  isAuthUser: PropTypes.bool.isRequired,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  changeCity: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    avatar_url: PropTypes.string,
+    is_pro: PropTypes.bool,
+  }).isRequired,
 };
 
 class MainPage extends React.Component {
@@ -55,30 +55,15 @@ class MainPage extends React.Component {
     return (
       <Page page="main">
         <Header
-          logo={<Logo position="header" isActive />}
-          userInfo={
-            <UserInfo
-              isAuth={isAuthUser}
-              avatarUrl={user.avatar_url}
-              email={user.email}
-            />
-          }
+          logo={<Logo isActive position="header" />}
+          userInfo={<UserInfo avatarUrl={user.avatar_url} email={user.email} isAuth={isAuthUser} />}
         />
         <Content>
           <Nav>
-            <NavList
-              currentCity={currentCity.name}
-              cities={cities}
-              onChangeCity={this.handleChangeCity}
-            />
+            <NavList cities={cities} currentCity={currentCity.name} onChangeCity={this.handleChangeCity} />
           </Nav>
           <PlacesContainer
-            leftPanel={
-              <Places
-                searchResultText={this.getSearchResultsText()}
-                offers={offers}
-              />
-            }
+            leftPanel={<Places offers={offers} searchResultText={this.getSearchResultsText()} />}
             rightPanel={<Map offers={offers} />}
           />
         </Content>

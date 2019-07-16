@@ -32,10 +32,10 @@ it('PlaceCard correctly render', () => {
     .create(
       <PlaceCard
         offer={offerMock}
-        onTitleClick={handleTitleClick}
         onImageClick={handleImageClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onTitleClick={handleTitleClick}
       />,
     )
     .toJSON();

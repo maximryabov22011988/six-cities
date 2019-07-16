@@ -12,13 +12,7 @@ const cityMock = {
 it('NavItem correctly render', () => {
   const handleChangeCity = jest.fn();
   const navItem = renderer
-    .create(
-      <NavItem
-        className="tabs__item"
-        city={cityMock}
-        onChangeCity={handleChangeCity}
-      />,
-    )
+    .create(<NavItem city={cityMock} className="tabs__item" onChangeCity={handleChangeCity} />)
     .toJSON();
 
   expect(navItem).toMatchSnapshot();

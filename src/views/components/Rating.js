@@ -23,11 +23,7 @@ function Rating({ parentClassName, rating, showValue }) {
         <span style={getRatingStyles(rating)} />
         <span className="visually-hidden">Rating</span>
       </div>
-      {showValue && (
-        <span className={`${parentClassName}__rating-value rating__value`}>
-          {rating}
-        </span>
-      )}
+      {showValue && <span className={`${parentClassName}__rating-value rating__value`}>{rating}</span>}
     </div>
   );
 }

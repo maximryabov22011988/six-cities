@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   className: PropTypes.string,
-  style: PropTypes.object,
-  src: PropTypes.string.isRequired,
-  width: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  style: PropTypes.object,
+  width: PropTypes.string.isRequired,
 };
 
 const status = {
@@ -55,14 +55,14 @@ class Image extends React.PureComponent {
         }}
       >
         <img
-          className={className}
-          style={style}
-          src={src}
-          width={isLoaded ? width : 0}
-          height={isLoaded ? height : 0}
-          onLoad={this.handleImageLoaded}
-          onError={this.handleImageErrored}
           alt={label}
+          className={className}
+          height={isLoaded ? height : 0}
+          src={src}
+          style={style}
+          width={isLoaded ? width : 0}
+          onError={this.handleImageErrored}
+          onLoad={this.handleImageLoaded}
         />
         {!isLoaded && <span>{imgStatus}</span>}
       </div>

@@ -25,9 +25,7 @@ const offersMock = [
 ];
 
 it('PlaceCardList correctly render', () => {
-  const placeCard = renderer
-    .create(<PlaceCardList offers={offersMock} />)
-    .toJSON();
+  const placeCard = renderer.create(<PlaceCardList offers={offersMock} />).toJSON();
 
   expect(placeCard).toMatchSnapshot();
 });

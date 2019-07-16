@@ -26,12 +26,7 @@ const offersMock = [
 
 it('Places correctly render', () => {
   const placeCard = renderer
-    .create(
-      <Places
-        searchResultText="1 places to stay in Paris"
-        offers={offersMock}
-      />,
-    )
+    .create(<Places offers={offersMock} searchResultText="1 places to stay in Paris" />)
     .toJSON();
 
   expect(placeCard).toMatchSnapshot();

@@ -5,7 +5,6 @@ import PlaceCardList from './PlaceCardList';
 import Select from './Select';
 
 const propTypes = {
-  searchResultText: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(
     PropTypes.shape({
       bedrooms: PropTypes.number,
@@ -38,6 +37,7 @@ const propTypes = {
       type: PropTypes.string,
     }),
   ).isRequired,
+  searchResultText: PropTypes.string.isRequired,
 };
 
 const filterOptions = [
@@ -54,11 +54,7 @@ function Places({ searchResultText, offers }) {
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
       <b className="places__found">{searchResultText}</b>
-      <Select
-        caption="Sort by"
-        options={filterOptions}
-        defaultOption={defaultOptionId}
-      />
+      <Select caption="Sort by" defaultOption={defaultOptionId} options={filterOptions} />
       <PlaceCardList offers={offers} />
     </section>
   );

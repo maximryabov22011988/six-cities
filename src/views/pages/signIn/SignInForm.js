@@ -75,29 +75,16 @@ class SignInForm extends React.Component {
     return (
       <React.Fragment>
         <h1 className="login__title">Sign in</h1>
-        <Form
-          className="login__form"
-          method="post"
-          onSubmit={this.handleSubmit}
-        >
+        <Form className="login__form" method="post" onSubmit={this.handleSubmit}>
           <Field
             {...field.email}
-            ref={emailRef}
             classes={fieldClasses}
+            ref={emailRef}
             value={email.value}
             onChange={this.handleChange}
           />
-          <Field
-            {...field.password}
-            classes={fieldClasses}
-            value={password.value}
-            onChange={this.handleChange}
-          />
-          <Button
-            className="login__submit form__submit"
-            type="submit"
-            disabled={this.isLockedButton()}
-          >
+          <Field {...field.password} classes={fieldClasses} value={password.value} onChange={this.handleChange} />
+          <Button className="login__submit form__submit" disabled={this.isLockedButton()} type="submit">
             Sign in
           </Button>
         </Form>

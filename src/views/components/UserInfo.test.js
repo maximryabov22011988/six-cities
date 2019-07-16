@@ -11,13 +11,7 @@ const userMock = {
 
 it('UserInfo correctly render', () => {
   const userInfo = renderer
-    .create(
-      <UserInfo
-        isAuth={userMock.isAuth}
-        avatarUrl={userMock.avatarUrl}
-        email={userMock.email}
-      />,
-    )
+    .create(<UserInfo avatarUrl={userMock.avatarUrl} email={userMock.email} isAuth={userMock.isAuth} />)
     .toJSON();
 
   expect(userInfo).toMatchSnapshot();

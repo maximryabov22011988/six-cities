@@ -9,13 +9,7 @@ const defaultOptionId = 1;
 
 it('Select correctly render', () => {
   const select = renderer
-    .create(
-      <Select
-        caption="Sort by"
-        options={optionsMock}
-        defaultOption={defaultOptionId}
-      />,
-    )
+    .create(<Select caption="Sort by" defaultOption={defaultOptionId} options={optionsMock} />)
     .toJSON();
 
   expect(select).toMatchSnapshot();

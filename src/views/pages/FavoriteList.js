@@ -19,13 +19,7 @@ function FavoriteList({ isAuthUser, user }) {
     <Page className="page">
       <Header
         logo={<Logo position="header" />}
-        userInfo={
-          <UserInfo
-            isAuth={isAuthUser}
-            avatarUrl={user.avatar_url}
-            email={user.email}
-          />
-        }
+        userInfo={<UserInfo avatarUrl={user.avatar_url} email={user.email} isAuth={isAuthUser} />}
       />
       <Content page="favorites">
         <h1 className="favorites__title">Saved listing</h1>
@@ -43,11 +37,11 @@ function FavoriteList({ isAuthUser, user }) {
                 <div className="favorites__image-wrapper place-card__image-wrapper">
                   <a href="#">
                     <img
+                      alt="Place image"
                       className="place-card__image"
+                      height="110"
                       src="img/apartment-small-03.jpg"
                       width="150"
-                      height="110"
-                      alt="Place image"
                     />
                   </a>
                 </div>
@@ -55,19 +49,13 @@ function FavoriteList({ isAuthUser, user }) {
                   <div className="place-card__price-wrapper">
                     <div className="place-card__price">
                       <b className="place-card__price-value">&euro;180</b>
-                      <span className="place-card__price-text">
-                        &#47;&nbsp;night
-                      </span>
+                      <span className="place-card__price-text">&#47;&nbsp;night</span>
                     </div>
                     <button
                       className="place-card__bookmark-button place-card__bookmark-button--active button"
                       type="button"
                     >
-                      <svg
-                        className="place-card__bookmark-icon"
-                        width="18"
-                        height="19"
-                      >
+                      <svg className="place-card__bookmark-icon" height="19" width="18">
                         <use xlinkHref="#icon-bookmark" />
                       </svg>
                       <span className="visually-hidden">In bookmarks</span>
@@ -89,11 +77,11 @@ function FavoriteList({ isAuthUser, user }) {
                 <div className="favorites__image-wrapper place-card__image-wrapper">
                   <a href="#">
                     <img
+                      alt="Place image"
                       className="place-card__image"
+                      height="110"
                       src="img/room-small.jpg"
                       width="150"
-                      height="110"
-                      alt="Place image"
                     />
                   </a>
                 </div>
@@ -101,19 +89,13 @@ function FavoriteList({ isAuthUser, user }) {
                   <div className="place-card__price-wrapper">
                     <div className="place-card__price">
                       <b className="place-card__price-value">&euro;80</b>
-                      <span className="place-card__price-text">
-                        &#47;&nbsp;night
-                      </span>
+                      <span className="place-card__price-text">&#47;&nbsp;night</span>
                     </div>
                     <button
                       className="place-card__bookmark-button place-card__bookmark-button--active button"
                       type="button"
                     >
-                      <svg
-                        className="place-card__bookmark-icon"
-                        width="18"
-                        height="19"
-                      >
+                      <svg className="place-card__bookmark-icon" height="19" width="18">
                         <use xlinkHref="#icon-bookmark" />
                       </svg>
                       <span className="visually-hidden">In bookmarks</span>
@@ -146,11 +128,11 @@ function FavoriteList({ isAuthUser, user }) {
                 <div className="favorites__image-wrapper place-card__image-wrapper">
                   <a href="#">
                     <img
+                      alt="Place image"
                       className="place-card__image"
+                      height="110"
                       src="img/apartment-small-04.jpg"
                       width="150"
-                      height="110"
-                      alt="Place image"
                     />
                   </a>
                 </div>
@@ -158,19 +140,13 @@ function FavoriteList({ isAuthUser, user }) {
                   <div className="place-card__price-wrapper">
                     <div className="place-card__price">
                       <b className="place-card__price-value">&euro;180</b>
-                      <span className="place-card__price-text">
-                        &#47;&nbsp;night
-                      </span>
+                      <span className="place-card__price-text">&#47;&nbsp;night</span>
                     </div>
                     <button
                       className="place-card__bookmark-button place-card__bookmark-button--active button"
                       type="button"
                     >
-                      <svg
-                        className="place-card__bookmark-icon"
-                        width="18"
-                        height="19"
-                      >
+                      <svg className="place-card__bookmark-icon" height="19" width="18">
                         <use xlinkHref="#icon-bookmark" />
                       </svg>
                       <span className="visually-hidden">In bookmarks</span>
@@ -193,7 +169,7 @@ function FavoriteList({ isAuthUser, user }) {
         </ul>
       </Content>
       <Footer className="footer container">
-        <Logo position="footer" width="64" height="33" />
+        <Logo height="33" position="footer" width="64" />
       </Footer>
     </Page>
   );

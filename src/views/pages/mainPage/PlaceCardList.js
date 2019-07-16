@@ -76,10 +76,10 @@ class PlaceCardList extends React.Component {
           <PlaceCard
             key={offer.id}
             offer={offer}
-            onTitleClick={this.handleTitleClick}
             onImageClick={this.handleImageClick}
             onMouseEnter={this.handleMouseEnter(offer)}
             onMouseLeave={this.handleMouseLeave}
+            onTitleClick={this.handleTitleClick}
           />
         ))}
       </div>

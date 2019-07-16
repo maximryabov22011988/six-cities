@@ -48,12 +48,12 @@ it('MainPage correctly render', () => {
   const mainPage = renderer
     .create(
       <MainPage
-        user={userMock}
-        currentCity={currentCityMock}
-        cities={citiesMock}
-        offers={offersMock}
         changeCity={jest.fn()}
+        cities={citiesMock}
+        currentCity={currentCityMock}
         isAuthUser
+        offers={offersMock}
+        user={userMock}
       />,
     )
     .toJSON();

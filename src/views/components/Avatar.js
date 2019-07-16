@@ -16,34 +16,17 @@ const defaultProps = {
   showStatus: false,
 };
 
-function Avatar({
-  alt,
-  height,
-  isPro,
-  name,
-  parentClassName,
-  showStatus,
-  src,
-  width,
-}) {
+function Avatar({ alt, height, isPro, name, parentClassName, showStatus, src, width }) {
   return (
     <React.Fragment>
       <div
         className={`${parentClassName}__avatar-wrapper user__avatar-wrapper ${isPro &&
           `${parentClassName}__avatar-wrapper--pro`}`}
       >
-        <img
-          alt={alt}
-          className="reviews__avatar user__avatar"
-          height={height}
-          src={src}
-          width={width}
-        />
+        <img alt={alt} className="reviews__avatar user__avatar" height={height} src={src} width={width} />
       </div>
       {name && <span className={`${parentClassName}__user-name`}>{name}</span>}
-      {showStatus && (
-        <span className={`${parentClassName}__user-status`}>Pro</span>
-      )}
+      {showStatus && <span className={`${parentClassName}__user-status`}>Pro</span>}
     </React.Fragment>
   );
 }

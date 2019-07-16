@@ -21,16 +21,8 @@ class UserInfo extends React.PureComponent {
         {!isAuth ? (
           <Link to="/login">Sign In</Link>
         ) : (
-          <Link
-            className="header__nav-link header__nav-link--profile"
-            to="/favorites"
-          >
-            <Avatar
-              alt="User avatar"
-              name={email}
-              parentClassName="header"
-              src={`${BASE_URL}${avatarUrl}`}
-            />
+          <Link className="header__nav-link header__nav-link--profile" to="/favorites">
+            <Avatar alt="User avatar" name={email} parentClassName="header" src={`${BASE_URL}${avatarUrl}`} />
           </Link>
         )}
       </li>

@@ -8,14 +8,7 @@ const propTypes = {
 };
 
 function PrivateRoute({ component: Component, isAuth, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        isAuth ? <Component {...props} /> : <Redirect to="/login" />
-      }
-    />
-  );
+  return <Route {...rest} render={(props) => (isAuth ? <Component {...props} /> : <Redirect to="/login" />)} />;
 }
 
 PrivateRoute.propTypes = propTypes;

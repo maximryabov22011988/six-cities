@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const propTypes = {
-  className: PropTypes.string,
   action: PropTypes.string,
+  children: PropTypes.any,
+  className: PropTypes.string,
   method: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  children: PropTypes.any,
 };
 
 const defaultProps = {
@@ -17,12 +17,7 @@ const defaultProps = {
 
 function Form({ className, action, method, onSubmit, children }) {
   return (
-    <form
-      className={classnames(className, 'form')}
-      action={action}
-      method={method}
-      onSubmit={onSubmit}
-    >
+    <form action={action} className={classnames(className, 'form')} method={method} onSubmit={onSubmit}>
       {children}
     </form>
   );

@@ -34,10 +34,10 @@ it('Click on the title should work correctly', () => {
   const placeCard = shallow(
     <PlaceCard
       offer={offerMock}
-      onTitleClick={handleTitleClick}
       onImageClick={handleImageClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onTitleClick={handleTitleClick}
     />,
   );
 
@@ -58,10 +58,10 @@ it('Click on the image should work correctly', () => {
   const placeCard = shallow(
     <PlaceCard
       offer={offerMock}
-      onTitleClick={handleTitleClick}
       onImageClick={handleImageClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onTitleClick={handleTitleClick}
     />,
   );
 
@@ -82,10 +82,10 @@ it('Hover on the PlaceCard should work correctly', () => {
   const placeCard = shallow(
     <PlaceCard
       offer={offerMock}
-      onTitleClick={handleTitleClick}
       onImageClick={handleImageClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onTitleClick={handleTitleClick}
     />,
   );
 

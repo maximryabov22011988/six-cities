@@ -8,18 +8,13 @@ function withActiveItem(WrappedComponent) {
     const { className, isActive, children } = props;
 
     return (
-      <WrappedComponent
-        {...props}
-        className={classnames(className, isActive && `${className}--active`)}
-      >
+      <WrappedComponent {...props} className={classnames(className, isActive && `${className}--active`)}>
         {children}
       </WrappedComponent>
     );
   }
 
-  WithActiveItem.displayName = `WithActiveItem(${getDisplayName(
-    WrappedComponent,
-  )})`;
+  WithActiveItem.displayName = `WithActiveItem(${getDisplayName(WrappedComponent)})`;
 
   return WithActiveItem;
 }

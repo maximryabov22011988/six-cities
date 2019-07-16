@@ -11,8 +11,7 @@ const mapStyles = {
 const mapContainerId = 'map';
 
 const LEAFLET_LAYER = {
-  URL_TEMPLATE:
-    'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+  URL_TEMPLATE: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
   OPTIONS: {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -67,9 +66,7 @@ class Map extends Component {
 
     this.offerMap = Leaflet.map(mapContainerId, settings);
     this.offerMap.setView([latitude, longitude], zoom);
-    Leaflet.tileLayer(LEAFLET_LAYER.URL_TEMPLATE, LEAFLET_LAYER.OPTIONS).addTo(
-      this.offerMap,
-    );
+    Leaflet.tileLayer(LEAFLET_LAYER.URL_TEMPLATE, LEAFLET_LAYER.OPTIONS).addTo(this.offerMap);
     this.pinGroup = Leaflet.layerGroup().addTo(this.offerMap);
     this.addPins(this.pinGroup);
   }

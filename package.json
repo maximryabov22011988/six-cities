@@ -6,11 +6,22 @@
   "scripts": {
     "build": "webpack --mode development",
     "start": "webpack-dev-server",
-    "eslint": "eslint --ext .jsx,.js src/",
     "test": "npm run eslint && jest",
+    "eslint": "node_modules/.bin/eslint src/",
     "jest": "jest",
     "jest:u": "jest -u",
-    "pretty": "prettier --config .prettierrc --write \"./src/**/*.js\""
+    "format": "prettier-eslint --write \"src/**/*.js\""
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
@@ -32,10 +43,13 @@
     "eslint-plugin-jsx-a11y": "6.2.1",
     "eslint-plugin-prettier": "3.1.0",
     "eslint-plugin-react": "7.13.0",
+    "husky": "3.0.0",
     "install": "0.12.2",
     "jest": "24.8.0",
+    "lint-staged": "9.2.0",
     "npm": "6.9.0",
     "prettier": "1.17.1",
+    "prettier-eslint-cli": "5.0.0",
     "prop-types": "15.7.2",
     "react-test-renderer": "16.8.6",
     "webpack": "4.30.0",

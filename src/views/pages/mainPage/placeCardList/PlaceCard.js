@@ -41,10 +41,10 @@ const propTypes = {
     title: PropTypes.string,
     type: PropTypes.string,
   }).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
   onImageClick: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
+  onTitleClick: PropTypes.func.isRequired,
 };
 
 function PlaceCard({
@@ -78,13 +78,7 @@ function PlaceCard({
 
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#" onClick={onImageClick(offer)}>
-          <Image
-            className="place-card__image"
-            src={previewImage}
-            width="260"
-            height="200"
-            label="Place image"
-          />
+          <Image className="place-card__image" height="200" label="Place image" src={previewImage} width="260" />
         </a>
       </div>
 
@@ -95,10 +89,7 @@ function PlaceCard({
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
 
-          <BookmarkButton
-            className="place-card__bookmark-button"
-            isActive={isFavorite}
-          >
+          <BookmarkButton className="place-card__bookmark-button" isActive={isFavorite}>
             <SvgIcon
               className="place-card__bookmark-icon"
               height="19"

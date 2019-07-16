@@ -56,10 +56,7 @@ const getCities = createSelector(
                 ...acc,
                 {
                   name: item.city.name,
-                  location: [
-                    item.city.location.latitude,
-                    item.city.location.longitude,
-                  ],
+                  location: [item.city.location.latitude, item.city.location.longitude],
                   zoom: item.city.location.zoom,
                 },
               ]
@@ -83,10 +80,7 @@ const transformCurrentCity = createSelector(
     if (currentCity) {
       result = {
         name: currentCity.name,
-        location: [
-          currentCity.location.latitude,
-          currentCity.location.longitude,
-        ],
+        location: [currentCity.location.latitude, currentCity.location.longitude],
         zoom: currentCity.location.zoom,
       };
     } else {

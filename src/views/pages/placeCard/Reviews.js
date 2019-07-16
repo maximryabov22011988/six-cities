@@ -28,8 +28,7 @@ class Reviews extends React.Component {
     return (
       <React.Fragment>
         <h2 className="reviews__title">
-          Reviews &middot;{' '}
-          <span className="reviews__amount">{this.getReviewsAmount()}</span>
+          Reviews &middot; <span className="reviews__amount">{this.getReviewsAmount()}</span>
         </h2>
         <ReviewList reviews={reviews} />
       </React.Fragment>

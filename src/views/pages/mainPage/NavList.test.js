@@ -19,13 +19,7 @@ const citiesMock = [
 it('NavList correctly render', () => {
   const handleChangeCity = jest.fn();
   const navList = renderer
-    .create(
-      <NavList
-        currentCity={currentCityMock.name}
-        cities={citiesMock}
-        onChangeCity={handleChangeCity}
-      />,
-    )
+    .create(<NavList cities={citiesMock} currentCity={currentCityMock.name} onChangeCity={handleChangeCity} />)
     .toJSON();
 
   expect(navList).toMatchSnapshot();

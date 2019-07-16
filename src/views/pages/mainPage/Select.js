@@ -8,13 +8,13 @@ import { ENTER, ESC, MOUSE_LEFT_BUTTON } from '../../constants/keyCodes';
 
 const propTypes = {
   caption: PropTypes.string.isRequired,
+  defaultOption: PropTypes.number.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string,
     }),
   ).isRequired,
-  defaultOption: PropTypes.number.isRequired,
 };
 
 class Select extends React.Component {
@@ -68,10 +68,7 @@ class Select extends React.Component {
 
   handleOptionClick = (id) => (evt) => {
     const { nativeEvent } = evt;
-    if (
-      nativeEvent.which === MOUSE_LEFT_BUTTON ||
-      nativeEvent.which === ENTER
-    ) {
+    if (nativeEvent.which === MOUSE_LEFT_BUTTON || nativeEvent.which === ENTER) {
       this.setState({
         currentOption: id,
       });
@@ -89,12 +86,7 @@ class Select extends React.Component {
   renderOptionItems = (options, currentOption) => {
     return options.map(({ id, name }) => {
       const Option = ({ className, onClick, onKeyUp, children }) => (
-        <li
-          className={className}
-          tabIndex="0"
-          onClick={onClick}
-          onKeyUp={onKeyUp}
-        >
+        <li className={className} tabIndex="0" onClick={onClick} onKeyUp={onKeyUp}>
           {children}
         </li>
       );
@@ -102,9 +94,9 @@ class Select extends React.Component {
 
       return (
         <WrappedOption
-          key={id}
           className="places__option"
           isActive={currentOption === id}
+          key={id}
           onClick={this.handleOptionClick(id)}
           onKeyUp={this.handleOptionClick(id)}
         >
@@ -121,32 +113,22 @@ class Select extends React.Component {
     return (
       <div
         className="places__sorting"
-        tabIndex="0"
         ref={this.selectRef}
+        tabIndex="0"
         onClick={this.handleOutsideClick}
         onKeyDown={this.handleEscPress}
       >
         {caption && <span className="places__sorting-caption">{caption}</span>}
 
-        <span
-          className="places__sorting-type"
-          tabIndex="0"
-          onClick={this.handleOpen}
-          onFocus={this.handleOpen}
-        >
+        <span className="places__sorting-type" tabIndex="0" onClick={this.handleOpen} onFocus={this.handleOpen}>
           {this.getCurrentOptionText()}
-          <svg className="places__sorting-arrow" width="7" height="4">
+          <svg className="places__sorting-arrow" height="4" width="7">
             <use xlinkHref="#icon-arrow-select" />
           </svg>
         </span>
 
         {isOpen && (
-          <ul
-            className={classnames(
-              'places__options places__options--custom',
-              isOpen && 'places__options--opened',
-            )}
-          >
+          <ul className={classnames('places__options places__options--custom', isOpen && 'places__options--opened')}>
             {this.renderOptionItems(options, currentOption)}
           </ul>
         )}

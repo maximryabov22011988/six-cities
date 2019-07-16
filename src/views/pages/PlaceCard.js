@@ -62,11 +62,7 @@ const defaultProps = {};
 
 const MAX_IMAGES = 6;
 
-function PlaceCard({
-  isAuthUser,
-  user: { avatar_url: userAvatarUrl, email },
-  offer,
-}) {
+function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, offer }) {
   const {
     id,
     images,
@@ -89,13 +85,7 @@ function PlaceCard({
     <div className="page">
       <Header
         logo={<Logo position="header" />}
-        userInfo={
-          <UserInfo
-            isAuth={isAuthUser}
-            avatarUrl={userAvatarUrl}
-            email={email}
-          />
-        }
+        userInfo={<UserInfo avatarUrl={userAvatarUrl} email={email} isAuth={isAuthUser} />}
       />
 
       <main className="page__main page__main--property">
@@ -105,12 +95,8 @@ function PlaceCard({
               {images.map((src, i) => {
                 if (i < MAX_IMAGES) {
                   return (
-                    <div key={i} className="property__image-wrapper">
-                      <img
-                        className="property__image"
-                        src={src}
-                        alt="Hotel interior"
-                      />
+                    <div className="property__image-wrapper" key={i}>
+                      <img alt="Hotel interior" className="property__image" src={src} />
                     </div>
                   );
                 }
@@ -121,18 +107,11 @@ function PlaceCard({
 
           <div className="property__container container">
             <div className="property__wrapper">
-              <Label
-                isShow={isPremium}
-                name="Premium"
-                parentClassName="property"
-              />
+              <Label isShow={isPremium} name="Premium" parentClassName="property" />
 
               <div className="property__name-wrapper">
                 <h1 className="property__name">{title}</h1>
-                <BookmarkButton
-                  className="property__bookmark-button button"
-                  isActive={isFavorite}
-                >
+                <BookmarkButton className="property__bookmark-button button" isActive={isFavorite}>
                   <SvgIcon
                     className="property__bookmark-icon"
                     height="33"
@@ -147,15 +126,9 @@ function PlaceCard({
               <Rating parentClassName="property" rating={rating} showValue />
 
               <ul className="property__features">
-                <li className="property__feature property__feature--entire">
-                  {type}
-                </li>
-                <li className="property__feature property__feature--bedrooms">
-                  {bedrooms} Bedrooms
-                </li>
-                <li className="property__feature property__feature--adults">
-                  Max {maxAdults} adults
-                </li>
+                <li className="property__feature property__feature--entire">{type}</li>
+                <li className="property__feature property__feature--bedrooms">{bedrooms} Bedrooms</li>
+                <li className="property__feature property__feature--adults">Max {maxAdults} adults</li>
               </ul>
 
               <div className="property__price">
@@ -167,7 +140,7 @@ function PlaceCard({
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
                   {goods.map((good, i) => (
-                    <li key={i} className="property__good-item">
+                    <li className="property__good-item" key={i}>
                       {good}
                     </li>
                   ))}
@@ -197,91 +170,68 @@ function PlaceCard({
 
               <section className="property__reviews reviews">
                 <Reviews hotelId={id} />
-                <form className="reviews__form form" action="#" method="post">
-                  <label
-                    className="reviews__label form__label"
-                    htmlFor="review"
-                  >
+                <form action="#" className="reviews__form form" method="post">
+                  <label className="reviews__label form__label" htmlFor="review">
                     Your review
                   </label>
                   <div className="reviews__rating-form form__rating">
                     <input
                       className="form__rating-input visually-hidden"
-                      name="rating"
-                      value="5"
                       id="5-stars"
+                      name="rating"
                       type="radio"
+                      value="5"
                     />
-                    <label
-                      htmlFor="5-stars"
-                      className="reviews__rating-label form__rating-label"
-                      title="perfect"
-                    >
-                      <svg className="form__star-image" width="37" height="33">
+                    <label className="reviews__rating-label form__rating-label" htmlFor="5-stars" title="perfect">
+                      <svg className="form__star-image" height="33" width="37">
                         <use xlinkHref="#icon-star" />
                       </svg>
                     </label>
                     <input
                       className="form__rating-input visually-hidden"
-                      name="rating"
-                      value="4"
                       id="4-stars"
+                      name="rating"
                       type="radio"
+                      value="4"
                     />
-                    <label
-                      htmlFor="4-stars"
-                      className="reviews__rating-label form__rating-label"
-                      title="good"
-                    >
-                      <svg className="form__star-image" width="37" height="33">
+                    <label className="reviews__rating-label form__rating-label" htmlFor="4-stars" title="good">
+                      <svg className="form__star-image" height="33" width="37">
                         <use xlinkHref="#icon-star" />
                       </svg>
                     </label>
                     <input
                       className="form__rating-input visually-hidden"
-                      name="rating"
-                      value="3"
                       id="3-stars"
+                      name="rating"
                       type="radio"
+                      value="3"
                     />
-                    <label
-                      htmlFor="3-stars"
-                      className="reviews__rating-label form__rating-label"
-                      title="not bad"
-                    >
-                      <svg className="form__star-image" width="37" height="33">
+                    <label className="reviews__rating-label form__rating-label" htmlFor="3-stars" title="not bad">
+                      <svg className="form__star-image" height="33" width="37">
                         <use xlinkHref="#icon-star" />
                       </svg>
                     </label>
                     <input
                       className="form__rating-input visually-hidden"
-                      name="rating"
-                      value="2"
                       id="2-stars"
+                      name="rating"
                       type="radio"
+                      value="2"
                     />
-                    <label
-                      htmlFor="2-stars"
-                      className="reviews__rating-label form__rating-label"
-                      title="badly"
-                    >
-                      <svg className="form__star-image" width="37" height="33">
+                    <label className="reviews__rating-label form__rating-label" htmlFor="2-stars" title="badly">
+                      <svg className="form__star-image" height="33" width="37">
                         <use xlinkHref="#icon-star" />
                       </svg>
                     </label>
                     <input
                       className="form__rating-input visually-hidden"
-                      name="rating"
-                      value="1"
                       id="1-star"
+                      name="rating"
                       type="radio"
+                      value="1"
                     />
-                    <label
-                      htmlFor="1-star"
-                      className="reviews__rating-label form__rating-label"
-                      title="terribly"
-                    >
-                      <svg className="form__star-image" width="37" height="33">
+                    <label className="reviews__rating-label form__rating-label" htmlFor="1-star" title="terribly">
+                      <svg className="form__star-image" height="33" width="37">
                         <use xlinkHref="#icon-star" />
                       </svg>
                     </label>
@@ -294,16 +244,10 @@ function PlaceCard({
                   />
                   <div className="reviews__button-wrapper">
                     <p className="reviews__help">
-                      To submit review please make sure to set{' '}
-                      <span className="reviews__star">rating</span> and describe
-                      your stay with at least{' '}
-                      <b className="reviews__text-amount">50 characters</b>.
+                      To submit review please make sure to set <span className="reviews__star">rating</span> and
+                      describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
                     </p>
-                    <button
-                      className="reviews__submit form__submit button"
-                      type="submit"
-                      disabled=""
-                    >
+                    <button className="reviews__submit form__submit button" disabled="" type="submit">
                       Submit
                     </button>
                   </div>
@@ -316,39 +260,25 @@ function PlaceCard({
 
         <div className="container">
           <section className="near-places places">
-            <h2 className="near-places__title">
-              Other places in the neighbourhood
-            </h2>
+            <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img
-                      className="place-card__image"
-                      src="img/room.jpg"
-                      width="260"
-                      height="200"
-                      alt="Place image"
-                    />
+                    <img alt="Place image" className="place-card__image" height="200" src="img/room.jpg" width="260" />
                   </a>
                 </div>
                 <div className="place-card__info">
                   <div className="place-card__price-wrapper">
                     <div className="place-card__price">
                       <b className="place-card__price-value">&euro;80</b>
-                      <span className="place-card__price-text">
-                        &#47;&nbsp;night
-                      </span>
+                      <span className="place-card__price-text">&#47;&nbsp;night</span>
                     </div>
                     <button
                       className="place-card__bookmark-button place-card__bookmark-button--active button"
                       type="button"
                     >
-                      <svg
-                        className="place-card__bookmark-icon"
-                        width="18"
-                        height="19"
-                      >
+                      <svg className="place-card__bookmark-icon" height="19" width="18">
                         <use xlinkHref="#icon-bookmark" />
                       </svg>
                       <span className="visually-hidden">In bookmarks</span>
@@ -370,11 +300,11 @@ function PlaceCard({
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
                     <img
+                      alt="Place image"
                       className="place-card__image"
+                      height="200"
                       src="img/apartment-02.jpg"
                       width="260"
-                      height="200"
-                      alt="Place image"
                     />
                   </a>
                 </div>
@@ -382,19 +312,10 @@ function PlaceCard({
                   <div className="place-card__price-wrapper">
                     <div className="place-card__price">
                       <b className="place-card__price-value">&euro;132</b>
-                      <span className="place-card__price-text">
-                        &#47;&nbsp;night
-                      </span>
+                      <span className="place-card__price-text">&#47;&nbsp;night</span>
                     </div>
-                    <button
-                      className="place-card__bookmark-button button"
-                      type="button"
-                    >
-                      <svg
-                        className="place-card__bookmark-icon"
-                        width="18"
-                        height="19"
-                      >
+                    <button className="place-card__bookmark-button button" type="button">
+                      <svg className="place-card__bookmark-icon" height="19" width="18">
                         <use xlinkHref="#icon-bookmark" />
                       </svg>
                       <span className="visually-hidden">To bookmarks</span>
@@ -416,11 +337,11 @@ function PlaceCard({
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
                     <img
+                      alt="Place image"
                       className="place-card__image"
+                      height="200"
                       src="img/apartment-03.jpg"
                       width="260"
-                      height="200"
-                      alt="Place image"
                     />
                   </a>
                 </div>
@@ -428,19 +349,10 @@ function PlaceCard({
                   <div className="place-card__price-wrapper">
                     <div className="place-card__price">
                       <b className="place-card__price-value">&euro;180</b>
-                      <span className="place-card__price-text">
-                        &#47;&nbsp;night
-                      </span>
+                      <span className="place-card__price-text">&#47;&nbsp;night</span>
                     </div>
-                    <button
-                      className="place-card__bookmark-button button"
-                      type="button"
-                    >
-                      <svg
-                        className="place-card__bookmark-icon"
-                        width="18"
-                        height="19"
-                      >
+                    <button className="place-card__bookmark-button button" type="button">
+                      <svg className="place-card__bookmark-icon" height="19" width="18">
                         <use xlinkHref="#icon-bookmark" />
                       </svg>
                       <span className="visually-hidden">To bookmarks</span>

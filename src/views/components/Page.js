@@ -12,10 +12,7 @@ const defaultProps = {
 };
 
 function Page({ className, page, children }) {
-  const classes = classnames(
-    className,
-    page && `page page--gray page--${page}`,
-  );
+  const classes = classnames(className, page && `page page--gray page--${page}`);
   return <div className={classes}>{children}</div>;
 }
 
