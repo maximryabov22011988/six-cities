@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { orderBy } from 'lodash';
 
 import { denormalizeDataHelper } from '../utils';
 import nameSpace from '../name-spaces';
@@ -9,7 +10,7 @@ const getReviews = createSelector(
     let result;
 
     if (reviews) {
-      result = denormalizeDataHelper(reviews);
+      result = orderBy(denormalizeDataHelper(reviews), 'date', 'desc');
     } else {
       result = [];
     }
