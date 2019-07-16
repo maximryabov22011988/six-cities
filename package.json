@@ -13,8 +13,8 @@
     "format": "prettier-eslint --write \"src/**/*.js\""
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "prettier --write",
+    "src/**/*.js": [
+      "prettier-eslint --write",
       "git add"
     ]
   },
