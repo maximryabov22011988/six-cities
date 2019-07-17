@@ -13,13 +13,17 @@ import Rating from '../components/Rating';
 import Button from '../components/Button';
 import SvgIcon from '../components/SvgIcon';
 import Avatar from '../components/Avatar';
+import Map from '../components/Map';
 
 import Reviews from './placeCard/Reviews';
 
-import { getOffer } from '../../state/offers/selectors';
+import { getCurrentOffer, getNearOffers } from '../../state/offers/selectors';
+
+const MAX_IMAGES = 6;
 
 const propTypes = {
   isAuthUser: PropTypes.bool.isRequired,
+  nearOffers: PropTypes.arrayOf(PropTypes.object),
   offer: PropTypes.shape({
     bedrooms: PropTypes.number,
     city: PropTypes.shape({
@@ -58,11 +62,8 @@ const propTypes = {
     is_pro: PropTypes.bool,
   }).isRequired,
 };
-const defaultProps = {};
 
-const MAX_IMAGES = 6;
-
-function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, offer }) {
+function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, nearOffers, offer }) {
   const {
     id,
     images,
@@ -255,7 +256,7 @@ function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, off
               </section>
             </div>
           </div>
-          <section className="property__map map" />
+          <Map className="property__map" currentOffer={offer} fixed offers={nearOffers} />
         </section>
 
         <div className="container">
@@ -379,10 +380,10 @@ function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, off
 }
 
 PlaceCard.propTypes = propTypes;
-PlaceCard.defaultProps = defaultProps;
 
 const mapStateToProps = (state, ownProps) => ({
-  offer: getOffer(state, ownProps),
+  offer: getCurrentOffer(state, ownProps),
+  nearOffers: getNearOffers(state, ownProps),
 });
 
 export default withRouter(connect(mapStateToProps)(PlaceCard));

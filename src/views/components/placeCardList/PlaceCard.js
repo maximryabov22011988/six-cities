@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
-import withActiveItem from '../../../hocs/withActiveItem';
-import Label from '../../../components/Label';
-import Button from '../../../components/Button';
-import Image from '../../../components/Image';
-import Rating from '../../../components/Rating';
-import SvgIcon from '../../../components/SvgIcon';
+import withActiveItem from '../../hocs/withActiveItem';
+import Label from '../Label';
+import Button from '../Button';
+import Image from '../Image';
+import Rating from '../Rating';
+import SvgIcon from '../SvgIcon';
 
 const propTypes = {
   offer: PropTypes.shape({

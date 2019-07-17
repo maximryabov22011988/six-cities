@@ -11,7 +11,7 @@ import Nav from './mainPage/Nav';
 import NavList from './mainPage/NavList';
 import PlacesContainer from './mainPage/PlacesContainer';
 import Places from './mainPage/Places';
-import Map from './mainPage/Map';
+import Map from '../components/Map';
 
 const propTypes = {
   changeCity: PropTypes.func.isRequired,

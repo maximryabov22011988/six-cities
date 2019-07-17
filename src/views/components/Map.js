@@ -2,10 +2,29 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Leaflet from 'leaflet';
 
+const radiusInKm = 3;
+
+const circleStyles = {
+  color: '#FF9000',
+  fillColor: '#FF9000',
+  fillOpacity: 0.1,
+  radius: radiusInKm * 1000,
+};
+
 const mapStyles = {
-  top: 0,
-  height: '100%',
-  zIndex: 100,
+  fixed: {
+    top: 0,
+    zIndex: 100,
+    width: '1144px',
+    height: '580px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  flexible: {
+    top: 0,
+    height: '100%',
+    zIndex: 100,
+  },
 };
 
 const mapContainerId = 'map';
@@ -19,6 +38,37 @@ const LEAFLET_LAYER = {
 };
 
 const propTypes = {
+  className: PropTypes.string,
+  currentOffer: PropTypes.shape({
+    bedrooms: PropTypes.number,
+    city: PropTypes.shape({
+      name: PropTypes.string,
+      location: PropTypes.object,
+    }),
+    description: PropTypes.string,
+    goods: PropTypes.arrayOf(PropTypes.string),
+    host: PropTypes.shape({
+      avatar_url: PropTypes.string,
+      id: PropTypes.number,
+      is_pro: PropTypes.bool,
+      name: PropTypes.string,
+    }),
+    id: PropTypes.number,
+    images: PropTypes.arrayOf(PropTypes.string),
+    is_favorite: PropTypes.bool,
+    is_premium: PropTypes.bool,
+    location: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      zoom: PropTypes.number,
+    }),
+    max_adults: PropTypes.number,
+    preview_image: PropTypes.string,
+    price: PropTypes.number,
+    rating: PropTypes.number,
+    title: PropTypes.string,
+    type: PropTypes.string,
+  }),
   offers: PropTypes.arrayOf(
     PropTypes.shape({
       bedrooms: PropTypes.number,
@@ -50,13 +100,14 @@ const propTypes = {
       title: PropTypes.string,
       type: PropTypes.string,
     }),
-  ).isRequired,
+  ),
 };
 
 class Map extends Component {
   componentDidMount() {
-    const { offers } = this.props;
-    const { latitude, longitude, zoom } = offers[0].city.location;
+    const { currentOffer, offers } = this.props;
+
+    const { latitude, longitude, zoom } = offers ? offers[0].city.location : currentOffer.location;
 
     const settings = {
       center: [latitude, longitude],
@@ -72,8 +123,9 @@ class Map extends Component {
   }
 
   componentDidUpdate() {
-    const { offers } = this.props;
-    const { latitude, longitude, zoom } = offers[0].city.location;
+    const { currentOffer, offers } = this.props;
+
+    const { latitude, longitude, zoom } = offers ? offers[0].city.location : currentOffer.location;
 
     if (this.offerMap) {
       this.offerMap.setView([latitude, longitude], zoom);
@@ -90,16 +142,35 @@ class Map extends Component {
     });
   }
 
+  get activePinIcon() {
+    return Leaflet.icon({
+      iconUrl: 'img/pin-active.svg',
+      iconSize: [27, 39],
+      iconAnchor: [13, 39],
+    });
+  }
+
   addPins(group) {
-    const { offers } = this.props;
+    const { currentOffer, offers } = this.props;
     const icon = this.pinIcon;
+    const activeIcon = this.activePinIcon;
+
+    if (currentOffer) {
+      const {
+        location: { latitude, longitude },
+      } = currentOffer;
+      Leaflet.marker([latitude, longitude], { icon: activeIcon }).addTo(group);
+      Leaflet.circle([latitude, longitude], circleStyles).addTo(group);
+    }
+
     offers.forEach(({ location: { latitude, longitude } }) => {
       Leaflet.marker([latitude, longitude], { icon }).addTo(group);
     });
   }
 
   render() {
-    return <div id={mapContainerId} style={mapStyles} />;
+    const { className, fixed } = this.props;
+    return <div className={className} id={mapContainerId} style={fixed ? mapStyles.fixed : mapStyles.flexible} />;
   }
 }
 
