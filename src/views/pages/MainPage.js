@@ -53,7 +53,7 @@ class MainPage extends React.Component {
     const { user, isAuthUser, currentCity, cities, offers } = this.props;
 
     return (
-      <Page page="main">
+      <Page name="main">
         <Header
           logo={<Logo isActive position="header" />}
           userInfo={<UserInfo avatarUrl={user.avatar_url} email={user.email} isAuth={isAuthUser} />}
