@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cn from 'classnames';
 
 const propTypes = {
   className: PropTypes.string,
@@ -12,7 +12,7 @@ const defaultProps = {
 };
 
 function Page({ className, page, children }) {
-  const classes = classnames(className, page && `page page--gray page--${page}`);
+  const classes = cn(className, page && `page page--gray page--${page}`);
   return <div className={classes}>{children}</div>;
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import PlaceCard from './placeCardList/PlaceCard';
 
@@ -36,6 +37,7 @@ const propTypes = {
       type: PropTypes.string,
     }),
   ).isRequired,
+  parentClassName: PropTypes.string,
 };
 
 class PlaceCardList extends React.Component {
@@ -53,8 +55,6 @@ class PlaceCardList extends React.Component {
     });
   };
 
-  handleTitleClick = () => {};
-
   handleMouseEnter = (offer) => () => {
     this.setState({
       currentOffer: offer,
@@ -68,18 +68,24 @@ class PlaceCardList extends React.Component {
   };
 
   render() {
-    const { offers } = this.props;
+    const { offers, parentClassName } = this.props;
 
     return (
-      <div className="cities__places-list places__list tabs__content">
+      <div
+        className={cn(
+          'places__list',
+          parentClassName === 'cities' && `${parentClassName}__places-list tabs__content`,
+          parentClassName === 'near-places' && `${parentClassName}__list`,
+        )}
+      >
         {offers.map((offer) => (
           <PlaceCard
+            className={parentClassName}
             key={offer.id}
             offer={offer}
             onImageClick={this.handleImageClick}
             onMouseEnter={this.handleMouseEnter(offer)}
             onMouseLeave={this.handleMouseLeave}
-            onTitleClick={this.handleTitleClick}
           />
         ))}
       </div>

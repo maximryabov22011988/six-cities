@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cn from 'classnames';
 
 const propTypes = {
   children: PropTypes.element,
@@ -15,19 +15,15 @@ const defaultProps = {
 };
 
 function Content({ mainClassName, containerClassName, sectionClassName, page, children }) {
-  const mainClasses = classnames(
-    'page__main',
-    mainClassName && `page__main ${mainClassName}`,
-    page && `page__main--${page}`,
-  );
+  const mainClasses = cn('page__main', mainClassName && `page__main ${mainClassName}`, page && `page__main--${page}`);
 
-  const containerClasses = classnames(
+  const containerClasses = cn(
     'container',
     containerClassName && `container ${containerClassName}`,
     page && `page__${page}-container`,
   );
 
-  const sectionClasses = classnames(sectionClassName, page);
+  const sectionClasses = cn(sectionClassName, page);
 
   return (
     <main className={mainClasses}>

@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Leaflet from 'leaflet';
+import { get } from 'lodash';
 
-const radiusInKm = 3;
-
-const circleStyles = {
-  color: '#FF9000',
-  fillColor: '#FF9000',
-  fillOpacity: 0.1,
-  radius: radiusInKm * 1000,
-};
+const mapContainerId = 'map';
 
 const mapStyles = {
   fixed: {
@@ -27,7 +21,9 @@ const mapStyles = {
   },
 };
 
-const mapContainerId = 'map';
+const popupOptions = {
+  className: 'custom-popup',
+};
 
 const LEAFLET_LAYER = {
   URL_TEMPLATE: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
@@ -106,7 +102,6 @@ const propTypes = {
 class Map extends Component {
   componentDidMount() {
     const { currentOffer, offers } = this.props;
-
     const { latitude, longitude, zoom } = offers ? offers[0].city.location : currentOffer.location;
 
     const settings = {
@@ -158,13 +153,27 @@ class Map extends Component {
     if (currentOffer) {
       const {
         location: { latitude, longitude },
+        title,
       } = currentOffer;
-      Leaflet.marker([latitude, longitude], { icon: activeIcon }).addTo(group);
-      Leaflet.circle([latitude, longitude], circleStyles).addTo(group);
+      const mostRemoteOffer = offers[2];
+
+      Leaflet.marker([latitude, longitude], { icon: activeIcon })
+        .addTo(group)
+        .bindPopup(title, popupOptions)
+        .openPopup();
+
+      Leaflet.circle([latitude, longitude], {
+        color: '#FF9000',
+        fillColor: '#FF9000',
+        fillOpacity: 0.1,
+        radius: get(mostRemoteOffer, 'distance') * 1000,
+      }).addTo(group);
     }
 
-    offers.forEach(({ location: { latitude, longitude } }) => {
-      Leaflet.marker([latitude, longitude], { icon }).addTo(group);
+    offers.forEach(({ location: { latitude, longitude }, title }) => {
+      Leaflet.marker([latitude, longitude], { icon })
+        .addTo(group)
+        .bindPopup(title, popupOptions);
     });
   }
 

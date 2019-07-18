@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import classnames from 'classnames';
+import cn from 'classnames';
 
 import withActiveItem from '../../hocs/withActiveItem';
 import Label from '../Label';
@@ -11,6 +11,7 @@ import Rating from '../Rating';
 import SvgIcon from '../SvgIcon';
 
 const propTypes = {
+  className: PropTypes.string,
   offer: PropTypes.shape({
     bedrooms: PropTypes.number,
     city: PropTypes.shape({
@@ -44,17 +45,9 @@ const propTypes = {
   onImageClick: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
-  onTitleClick: PropTypes.func.isRequired,
 };
 
-function PlaceCard({
-  className,
-  offer,
-  // onTitleClick,
-  onImageClick,
-  onMouseEnter,
-  onMouseLeave,
-}) {
+function PlaceCard({ className, offer, onImageClick, onMouseEnter, onMouseLeave }) {
   const {
     id,
     title,
@@ -70,13 +63,17 @@ function PlaceCard({
 
   return (
     <article
-      className={classnames('cities__place-card place-card', className)}
+      className={cn(
+        'place-card',
+        className === 'cities' && `${className}__place-card`,
+        className === 'near-places' && `${className}__card`,
+      )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <Label isShow={isPremium} name="Premium" parentClassName="place-card" />
 
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${className}__image-wrapper place-card__image-wrapper`}>
         <a href="#" onClick={onImageClick(offer)}>
           <Image className="place-card__image" height="200" label="Place image" src={previewImage} width="260" />
         </a>

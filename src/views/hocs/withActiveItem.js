@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import cn from 'classnames';
 
 import getDisplayName from '../utils/getDisplayName';
 
@@ -8,7 +8,7 @@ function withActiveItem(WrappedComponent) {
     const { className, isActive, children } = props;
 
     return (
-      <WrappedComponent {...props} className={classnames(className, isActive && `${className}--active`)}>
+      <WrappedComponent {...props} className={cn(className, isActive && `${className}--active`)}>
         {children}
       </WrappedComponent>
     );

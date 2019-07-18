@@ -55,7 +55,7 @@ function Places({ searchResultText, offers }) {
       <h2 className="visually-hidden">Places</h2>
       <b className="places__found">{searchResultText}</b>
       <Select caption="Sort by" defaultOption={defaultOptionId} options={filterOptions} />
-      <PlaceCardList offers={offers} />
+      <PlaceCardList offers={offers} parentClassName="cities" />
     </section>
   );
 }

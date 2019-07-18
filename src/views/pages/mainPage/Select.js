@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cn from 'classnames';
 
 import withActiveItem from '../../hocs/withActiveItem';
 
@@ -128,7 +128,7 @@ class Select extends React.Component {
         </span>
 
         {isOpen && (
-          <ul className={classnames('places__options places__options--custom', isOpen && 'places__options--opened')}>
+          <ul className={cn('places__options places__options--custom', isOpen && 'places__options--opened')}>
             {this.renderOptionItems(options, currentOption)}
           </ul>
         )}

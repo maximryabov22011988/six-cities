@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cn from 'classnames';
 
 const propTypes = {
   className: PropTypes.string.isRequired,
@@ -13,7 +13,7 @@ const defaultProps = {
 
 function Button({ className, type, disabled, children }) {
   return (
-    <button className={classnames(className, 'button')} disabled={disabled} type={type}>
+    <button className={cn(className, 'button')} disabled={disabled} type={type}>
       {children}
     </button>
   );

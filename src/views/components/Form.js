@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cn from 'classnames';
 
 const propTypes = {
   action: PropTypes.string,
@@ -17,7 +17,7 @@ const defaultProps = {
 
 function Form({ className, action, method, onSubmit, children }) {
   return (
-    <form action={action} className={classnames(className, 'form')} method={method} onSubmit={onSubmit}>
+    <form action={action} className={cn(className, 'form')} method={method} onSubmit={onSubmit}>
       {children}
     </form>
   );

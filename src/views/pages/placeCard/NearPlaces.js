@@ -43,7 +43,7 @@ function NearPlaces({ offers }) {
     <div className="container">
       <section className="near-places places">
         <h2 className="near-places__title">Other places in the neighbourhood</h2>
-        <PlaceCardList offers={offers} />
+        <PlaceCardList offers={offers} parentClassName="near-places" />
       </section>
     </div>
   );
