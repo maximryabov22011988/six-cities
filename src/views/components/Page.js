@@ -4,11 +4,11 @@ import cn from 'classnames';
 
 const propTypes = {
   className: PropTypes.string,
-  name: PropTypes.string,
+  parentClassName: PropTypes.string,
 };
 
-function Page({ className, name, children }) {
-  const classes = cn(className, name && `page page--gray page--${name}`);
+function Page({ className, parentClassName, children }) {
+  const classes = cn(className, parentClassName && `page page--gray page--${parentClassName}`);
   return <div className={classes}>{children}</div>;
 }
 

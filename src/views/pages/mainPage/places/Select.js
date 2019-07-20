@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import withActiveItem from '../../hocs/withActiveItem';
+import withActiveItem from '../../../hocs/withActiveItem';
 
-import { ENTER, ESC, MOUSE_LEFT_BUTTON } from '../../constants/keyCodes';
+import { ENTER, ESC, MOUSE_LEFT_BUTTON } from '../../../constants/keyCodes';
 
 const propTypes = {
   caption: PropTypes.string.isRequired,
@@ -15,6 +15,7 @@ const propTypes = {
       name: PropTypes.string,
     }),
   ).isRequired,
+  onChangeSorting: PropTypes.func.isRequired,
 };
 
 class Select extends React.Component {
@@ -68,10 +69,14 @@ class Select extends React.Component {
 
   handleOptionClick = (id) => (evt) => {
     const { nativeEvent } = evt;
+    const { onChangeSorting } = this.props;
     if (nativeEvent.which === MOUSE_LEFT_BUTTON || nativeEvent.which === ENTER) {
-      this.setState({
-        currentOption: id,
-      });
+      this.setState(
+        {
+          currentOption: id,
+        },
+        () => onChangeSorting(this.getCurrentOptionText()),
+      );
       this.handleClose();
     }
   };

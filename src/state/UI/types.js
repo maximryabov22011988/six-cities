@@ -1,1 +1,2 @@
 export const CHANGE_CITY = 'CHANGE_CITY';
+export const CHANGE_SORTING = 'CHANGE_SORTING';

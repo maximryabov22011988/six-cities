@@ -34,6 +34,7 @@ const LEAFLET_LAYER = {
 };
 
 const propTypes = {
+  activeOffer: PropTypes.number,
   className: PropTypes.string,
   currentOffer: PropTypes.shape({
     bedrooms: PropTypes.number,
@@ -146,8 +147,8 @@ class Map extends Component {
   }
 
   addPins(group) {
-    const { currentOffer, offers } = this.props;
-    const icon = this.pinIcon;
+    const { activeOffer, currentOffer, offers } = this.props;
+    const defaultIcon = this.pinIcon;
     const activeIcon = this.activePinIcon;
 
     if (currentOffer) {
@@ -170,7 +171,8 @@ class Map extends Component {
       }).addTo(group);
     }
 
-    offers.forEach(({ location: { latitude, longitude }, title }) => {
+    offers.forEach(({ id, location: { latitude, longitude }, title }) => {
+      const icon = activeOffer && id === activeOffer ? activeIcon : defaultIcon;
       Leaflet.marker([latitude, longitude], { icon })
         .addTo(group)
         .bindPopup(title, popupOptions);

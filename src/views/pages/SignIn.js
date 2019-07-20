@@ -14,9 +14,9 @@ const propTypes = {
 
 function SignIn({ onSignIn }) {
   return (
-    <Page name="login">
+    <Page parentClassName="login">
       <Header logo={<Logo position="header" />} />
-      <Content page="login">
+      <Content parentClassName="login">
         <SignInForm onSignIn={onSignIn} />
       </Content>
     </Page>

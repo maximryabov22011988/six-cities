@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
-import withActiveItem from '../../hocs/withActiveItem';
 import Label from '../Label';
 import Button from '../Button';
 import Image from '../Image';
 import Rating from '../Rating';
 import SvgIcon from '../SvgIcon';
+
+import withActiveItem from '../../hocs/withActiveItem';
 
 const propTypes = {
   className: PropTypes.string,
@@ -42,12 +43,10 @@ const propTypes = {
     title: PropTypes.string,
     type: PropTypes.string,
   }).isRequired,
-  onImageClick: PropTypes.func.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
+  onActiveOfferClick: PropTypes.func.isRequired,
 };
 
-function PlaceCard({ className, offer, onImageClick, onMouseEnter, onMouseLeave }) {
+function PlaceCard({ className, offer, onActiveOfferClick, onMouseEnter, onMouseLeave }) {
   const {
     id,
     title,
@@ -74,7 +73,7 @@ function PlaceCard({ className, offer, onImageClick, onMouseEnter, onMouseLeave 
       <Label isShow={isPremium} name="Premium" parentClassName="place-card" />
 
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-        <a href="#" onClick={onImageClick(offer)}>
+        <a href="#" onClick={onActiveOfferClick}>
           <Image className="place-card__image" height="200" label="Place image" src={previewImage} width="260" />
         </a>
       </div>

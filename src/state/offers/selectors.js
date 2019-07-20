@@ -57,7 +57,7 @@ const getNearOffers = createSelector(
 
 const getCurrentCity = (state) => state[nameSpace.UI].currentCity;
 
-const getCurrentOffers = createSelector(
+const getOffersByCity = createSelector(
   [getCurrentCity, getOffers],
   (currentCity, allOffers) => {
     let result;
@@ -122,4 +122,4 @@ const transformCurrentCity = createSelector(
   },
 );
 
-export { transformCurrentCity, getCities, getCurrentOffers, getCurrentOffer, getNearOffers };
+export { transformCurrentCity, getCities, getOffersByCity, getCurrentOffer, getNearOffers };

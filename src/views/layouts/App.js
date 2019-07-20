@@ -10,14 +10,16 @@ import PlaceCard from '../pages/PlaceCard';
 
 import PrivateRoute from '../utils/PrivateRoute';
 
-import { getCities, transformCurrentCity, getCurrentOffers } from '../../state/offers/selectors';
+import { getCities, transformCurrentCity } from '../../state/offers/selectors';
 import { getIsReady, getIsAuth, getUser } from '../../state/app/selectors';
+import { getOffersBySorting } from '../../state/UI/selectors';
 
 import { init, signIn } from '../../state/app/operations';
-import { changeCity } from '../../state/UI/actions';
+import { changeCity, changeSorting } from '../../state/UI/actions';
 
 const propTypes = {
   changeCity: PropTypes.func.isRequired,
+  changeSorting: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
@@ -49,7 +51,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { isReadyApp, isAuthUser, user, currentCity, cities, offers, changeCity } = this.props;
+    const { isReadyApp, isAuthUser, user, currentCity, cities, offers, changeCity, changeSorting } = this.props;
 
     if (isReadyApp) {
       return (
@@ -65,6 +67,7 @@ class App extends React.Component {
               render={() => (
                 <MainPage
                   changeCity={changeCity}
+                  changeSorting={changeSorting}
                   cities={cities}
                   currentCity={currentCity}
                   isAuthUser={isAuthUser}
@@ -94,13 +97,14 @@ const mapStateToProps = (state) => ({
   user: getUser(state),
   currentCity: transformCurrentCity(state),
   cities: getCities(state),
-  offers: getCurrentOffers(state),
+  offers: getOffersBySorting(state),
 });
 
 const mapDispatchToProps = {
   init,
   signIn,
   changeCity,
+  changeSorting,
 };
 
 App.propTypes = propTypes;

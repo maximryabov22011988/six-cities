@@ -21,7 +21,7 @@ function FavoriteList({ isAuthUser, user }) {
         logo={<Logo position="header" />}
         userInfo={<UserInfo avatarUrl={user.avatar_url} email={user.email} isAuth={isAuthUser} />}
       />
-      <Content page="favorites">
+      <Content parentClassName="favorites">
         <h1 className="favorites__title">Saved listing</h1>
         <ul className="favorites__list">
           <li className="favorites__locations-items">

@@ -15,6 +15,7 @@ import Map from '../components/Map';
 
 const propTypes = {
   changeCity: PropTypes.func.isRequired,
+  changeSorting: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
@@ -38,10 +39,21 @@ const propTypes = {
 };
 
 class MainPage extends React.Component {
+  state = {
+    activeOffer: null,
+  };
+
   getSearchResultsText() {
     const { currentCity, offers } = this.props;
     return `${offers.length} places to stay in ${currentCity.name}`;
   }
+
+  handleActiveOfferClick = (id) => (evt) => {
+    evt.preventDefault();
+    this.setState({
+      activeOffer: id,
+    });
+  };
 
   handleChangeCity = (city) => (evt) => {
     evt.preventDefault();
@@ -49,11 +61,17 @@ class MainPage extends React.Component {
     changeCity(city);
   };
 
+  handleChangeSorting = (sorting) => {
+    const { changeSorting } = this.props;
+    changeSorting(sorting);
+  };
+
   render() {
     const { user, isAuthUser, currentCity, cities, offers } = this.props;
+    const { activeOffer } = this.state;
 
     return (
-      <Page name="main">
+      <Page parentClassName="main">
         <Header
           logo={<Logo isActive position="header" />}
           userInfo={<UserInfo avatarUrl={user.avatar_url} email={user.email} isAuth={isAuthUser} />}
@@ -63,8 +81,15 @@ class MainPage extends React.Component {
             <NavList cities={cities} currentCity={currentCity.name} onChangeCity={this.handleChangeCity} />
           </Nav>
           <PlacesContainer
-            leftPanel={<Places offers={offers} searchResultText={this.getSearchResultsText()} />}
-            rightPanel={<Map offers={offers} />}
+            leftPanel={
+              <Places
+                offers={offers}
+                searchResultText={this.getSearchResultsText()}
+                onActiveOfferClick={this.handleActiveOfferClick}
+                onChangeSorting={this.handleChangeSorting}
+              />
+            }
+            rightPanel={<Map activeOffer={activeOffer} offers={offers} />}
           />
         </Content>
       </Page>

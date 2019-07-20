@@ -38,59 +38,28 @@ const propTypes = {
     }),
   ).isRequired,
   parentClassName: PropTypes.string,
+  onActiveOfferClick: PropTypes.func,
 };
 
-class PlaceCardList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentOffer: null,
-    };
-  }
-
-  handleImageClick = (offer) => () => {
-    this.setState({
-      currentOffer: offer,
-    });
-  };
-
-  handleMouseEnter = (offer) => () => {
-    this.setState({
-      currentOffer: offer,
-    });
-  };
-
-  handleMouseLeave = () => {
-    this.setState({
-      currentOffer: null,
-    });
-  };
-
-  render() {
-    const { offers, parentClassName } = this.props;
-
-    return (
-      <div
-        className={cn(
-          'places__list',
-          parentClassName === 'cities' && `${parentClassName}__places-list tabs__content`,
-          parentClassName === 'near-places' && `${parentClassName}__list`,
-        )}
-      >
-        {offers.map((offer) => (
-          <PlaceCard
-            className={parentClassName}
-            key={offer.id}
-            offer={offer}
-            onImageClick={this.handleImageClick}
-            onMouseEnter={this.handleMouseEnter(offer)}
-            onMouseLeave={this.handleMouseLeave}
-          />
-        ))}
-      </div>
-    );
-  }
+function PlaceCardList({ offers, parentClassName, onActiveOfferClick }) {
+  return (
+    <div
+      className={cn(
+        'places__list',
+        parentClassName === 'cities' && `${parentClassName}__places-list tabs__content`,
+        parentClassName === 'near-places' && `${parentClassName}__list`,
+      )}
+    >
+      {offers.map((offer) => (
+        <PlaceCard
+          className={parentClassName}
+          key={offer.id}
+          offer={offer}
+          onActiveOfferClick={parentClassName === 'cities' && onActiveOfferClick(offer.id)}
+        />
+      ))}
+    </div>
+  );
 }
 
 PlaceCardList.propTypes = propTypes;

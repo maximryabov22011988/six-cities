@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import withActiveItem from '../hocs/withActiveItem';
-
 import Header from '../components/Header';
 import Logo from '../components/Logo';
 import UserInfo from '../components/UserInfo';
@@ -17,6 +15,8 @@ import Map from '../components/Map';
 
 import Reviews from './placeCard/Reviews';
 import NearPlaces from './placeCard/NearPlaces';
+
+import withActiveItem from '../hocs/withActiveItem';
 
 import { getCurrentOffer, getNearOffers } from '../../state/offers/selectors';
 

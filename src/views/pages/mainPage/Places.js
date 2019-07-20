@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import PlaceCardList from '../../components/PlaceCardList';
-import Select from './Select';
+import Select from './places/Select';
+
+import { SORTING_OPTIONS } from '../../constants/options';
 
 const propTypes = {
   offers: PropTypes.arrayOf(
@@ -38,24 +40,24 @@ const propTypes = {
     }),
   ).isRequired,
   searchResultText: PropTypes.string.isRequired,
+  onActiveOfferClick: PropTypes.func.isRequired,
+  onChangeSorting: PropTypes.func.isRequired,
 };
 
-const filterOptions = [
-  { id: 1, name: 'Popular' },
-  { id: 2, name: 'Price: low to high' },
-  { id: 3, name: 'Price: high to low' },
-  { id: 4, name: 'Top rated first' },
-];
+const defaultOptionId = 1; // Popular
 
-const defaultOptionId = 1;
-
-function Places({ searchResultText, offers }) {
+function Places({ searchResultText, offers, onActiveOfferClick, onChangeSorting }) {
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
       <b className="places__found">{searchResultText}</b>
-      <Select caption="Sort by" defaultOption={defaultOptionId} options={filterOptions} />
-      <PlaceCardList offers={offers} parentClassName="cities" />
+      <Select
+        caption="Sort by"
+        defaultOption={defaultOptionId}
+        options={SORTING_OPTIONS}
+        onChangeSorting={onChangeSorting}
+      />
+      <PlaceCardList offers={offers} parentClassName="cities" onActiveOfferClick={onActiveOfferClick} />
     </section>
   );
 }

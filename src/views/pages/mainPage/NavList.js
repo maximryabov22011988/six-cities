@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import withActiveItem from '../../hocs/withActiveItem';
 import NavItem from './navList/NavItem';
+
+import withActiveItem from '../../hocs/withActiveItem';
 
 const propTypes = {
   cities: PropTypes.arrayOf(
