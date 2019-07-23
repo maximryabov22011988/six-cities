@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 const propTypes = {
   children: PropTypes.arrayOf(PropTypes.element),
+  isEmpty: PropTypes.bool,
 };
 
 const defaultProps = {
   children: null,
 };
 
-function Content({ children }) {
+function Content({ children, isEmpty }) {
   return (
-    <main className="page__main page__main--index">
+    <main className={cn('page__main page__main--index', isEmpty && 'page__main--index-empty')}>
       <h1 className="visually-hidden">Cities</h1>
       {children}
     </main>

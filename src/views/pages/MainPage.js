@@ -11,6 +11,7 @@ import Nav from './mainPage/Nav';
 import NavList from './mainPage/NavList';
 import PlacesContainer from './mainPage/PlacesContainer';
 import Places from './mainPage/Places';
+import EmptyPlaces from './mainPage/EmptyPlaces';
 import Map from '../components/Map';
 
 const propTypes = {
@@ -66,6 +67,11 @@ class MainPage extends React.Component {
     changeSorting(sorting);
   };
 
+  havePlaceCards() {
+    const { offers } = this.props;
+    return offers.length > 0;
+  }
+
   render() {
     const { user, isAuthUser, currentCity, cities, offers } = this.props;
     const { activeOffer } = this.state;
@@ -76,18 +82,23 @@ class MainPage extends React.Component {
           logo={<Logo isActive position="header" />}
           userInfo={<UserInfo avatarUrl={user.avatar_url} email={user.email} isAuth={isAuthUser} />}
         />
-        <Content>
+        <Content isEmpty={!this.havePlaceCards()}>
           <Nav>
             <NavList cities={cities} currentCity={currentCity.name} onChangeCity={this.handleChangeCity} />
           </Nav>
           <PlacesContainer
+            isEmpty={!this.havePlaceCards()}
             leftPanel={
-              <Places
-                offers={offers}
-                searchResultText={this.getSearchResultsText()}
-                onActiveOfferClick={this.handleActiveOfferClick}
-                onChangeSorting={this.handleChangeSorting}
-              />
+              this.havePlaceCards() ? (
+                <Places
+                  offers={offers}
+                  searchResultText={this.getSearchResultsText()}
+                  onActiveOfferClick={this.handleActiveOfferClick}
+                  onChangeSorting={this.handleChangeSorting}
+                />
+              ) : (
+                <EmptyPlaces city={currentCity.name} />
+              )
             }
             rightPanel={<Map activeOffer={activeOffer} offers={offers} />}
           />
