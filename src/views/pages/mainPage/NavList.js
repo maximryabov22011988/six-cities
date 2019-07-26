@@ -11,7 +11,7 @@ const propTypes = {
       name: PropTypes.string,
       location: PropTypes.arrayOf(PropTypes.number),
       zoom: PropTypes.number,
-    }),
+    })
   ).isRequired,
   currentCity: PropTypes.string.isRequired,
   onChangeCity: PropTypes.func.isRequired,

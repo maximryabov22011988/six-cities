@@ -7,7 +7,7 @@ import nameSpace from '../name-spaces';
 
 const getCurrentOffer = createSelector(
   [(state, props) => state[nameSpace.OFFERS][props.match.params.id]],
-  (offer) => offer,
+  (offer) => offer
 );
 
 const getOffers = createSelector(
@@ -22,7 +22,7 @@ const getOffers = createSelector(
     }
 
     return result;
-  },
+  }
 );
 
 const getNearOffers = createSelector(
@@ -42,7 +42,7 @@ const getNearOffers = createSelector(
             currentOffer.location.latitude,
             currentOffer.location.longitude,
             offer.location.latitude,
-            offer.location.longitude,
+            offer.location.longitude
           ),
         }))
         .sort((a, b) => a.distance - b.distance)
@@ -52,7 +52,7 @@ const getNearOffers = createSelector(
     }
 
     return result;
-  },
+  }
 );
 
 const getCurrentCity = (state) => state[nameSpace.UI].currentCity;
@@ -69,7 +69,7 @@ const getOffersByCity = createSelector(
     }
 
     return result;
-  },
+  }
 );
 
 const getCities = createSelector(
@@ -93,14 +93,14 @@ const getCities = createSelector(
               ]
             : acc;
         },
-        [],
+        []
       );
     } else {
       result = [];
     }
 
     return result;
-  },
+  }
 );
 
 const transformCurrentCity = createSelector(
@@ -119,7 +119,7 @@ const transformCurrentCity = createSelector(
     }
 
     return result;
-  },
+  }
 );
 
 export { transformCurrentCity, getCities, getOffersByCity, getCurrentOffer, getNearOffers };

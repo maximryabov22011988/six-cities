@@ -7,7 +7,7 @@ import nameSpace from '../name-spaces';
 
 const getCurrentSorting = createSelector(
   [(state) => state[nameSpace.UI].sorting],
-  (currentSorting) => currentSorting,
+  (currentSorting) => currentSorting
 );
 
 const getOffersBySorting = createSelector(
@@ -28,7 +28,7 @@ const getOffersBySorting = createSelector(
     }
 
     return result;
-  },
+  }
 );
 
 export { getOffersBySorting };

@@ -38,7 +38,7 @@ it('Click on the title should work correctly', () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTitleClick={handleTitleClick}
-    />,
+    />
   );
 
   const titleLink = placeCard.find('.place-card__name a');
@@ -62,7 +62,7 @@ it('Click on the image should work correctly', () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTitleClick={handleTitleClick}
-    />,
+    />
   );
 
   const imageLink = placeCard.find('.place-card__image-wrapper a');
@@ -86,7 +86,7 @@ it('Hover on the PlaceCard should work correctly', () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTitleClick={handleTitleClick}
-    />,
+    />
   );
 
   placeCard.simulate('mouseenter', { type: 'mouseenter' });

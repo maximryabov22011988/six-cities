@@ -35,7 +35,7 @@ const propTypes = {
       rating: PropTypes.number,
       title: PropTypes.string,
       type: PropTypes.string,
-    }),
+    })
   ).isRequired,
   parentClassName: PropTypes.string,
   onActiveOfferClick: PropTypes.func,
@@ -47,7 +47,7 @@ function PlaceCardList({ offers, parentClassName, onActiveOfferClick }) {
       className={cn(
         'places__list',
         parentClassName === 'cities' && `${parentClassName}__places-list tabs__content`,
-        parentClassName === 'near-places' && `${parentClassName}__list`,
+        parentClassName === 'near-places' && `${parentClassName}__list`
       )}
     >
       {offers.map((offer) => (

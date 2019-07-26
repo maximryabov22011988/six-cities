@@ -37,7 +37,7 @@ const propTypes = {
       rating: PropTypes.number,
       title: PropTypes.string,
       type: PropTypes.string,
-    }),
+    })
   ).isRequired,
   searchResultText: PropTypes.string.isRequired,
   onActiveOfferClick: PropTypes.func.isRequired,

@@ -4,17 +4,17 @@ import nameSpace from '../name-spaces';
 
 const getIsReady = createSelector(
   [(state) => state[nameSpace.APP].isReady],
-  (isReady) => isReady,
+  (isReady) => isReady
 );
 
 const getIsAuth = createSelector(
   [(state) => state[nameSpace.APP].auth.isSignIn],
-  (isAuth) => isAuth,
+  (isAuth) => isAuth
 );
 
 const getUser = createSelector(
   [(state) => state[nameSpace.APP].auth.user],
-  (user) => user,
+  (user) => user
 );
 
 export { getIsReady, getIsAuth, getUser };

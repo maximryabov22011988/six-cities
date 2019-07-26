@@ -13,7 +13,7 @@ const propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string,
-    }),
+    })
   ).isRequired,
   onChangeSorting: PropTypes.func.isRequired,
 };
@@ -75,7 +75,7 @@ class Select extends React.Component {
         {
           currentOption: id,
         },
-        () => onChangeSorting(this.getCurrentOptionText()),
+        () => onChangeSorting(this.getCurrentOptionText())
       );
       this.handleClose();
     }

@@ -17,7 +17,7 @@ it('Header correctly render', () => {
       <Header
         logo={<Logo />}
         userInfo={<UserInfo avatarUrl={userMock.avatarUrl} email={userMock.email} isAuth={userMock.isAuth} />}
-      />,
+      />
     )
     .toJSON();
 

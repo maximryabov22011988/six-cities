@@ -26,8 +26,8 @@ const store = createStore(
   compose(
     applyMiddleware(thunk.withExtraArgument(api)),
     applyMiddleware(logger),
-    reduxDevtools && reduxDevtools(),
-  ),
+    reduxDevtools && reduxDevtools()
+  )
 );
 
 export default store;

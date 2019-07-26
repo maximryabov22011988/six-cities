@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 const Field = function(
   { classes, label, id, type = 'text', minLength, maxLength, name, placeholder, disabled, required, onChange },
-  ref,
+  ref
 ) {
   return (
     <div className={cn(classes.wrap, 'form__input-wrapper')}>

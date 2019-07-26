@@ -65,7 +65,7 @@ function PlaceCard({ className, offer, onActiveOfferClick, onMouseEnter, onMouse
       className={cn(
         'place-card',
         className === 'cities' && `${className}__place-card`,
-        className === 'near-places' && `${className}__card`,
+        className === 'near-places' && `${className}__card`
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

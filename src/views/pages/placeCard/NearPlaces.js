@@ -34,7 +34,7 @@ const propTypes = {
       rating: PropTypes.number,
       title: PropTypes.string,
       type: PropTypes.string,
-    }),
+    })
   ).isRequired,
 };
 

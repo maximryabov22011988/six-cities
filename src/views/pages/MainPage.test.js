@@ -54,7 +54,7 @@ it('MainPage correctly render', () => {
         isAuthUser
         offers={offersMock}
         user={userMock}
-      />,
+      />
     )
     .toJSON();
 

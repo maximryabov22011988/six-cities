@@ -50,5 +50,5 @@ export { Reviews };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Reviews);

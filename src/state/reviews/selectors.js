@@ -16,7 +16,7 @@ const getReviews = createSelector(
     }
 
     return result;
-  },
+  }
 );
 
 export { getReviews };

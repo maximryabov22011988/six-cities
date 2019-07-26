@@ -18,13 +18,13 @@ function Content({ mainClassName, containerClassName, sectionClassName, parentCl
   const mainClasses = cn(
     'page__main',
     mainClassName && `page__main ${mainClassName}`,
-    parentClassName && `page__main--${parentClassName}`,
+    parentClassName && `page__main--${parentClassName}`
   );
 
   const containerClasses = cn(
     'container',
     containerClassName && `container ${containerClassName}`,
-    parentClassName && `page__${parentClassName}-container`,
+    parentClassName && `page__${parentClassName}-container`
   );
 
   const sectionClasses = cn(sectionClassName, parentClassName);

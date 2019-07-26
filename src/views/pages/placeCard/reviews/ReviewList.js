@@ -16,7 +16,7 @@ const propTypes = {
       rating: PropTypes.number,
       comment: PropTypes.string,
       date: PropTypes.string,
-    }),
+    })
   ),
 };
 

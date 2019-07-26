@@ -36,7 +36,7 @@ it('PlaceCard correctly render', () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onTitleClick={handleTitleClick}
-      />,
+      />
     )
     .toJSON();
 
