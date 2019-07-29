@@ -1,2 +1,5 @@
 export const REQUEST_REVIEWS = 'REQUEST_REVIEWS';
 export const RECEIVE_REVIEWS = 'RECEIVE_REVIEWS';
+
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const SEND_REVIEW = 'SEND_REVIEW';

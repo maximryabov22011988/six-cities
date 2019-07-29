@@ -5,6 +5,7 @@ const BASE_URL = 'https://es31-server.appspot.com/six-cities';
 const TIMEOUT = 5000;
 
 const code = {
+  SUCCESS_REQUEST: 200,
   BAD_REQUEST: 400,
   FORBIDDEN: 403,
   NOT_FOUND: 404,
@@ -49,6 +50,6 @@ const createAPI = (dispatch) => {
   return api;
 };
 
-export { BASE_URL };
+export { BASE_URL, code };
 
 export default createAPI;

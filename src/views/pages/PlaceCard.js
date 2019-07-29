@@ -15,10 +15,11 @@ import Map from '../components/Map';
 
 import Reviews from './placeCard/Reviews';
 import NearPlaces from './placeCard/NearPlaces';
-import AddCommentsForm from './placeCard/AddCommentsForm';
+import AddReviewsForm from './placeCard/AddReviewsForm';
 
 import withActiveItem from '../hocs/withActiveItem';
 
+import { sendReview } from '../../state/reviews/operations';
 import { getCurrentOffer, getNearOffers } from '../../state/offers/selectors';
 
 const MAX_IMAGES = 6;
@@ -56,6 +57,7 @@ const propTypes = {
     title: PropTypes.string,
     type: PropTypes.string,
   }).isRequired,
+  sendReview: PropTypes.func.isRequired,
   user: PropTypes.shape({
     id: PropTypes.number,
     email: PropTypes.string,
@@ -65,7 +67,7 @@ const propTypes = {
   }).isRequired,
 };
 
-function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, nearOffers, offer }) {
+function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, nearOffers, offer, sendReview }) {
   const {
     id,
     images,
@@ -173,7 +175,7 @@ function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, nea
 
               <section className="property__reviews reviews">
                 <Reviews hotelId={id} />
-                {isAuthUser || (true && <AddCommentsForm />)}
+                {isAuthUser && <AddReviewsForm hotelId={id} onSendReview={sendReview} />}
               </section>
             </div>
           </div>
@@ -193,4 +195,13 @@ const mapStateToProps = (state, ownProps) => ({
   nearOffers: getNearOffers(state, ownProps),
 });
 
-export default withRouter(connect(mapStateToProps)(PlaceCard));
+const mapDispatchToProps = {
+  sendReview,
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PlaceCard)
+);

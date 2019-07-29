@@ -8,3 +8,11 @@ export const receiveReviews = (reviews) => ({
   type: types.RECEIVE_REVIEWS,
   payload: reviews,
 });
+
+export const addReview = () => ({
+  type: types.ADD_REVIEW,
+});
+
+export const sendReview = () => ({
+  type: types.SEND_REVIEW,
+});

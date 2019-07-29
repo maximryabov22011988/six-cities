@@ -7,6 +7,7 @@ const propTypes = {
   disabled: PropTypes.bool,
   type: PropTypes.string,
 };
+
 const defaultProps = {
   type: 'button',
 };

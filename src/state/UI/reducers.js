@@ -8,7 +8,6 @@ const UIInitialState = {
 };
 
 const UI = (state = UIInitialState, action) => {
-  console.log(action);
   switch (action.type) {
     case types.CHANGE_CITY: {
       return {

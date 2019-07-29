@@ -1,4 +1,5 @@
 import * as actions from './actions';
+import { code as serverAnswerStatus } from '../../api';
 
 export const loadReviews = (hotelId) => async (dispatch, getState, api) => {
   dispatch(actions.requestReviews());
@@ -6,5 +7,14 @@ export const loadReviews = (hotelId) => async (dispatch, getState, api) => {
   const reviews = response.data;
   if (reviews) {
     dispatch(actions.receiveReviews(reviews));
+  }
+};
+
+export const sendReview = (hotelId, review) => async (dispatch, getState, api) => {
+  dispatch(actions.addReview());
+  dispatch(actions.sendReview());
+  const response = await api.post(`/comments/${hotelId}`, review);
+  if (response.status === serverAnswerStatus.SUCCESS_REQUEST) {
+    dispatch(actions.receiveReviews(response.data));
   }
 };
