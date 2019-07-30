@@ -25,6 +25,7 @@ import { getCurrentOffer, getNearOffers } from '../../state/offers/selectors';
 const MAX_IMAGES = 6;
 
 const propTypes = {
+  addOfferToFavorities: PropTypes.func.isRequired,
   isAuthUser: PropTypes.bool.isRequired,
   nearOffers: PropTypes.arrayOf(PropTypes.object),
   offer: PropTypes.shape({
@@ -57,6 +58,7 @@ const propTypes = {
     title: PropTypes.string,
     type: PropTypes.string,
   }).isRequired,
+  removeOfferFromFavorities: PropTypes.func.isRequired,
   sendReview: PropTypes.func.isRequired,
   user: PropTypes.shape({
     id: PropTypes.number,
@@ -67,7 +69,15 @@ const propTypes = {
   }).isRequired,
 };
 
-function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, nearOffers, offer, sendReview }) {
+function PlaceCard({
+  isAuthUser,
+  user: { avatar_url: userAvatarUrl, email },
+  nearOffers,
+  offer,
+  sendReview,
+  addOfferToFavorities,
+  removeOfferFromFavorities,
+}) {
   const {
     id,
     images,
@@ -85,6 +95,9 @@ function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, nea
   } = offer;
 
   const BookmarkButton = withActiveItem(Button);
+
+  const handleAddToFavorities = (hotelId) => () => addOfferToFavorities(hotelId);
+  const handleRemoveFromFavorities = (hotelId) => () => removeOfferFromFavorities(hotelId);
 
   return (
     <div className="page">
@@ -116,7 +129,11 @@ function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, nea
 
               <div className="property__name-wrapper">
                 <h1 className="property__name">{title}</h1>
-                <BookmarkButton className="property__bookmark-button button" isActive={isFavorite}>
+                <BookmarkButton
+                  className="property__bookmark-button"
+                  isActive={isFavorite}
+                  onClick={isFavorite ? handleRemoveFromFavorities(id) : handleAddToFavorities(id)}
+                >
                   <SvgIcon
                     className="property__bookmark-icon"
                     height="33"
@@ -182,7 +199,11 @@ function PlaceCard({ isAuthUser, user: { avatar_url: userAvatarUrl, email }, nea
           <Map className="property__map" currentOffer={offer} fixed offers={nearOffers} />
         </section>
 
-        <NearPlaces offers={nearOffers} />
+        <NearPlaces
+          offers={nearOffers}
+          onAddToFavorities={handleAddToFavorities}
+          onRemoveFromFavorities={handleRemoveFromFavorities}
+        />
       </main>
     </div>
   );

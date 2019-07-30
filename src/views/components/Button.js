@@ -6,15 +6,16 @@ const propTypes = {
   className: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   type: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {
   type: 'button',
 };
 
-function Button({ className, type, disabled, children }) {
+function Button({ className, type, disabled, children, onClick }) {
   return (
-    <button className={cn(className, 'button')} disabled={disabled} type={type}>
+    <button className={cn(className, 'button')} disabled={disabled} type={type} onClick={onClick}>
       {children}
     </button>
   );

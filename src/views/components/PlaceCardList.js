@@ -39,9 +39,11 @@ const propTypes = {
   ).isRequired,
   parentClassName: PropTypes.string,
   onActiveOfferClick: PropTypes.func,
+  onAddToFavorities: PropTypes.func,
+  onRemoveFromFavorities: PropTypes.func,
 };
 
-function PlaceCardList({ offers, parentClassName, onActiveOfferClick }) {
+function PlaceCardList({ offers, parentClassName, onActiveOfferClick, onAddToFavorities, onRemoveFromFavorities }) {
   return (
     <div
       className={cn(
@@ -56,6 +58,8 @@ function PlaceCardList({ offers, parentClassName, onActiveOfferClick }) {
           key={offer.id}
           offer={offer}
           onActiveOfferClick={parentClassName === 'cities' && onActiveOfferClick(offer.id)}
+          onAddToFavorities={onAddToFavorities}
+          onRemoveFromFavorities={onRemoveFromFavorities}
         />
       ))}
     </div>

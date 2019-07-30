@@ -9,15 +9,18 @@ import FavoriteList from '../pages/FavoriteList';
 import PlaceCard from '../pages/PlaceCard';
 
 import PrivateRoute from '../utils/PrivateRoute';
+import RedirectToLogin from '../utils/RedirectToLogin';
 
 import { getCities, transformCurrentCity } from '../../state/offers/selectors';
 import { getIsReady, getIsAuth, getUser } from '../../state/app/selectors';
 import { getOffersBySorting } from '../../state/UI/selectors';
 
 import { init, signIn } from '../../state/app/operations';
+import { addOfferToFavorities, removeOfferFromFavorities } from '../../state/offers/operations';
 import { changeCity, changeSorting } from '../../state/UI/actions';
 
 const propTypes = {
+  addOfferToFavorities: PropTypes.func.isRequired,
   changeCity: PropTypes.func.isRequired,
   changeSorting: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(
@@ -34,6 +37,7 @@ const propTypes = {
   init: PropTypes.func.isRequired,
   isReadyApp: PropTypes.bool.isRequired,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  removeOfferFromFavorities: PropTypes.func.isRequired,
   signIn: PropTypes.func.isRequired,
 };
 
@@ -51,7 +55,18 @@ class App extends React.Component {
   };
 
   render() {
-    const { isReadyApp, isAuthUser, user, currentCity, cities, offers, changeCity, changeSorting } = this.props;
+    const {
+      isReadyApp,
+      isAuthUser,
+      user,
+      currentCity,
+      cities,
+      offers,
+      changeCity,
+      changeSorting,
+      addOfferToFavorities,
+      removeOfferFromFavorities,
+    } = this.props;
 
     if (isReadyApp) {
       return (
@@ -66,23 +81,36 @@ class App extends React.Component {
               path="/"
               render={() => (
                 <MainPage
+                  addOfferToFavorities={addOfferToFavorities}
                   changeCity={changeCity}
                   changeSorting={changeSorting}
                   cities={cities}
                   currentCity={currentCity}
                   isAuthUser={isAuthUser}
                   offers={offers}
+                  removeOfferFromFavorities={removeOfferFromFavorities}
                   user={user}
                 />
               )}
             />
-            <Route path="/offer/:id" render={() => <PlaceCard isAuthUser={isAuthUser} user={user} />} />
+            <Route
+              path="/offer/:id"
+              render={() => (
+                <PlaceCard
+                  addOfferToFavorities={addOfferToFavorities}
+                  isAuthUser={isAuthUser}
+                  removeOfferFromFavorities={removeOfferFromFavorities}
+                  user={user}
+                />
+              )}
+            />
             <PrivateRoute
               component={() => <FavoriteList isAuthUser={isAuthUser} user={user} />}
               isAuth={isAuthUser}
               path="/favorites"
             />
           </Switch>
+          <RedirectToLogin />
         </React.Fragment>
       );
     }
@@ -105,6 +133,8 @@ const mapDispatchToProps = {
   signIn,
   changeCity,
   changeSorting,
+  addOfferToFavorities,
+  removeOfferFromFavorities,
 };
 
 App.propTypes = propTypes;

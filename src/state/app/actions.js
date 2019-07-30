@@ -13,6 +13,11 @@ export const badRequest = (error) => ({
   payload: error,
 });
 
+export const requireAuth = (error) => ({
+  type: types.REQUIRE_AUTH,
+  payload: error,
+});
+
 export const resourceNotFound = (error) => ({
   type: types.RESOURCE_NOT_FOUND,
   payload: error,

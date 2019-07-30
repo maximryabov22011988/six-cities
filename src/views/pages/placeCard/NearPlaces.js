@@ -36,14 +36,21 @@ const propTypes = {
       type: PropTypes.string,
     })
   ).isRequired,
+  onAddToFavorities: PropTypes.func.isRequired,
+  onRemoveFromFavorities: PropTypes.func.isRequired,
 };
 
-function NearPlaces({ offers }) {
+function NearPlaces({ offers, onAddToFavorities, onRemoveFromFavorities }) {
   return (
     <div className="container">
       <section className="near-places places">
         <h2 className="near-places__title">Other places in the neighbourhood</h2>
-        <PlaceCardList offers={offers} parentClassName="near-places" />
+        <PlaceCardList
+          offers={offers}
+          parentClassName="near-places"
+          onAddToFavorities={onAddToFavorities}
+          onRemoveFromFavorities={onRemoveFromFavorities}
+        />
       </section>
     </div>
   );

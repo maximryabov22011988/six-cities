@@ -44,9 +44,19 @@ const propTypes = {
     type: PropTypes.string,
   }).isRequired,
   onActiveOfferClick: PropTypes.func.isRequired,
+  onAddToFavorities: PropTypes.func.isRequired,
+  onRemoveFromFavorities: PropTypes.func.isRequired,
 };
 
-function PlaceCard({ className, offer, onActiveOfferClick, onMouseEnter, onMouseLeave }) {
+function PlaceCard({
+  className,
+  offer,
+  onActiveOfferClick,
+  onAddToFavorities,
+  onMouseEnter,
+  onMouseLeave,
+  onRemoveFromFavorities,
+}) {
   const {
     id,
     title,
@@ -85,7 +95,11 @@ function PlaceCard({ className, offer, onActiveOfferClick, onMouseEnter, onMouse
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
 
-          <BookmarkButton className="place-card__bookmark-button" isActive={isFavorite}>
+          <BookmarkButton
+            className="place-card__bookmark-button"
+            isActive={isFavorite}
+            onClick={isFavorite ? onRemoveFromFavorities(id) : onAddToFavorities(id)}
+          >
             <SvgIcon
               className="place-card__bookmark-icon"
               height="19"

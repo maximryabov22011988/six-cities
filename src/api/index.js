@@ -7,7 +7,7 @@ const TIMEOUT = 5000;
 const code = {
   SUCCESS_REQUEST: 200,
   BAD_REQUEST: 400,
-  FORBIDDEN: 403,
+  REQUIRE_AUTH: 403,
   NOT_FOUND: 404,
 };
 
@@ -35,9 +35,8 @@ const createAPI = (dispatch) => {
       dispatch(actions.badRequest({ status, message }));
     }
 
-    if (error.response.status === code.FORBIDDEN) {
-      dispatch(actions.toogleAuthApp());
-      history.pushState(null, null, '/login'); // TODO Проверить, что работает
+    if (error.response.status === code.REQUIRE_AUTH) {
+      dispatch(actions.requireAuth({ status, message }));
     }
 
     if (error.response.status === code.NOT_FOUND) {

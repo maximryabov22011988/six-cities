@@ -41,12 +41,21 @@ const propTypes = {
   ).isRequired,
   searchResultText: PropTypes.string.isRequired,
   onActiveOfferClick: PropTypes.func.isRequired,
+  onAddToFavorities: PropTypes.func.isRequired,
   onChangeSorting: PropTypes.func.isRequired,
+  onRemoveFromFavorities: PropTypes.func.isRequired,
 };
 
 const defaultOptionId = 1; // Popular
 
-function Places({ searchResultText, offers, onActiveOfferClick, onChangeSorting }) {
+function Places({
+  searchResultText,
+  offers,
+  onActiveOfferClick,
+  onAddToFavorities,
+  onChangeSorting,
+  onRemoveFromFavorities,
+}) {
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
@@ -57,7 +66,13 @@ function Places({ searchResultText, offers, onActiveOfferClick, onChangeSorting 
         options={SORTING_OPTIONS}
         onChangeSorting={onChangeSorting}
       />
-      <PlaceCardList offers={offers} parentClassName="cities" onActiveOfferClick={onActiveOfferClick} />
+      <PlaceCardList
+        offers={offers}
+        parentClassName="cities"
+        onActiveOfferClick={onActiveOfferClick}
+        onAddToFavorities={onAddToFavorities}
+        onRemoveFromFavorities={onRemoveFromFavorities}
+      />
     </section>
   );
 }

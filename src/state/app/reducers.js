@@ -5,7 +5,6 @@ import * as reviewsTypes from '../reviews/types';
 const initialState = {
   isReady: false,
   isLoading: false,
-  api: {},
   auth: {
     user: {},
     isSignIn: false,
@@ -24,6 +23,7 @@ const app = (state = initialState, action) => {
       };
     }
     case types.BAD_REQUEST:
+    case types.REQUIRE_AUTH:
     case types.RESOURCE_NOT_FOUND: {
       return {
         ...state,
@@ -49,6 +49,7 @@ const app = (state = initialState, action) => {
             ...userInfo,
           },
         },
+        errors: {},
       };
     }
     case types.TOOGLE_AUTH_APP: {

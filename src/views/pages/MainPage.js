@@ -15,6 +15,7 @@ import EmptyPlaces from './mainPage/EmptyPlaces';
 import Map from '../components/Map';
 
 const propTypes = {
+  addOfferToFavorities: PropTypes.func.isRequired,
   changeCity: PropTypes.func.isRequired,
   changeSorting: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(
@@ -30,6 +31,7 @@ const propTypes = {
   }).isRequired,
   isAuthUser: PropTypes.bool.isRequired,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  removeOfferFromFavorities: PropTypes.func.isRequired,
   user: PropTypes.shape({
     id: PropTypes.number,
     email: PropTypes.string,
@@ -54,6 +56,16 @@ class MainPage extends React.Component {
     this.setState({
       activeOffer: id,
     });
+  };
+
+  handleAddToFavorities = (hotelId) => () => {
+    const { addOfferToFavorities } = this.props;
+    addOfferToFavorities(hotelId);
+  };
+
+  handleRemoveFromFavorities = (hotelId) => () => {
+    const { removeOfferFromFavorities } = this.props;
+    removeOfferFromFavorities(hotelId);
   };
 
   handleChangeCity = (city) => (evt) => {
@@ -94,7 +106,9 @@ class MainPage extends React.Component {
                   offers={offers}
                   searchResultText={this.getSearchResultsText()}
                   onActiveOfferClick={this.handleActiveOfferClick}
+                  onAddToFavorities={this.handleAddToFavorities}
                   onChangeSorting={this.handleChangeSorting}
+                  onRemoveFromFavorities={this.handleRemoveFromFavorities}
                 />
               ) : (
                 <EmptyPlaces city={currentCity.name} />

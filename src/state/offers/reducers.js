@@ -11,6 +11,13 @@ const offers = (state = offersInitialState, action) => {
         ...normalizeDataHelper(action.payload),
       };
     }
+    case types.UPDATE_OFFERS: {
+      const updatedOffer = action.payload;
+      return {
+        ...state,
+        [updatedOffer.id]: updatedOffer,
+      };
+    }
     default: {
       return state;
     }
