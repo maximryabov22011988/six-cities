@@ -1,4 +1,5 @@
 import * as types from './types';
+import * as favoriteOffersTypes from '../favoriteOffers/types';
 import { normalizeDataHelper } from '../utils';
 
 const offersInitialState = {};
@@ -11,7 +12,7 @@ const offers = (state = offersInitialState, action) => {
         ...normalizeDataHelper(action.payload),
       };
     }
-    case types.UPDATE_OFFERS: {
+    case favoriteOffersTypes.UPDATE_OFFERS: {
       const updatedOffer = action.payload;
       return {
         ...state,

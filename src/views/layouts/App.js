@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { keys } from 'lodash';
+
+import Loader from '../components/Loader';
 
 import SignIn from '../pages/SignIn';
 import MainPage from '../pages/MainPage';
@@ -12,11 +15,12 @@ import PrivateRoute from '../utils/PrivateRoute';
 import RedirectToLogin from '../utils/RedirectToLogin';
 
 import { getCities, transformCurrentCity } from '../../state/offers/selectors';
+import { getFavoriteOffers } from '../../state/favoriteOffers/selectors';
 import { getIsReady, getIsAuth, getUser } from '../../state/app/selectors';
 import { getOffersBySorting } from '../../state/UI/selectors';
 
 import { init, signIn } from '../../state/app/operations';
-import { addOfferToFavorities, removeOfferFromFavorities } from '../../state/offers/operations';
+import { addOfferToFavorities, removeOfferFromFavorities } from '../../state/favoriteOffers/operations';
 import { changeCity, changeSorting } from '../../state/UI/actions';
 
 const propTypes = {
@@ -34,6 +38,7 @@ const propTypes = {
     name: PropTypes.string,
     location: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
+  favoriteOffers: PropTypes.object,
   init: PropTypes.func.isRequired,
   isReadyApp: PropTypes.bool.isRequired,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -54,8 +59,14 @@ class App extends React.Component {
     signIn(email, password);
   };
 
+  haveFavoritePlaceCard = () => {
+    const { favoriteOffers } = this.props;
+    return keys(favoriteOffers).length > 0;
+  };
+
   render() {
     const {
+      favoriteOffers,
       isReadyApp,
       isAuthUser,
       user,
@@ -105,12 +116,22 @@ class App extends React.Component {
               )}
             />
             <PrivateRoute
-              component={() => <FavoriteList isAuthUser={isAuthUser} user={user} />}
+              component={() => (
+                <FavoriteList
+                  isAuthUser={isAuthUser}
+                  isEmpty={!this.haveFavoritePlaceCard()}
+                  offers={favoriteOffers}
+                  user={user}
+                  onAddOfferToFavorities={addOfferToFavorities}
+                  onRemoveOfferFromFavorities={removeOfferFromFavorities}
+                />
+              )}
               isAuth={isAuthUser}
               path="/favorites"
             />
           </Switch>
           <RedirectToLogin />
+          <Loader />
         </React.Fragment>
       );
     }
@@ -126,6 +147,7 @@ const mapStateToProps = (state) => ({
   currentCity: transformCurrentCity(state),
   cities: getCities(state),
   offers: getOffersBySorting(state),
+  favoriteOffers: getFavoriteOffers(state),
 });
 
 const mapDispatchToProps = {

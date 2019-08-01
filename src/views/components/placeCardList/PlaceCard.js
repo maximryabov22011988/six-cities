@@ -43,7 +43,7 @@ const propTypes = {
     title: PropTypes.string,
     type: PropTypes.string,
   }).isRequired,
-  onActiveOfferClick: PropTypes.func.isRequired,
+  onActiveOfferClick: PropTypes.func,
   onAddToFavorities: PropTypes.func.isRequired,
   onRemoveFromFavorities: PropTypes.func.isRequired,
 };
@@ -75,7 +75,8 @@ function PlaceCard({
       className={cn(
         'place-card',
         className === 'cities' && `${className}__place-card`,
-        className === 'near-places' && `${className}__card`
+        className === 'near-places' && `${className}__card`,
+        className === 'favorites' && `${className}__card`
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -84,11 +85,17 @@ function PlaceCard({
 
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
         <a href="#" onClick={onActiveOfferClick}>
-          <Image className="place-card__image" height="200" label="Place image" src={previewImage} width="260" />
+          <Image
+            className="place-card__image"
+            height={className === 'favorites' ? '110' : '200'}
+            label="Place image"
+            src={previewImage}
+            width={className === 'favorites' ? '150' : '260'}
+          />
         </a>
       </div>
 
-      <div className="place-card__info">
+      <div className={cn('place-card__info', className === 'favorites' && `${className}__card-info`)}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>

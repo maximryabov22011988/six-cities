@@ -3,10 +3,10 @@ import * as appActions from './actions';
 import * as UIActions from '../UI/actions';
 
 import { loadOffers } from '../offers/operations';
+import { loadFavoriteOffers } from '../favoriteOffers/operations';
 
 export const init = () => async (dispatch) => {
-  const response = await dispatch(loadOffers());
-  const offers = response.data;
+  const offers = await dispatch(loadOffers());
 
   if (offers) {
     const initialCity = offers[0].city;
@@ -29,5 +29,6 @@ export const signIn = (email, password) => async (dispatch, getState, api) => {
   if (user) {
     dispatch(appActions.toogleAuthApp());
     dispatch(appActions.receiveSignIn(user));
+    dispatch(loadFavoriteOffers());
   }
 };

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   rating: {
-    currentRating: PropTypes.string.isRequired,
+    currentRating: PropTypes.string,
     onChange: PropTypes.func.isRequired,
   },
   label: {

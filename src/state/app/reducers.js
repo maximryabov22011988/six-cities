@@ -1,5 +1,6 @@
 import * as types from './types';
 import * as offerTypes from '../offers/types';
+import * as favoriteOffersTypes from '../favoriteOffers/types';
 import * as reviewsTypes from '../reviews/types';
 
 const initialState = {
@@ -16,6 +17,7 @@ const app = (state = initialState, action) => {
     case types.REQUEST_SUCCESS:
     case types.REQUEST_FAILURE:
     case offerTypes.RECEIVE_OFFERS:
+    case favoriteOffersTypes.RECEIVE_FAVORITE_OFFERS:
     case reviewsTypes.RECEIVE_REVIEWS: {
       return {
         ...state,
@@ -32,6 +34,7 @@ const app = (state = initialState, action) => {
     }
     case types.REQUEST_SIGN_IN:
     case offerTypes.REQUEST_OFFERS:
+    case favoriteOffersTypes.REQUEST_FAVORITE_OFFERS:
     case reviewsTypes.REQUEST_REVIEWS: {
       return {
         ...state,
