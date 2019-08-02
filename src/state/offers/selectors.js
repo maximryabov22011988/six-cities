@@ -2,13 +2,11 @@ import { createSelector } from 'reselect';
 import { find, filter, reduce } from 'lodash';
 
 import calcDistance from '../../views/utils/calcDistance';
-import { denormalizeDataHelper } from '../utils';
+import { denormalizeData } from '../utils';
 import nameSpace from '../name-spaces';
 
-const getCurrentOffer = createSelector(
-  [(state, props) => state[nameSpace.OFFERS][props.match.params.id]],
-  (offer) => offer
-);
+const getCurrentOffer = (state, props) => state[nameSpace.OFFERS][props.match.params.id];
+const getCurrentCity = (state) => state[nameSpace.UI].currentCity;
 
 const getOffers = createSelector(
   [(state) => state[nameSpace.OFFERS]],
@@ -16,7 +14,7 @@ const getOffers = createSelector(
     let result;
 
     if (offers) {
-      result = denormalizeDataHelper(offers);
+      result = denormalizeData(offers);
     } else {
       result = [];
     }
@@ -54,8 +52,6 @@ const getNearOffers = createSelector(
     return result;
   }
 );
-
-const getCurrentCity = (state) => state[nameSpace.UI].currentCity;
 
 const getOffersByCity = createSelector(
   [getCurrentCity, getOffers],
@@ -122,4 +118,4 @@ const transformCurrentCity = createSelector(
   }
 );
 
-export { transformCurrentCity, getCities, getOffersByCity, getCurrentOffer, getNearOffers };
+export { transformCurrentCity, getOffers, getCities, getOffersByCity, getCurrentOffer, getNearOffers };

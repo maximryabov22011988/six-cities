@@ -5,10 +5,7 @@ import { sortingName } from '../../views/constants/options';
 import { getOffersByCity } from '../offers/selectors';
 import nameSpace from '../name-spaces';
 
-const getCurrentSorting = createSelector(
-  [(state) => state[nameSpace.UI].sorting],
-  (currentSorting) => currentSorting
-);
+const getCurrentSorting = (state) => state[nameSpace.UI].sorting;
 
 const getOffersBySorting = createSelector(
   [getCurrentSorting, getOffersByCity],

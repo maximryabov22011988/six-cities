@@ -9,15 +9,12 @@ export const receiveFavoriteOffers = (favoritiesOffers) => ({
   payload: favoritiesOffers,
 });
 
-export const addOfferToFavorities = () => ({
+export const addOfferToFavorities = (hotelId) => ({
   type: types.ADD_OFFER_TO_FAVORITIES,
+  payload: hotelId,
 });
 
-export const removeOfferFromFavorities = () => ({
+export const removeOfferFromFavorities = (hotelId) => ({
   type: types.REMOVE_OFFER_FROM_FAVORITIES,
-});
-
-export const updateOffers = (updatedOffer) => ({
-  type: types.UPDATE_OFFERS,
-  payload: updatedOffer,
+  payload: hotelId,
 });

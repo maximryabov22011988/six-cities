@@ -1,6 +1,7 @@
 import { get } from 'lodash';
 
 import * as actions from './actions';
+import * as offerActions from '../offers/actions';
 
 export const loadFavoriteOffers = () => async (dispatch, getState, api) => {
   dispatch(actions.requestFavoriteOffers());
@@ -12,21 +13,19 @@ export const loadFavoriteOffers = () => async (dispatch, getState, api) => {
 };
 
 export const addOfferToFavorities = (hotelId) => async (dispatch, getState, api) => {
-  dispatch(actions.addOfferToFavorities());
   const response = await api.post(`/favorite/${hotelId}/1`);
   const updatedOffer = get(response, 'data', null);
   if (updatedOffer) {
-    dispatch(actions.updateOffers(updatedOffer));
-    dispatch(loadFavoriteOffers());
+    dispatch(offerActions.updateOffers(updatedOffer));
+    dispatch(actions.addOfferToFavorities(hotelId));
   }
 };
 
 export const removeOfferFromFavorities = (hotelId) => async (dispatch, getState, api) => {
-  dispatch(actions.removeOfferFromFavorities());
   const response = await api.post(`/favorite/${hotelId}/0`);
   const updatedOffer = get(response, 'data', null);
   if (updatedOffer) {
-    dispatch(actions.updateOffers(updatedOffer));
-    dispatch(loadFavoriteOffers());
+    dispatch(offerActions.updateOffers(updatedOffer));
+    dispatch(actions.removeOfferFromFavorities(hotelId));
   }
 };

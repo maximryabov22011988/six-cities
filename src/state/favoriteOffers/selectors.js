@@ -1,17 +1,21 @@
 import { createSelector } from 'reselect';
-import { groupBy } from 'lodash';
+import { map, groupBy } from 'lodash';
 
-import { denormalizeDataHelper } from '../utils';
+import { getOffers } from '../offers/selectors';
 import nameSpace from '../name-spaces';
+import { normalizeData } from '../utils';
+
+const getFavoriteOffersIds = (state) => state[nameSpace.FAVORITE_OFFERS];
 
 const getFavoriteOffers = createSelector(
-  [(state) => state[nameSpace.FAVORITE_OFFERS]],
-  (favoriteOffers) => {
+  [getOffers, getFavoriteOffersIds],
+  (offers, favoriteOffersIds) => {
     let result;
 
-    if (favoriteOffers) {
-      const offers = denormalizeDataHelper(favoriteOffers);
-      result = groupBy(offers, (offer) => offer.city.name);
+    if (offers && favoriteOffersIds) {
+      const offersMap = normalizeData(offers);
+      const favoriteOffers = map(favoriteOffersIds, (id) => offersMap[id]);
+      result = groupBy(favoriteOffers, (offer) => offer.city.name);
     } else {
       result = [];
     }

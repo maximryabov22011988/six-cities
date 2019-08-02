@@ -45,6 +45,7 @@ const app = (state = initialState, action) => {
       const userInfo = action.payload;
       return {
         ...state,
+        isLoading: false,
         auth: {
           ...state.auth,
           user: {

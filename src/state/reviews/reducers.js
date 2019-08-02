@@ -1,14 +1,17 @@
 import * as types from './types';
-import { normalizeDataHelper } from '../utils';
+import { normalizeData } from '../utils';
 
 const reviewsInitialState = {};
 
 const reviews = (state = reviewsInitialState, action) => {
   switch (action.type) {
+    case types.REQUEST_REVIEWS: {
+      return reviewsInitialState;
+    }
     case types.RECEIVE_REVIEWS: {
       return {
         ...state,
-        ...normalizeDataHelper(action.payload),
+        ...normalizeData(action.payload),
       };
     }
     default: {

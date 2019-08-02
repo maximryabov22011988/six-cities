@@ -1,6 +1,5 @@
 import * as types from './types';
-import * as favoriteOffersTypes from '../favoriteOffers/types';
-import { normalizeDataHelper } from '../utils';
+import { normalizeData } from '../utils';
 
 const offersInitialState = {};
 
@@ -9,10 +8,10 @@ const offers = (state = offersInitialState, action) => {
     case types.RECEIVE_OFFERS: {
       return {
         ...state,
-        ...normalizeDataHelper(action.payload),
+        ...normalizeData(action.payload),
       };
     }
-    case favoriteOffersTypes.UPDATE_OFFERS: {
+    case types.UPDATE_OFFERS: {
       const updatedOffer = action.payload;
       return {
         ...state,

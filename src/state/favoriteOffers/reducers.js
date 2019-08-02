@@ -1,18 +1,23 @@
-import * as types from './types';
-import { normalizeDataHelper } from '../utils';
+import { map, without } from 'lodash';
 
-const favoriteOffersInitialState = {};
+import * as types from './types';
+
+const favoriteOffersInitialState = [];
 
 const favoriteOffers = (state = favoriteOffersInitialState, action) => {
   switch (action.type) {
-    case types.REQUEST_FAVORITE_OFFERS: {
-      return favoriteOffersInitialState;
-    }
     case types.RECEIVE_FAVORITE_OFFERS: {
-      return {
-        ...state,
-        ...normalizeDataHelper(action.payload),
-      };
+      const favoriteOffers = action.payload;
+      const favoriteOffersIds = map(favoriteOffers, (offer) => offer.id);
+      return [...state, ...favoriteOffersIds];
+    }
+    case types.ADD_OFFER_TO_FAVORITIES: {
+      const offerId = action.payload;
+      return [...state, offerId];
+    }
+    case types.REMOVE_OFFER_FROM_FAVORITIES: {
+      const offerId = action.payload;
+      return [...without(state, offerId)];
     }
     default: {
       return state;

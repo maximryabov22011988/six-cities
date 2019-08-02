@@ -12,6 +12,7 @@ import Button from '../components/Button';
 import SvgIcon from '../components/SvgIcon';
 import Avatar from '../components/Avatar';
 import Map from '../components/Map';
+import PlaceCardCompact from '../components/placeCardList/PlaceCard';
 
 import Reviews from './placeCard/Reviews';
 import NearPlaces from './placeCard/NearPlaces';
@@ -27,37 +28,8 @@ const MAX_IMAGES = 6;
 const propTypes = {
   addOfferToFavorities: PropTypes.func.isRequired,
   isAuthUser: PropTypes.bool.isRequired,
-  nearOffers: PropTypes.arrayOf(PropTypes.object),
-  offer: PropTypes.shape({
-    bedrooms: PropTypes.number,
-    city: PropTypes.shape({
-      name: PropTypes.string,
-      location: PropTypes.object,
-    }),
-    description: PropTypes.string,
-    goods: PropTypes.arrayOf(PropTypes.string),
-    host: PropTypes.shape({
-      avatar_url: PropTypes.string,
-      id: PropTypes.number,
-      is_pro: PropTypes.bool,
-      name: PropTypes.string,
-    }),
-    id: PropTypes.number,
-    images: PropTypes.arrayOf(PropTypes.string),
-    is_favorite: PropTypes.bool,
-    is_premium: PropTypes.bool,
-    location: PropTypes.shape({
-      latitude: PropTypes.number,
-      longitude: PropTypes.number,
-      zoom: PropTypes.number,
-    }),
-    max_adults: PropTypes.number,
-    preview_image: PropTypes.string,
-    price: PropTypes.number,
-    rating: PropTypes.number,
-    title: PropTypes.string,
-    type: PropTypes.string,
-  }).isRequired,
+  nearOffers: PropTypes.arrayOf(PlaceCardCompact.propTypes.offer),
+  offer: PlaceCardCompact.propTypes.offer,
   removeOfferFromFavorities: PropTypes.func.isRequired,
   sendReview: PropTypes.func.isRequired,
   user: PropTypes.shape({

@@ -1,4 +1,3 @@
-import * as offerActions from '../offers/actions';
 import * as appActions from './actions';
 import * as UIActions from '../UI/actions';
 
@@ -16,7 +15,6 @@ export const init = () => async (dispatch) => {
       zoom: initialCity.location.zoom,
     };
 
-    dispatch(offerActions.receiveOffers(offers));
     dispatch(UIActions.changeCity(city));
     dispatch(appActions.toogleReadyApp());
   }
