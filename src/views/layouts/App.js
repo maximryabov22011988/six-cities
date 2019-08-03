@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { keys } from 'lodash';
 
 import Loader from '../components/Loader';
+import Notification from '../components/Notification';
 
 import SignIn from '../pages/SignIn';
 import MainPage from '../pages/MainPage';
@@ -132,6 +133,7 @@ class App extends React.Component {
           </Switch>
           <RedirectToLogin />
           <Loader />
+          <Notification />
         </React.Fragment>
       );
     }
