@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 
 const defaultProps = {

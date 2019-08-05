@@ -13,10 +13,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-  src: 'img/logo.svg',
-  width: '81',
   height: '41',
   label: '6 cities logo',
+  src: 'img/logo.svg',
+  width: '81',
 };
 
 class Logo extends React.PureComponent {

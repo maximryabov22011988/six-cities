@@ -64,7 +64,7 @@ class SignInForm extends React.Component {
     onSignIn(user.get('email'), user.get('password'));
   };
 
-  isLockedButton() {
+  isLocked() {
     const { email, password } = this.state;
     return !(email.length >= 5 && password.length >= 3);
   }
@@ -84,7 +84,7 @@ class SignInForm extends React.Component {
             onChange={this.handleChange}
           />
           <Field {...field.password} classes={fieldClasses} value={password.value} onChange={this.handleChange} />
-          <Button className="login__submit form__submit" disabled={this.isLockedButton()} type="submit">
+          <Button className="login__submit form__submit" disabled={this.isLocked()} type="submit">
             Sign in
           </Button>
         </Form>

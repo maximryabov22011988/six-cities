@@ -32,7 +32,7 @@ class AddReviewsForm extends React.Component {
     return isNumber(parseInt(rating));
   };
 
-  isDisabled = () => !(this.isCorrectComment() && this.isCorrectRating());
+  isLocked = () => !(this.isCorrectComment() && this.isCorrectRating());
 
   handleChange = ({ target }) => {
     this.setState((prevState) => ({
@@ -80,7 +80,7 @@ class AddReviewsForm extends React.Component {
             To submit review please make sure to set <span className="reviews__star">rating</span> and describe your
             stay with at least <b className="reviews__text-amount">{MIN_CHARACTERS} characters</b>.
           </p>
-          <Button className="reviews__submit form__submit" disabled={this.isDisabled()} type="submit">
+          <Button className="reviews__submit form__submit" disabled={this.isLocked()} type="submit">
             Submit
           </Button>
         </div>

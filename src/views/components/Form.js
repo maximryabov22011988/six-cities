@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 const propTypes = {
   action: PropTypes.string,
-  children: PropTypes.any,
+  children: PropTypes.node,
   className: PropTypes.string,
   method: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,

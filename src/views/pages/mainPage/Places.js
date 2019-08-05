@@ -30,12 +30,14 @@ function Places({
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
       <b className="places__found">{searchResultText}</b>
+
       <Select
         caption="Sort by"
         defaultOption={defaultOptionId}
         options={SORTING_OPTIONS}
         onChangeSorting={onChangeSorting}
       />
+
       <PlaceCardList
         offers={offers}
         parentClassName="cities"

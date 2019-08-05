@@ -8,8 +8,7 @@ import Logo from '../components/Logo';
 import UserInfo from '../components/UserInfo';
 import Content from '../components/Content';
 import PlaceCardList from '../components/PlaceCardList';
-
-import Footer from './favoriteList/Footer';
+import Footer from '../components/Footer';
 
 const propTypes = {
   isAuthUser: PropTypes.bool.isRequired,

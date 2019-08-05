@@ -63,11 +63,11 @@ class Notification extends React.Component {
   }
 }
 
+Notification.propTypes = propTypes;
+
 const mapStateToProps = (state) => ({
   show: Boolean(get(state[nameSpace.APP], 'errors', false)),
   message: get(state[nameSpace.APP], 'errors.message', ''),
 });
-
-Notification.propTypes = propTypes;
 
 export default connect(mapStateToProps)(Notification);

@@ -41,10 +41,12 @@ const propTypes = {
   }).isRequired,
   favoriteOffers: PropTypes.object,
   init: PropTypes.func.isRequired,
+  isAuthUser: PropTypes.bool,
   isReadyApp: PropTypes.bool.isRequired,
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
   removeOfferFromFavorities: PropTypes.func.isRequired,
   signIn: PropTypes.func.isRequired,
+  user: PropTypes.object,
 };
 
 class App extends React.Component {
@@ -131,6 +133,7 @@ class App extends React.Component {
               path="/favorites"
             />
           </Switch>
+
           <RedirectToLogin />
           <Loader />
           <Notification />
@@ -141,6 +144,8 @@ class App extends React.Component {
     return null;
   }
 }
+
+App.propTypes = propTypes;
 
 const mapStateToProps = (state) => ({
   isReadyApp: getIsReady(state),
@@ -160,8 +165,6 @@ const mapDispatchToProps = {
   addOfferToFavorities,
   removeOfferFromFavorities,
 };
-
-App.propTypes = propTypes;
 
 export { App };
 

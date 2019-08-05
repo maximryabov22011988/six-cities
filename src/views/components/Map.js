@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Leaflet from 'leaflet';
 import { get } from 'lodash';
@@ -6,6 +6,8 @@ import { get } from 'lodash';
 import PlaceCard from './placeCardList/PlaceCard';
 
 const mapContainerId = 'map';
+
+const ACTIVE_PIN_COLOR = '#FF9000';
 
 const mapStyles = {
   fixed: {
@@ -42,7 +44,7 @@ const propTypes = {
   offers: PropTypes.arrayOf(PlaceCard.propTypes.offer),
 };
 
-class Map extends Component {
+class Map extends React.Component {
   componentDidMount() {
     const { currentOffer, offers } = this.props;
     const { latitude, longitude, zoom } = offers ? offers[0].city.location : currentOffer.location;
@@ -106,8 +108,8 @@ class Map extends Component {
         .openPopup();
 
       Leaflet.circle([latitude, longitude], {
-        color: '#FF9000',
-        fillColor: '#FF9000',
+        color: ACTIVE_PIN_COLOR,
+        fillColor: ACTIVE_PIN_COLOR,
         fillOpacity: 0.1,
         radius: get(mostRemoteOffer, 'distance') * 1000,
       }).addTo(group);

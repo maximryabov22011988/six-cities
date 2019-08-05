@@ -8,6 +8,7 @@ import { loadReviews } from '../../../state/reviews/operations';
 import { getReviews } from '../../../state/reviews/selectors';
 
 const propTypes = {
+  hotelId: PropTypes.number,
   reviews: PropTypes.arrayOf(PropTypes.object),
 };
 

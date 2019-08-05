@@ -4,8 +4,8 @@ import cn from 'classnames';
 
 const propTypes = {
   isEmpty: PropTypes.bool,
-  leftPanel: PropTypes.element,
-  rightPanel: PropTypes.element,
+  leftPanel: PropTypes.node,
+  rightPanel: PropTypes.node,
 };
 
 const defaultProps = {

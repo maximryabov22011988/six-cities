@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 const propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   type: PropTypes.string,

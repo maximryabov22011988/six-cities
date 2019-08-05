@@ -117,7 +117,7 @@ function PlaceCard({
                 </BookmarkButton>
               </div>
 
-              <Rating parentClassName="property" rating={rating} showValue />
+              <Rating isShowValue parentClassName="property" rating={rating} />
 
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">{type}</li>

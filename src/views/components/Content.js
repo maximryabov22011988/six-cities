@@ -3,37 +3,25 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 const propTypes = {
-  children: PropTypes.element,
-  containerClassName: PropTypes.string,
+  children: PropTypes.node,
   isEmpty: PropTypes.bool,
-  mainClassName: PropTypes.string,
   parentClassName: PropTypes.string,
-  sectionClassName: PropTypes.string,
 };
 
 const defaultProps = {
   children: null,
 };
 
-function Content({ mainClassName, containerClassName, isEmpty, sectionClassName, parentClassName, children }) {
+function Content({ isEmpty, parentClassName, children }) {
   const mainClasses = cn(
     'page__main',
-    mainClassName && `page__main ${mainClassName}`,
     parentClassName && `page__main--${parentClassName}`,
     isEmpty && parentClassName === 'favorites' && `page__main--${parentClassName}-empty`
   );
 
-  const containerClasses = cn(
-    'container',
-    containerClassName && `container ${containerClassName}`,
-    parentClassName && `page__${parentClassName}-container`
-  );
+  const containerClasses = cn('container', parentClassName && `page__${parentClassName}-container`);
 
-  const sectionClasses = cn(
-    sectionClassName,
-    parentClassName,
-    isEmpty && parentClassName === 'favorites' && `${parentClassName}--empty`
-  );
+  const sectionClasses = cn(parentClassName, isEmpty && parentClassName === 'favorites' && `${parentClassName}--empty`);
 
   return (
     <main className={mainClasses}>

@@ -5,6 +5,7 @@ const propTypes = {
   alt: PropTypes.string,
   height: PropTypes.string,
   isPro: PropTypes.bool,
+  name: PropTypes.string,
   parentClassName: PropTypes.string,
   showStatus: PropTypes.bool,
   src: PropTypes.string,
