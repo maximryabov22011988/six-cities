@@ -1,21 +1,7 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
-const propTypes = {
-  alt: PropTypes.string,
-  height: PropTypes.string,
-  isPro: PropTypes.bool,
-  name: PropTypes.string,
-  parentClassName: PropTypes.string,
-  showStatus: PropTypes.bool,
-  src: PropTypes.string,
-  width: PropTypes.string,
-};
-const defaultProps = {
-  isPro: false,
-  showStatus: false,
-};
-function Avatar({ alt, height, isPro, name, parentClassName, showStatus, src, width }) {
+function Avatar({ alt, height, isPro = false, name, parentClassName, showStatus = false, src, width }) {
   return React.createElement(
     React.Fragment,
     null,
@@ -37,7 +23,5 @@ function Avatar({ alt, height, isPro, name, parentClassName, showStatus, src, wi
     showStatus && React.createElement('span', { className: `${parentClassName}__user-status` }, 'Pro')
   );
 }
-Avatar.propTypes = propTypes;
-Avatar.defaultProps = defaultProps;
 exports.default = Avatar;
 //# sourceMappingURL=Avatar.js.map

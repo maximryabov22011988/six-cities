@@ -1,23 +1,17 @@
 import * as React from 'react';
 
+interface Props {
+  alt: string,
+  height: string,
+  isPro: boolean,
+  name: string,
+  parentClassName: string,
+  showStatus: boolean,
+  src: string,
+  width: string,
+}
 
-const propTypes = {
-  alt: PropTypes.string,
-  height: PropTypes.string,
-  isPro: PropTypes.bool,
-  name: PropTypes.string,
-  parentClassName: PropTypes.string,
-  showStatus: PropTypes.bool,
-  src: PropTypes.string,
-  width: PropTypes.string,
-};
-
-const defaultProps = {
-  isPro: false,
-  showStatus: false,
-};
-
-function Avatar({ alt, height, isPro, name, parentClassName, showStatus, src, width }) {
+function Avatar({ alt, height, isPro = false, name, parentClassName, showStatus = false, src, width }: Props) {
   return (
     <React.Fragment>
       <div
@@ -31,8 +25,5 @@ function Avatar({ alt, height, isPro, name, parentClassName, showStatus, src, wi
     </React.Fragment>
   );
 }
-
-Avatar.propTypes = propTypes;
-Avatar.defaultProps = defaultProps;
 
 export default Avatar;
