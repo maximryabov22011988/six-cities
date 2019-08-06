@@ -13,12 +13,12 @@ import Footer from '../components/Footer';
 import { User, onAddToFavorities, onRemoveFromFavorities } from '../interfaces';
 
 interface Props {
-  isAuthUser: boolean,
-  isEmpty: boolean,
-  offers: object,
-  user: User,
-  onAddOfferToFavorities: onAddToFavorities,
-  onRemoveOfferFromFavorities: onRemoveFromFavorities,
+  isAuthUser: boolean;
+  isEmpty: boolean;
+  offers: object;
+  user: User;
+  onAddOfferToFavorities: onAddToFavorities;
+  onRemoveOfferFromFavorities: onRemoveFromFavorities;
 }
 
 class FavoriteList extends React.Component<Props> {

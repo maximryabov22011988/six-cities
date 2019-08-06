@@ -26,19 +26,19 @@ import { changeCity, changeSorting } from '../../state/UI/actions';
 import { City, OfferCity, Offer, User, onAddToFavorities, onRemoveFromFavorities, onSignIn } from '../interfaces';
 
 interface Props {
-  addOfferToFavorities: onAddToFavorities,
-  changeCity: () => void,
-  changeSorting: () => void,
-  cities: Array<City>,
-  currentCity: OfferCity,
-  favoriteOffers: Array<Offer>,
-  init: () => void,
-  isAuthUser: boolean,
-  isReadyApp: boolean,
-  offers: Array<Offer>,
-  removeOfferFromFavorities: onRemoveFromFavorities,
-  signIn: onSignIn
-  user: User,
+  addOfferToFavorities: onAddToFavorities;
+  changeCity: () => void;
+  changeSorting: () => void;
+  cities: Array<City>;
+  currentCity: OfferCity;
+  favoriteOffers: Array<Offer>;
+  init: () => void;
+  isAuthUser: boolean;
+  isReadyApp: boolean;
+  offers: Array<Offer>;
+  removeOfferFromFavorities: onRemoveFromFavorities;
+  signIn: onSignIn;
+  user: User;
 }
 
 class App extends React.Component<Props> {

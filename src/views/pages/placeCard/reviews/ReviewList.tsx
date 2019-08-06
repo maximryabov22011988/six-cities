@@ -5,7 +5,7 @@ import ReviewItem from './ReviewItem';
 import { Review } from '../../../interfaces';
 
 interface Props {
-  reviews: Array<Review>
+  reviews: Array<Review>;
 }
 
 const REVIEWS_MAX = 10;

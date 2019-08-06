@@ -8,15 +8,15 @@ import { ENTER, ESC, MOUSE_LEFT_BUTTON } from '../../../constants/keyCodes';
 import { Option } from '../../../interfaces';
 
 interface Props {
-  caption: string,
-  defaultOption: number,
-  options: Array<Option>,
-  onChangeSorting: (sorting: string) => void,
+  caption: string;
+  defaultOption: number;
+  options: Array<Option>;
+  onChangeSorting: (sorting: string) => void;
 }
 
 interface State {
-  currentOption: number,
-  isOpen: boolean,
+  currentOption: number;
+  isOpen: boolean;
 }
 
 class Select extends React.Component<Props, State> {

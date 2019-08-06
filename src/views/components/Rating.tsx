@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 interface Props {
-  isShowValue?: boolean,
-  parentClassName: string,
-  rating: number,
+  isShowValue?: boolean;
+  parentClassName: string;
+  rating: number;
 }
 
 const MAX_RATING = 5;

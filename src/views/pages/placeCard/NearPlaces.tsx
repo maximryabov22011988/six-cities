@@ -5,9 +5,9 @@ import PlaceCardList from '../../components/PlaceCardList';
 import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../interfaces';
 
 interface Props {
-  offers: Array<Offer>,
-  onAddToFavorities: onAddToFavorities,
-  onRemoveFromFavorities: onRemoveFromFavorities,
+  offers: Array<Offer>;
+  onAddToFavorities: onAddToFavorities;
+  onRemoveFromFavorities: onRemoveFromFavorities;
 }
 
 function NearPlaces({ offers, onAddToFavorities, onRemoveFromFavorities }: Props) {

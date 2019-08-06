@@ -8,7 +8,7 @@ import Rating from '../../../components/Rating';
 import { Review } from '../../../interfaces';
 
 interface Props {
-  review: Review
+  review: Review;
 }
 
 const getDateFormat = (date) => {

@@ -6,9 +6,9 @@ import Avatar from './Avatar';
 import { BASE_URL } from '../../api';
 
 interface Props {
-  avatarUrl: string,
-  email: string,
-  isAuth: boolean,
+  avatarUrl: string;
+  email: string;
+  isAuth: boolean;
 }
 
 class UserInfo extends React.PureComponent<Props> {

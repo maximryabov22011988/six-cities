@@ -8,13 +8,13 @@ import Rating from './addReviewsForm/Rating';
 const MIN_CHARACTERS = 50;
 
 interface Props {
-  hotelId: number,
-  onSendReview: (hotelId: number, review: { rating: string, comment: string }) => void,
+  hotelId: number;
+  onSendReview: (hotelId: number, review: { rating: string; comment: string }) => void;
 }
 
 interface State {
-  rating: string,
-  review: string,
+  rating: string;
+  review: string;
 }
 
 class AddReviewsForm extends React.Component<Props, State> {

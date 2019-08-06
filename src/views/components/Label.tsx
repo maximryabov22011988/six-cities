@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 interface Props {
-  isShow: boolean,
-  name: string,
-  parentClassName: string,
+  isShow: boolean;
+  name: string;
+  parentClassName: string;
 }
 
 function Label({ isShow, name, parentClassName }: Props) {

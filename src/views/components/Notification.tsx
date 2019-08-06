@@ -8,12 +8,12 @@ import SvgIcon from './SvgIcon';
 import nameSpace from '../../state/name-spaces';
 
 interface Props {
-  message: string,
-  show: boolean,
+  message: string;
+  show: boolean;
 }
 
 interface State {
-  show: boolean
+  show: boolean;
 }
 
 class Notification extends React.Component<Props, State> {

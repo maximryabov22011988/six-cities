@@ -8,12 +8,12 @@ import { SORTING_OPTIONS } from '../../constants/options';
 import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../interfaces';
 
 interface Props {
-  offers: Array<Offer>,
-  searchResultText: string,
-  onActiveOfferClick?: ((id: number) => (event: React.MouseEvent<HTMLAnchorElement>) => void) | undefined,
-  onAddToFavorities: onAddToFavorities,
-  onChangeSorting: (sorting: string) => void,
-  onRemoveFromFavorities: onRemoveFromFavorities,
+  offers: Array<Offer>;
+  searchResultText: string;
+  onActiveOfferClick?: ((id: number) => (event: React.MouseEvent<HTMLAnchorElement>) => void) | undefined;
+  onAddToFavorities: onAddToFavorities;
+  onChangeSorting: (sorting: string) => void;
+  onRemoveFromFavorities: onRemoveFromFavorities;
 }
 
 const defaultOptionId = 1; // Popular

@@ -32,12 +32,12 @@ const field = {
 };
 
 interface Props {
-  onSignIn: onSignIn,
+  onSignIn: onSignIn;
 }
 
 interface State {
-  email: string,
-  password: string,
+  email: string;
+  password: string;
 }
 
 class SignInForm extends React.Component<Props, State> {

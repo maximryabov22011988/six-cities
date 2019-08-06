@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface Props {
-  city: string,
+  city: string;
 }
 
 function EmptyPlaces({ city }: Props) {

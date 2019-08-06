@@ -10,7 +10,7 @@
     "eslint": "node_modules/.bin/eslint src/",
     "jest": "jest",
     "jest:u": "jest -u",
-    "format": "prettier-eslint --write \"src/**/*.js\""
+    "format": "prettier-eslint --write \"src/**/*.tsx\""
   },
   "lint-staged": {
     "src/**/*.js": [

@@ -6,7 +6,7 @@ import { get } from 'lodash';
 import { code as serverAnswer } from '../../api';
 
 interface Props {
-  isRequireAuth: boolean,
+  isRequireAuth: boolean;
 }
 
 /* eslint-disable */

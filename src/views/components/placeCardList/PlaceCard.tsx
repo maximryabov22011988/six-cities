@@ -13,20 +13,14 @@ import withActiveItem from '../../hocs/withActiveItem';
 import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../interfaces';
 
 interface Props {
-  className: string,
-  offer: Offer,
-  onActiveOfferClick: ((event: React.MouseEvent<HTMLAnchorElement>) => void) | undefined,
-  onAddToFavorities: onAddToFavorities,
-  onRemoveFromFavorities: onRemoveFromFavorities,
+  className: string;
+  offer: Offer;
+  onActiveOfferClick: ((event: React.MouseEvent<HTMLAnchorElement>) => void) | undefined;
+  onAddToFavorities: onAddToFavorities;
+  onRemoveFromFavorities: onRemoveFromFavorities;
 }
 
-function PlaceCard({
-  className,
-  offer,
-  onActiveOfferClick,
-  onAddToFavorities,
-  onRemoveFromFavorities,
-}: Props) {
+function PlaceCard({ className, offer, onActiveOfferClick, onAddToFavorities, onRemoveFromFavorities }: Props) {
   const {
     id,
     title,

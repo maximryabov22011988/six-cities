@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import nameSpace from '../../state/name-spaces';
 
 interface Props {
-  isLoading: boolean,
+  isLoading: boolean;
 }
 
 const wrapStyles = {

@@ -9,9 +9,9 @@ import { getReviews } from '../../../state/reviews/selectors';
 import { Review } from '../../interfaces';
 
 interface Props {
-  hotelId: number,
-  reviews: Array<Review>,
-  loadReviews: (hotelId: number) => void
+  hotelId: number;
+  reviews: Array<Review>;
+  loadReviews: (hotelId: number) => void;
 }
 
 class Reviews extends React.Component<Props> {

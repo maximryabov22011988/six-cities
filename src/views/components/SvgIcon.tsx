@@ -2,12 +2,12 @@ import * as React from 'react';
 import cn from 'classnames';
 
 interface Props {
-  className?: string,
-  height: string,
-  isShowLabel?: boolean,
-  label?: string,
-  name: string,
-  width: string,
+  className?: string;
+  height: string;
+  isShowLabel?: boolean;
+  label?: string;
+  name: string;
+  width: string;
 }
 
 function SvgIcon({ className, height, isShowLabel, label, name, width }: Props) {

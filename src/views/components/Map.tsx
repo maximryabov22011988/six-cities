@@ -37,16 +37,18 @@ const LEAFLET_LAYER = {
 };
 
 interface Props {
-  activeOffer?: number,
-  className?: string,
-  currentOffer?: Offer,
-  offers: Array<Offer>,
-  fixed?: boolean
+  activeOffer?: number;
+  className?: string;
+  currentOffer?: Offer;
+  offers: Array<Offer>;
+  fixed?: boolean;
 }
 
 class Map extends React.Component<Props> {
   offerMap: typeof Leaflet;
+
   pinGroup: typeof Leaflet;
+
   icon: object;
 
   componentDidMount() {

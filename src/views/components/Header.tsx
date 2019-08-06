@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 interface Props {
-  logo: React.ReactElement,
-  userInfo?: React.ReactElement,
+  logo: React.ReactElement;
+  userInfo?: React.ReactElement;
 }
 
 function Header({ logo, userInfo }: Props) {

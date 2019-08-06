@@ -4,12 +4,12 @@ import NavItem from './navList/NavItem';
 
 import withActiveItem from '../../hocs/withActiveItem';
 
-import { CurrentCity, onChangeCity } from '../../interfaces';
+import { City, onChangeCity } from '../../interfaces';
 
 interface Props {
-  cities: Array<CurrentCity>,
-  currentCity: string,
-  onChangeCity: onChangeCity,
+  cities: Array<City>;
+  currentCity: string;
+  onChangeCity: onChangeCity;
 }
 
 function NavList({ currentCity, cities, onChangeCity }: Props) {

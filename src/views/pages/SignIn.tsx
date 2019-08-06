@@ -10,7 +10,7 @@ import SignInForm from './signIn/SignInForm';
 import { onSignIn } from '../interfaces';
 
 interface Props {
-  onSignIn: onSignIn,
+  onSignIn: onSignIn;
 }
 
 function SignIn({ onSignIn }: Props) {

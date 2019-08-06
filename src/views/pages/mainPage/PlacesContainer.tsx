@@ -2,9 +2,9 @@ import * as React from 'react';
 import cn from 'classnames';
 
 interface Props {
-  isEmpty: boolean,
-  leftPanel: React.ReactNode,
-  rightPanel: React.ReactNode,
+  isEmpty: boolean;
+  leftPanel: React.ReactNode;
+  rightPanel: React.ReactNode;
 }
 
 function PlacesContainer({ isEmpty, leftPanel = null, rightPanel = null }: Props) {

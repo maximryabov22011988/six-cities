@@ -1,12 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-import { CurrentCity, onChangeCity } from '../../../interfaces';
+import { City, onChangeCity } from '../../../interfaces';
 
 interface Props {
-  city: CurrentCity,
-  className: string,
-  onChangeCity: onChangeCity,
+  city: City;
+  className: string;
+  onChangeCity: onChangeCity;
 }
 
 function NavItem({ className, city, onChangeCity }: Props) {

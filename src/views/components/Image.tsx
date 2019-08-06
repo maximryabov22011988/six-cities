@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 interface Props {
-  className?: string,
-  height: string,
-  label?: string,
-  src: string,
-  style?: object,
-  width: string,
+  className?: string;
+  height: string;
+  label?: string;
+  src: string;
+  style?: object;
+  width: string;
 }
 
 interface State {
-  imgStatus: Status.LOADING | Status.SUCCESS | Status.FAILURE
+  imgStatus: Status.LOADING | Status.SUCCESS | Status.FAILURE;
 }
 
 enum Status {

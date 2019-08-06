@@ -2,9 +2,9 @@ import * as React from 'react';
 import cn from 'classnames';
 
 interface Props {
-  children: React.ReactNode,
-  className?: string,
-  parentClassName?: string,
+  children: React.ReactNode;
+  className?: string;
+  parentClassName?: string;
 }
 
 function Page({ className, parentClassName, children }: Props) {

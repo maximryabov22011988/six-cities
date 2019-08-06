@@ -1,20 +1,20 @@
 import * as React from 'react';
 
 interface PropsRating {
-  currentRating: string,
-  onChange: (event: React.FormEvent<HTMLInputElement>) => void,
+  currentRating: string;
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
 }
 
 interface PropsLabel {
-  ratingValue: string,
-  title: string,
+  ratingValue: string;
+  title: string;
 }
 
 interface PropsRadio {
-  checked: boolean,
-  id: string,
-  value: string,
-  onChange: (event: React.FormEvent<HTMLInputElement>) => void,
+  checked: boolean;
+  id: string;
+  value: string;
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
 }
 
 const TERRIBLY = 'terribly';

@@ -2,8 +2,8 @@ import * as React from 'react';
 import cn from 'classnames';
 
 interface Props {
-  children: React.ReactNode,
-  isEmpty: boolean,
+  children: React.ReactNode;
+  isEmpty: boolean;
 }
 
 function Content({ children = null, isEmpty }: Props) {

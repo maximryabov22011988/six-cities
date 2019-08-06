@@ -16,19 +16,19 @@ import Map from '../components/Map';
 import { OfferCity, City, User, Offer } from '../interfaces';
 
 interface Props {
-  addOfferToFavorities: (hotelId: number) => void,
-  changeCity: (city: City) => void,
-  changeSorting: (sorting: string) => void,
-  cities: Array<City>,
-  currentCity: OfferCity,
-  isAuthUser: boolean,
-  offers: Array<Offer>,
-  removeOfferFromFavorities: (hotelId: number) => void,
-  user: User
+  addOfferToFavorities: (hotelId: number) => void;
+  changeCity: (city: City) => void;
+  changeSorting: (sorting: string) => void;
+  cities: Array<City>;
+  currentCity: OfferCity;
+  isAuthUser: boolean;
+  offers: Array<Offer>;
+  removeOfferFromFavorities: (hotelId: number) => void;
+  user: User;
 }
 
 interface State {
-  activeOffer: number
+  activeOffer: number;
 }
 
 class MainPage extends React.Component<Props, State> {

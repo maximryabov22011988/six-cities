@@ -26,13 +26,13 @@ import { User, Offer, onAddToFavorities, onRemoveFromFavorities } from '../inter
 const MAX_IMAGES = 6;
 
 interface Props {
-  addOfferToFavorities: onAddToFavorities,
-  isAuthUser: boolean,
-  nearOffers: Array<Offer>,
-  offer: Offer,
-  removeOfferFromFavorities: onRemoveFromFavorities,
-  sendReview: () => void,
-  user:User,
+  addOfferToFavorities: onAddToFavorities;
+  isAuthUser: boolean;
+  nearOffers: Array<Offer>;
+  offer: Offer;
+  removeOfferFromFavorities: onRemoveFromFavorities;
+  sendReview: () => void;
+  user: User;
 }
 
 function PlaceCard({

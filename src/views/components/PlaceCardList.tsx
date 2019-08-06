@@ -6,14 +6,20 @@ import PlaceCard from './placeCardList/PlaceCard';
 import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../interfaces';
 
 interface Props {
-  offers: Array<Offer>,
-  parentClassName: string,
-  onActiveOfferClick?: ((id: number) => (event: React.MouseEvent<HTMLAnchorElement>) => void) | undefined,
-  onAddToFavorities: onAddToFavorities,
-  onRemoveFromFavorities: onRemoveFromFavorities,
+  offers: Array<Offer>;
+  parentClassName: string;
+  onActiveOfferClick?: ((id: number) => (event: React.MouseEvent<HTMLAnchorElement>) => void) | undefined;
+  onAddToFavorities: onAddToFavorities;
+  onRemoveFromFavorities: onRemoveFromFavorities;
 }
 
-function PlaceCardList({ offers, parentClassName, onActiveOfferClick, onAddToFavorities, onRemoveFromFavorities }: Props) {
+function PlaceCardList({
+  offers,
+  parentClassName,
+  onActiveOfferClick,
+  onAddToFavorities,
+  onRemoveFromFavorities,
+}: Props) {
   return (
     <div
       className={cn(
