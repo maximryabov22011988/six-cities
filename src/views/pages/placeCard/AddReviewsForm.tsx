@@ -1,19 +1,23 @@
 import * as React from 'react';
-
 import { parseInt, isNumber } from 'lodash';
 
 import Form from '../../components/Form';
 import Button from '../../components/Button';
 import Rating from './addReviewsForm/Rating';
 
-const propTypes = {
-  hotelId: PropTypes.number.isRequired,
-  onSendReview: PropTypes.func.isRequired,
-};
-
 const MIN_CHARACTERS = 50;
 
-class AddReviewsForm extends React.Component {
+interface Props {
+  hotelId: number,
+  onSendReview: (hotelId: number, review: { rating: string, comment: string }) => void,
+}
+
+interface State {
+  rating: string,
+  review: string,
+}
+
+class AddReviewsForm extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,7 +92,5 @@ class AddReviewsForm extends React.Component {
     );
   }
 }
-
-AddReviewsForm.propTypes = propTypes;
 
 export default AddReviewsForm;

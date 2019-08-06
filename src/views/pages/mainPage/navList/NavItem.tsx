@@ -1,18 +1,15 @@
 import * as React from 'react';
-
 import cn from 'classnames';
 
-const propTypes = {
-  city: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number,
-  }).isRequired,
-  className: PropTypes.string.isRequired,
-  onChangeCity: PropTypes.func.isRequired,
-};
+import { CurrentCity, onChangeCity } from '../../../interfaces';
 
-function NavItem({ className, city, onChangeCity }) {
+interface Props {
+  city: CurrentCity,
+  className: string,
+  onChangeCity: onChangeCity,
+}
+
+function NavItem({ className, city, onChangeCity }: Props) {
   return (
     <li className="locations__item">
       <a className={cn(className, 'locations__item-link')} href="#" onClick={onChangeCity(city)}>
@@ -21,7 +18,5 @@ function NavItem({ className, city, onChangeCity }) {
     </li>
   );
 }
-
-NavItem.propTypes = propTypes;
 
 export default NavItem;

@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -12,7 +11,6 @@ import Button from '../components/Button';
 import SvgIcon from '../components/SvgIcon';
 import Avatar from '../components/Avatar';
 import Map from '../components/Map';
-import PlaceCardCompact from '../components/placeCardList/PlaceCard';
 
 import Reviews from './placeCard/Reviews';
 import NearPlaces from './placeCard/NearPlaces';
@@ -23,23 +21,19 @@ import withActiveItem from '../hocs/withActiveItem';
 import { sendReview } from '../../state/reviews/operations';
 import { getCurrentOffer, getNearOffers } from '../../state/offers/selectors';
 
+import { User, Offer, onAddToFavorities, onRemoveFromFavorities } from '../interfaces';
+
 const MAX_IMAGES = 6;
 
-const propTypes = {
-  addOfferToFavorities: PropTypes.func.isRequired,
-  isAuthUser: PropTypes.bool.isRequired,
-  nearOffers: PropTypes.arrayOf(PlaceCardCompact.propTypes.offer),
-  offer: PlaceCardCompact.propTypes.offer,
-  removeOfferFromFavorities: PropTypes.func.isRequired,
-  sendReview: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.number,
-    email: PropTypes.string,
-    name: PropTypes.string,
-    avatar_url: PropTypes.string,
-    is_pro: PropTypes.bool,
-  }).isRequired,
-};
+interface Props {
+  addOfferToFavorities: onAddToFavorities,
+  isAuthUser: boolean,
+  nearOffers: Array<Offer>,
+  offer: Offer,
+  removeOfferFromFavorities: onRemoveFromFavorities,
+  sendReview: () => void,
+  user:User,
+}
 
 function PlaceCard({
   isAuthUser,
@@ -49,7 +43,7 @@ function PlaceCard({
   sendReview,
   addOfferToFavorities,
   removeOfferFromFavorities,
-}) {
+}: Props) {
   const {
     id,
     images,
@@ -180,8 +174,6 @@ function PlaceCard({
     </div>
   );
 }
-
-PlaceCard.propTypes = propTypes;
 
 const mapStateToProps = (state, ownProps) => ({
   offer: getCurrentOffer(state, ownProps),

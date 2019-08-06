@@ -1,22 +1,6 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
-const propTypes = {
-  rating: {
-    currentRating: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
-  },
-  label: {
-    ratingValue: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  },
-  radio: {
-    checked: PropTypes.bool.isRequired,
-    id: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-  },
-};
 const TERRIBLY = 'terribly';
 const BADLY = 'badly';
 const NOT_BAD = 'not bad';
@@ -70,7 +54,6 @@ function Rating({ currentRating, onChange }) {
     React.createElement(Label, { ratingValue: RATING_MAP[TERRIBLY], title: TERRIBLY })
   );
 }
-Rating.propTypes = propTypes.rating;
 function Label({ ratingValue, title }) {
   return React.createElement(
     'label',
@@ -82,7 +65,6 @@ function Label({ ratingValue, title }) {
     )
   );
 }
-Label.propTypes = propTypes.label;
 function Radio({ checked, id, value, onChange }) {
   return React.createElement('input', {
     checked: checked,
@@ -94,6 +76,5 @@ function Radio({ checked, id, value, onChange }) {
     onChange: onChange,
   });
 }
-Radio.propTypes = propTypes.radio;
 exports.default = Rating;
 //# sourceMappingURL=Rating.js.map

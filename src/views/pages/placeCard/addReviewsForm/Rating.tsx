@@ -1,22 +1,21 @@
 import * as React from 'react';
 
+interface PropsRating {
+  currentRating: string,
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void,
+}
 
-const propTypes = {
-  rating: {
-    currentRating: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
-  },
-  label: {
-    ratingValue: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  },
-  radio: {
-    checked: PropTypes.bool.isRequired,
-    id: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-  },
-};
+interface PropsLabel {
+  ratingValue: string,
+  title: string,
+}
+
+interface PropsRadio {
+  checked: boolean,
+  id: string,
+  value: string,
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void,
+}
 
 const TERRIBLY = 'terribly';
 const BADLY = 'badly';
@@ -32,7 +31,7 @@ const RATING_MAP = {
   [PERFECT]: '5',
 };
 
-function Rating({ currentRating, onChange }) {
+function Rating({ currentRating, onChange }: PropsRating) {
   return (
     <div className="reviews__rating-form form__rating">
       <Radio
@@ -78,9 +77,7 @@ function Rating({ currentRating, onChange }) {
   );
 }
 
-Rating.propTypes = propTypes.rating;
-
-function Label({ ratingValue, title }) {
+function Label({ ratingValue, title }: PropsLabel) {
   return (
     <label className="reviews__rating-label form__rating-label" htmlFor={`${ratingValue}-stars`} title={title}>
       <svg className="form__star-image" height="33" width="37">
@@ -90,9 +87,7 @@ function Label({ ratingValue, title }) {
   );
 }
 
-Label.propTypes = propTypes.label;
-
-function Radio({ checked, id, value, onChange }) {
+function Radio({ checked, id, value, onChange }: PropsRadio) {
   return (
     <input
       checked={checked}
@@ -105,7 +100,5 @@ function Radio({ checked, id, value, onChange }) {
     />
   );
 }
-
-Radio.propTypes = propTypes.radio;
 
 export default Rating;

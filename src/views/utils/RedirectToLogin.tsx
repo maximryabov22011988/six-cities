@@ -1,17 +1,16 @@
 import * as React from 'react';
-
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { get } from 'lodash';
 
 import { code as serverAnswer } from '../../api';
 
-const propTypes = {
-  isRequireAuth: PropTypes.bool.isRequired,
-};
+interface Props {
+  isRequireAuth: boolean,
+}
 
 /* eslint-disable */
-class RedirectToLogin extends React.Component {
+class RedirectToLogin extends React.Component<Props> {
   render() {
     const { isRequireAuth } = this.props;
     if (isRequireAuth) {
@@ -21,8 +20,6 @@ class RedirectToLogin extends React.Component {
   }
 }
 /* eslint-disable */
-
-RedirectToLogin.propTypes = propTypes;
 
 const mapStateToProps = (state) => ({
   isRequireAuth: get(state, 'app.errors.status', null) === serverAnswer.REQUIRE_AUTH,

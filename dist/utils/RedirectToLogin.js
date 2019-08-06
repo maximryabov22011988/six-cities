@@ -5,9 +5,6 @@ const react_redux_1 = require('react-redux');
 const react_router_dom_1 = require('react-router-dom');
 const lodash_1 = require('lodash');
 const api_1 = require('../../api');
-const propTypes = {
-  isRequireAuth: PropTypes.bool.isRequired,
-};
 /* eslint-disable */
 class RedirectToLogin extends React.Component {
   render() {
@@ -19,7 +16,6 @@ class RedirectToLogin extends React.Component {
   }
 }
 /* eslint-disable */
-RedirectToLogin.propTypes = propTypes;
 const mapStateToProps = (state) => ({
   isRequireAuth: lodash_1.get(state, 'app.errors.status', null) === api_1.code.REQUIRE_AUTH,
 });

@@ -1,8 +1,9 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-const React = require('react');
-const react_test_renderer_1 = require('react-test-renderer');
-const PlaceCardList_1 = require('./PlaceCardList');
+/*
+import * as React from 'react';
+import renderer from 'react-test-renderer';
+
+import PlaceCardList from './PlaceCardList';
+
 const offersMock = [
   {
     id: 1,
@@ -23,10 +24,11 @@ const offersMock = [
     is_favorite: false,
   },
 ];
+
 it('PlaceCardList correctly render', () => {
-  const placeCard = react_test_renderer_1.default
-    .create(React.createElement(PlaceCardList_1.default, { offers: offersMock }))
-    .toJSON();
+  const placeCard = renderer.create(<PlaceCardList offers={offersMock} />).toJSON();
+
   expect(placeCard).toMatchSnapshot();
 });
+*/
 //# sourceMappingURL=PlaceCardList.test.js.map

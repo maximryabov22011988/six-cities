@@ -1,33 +1,33 @@
 import * as React from 'react';
-
 import cn from 'classnames';
 
 import withActiveItem from '../../../hocs/withActiveItem';
 
 import { ENTER, ESC, MOUSE_LEFT_BUTTON } from '../../../constants/keyCodes';
 
-const propTypes = {
-  caption: PropTypes.string.isRequired,
-  defaultOption: PropTypes.number.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-    })
-  ).isRequired,
-  onChangeSorting: PropTypes.func.isRequired,
-};
+import { Option } from '../../../interfaces';
 
-class Select extends React.Component {
+interface Props {
+  caption: string,
+  defaultOption: number,
+  options: Array<Option>,
+  onChangeSorting: (sorting: string) => void,
+}
+
+interface State {
+  currentOption: number,
+  isOpen: boolean,
+}
+
+class Select extends React.Component<Props, State> {
+  selectRef = React.createRef<HTMLDivElement>();
+
   constructor(props) {
     super(props);
-
     this.state = {
       currentOption: props.defaultOption,
       isOpen: false,
     };
-
-    this.selectRef = React.createRef();
   }
 
   componentDidMount() {
@@ -91,7 +91,7 @@ class Select extends React.Component {
   renderOptionItems = (options, currentOption) => {
     return options.map(({ id, name }) => {
       const Option = ({ className, onClick, onKeyUp, children }) => (
-        <li className={className} tabIndex="0" onClick={onClick} onKeyUp={onKeyUp}>
+        <li className={className} tabIndex={0} onClick={onClick} onKeyUp={onKeyUp}>
           {children}
         </li>
       );
@@ -119,13 +119,13 @@ class Select extends React.Component {
       <div
         className="places__sorting"
         ref={this.selectRef}
-        tabIndex="0"
+        tabIndex={0}
         onClick={this.handleOutsideClick}
         onKeyDown={this.handleEscPress}
       >
         {caption && <span className="places__sorting-caption">{caption}</span>}
 
-        <span className="places__sorting-type" tabIndex="0" onClick={this.handleOpen} onFocus={this.handleOpen}>
+        <span className="places__sorting-type" tabIndex={0} onClick={this.handleOpen} onFocus={this.handleOpen}>
           {this.getCurrentOptionText()}
           <svg className="places__sorting-arrow" height="4" width="7">
             <use xlinkHref="#icon-arrow-select" />
@@ -141,7 +141,5 @@ class Select extends React.Component {
     );
   }
 }
-
-Select.propTypes = propTypes;
 
 export default Select;

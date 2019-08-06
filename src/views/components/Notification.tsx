@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { connect } from 'react-redux';
 import cn from 'classnames';
 import { get } from 'lodash';
@@ -8,12 +7,18 @@ import SvgIcon from './SvgIcon';
 
 import nameSpace from '../../state/name-spaces';
 
-const propTypes = {
-  message: PropTypes.string,
-  show: PropTypes.bool,
-};
+interface Props {
+  message: string,
+  show: boolean,
+}
 
-class Notification extends React.Component {
+interface State {
+  show: boolean
+}
+
+class Notification extends React.Component<Props, State> {
+  timer: number;
+
   state = {
     show: false,
   };
@@ -25,7 +30,7 @@ class Notification extends React.Component {
         show: true,
       });
 
-      this.timer = setTimeout(() => {
+      this.timer = window.setTimeout(() => {
         this.setState({
           show: false,
         });
@@ -47,6 +52,7 @@ class Notification extends React.Component {
   render() {
     const { message } = this.props;
     const { show } = this.state;
+
     return (
       <div className={cn('notification', show && 'notification--show')}>
         <span>
@@ -62,8 +68,6 @@ class Notification extends React.Component {
     );
   }
 }
-
-Notification.propTypes = propTypes;
 
 const mapStateToProps = (state) => ({
   show: Boolean(get(state[nameSpace.APP], 'errors', false)),

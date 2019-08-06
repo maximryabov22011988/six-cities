@@ -1,11 +1,10 @@
 import * as React from 'react';
 
+interface Props {
+  city: string,
+}
 
-const propTypes = {
-  city: PropTypes.string,
-};
-
-function EmptyPlaces({ city }) {
+function EmptyPlaces({ city }: Props) {
   return (
     <section className="cities__no-places">
       <div className="cities__status-wrapper tabs__content">
@@ -15,7 +14,5 @@ function EmptyPlaces({ city }) {
     </section>
   );
 }
-
-EmptyPlaces.propTypes = propTypes;
 
 export default EmptyPlaces;

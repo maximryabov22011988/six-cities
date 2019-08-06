@@ -1,8 +1,9 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-const React = require('react');
-const react_test_renderer_1 = require('react-test-renderer');
-const Map_1 = require('./Map');
+/*
+import * as React from 'react';
+import renderer from 'react-test-renderer';
+
+import Map from './Map';
+
 const offersMock = [
   {
     city: {
@@ -14,9 +15,12 @@ const offersMock = [
     },
   },
 ];
+
 it(`Map correctly render`, () => {
-  Map_1.default.prototype.componentDidMount = jest.fn();
-  const map = react_test_renderer_1.default.create(React.createElement(Map_1.default, { offers: offersMock })).toJSON();
+  Map.prototype.componentDidMount = jest.fn();
+  const map = renderer.create(<Map offers={offersMock} />).toJSON();
+
   expect(map).toMatchSnapshot();
 });
+*/
 //# sourceMappingURL=Map.test.js.map

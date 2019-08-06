@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { keys } from 'lodash';
@@ -24,32 +23,25 @@ import { init, signIn } from '../../state/app/operations';
 import { addOfferToFavorities, removeOfferFromFavorities } from '../../state/favoriteOffers/operations';
 import { changeCity, changeSorting } from '../../state/UI/actions';
 
-const propTypes = {
-  addOfferToFavorities: PropTypes.func.isRequired,
-  changeCity: PropTypes.func.isRequired,
-  changeSorting: PropTypes.func.isRequired,
-  cities: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      location: PropTypes.arrayOf(PropTypes.number),
-      zoom: PropTypes.number,
-    })
-  ).isRequired,
-  currentCity: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.arrayOf(PropTypes.number),
-  }).isRequired,
-  favoriteOffers: PropTypes.object,
-  init: PropTypes.func.isRequired,
-  isAuthUser: PropTypes.bool,
-  isReadyApp: PropTypes.bool.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  removeOfferFromFavorities: PropTypes.func.isRequired,
-  signIn: PropTypes.func.isRequired,
-  user: PropTypes.object,
-};
+import { City, OfferCity, Offer, User, onAddToFavorities, onRemoveFromFavorities, onSignIn } from '../interfaces';
 
-class App extends React.Component {
+interface Props {
+  addOfferToFavorities: onAddToFavorities,
+  changeCity: () => void,
+  changeSorting: () => void,
+  cities: Array<City>,
+  currentCity: OfferCity,
+  favoriteOffers: Array<Offer>,
+  init: () => void,
+  isAuthUser: boolean,
+  isReadyApp: boolean,
+  offers: Array<Offer>,
+  removeOfferFromFavorities: onRemoveFromFavorities,
+  signIn: onSignIn
+  user: User,
+}
+
+class App extends React.Component<Props> {
   componentDidMount() {
     const { isReadyApp, init } = this.props;
     if (!isReadyApp) {
@@ -144,8 +136,6 @@ class App extends React.Component {
     return null;
   }
 }
-
-App.propTypes = propTypes;
 
 const mapStateToProps = (state) => ({
   isReadyApp: getIsReady(state),

@@ -1,16 +1,16 @@
 import * as React from 'react';
 
-
 import PlaceCardList from '../../components/PlaceCardList';
-import PlaceCard from '../../components/placeCardList/PlaceCard';
 
-const propTypes = {
-  offers: PropTypes.arrayOf(PlaceCard.propTypes.offer).isRequired,
-  onAddToFavorities: PropTypes.func.isRequired,
-  onRemoveFromFavorities: PropTypes.func.isRequired,
-};
+import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../interfaces';
 
-function NearPlaces({ offers, onAddToFavorities, onRemoveFromFavorities }) {
+interface Props {
+  offers: Array<Offer>,
+  onAddToFavorities: onAddToFavorities,
+  onRemoveFromFavorities: onRemoveFromFavorities,
+}
+
+function NearPlaces({ offers, onAddToFavorities, onRemoveFromFavorities }: Props) {
   return (
     <div className="container">
       <section className="near-places places">
@@ -25,7 +25,5 @@ function NearPlaces({ offers, onAddToFavorities, onRemoveFromFavorities }) {
     </div>
   );
 }
-
-NearPlaces.propTypes = propTypes;
 
 export default NearPlaces;

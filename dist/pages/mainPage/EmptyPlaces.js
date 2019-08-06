@@ -1,9 +1,6 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
-const propTypes = {
-  city: PropTypes.string,
-};
 function EmptyPlaces({ city }) {
   return React.createElement(
     'section',
@@ -21,6 +18,5 @@ function EmptyPlaces({ city }) {
     )
   );
 }
-EmptyPlaces.propTypes = propTypes;
 exports.default = EmptyPlaces;
 //# sourceMappingURL=EmptyPlaces.js.map

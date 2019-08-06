@@ -1,29 +1,15 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
-const moment_1 = require('moment');
+const moment = require('moment');
 const lodash_1 = require('lodash');
 const Avatar_1 = require('../../../components/Avatar');
 const Rating_1 = require('../../../components/Rating');
-const propTypes = {
-  review: PropTypes.shape({
-    id: PropTypes.number,
-    user: PropTypes.shape({
-      id: PropTypes.number,
-      is_pro: PropTypes.bool,
-      name: PropTypes.string,
-      avatar_url: PropTypes.string,
-    }),
-    rating: PropTypes.number,
-    comment: PropTypes.string,
-    date: PropTypes.string,
-  }),
-};
 const getDateFormat = (date) => {
   if (date) {
     return {
-      dateTime: moment_1.default().format('YYYY-MM-DD'),
-      text: moment_1.default().format('MMMM YYYY'),
+      dateTime: moment().format('YYYY-MM-DD'),
+      text: moment().format('MMMM YYYY'),
     };
   }
   return null;
@@ -65,6 +51,5 @@ function ReviewItem({
     )
   );
 }
-ReviewItem.propTypes = propTypes;
 exports.default = ReviewItem;
 //# sourceMappingURL=ReviewItem.js.map

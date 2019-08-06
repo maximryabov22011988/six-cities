@@ -1,12 +1,11 @@
 import * as React from 'react';
 
+interface Props {
+  logo: React.ReactElement,
+  userInfo?: React.ReactElement,
+}
 
-const propTypes = {
-  logo: PropTypes.element,
-  userInfo: PropTypes.element,
-};
-
-function Header({ logo, userInfo }) {
+function Header({ logo, userInfo }: Props) {
   return (
     <header className="header">
       <div className="container">
@@ -20,7 +19,5 @@ function Header({ logo, userInfo }) {
     </header>
   );
 }
-
-Header.propTypes = propTypes;
 
 export default Header;

@@ -1,20 +1,12 @@
 import * as React from 'react';
 
-
-const propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-};
-
-const defaultProps = {
-  children: null,
-};
-
-function Footer({ className, children }) {
-  return <footer className={className}>{children}</footer>;
+interface Props {
+  children: React.ReactNode,
+  className: string,
 }
 
-Footer.propTypes = propTypes;
-Footer.defaultProps = defaultProps;
+function Footer({ className, children = null }: Props) {
+  return <footer className={className}>{children}</footer>;
+}
 
 export default Footer;

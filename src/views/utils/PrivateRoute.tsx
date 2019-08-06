@@ -1,16 +1,17 @@
 import * as React from 'react';
+import * as ReactRouterDOM from 'react-router-dom';
+import * as ReactRouter from 'react-router';
 
-import { Route, Redirect } from 'react-router-dom';
+const Route = ReactRouterDOM.Route;
+const Redirect = ReactRouterDOM.Redirect;
 
-const propTypes = {
-  component: PropTypes.func.isRequired,
-  isAuth: PropTypes.bool.isRequired,
-};
-
-function PrivateRoute({ component: Component, isAuth, ...rest }) {
-  return <Route {...rest} render={(props) => (isAuth ? <Component {...props} /> : <Redirect to="/login" />)} />;
+interface PrivateRouteProps extends ReactRouter.RouteProps {
+  component: any,
+  isAuth: boolean,
 }
 
-PrivateRoute.propTypes = propTypes;
+function PrivateRoute({ component: Component, isAuth, ...rest }: PrivateRouteProps) {
+  return <Route {...rest} render={(routeProps) => (isAuth ? <Component {...routeProps} /> : <Redirect to="/login" />)} />;
+}
 
 export default PrivateRoute;

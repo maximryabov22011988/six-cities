@@ -1,27 +1,19 @@
 import * as React from 'react';
-
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
-const propTypes = {
-  height: PropTypes.string,
-  isActive: PropTypes.bool,
-  label: PropTypes.string,
-  position: PropTypes.string,
-  src: PropTypes.string,
-  width: PropTypes.string,
-};
+interface Props {
+  height?: string,
+  isActive?: boolean,
+  label?: string,
+  position: string,
+  src?: string,
+  width?: string,
+}
 
-const defaultProps = {
-  height: '41',
-  label: '6 cities logo',
-  src: 'img/logo.svg',
-  width: '81',
-};
-
-class Logo extends React.PureComponent {
+class Logo extends React.PureComponent<Props> {
   render() {
-    const { position, src, width, height, label, isActive } = this.props;
+    const { position, src = 'img/logo.svg', width = '81', height = '41', label = '6 cities logo', isActive } = this.props;
 
     const linkClasses = cn(position && `${position}__logo-link`, isActive && `${position}__logo-link--active`);
     const logoClasses = cn(position && `${position}__logo`);
@@ -37,8 +29,5 @@ class Logo extends React.PureComponent {
     );
   }
 }
-
-Logo.propTypes = propTypes;
-Logo.defaultProps = defaultProps;
 
 export default Logo;

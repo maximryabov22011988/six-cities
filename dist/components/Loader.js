@@ -3,9 +3,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
 const react_redux_1 = require('react-redux');
 const name_spaces_1 = require('../../state/name-spaces');
-const propTypes = {
-  isLoading: PropTypes.bool,
-};
 const wrapStyles = {
   position: 'fixed',
   left: 0,
@@ -37,7 +34,6 @@ class Loader extends React.Component {
       : null;
   }
 }
-Loader.propTypes = propTypes;
 const mapStateToProps = (state) => ({
   isLoading: state[name_spaces_1.default.APP].isLoading,
 });

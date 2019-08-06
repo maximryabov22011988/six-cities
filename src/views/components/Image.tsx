@@ -1,38 +1,41 @@
 import * as React from 'react';
 
+interface Props {
+  className?: string,
+  height: string,
+  label?: string,
+  src: string,
+  style?: object,
+  width: string,
+}
 
-const propTypes = {
-  className: PropTypes.string,
-  height: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  style: PropTypes.object,
-  width: PropTypes.string.isRequired,
-};
+interface State {
+  imgStatus: Status.LOADING | Status.SUCCESS | Status.FAILURE
+}
 
-const status = {
-  LOADING: 'Loading ...',
-  SUCCESS: 'Loaded',
-  FAILURE: 'Failed to load :(',
-};
+enum Status {
+  LOADING = 'Loading ...',
+  SUCCESS = 'Loaded',
+  FAILURE = 'Failed to load :(',
+}
 
-class Image extends React.PureComponent {
+class Image extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      imgStatus: status.LOADING,
+      imgStatus: Status.LOADING,
     };
   }
 
   handleImageLoaded = () => {
     this.setState({
-      imgStatus: status.SUCCESS,
+      imgStatus: Status.SUCCESS,
     });
   };
 
   handleImageErrored = () => {
     this.setState({
-      imgStatus: status.FAILURE,
+      imgStatus: Status.FAILURE,
     });
   };
 
@@ -40,7 +43,7 @@ class Image extends React.PureComponent {
     const { className, style, src, width, height, label } = this.props;
     const { imgStatus } = this.state;
 
-    const isLoaded = imgStatus === status.SUCCESS;
+    const isLoaded = imgStatus === Status.SUCCESS;
 
     return (
       <div
@@ -69,7 +72,5 @@ class Image extends React.PureComponent {
     );
   }
 }
-
-Image.propTypes = propTypes;
 
 export default Image;

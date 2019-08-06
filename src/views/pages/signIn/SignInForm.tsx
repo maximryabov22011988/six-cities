@@ -1,13 +1,10 @@
 import * as React from 'react';
 
-
 import Form from '../../components/Form';
 import Field from '../../components/Field';
 import Button from '../../components/Button';
 
-const propTypes = {
-  onSignIn: PropTypes.func.isRequired,
-};
+import { onSignIn } from '../../interfaces';
 
 const fieldClasses = {
   wrap: 'login__input-wrapper',
@@ -34,12 +31,20 @@ const field = {
   },
 };
 
-const emailRef = React.createRef();
+interface Props {
+  onSignIn: onSignIn,
+}
 
-class SignInForm extends React.Component {
+interface State {
+  email: string,
+  password: string,
+}
+
+class SignInForm extends React.Component<Props, State> {
+  emailRef = React.createRef<HTMLInputElement>();
+
   constructor(props) {
     super(props);
-
     this.state = {
       email: '',
       password: '',
@@ -47,14 +52,17 @@ class SignInForm extends React.Component {
   }
 
   componentDidMount() {
-    emailRef.current.focus();
+    const emailInput = this.emailRef.current;
+    if (emailInput) {
+      emailInput.focus();
+    }
   }
 
   handleChange = (evt) => {
     const { name, value } = evt.target;
     this.setState({
       [name]: value,
-    });
+    } as Pick<State, keyof State>);
   };
 
   handleSubmit = (evt) => {
@@ -79,11 +87,11 @@ class SignInForm extends React.Component {
           <Field
             {...field.email}
             classes={fieldClasses}
-            ref={emailRef}
-            value={email.value}
+            ref={this.emailRef}
+            value={email}
             onChange={this.handleChange}
           />
-          <Field {...field.password} classes={fieldClasses} value={password.value} onChange={this.handleChange} />
+          <Field {...field.password} classes={fieldClasses} value={password} onChange={this.handleChange} />
           <Button className="login__submit form__submit" disabled={this.isLocked()} type="submit">
             Sign in
           </Button>
@@ -92,7 +100,5 @@ class SignInForm extends React.Component {
     );
   }
 }
-
-SignInForm.propTypes = propTypes;
 
 export default SignInForm;

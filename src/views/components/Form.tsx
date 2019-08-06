@@ -1,29 +1,20 @@
 import * as React from 'react';
-
 import cn from 'classnames';
 
-const propTypes = {
-  action: PropTypes.string,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  method: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-};
+interface Props {
+  action?: string,
+  children: React.ReactNode,
+  className: string,
+  method: string,
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void,
+}
 
-const defaultProps = {
-  action: '#',
-  children: null,
-};
-
-function Form({ className, action, method, onSubmit, children }) {
+function Form({ className, action, method, onSubmit, children = null}: Props) {
   return (
     <form action={action} className={cn(className, 'form')} method={method} onSubmit={onSubmit}>
       {children}
     </form>
   );
 }
-
-Form.propTypes = propTypes;
-Form.defaultProps = defaultProps;
 
 export default Form;

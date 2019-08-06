@@ -1,40 +1,33 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
-const propTypes = {
-  className: PropTypes.string,
-  height: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  style: PropTypes.object,
-  width: PropTypes.string.isRequired,
-};
-const status = {
-  LOADING: 'Loading ...',
-  SUCCESS: 'Loaded',
-  FAILURE: 'Failed to load :(',
-};
+var Status;
+(function(Status) {
+  Status['LOADING'] = 'Loading ...';
+  Status['SUCCESS'] = 'Loaded';
+  Status['FAILURE'] = 'Failed to load :(';
+})(Status || (Status = {}));
 class Image extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleImageLoaded = () => {
       this.setState({
-        imgStatus: status.SUCCESS,
+        imgStatus: Status.SUCCESS,
       });
     };
     this.handleImageErrored = () => {
       this.setState({
-        imgStatus: status.FAILURE,
+        imgStatus: Status.FAILURE,
       });
     };
     this.state = {
-      imgStatus: status.LOADING,
+      imgStatus: Status.LOADING,
     };
   }
   render() {
     const { className, style, src, width, height, label } = this.props;
     const { imgStatus } = this.state;
-    const isLoaded = imgStatus === status.SUCCESS;
+    const isLoaded = imgStatus === Status.SUCCESS;
     return React.createElement(
       'div',
       {
@@ -62,6 +55,5 @@ class Image extends React.PureComponent {
     );
   }
 }
-Image.propTypes = propTypes;
 exports.default = Image;
 //# sourceMappingURL=Image.js.map

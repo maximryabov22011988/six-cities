@@ -4,11 +4,6 @@ const React = require('react');
 const react_router_dom_1 = require('react-router-dom');
 const Avatar_1 = require('./Avatar');
 const api_1 = require('../../api');
-const propTypes = {
-  avatarUrl: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),
-  email: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),
-  isAuth: PropTypes.bool.isRequired,
-};
 class UserInfo extends React.PureComponent {
   render() {
     const { isAuth, avatarUrl, email } = this.props;
@@ -30,6 +25,5 @@ class UserInfo extends React.PureComponent {
     );
   }
 }
-UserInfo.propTypes = propTypes;
 exports.default = UserInfo;
 //# sourceMappingURL=UserInfo.js.map

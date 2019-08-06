@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { connect } from 'react-redux';
 
 import ReviewList from './reviews/ReviewList';
@@ -7,12 +6,15 @@ import ReviewList from './reviews/ReviewList';
 import { loadReviews } from '../../../state/reviews/operations';
 import { getReviews } from '../../../state/reviews/selectors';
 
-const propTypes = {
-  hotelId: PropTypes.number,
-  reviews: PropTypes.arrayOf(PropTypes.object),
-};
+import { Review } from '../../interfaces';
 
-class Reviews extends React.Component {
+interface Props {
+  hotelId: number,
+  reviews: Array<Review>,
+  loadReviews: (hotelId: number) => void
+}
+
+class Reviews extends React.Component<Props> {
   componentDidMount() {
     const { hotelId, loadReviews } = this.props;
     loadReviews(hotelId);
@@ -36,8 +38,6 @@ class Reviews extends React.Component {
     );
   }
 }
-
-Reviews.propTypes = propTypes;
 
 const mapStateToProps = (state) => ({
   reviews: getReviews(state),

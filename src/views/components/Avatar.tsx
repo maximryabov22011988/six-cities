@@ -2,13 +2,13 @@ import * as React from 'react';
 
 interface Props {
   alt: string,
-  height: string,
-  isPro: boolean,
+  height?: string,
+  isPro?: boolean,
   name: string,
   parentClassName: string,
-  showStatus: boolean,
+  showStatus?: boolean,
   src: string,
-  width: string,
+  width?: string,
 }
 
 function Avatar({ alt, height, isPro = false, name, parentClassName, showStatus = false, src, width }: Props) {

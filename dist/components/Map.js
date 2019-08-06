@@ -1,9 +1,8 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
-const leaflet_1 = require('leaflet');
+const Leaflet = require('leaflet');
 const lodash_1 = require('lodash');
-const PlaceCard_1 = require('./placeCardList/PlaceCard');
 const mapContainerId = 'map';
 const ACTIVE_PIN_COLOR = '#FF9000';
 const mapStyles = {
@@ -31,12 +30,6 @@ const LEAFLET_LAYER = {
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
   },
 };
-const propTypes = {
-  activeOffer: PropTypes.number,
-  className: PropTypes.string,
-  currentOffer: PropTypes.oneOfType([PlaceCard_1.default.propTypes.offer, PropTypes.any]),
-  offers: PropTypes.arrayOf(PlaceCard_1.default.propTypes.offer),
-};
 class Map extends React.Component {
   componentDidMount() {
     const { currentOffer, offers } = this.props;
@@ -46,10 +39,10 @@ class Map extends React.Component {
       zoom,
       zoomControl: false,
     };
-    this.offerMap = leaflet_1.default.map(mapContainerId, settings);
+    this.offerMap = Leaflet.map(mapContainerId, settings);
     this.offerMap.setView([latitude, longitude], zoom);
-    leaflet_1.default.tileLayer(LEAFLET_LAYER.URL_TEMPLATE, LEAFLET_LAYER.OPTIONS).addTo(this.offerMap);
-    this.pinGroup = leaflet_1.default.layerGroup().addTo(this.offerMap);
+    Leaflet.tileLayer(LEAFLET_LAYER.URL_TEMPLATE, LEAFLET_LAYER.OPTIONS).addTo(this.offerMap);
+    this.pinGroup = Leaflet.layerGroup().addTo(this.offerMap);
     this.addPins(this.pinGroup);
   }
   componentDidUpdate() {
@@ -62,14 +55,14 @@ class Map extends React.Component {
     }
   }
   get pinIcon() {
-    return leaflet_1.default.icon({
+    return Leaflet.icon({
       iconUrl: 'img/pin.svg',
       iconSize: [27, 39],
       iconAnchor: [13, 39],
     });
   }
   get activePinIcon() {
-    return leaflet_1.default.icon({
+    return Leaflet.icon({
       iconUrl: 'img/pin-active.svg',
       iconSize: [27, 39],
       iconAnchor: [13, 39],
@@ -85,24 +78,20 @@ class Map extends React.Component {
         title,
       } = currentOffer;
       const mostRemoteOffer = offers[2];
-      leaflet_1.default
-        .marker([latitude, longitude], { icon: activeIcon })
+      Leaflet.marker([latitude, longitude], { icon: activeIcon })
         .addTo(group)
         .bindPopup(title, popupOptions)
         .openPopup();
-      leaflet_1.default
-        .circle([latitude, longitude], {
-          color: ACTIVE_PIN_COLOR,
-          fillColor: ACTIVE_PIN_COLOR,
-          fillOpacity: 0.1,
-          radius: lodash_1.get(mostRemoteOffer, 'distance') * 1000,
-        })
-        .addTo(group);
+      Leaflet.circle([latitude, longitude], {
+        color: ACTIVE_PIN_COLOR,
+        fillColor: ACTIVE_PIN_COLOR,
+        fillOpacity: 0.1,
+        radius: lodash_1.get(mostRemoteOffer, 'distance') * 1000,
+      }).addTo(group);
     }
     offers.forEach(({ id, location: { latitude, longitude }, title }) => {
       const icon = activeOffer && id === activeOffer ? activeIcon : defaultIcon;
-      leaflet_1.default
-        .marker([latitude, longitude], { icon })
+      Leaflet.marker([latitude, longitude], { icon })
         .addTo(group)
         .bindPopup(title, popupOptions);
     });
@@ -116,6 +105,5 @@ class Map extends React.Component {
     });
   }
 }
-Map.propTypes = propTypes;
 exports.default = Map;
 //# sourceMappingURL=Map.js.map

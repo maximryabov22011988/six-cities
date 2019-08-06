@@ -1,23 +1,18 @@
 import * as React from 'react';
 
-
 import NavItem from './navList/NavItem';
 
 import withActiveItem from '../../hocs/withActiveItem';
 
-const propTypes = {
-  cities: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      location: PropTypes.arrayOf(PropTypes.number),
-      zoom: PropTypes.number,
-    })
-  ).isRequired,
-  currentCity: PropTypes.string.isRequired,
-  onChangeCity: PropTypes.func.isRequired,
-};
+import { CurrentCity, onChangeCity } from '../../interfaces';
 
-function NavList({ currentCity, cities, onChangeCity }) {
+interface Props {
+  cities: Array<CurrentCity>,
+  currentCity: string,
+  onChangeCity: onChangeCity,
+}
+
+function NavList({ currentCity, cities, onChangeCity }: Props) {
   return (
     <ul className="locations__list tabs__list">
       {cities.map((city) => {
@@ -35,7 +30,5 @@ function NavList({ currentCity, cities, onChangeCity }) {
     </ul>
   );
 }
-
-NavList.propTypes = propTypes;
 
 export default NavList;

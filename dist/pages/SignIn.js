@@ -6,9 +6,6 @@ const Header_1 = require('../components/Header');
 const Logo_1 = require('../components/Logo');
 const Content_1 = require('../components/Content');
 const SignInForm_1 = require('./signIn/SignInForm');
-const propTypes = {
-  onSignIn: PropTypes.func.isRequired,
-};
 function SignIn({ onSignIn }) {
   return React.createElement(
     Page_1.default,
@@ -21,6 +18,5 @@ function SignIn({ onSignIn }) {
     )
   );
 }
-SignIn.propTypes = propTypes;
 exports.default = SignIn;
 //# sourceMappingURL=SignIn.js.map

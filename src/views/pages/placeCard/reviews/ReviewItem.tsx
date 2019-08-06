@@ -1,25 +1,15 @@
 import * as React from 'react';
-
-import moment from 'moment';
+import * as moment from 'moment';
 import { get } from 'lodash';
 
 import Avatar from '../../../components/Avatar';
 import Rating from '../../../components/Rating';
 
-const propTypes = {
-  review: PropTypes.shape({
-    id: PropTypes.number,
-    user: PropTypes.shape({
-      id: PropTypes.number,
-      is_pro: PropTypes.bool,
-      name: PropTypes.string,
-      avatar_url: PropTypes.string,
-    }),
-    rating: PropTypes.number,
-    comment: PropTypes.string,
-    date: PropTypes.string,
-  }),
-};
+import { Review } from '../../../interfaces';
+
+interface Props {
+  review: Review
+}
 
 const getDateFormat = (date) => {
   if (date) {
@@ -38,7 +28,7 @@ function ReviewItem({
     rating,
     user: { avatar_url: avatarUrl, is_pro: isPro, name },
   },
-}) {
+}: Props) {
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
@@ -62,7 +52,5 @@ function ReviewItem({
     </li>
   );
 }
-
-ReviewItem.propTypes = propTypes;
 
 export default ReviewItem;

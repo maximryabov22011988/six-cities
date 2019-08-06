@@ -4,9 +4,6 @@ const React = require('react');
 const Form_1 = require('../../components/Form');
 const Field_1 = require('../../components/Field');
 const Button_1 = require('../../components/Button');
-const propTypes = {
-  onSignIn: PropTypes.func.isRequired,
-};
 const fieldClasses = {
   wrap: 'login__input-wrapper',
   label: 'visually-hidden',
@@ -30,10 +27,10 @@ const field = {
     required: true,
   },
 };
-const emailRef = React.createRef();
 class SignInForm extends React.Component {
   constructor(props) {
     super(props);
+    this.emailRef = React.createRef();
     this.handleChange = (evt) => {
       const { name, value } = evt.target;
       this.setState({
@@ -52,7 +49,10 @@ class SignInForm extends React.Component {
     };
   }
   componentDidMount() {
-    emailRef.current.focus();
+    const emailInput = this.emailRef.current;
+    if (emailInput) {
+      emailInput.focus();
+    }
   }
   isLocked() {
     const { email, password } = this.state;
@@ -71,18 +71,14 @@ class SignInForm extends React.Component {
           Field_1.default,
           Object.assign({}, field.email, {
             classes: fieldClasses,
-            ref: emailRef,
-            value: email.value,
+            ref: this.emailRef,
+            value: email,
             onChange: this.handleChange,
           })
         ),
         React.createElement(
           Field_1.default,
-          Object.assign({}, field.password, {
-            classes: fieldClasses,
-            value: password.value,
-            onChange: this.handleChange,
-          })
+          Object.assign({}, field.password, { classes: fieldClasses, value: password, onChange: this.handleChange })
         ),
         React.createElement(
           Button_1.default,
@@ -93,6 +89,5 @@ class SignInForm extends React.Component {
     );
   }
 }
-SignInForm.propTypes = propTypes;
 exports.default = SignInForm;
 //# sourceMappingURL=SignInForm.js.map

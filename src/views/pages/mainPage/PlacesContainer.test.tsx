@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -8,3 +9,4 @@ it('PlacesContainer correctly render', () => {
 
   expect(placesContainer).toMatchSnapshot();
 });
+*/

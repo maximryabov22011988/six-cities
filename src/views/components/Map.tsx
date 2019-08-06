@@ -1,9 +1,8 @@
 import * as React from 'react';
-
-import Leaflet from 'leaflet';
+import * as Leaflet from 'leaflet';
 import { get } from 'lodash';
 
-import PlaceCard from './placeCardList/PlaceCard';
+import { Offer } from '../interfaces';
 
 const mapContainerId = 'map';
 
@@ -37,14 +36,19 @@ const LEAFLET_LAYER = {
   },
 };
 
-const propTypes = {
-  activeOffer: PropTypes.number,
-  className: PropTypes.string,
-  currentOffer: PropTypes.oneOfType([PlaceCard.propTypes.offer, PropTypes.any]),
-  offers: PropTypes.arrayOf(PlaceCard.propTypes.offer),
-};
+interface Props {
+  activeOffer?: number,
+  className?: string,
+  currentOffer?: Offer,
+  offers: Array<Offer>,
+  fixed?: boolean
+}
 
-class Map extends React.Component {
+class Map extends React.Component<Props> {
+  offerMap: typeof Leaflet;
+  pinGroup: typeof Leaflet;
+  icon: object;
+
   componentDidMount() {
     const { currentOffer, offers } = this.props;
     const { latitude, longitude, zoom } = offers ? offers[0].city.location : currentOffer.location;
@@ -128,7 +132,5 @@ class Map extends React.Component {
     return <div className={className} id={mapContainerId} style={fixed ? mapStyles.fixed : mapStyles.flexible} />;
   }
 }
-
-Map.propTypes = propTypes;
 
 export default Map;

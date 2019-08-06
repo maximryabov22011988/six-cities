@@ -1,13 +1,12 @@
 import * as React from 'react';
 
+interface Props {
+  isShow: boolean,
+  name: string,
+  parentClassName: string,
+}
 
-const propTypes = {
-  isShow: PropTypes.bool.isRequired,
-  name: PropTypes.string,
-  parentClassName: PropTypes.string,
-};
-
-function Label({ isShow, name, parentClassName }) {
+function Label({ isShow, name, parentClassName }: Props) {
   return (
     isShow && (
       <div className={`${parentClassName}__mark`}>
@@ -16,7 +15,5 @@ function Label({ isShow, name, parentClassName }) {
     )
   );
 }
-
-Label.propTypes = propTypes;
 
 export default Label;

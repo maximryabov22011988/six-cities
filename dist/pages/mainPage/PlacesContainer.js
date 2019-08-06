@@ -2,16 +2,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
 const classnames_1 = require('classnames');
-const propTypes = {
-  isEmpty: PropTypes.bool,
-  leftPanel: PropTypes.node,
-  rightPanel: PropTypes.node,
-};
-const defaultProps = {
-  leftPanel: null,
-  rightPanel: null,
-};
-function PlacesContainer({ isEmpty, leftPanel, rightPanel }) {
+function PlacesContainer({ isEmpty, leftPanel = null, rightPanel = null }) {
   return React.createElement(
     'div',
     { className: 'cities__places-wrapper' },
@@ -32,7 +23,5 @@ function PlacesContainer({ isEmpty, leftPanel, rightPanel }) {
     )
   );
 }
-PlacesContainer.propTypes = propTypes;
-PlacesContainer.defaultProps = defaultProps;
 exports.default = PlacesContainer;
 //# sourceMappingURL=PlacesContainer.js.map

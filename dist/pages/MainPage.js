@@ -12,32 +12,6 @@ const PlacesContainer_1 = require('./mainPage/PlacesContainer');
 const Places_1 = require('./mainPage/Places');
 const EmptyPlaces_1 = require('./mainPage/EmptyPlaces');
 const Map_1 = require('../components/Map');
-const propTypes = {
-  addOfferToFavorities: PropTypes.func.isRequired,
-  changeCity: PropTypes.func.isRequired,
-  changeSorting: PropTypes.func.isRequired,
-  cities: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      location: PropTypes.arrayOf(PropTypes.number),
-      zoom: PropTypes.number,
-    })
-  ).isRequired,
-  currentCity: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.arrayOf(PropTypes.number),
-  }).isRequired,
-  isAuthUser: PropTypes.bool.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  removeOfferFromFavorities: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.number,
-    email: PropTypes.string,
-    name: PropTypes.string,
-    avatar_url: PropTypes.string,
-    is_pro: PropTypes.bool,
-  }).isRequired,
-};
 class MainPage extends React.Component {
   constructor() {
     super(...arguments);
@@ -120,6 +94,5 @@ class MainPage extends React.Component {
     );
   }
 }
-MainPage.propTypes = propTypes;
 exports.default = MainPage;
 //# sourceMappingURL=MainPage.js.map

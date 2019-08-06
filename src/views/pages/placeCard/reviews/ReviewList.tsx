@@ -1,28 +1,16 @@
 import * as React from 'react';
 
-
 import ReviewItem from './ReviewItem';
 
-const propTypes = {
-  reviews: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      user: PropTypes.shape({
-        id: PropTypes.number,
-        is_pro: PropTypes.bool,
-        name: PropTypes.string,
-        avatar_url: PropTypes.string,
-      }),
-      rating: PropTypes.number,
-      comment: PropTypes.string,
-      date: PropTypes.string,
-    })
-  ),
-};
+import { Review } from '../../../interfaces';
+
+interface Props {
+  reviews: Array<Review>
+}
 
 const REVIEWS_MAX = 10;
 
-function ReviewList({ reviews }) {
+function ReviewList({ reviews }: Props) {
   return (
     <ul className="reviews__list">
       {reviews.map((review, i) => {
@@ -34,7 +22,5 @@ function ReviewList({ reviews }) {
     </ul>
   );
 }
-
-ReviewList.propTypes = propTypes;
 
 export default ReviewList;

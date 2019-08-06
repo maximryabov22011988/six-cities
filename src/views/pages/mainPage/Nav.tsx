@@ -1,23 +1,15 @@
 import * as React from 'react';
 
+interface Props {
+  children: React.ReactNode,
+}
 
-const propTypes = {
-  children: PropTypes.node,
-};
-
-const defaultProps = {
-  children: null,
-};
-
-function Nav({ children }) {
+function Nav({ children = null }: Props) {
   return (
     <div className="cities tabs">
       <section className="locations container">{children}</section>
     </div>
   );
 }
-
-Nav.propTypes = propTypes;
-Nav.defaultProps = defaultProps;
 
 export default Nav;

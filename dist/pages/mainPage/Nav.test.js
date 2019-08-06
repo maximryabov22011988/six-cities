@@ -1,10 +1,13 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-const React = require('react');
-const react_test_renderer_1 = require('react-test-renderer');
-const Nav_1 = require('./Nav');
+/*
+import * as React from 'react';
+import renderer from 'react-test-renderer';
+
+import Nav from './Nav';
+
 it('Nav correctly render', () => {
-  const nav = react_test_renderer_1.default.create(React.createElement(Nav_1.default, null)).toJSON();
+  const nav = renderer.create(<Nav />).toJSON();
+
   expect(nav).toMatchSnapshot();
 });
+*/
 //# sourceMappingURL=Nav.test.js.map

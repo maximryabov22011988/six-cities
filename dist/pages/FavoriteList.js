@@ -9,14 +9,6 @@ const UserInfo_1 = require('../components/UserInfo');
 const Content_1 = require('../components/Content');
 const PlaceCardList_1 = require('../components/PlaceCardList');
 const Footer_1 = require('../components/Footer');
-const propTypes = {
-  isAuthUser: PropTypes.bool.isRequired,
-  isEmpty: PropTypes.bool,
-  offers: PropTypes.object,
-  user: PropTypes.oneOfType([PropTypes.object, PropTypes.any]),
-  onAddOfferToFavorities: PropTypes.func,
-  onRemoveOfferFromFavorities: PropTypes.func,
-};
 class FavoriteList extends React.Component {
   constructor() {
     super(...arguments);
@@ -105,6 +97,5 @@ class FavoriteList extends React.Component {
     );
   }
 }
-FavoriteList.propTypes = propTypes;
 exports.default = FavoriteList;
 //# sourceMappingURL=FavoriteList.js.map

@@ -1,17 +1,12 @@
 import * as React from 'react';
-
 import cn from 'classnames';
 
-const propTypes = {
-  children: PropTypes.node,
-  isEmpty: PropTypes.bool,
-};
+interface Props {
+  children: React.ReactNode,
+  isEmpty: boolean,
+}
 
-const defaultProps = {
-  children: null,
-};
-
-function Content({ children, isEmpty }) {
+function Content({ children = null, isEmpty }: Props) {
   return (
     <main className={cn('page__main page__main--index', isEmpty && 'page__main--index-empty')}>
       <h1 className="visually-hidden">Cities</h1>
@@ -19,8 +14,5 @@ function Content({ children, isEmpty }) {
     </main>
   );
 }
-
-Content.propTypes = propTypes;
-Content.defaultProps = defaultProps;
 
 export default Content;

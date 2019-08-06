@@ -12,24 +12,21 @@ var __rest =
   };
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
-const react_router_dom_1 = require('react-router-dom');
-const propTypes = {
-  component: PropTypes.func.isRequired,
-  isAuth: PropTypes.bool.isRequired,
-};
+const ReactRouterDOM = require('react-router-dom');
+const Route = ReactRouterDOM.Route;
+const Redirect = ReactRouterDOM.Redirect;
 function PrivateRoute(_a) {
   var { component: Component, isAuth } = _a,
     rest = __rest(_a, ['component', 'isAuth']);
   return React.createElement(
-    react_router_dom_1.Route,
+    Route,
     Object.assign({}, rest, {
-      render: (props) =>
+      render: (routeProps) =>
         isAuth
-          ? React.createElement(Component, Object.assign({}, props))
-          : React.createElement(react_router_dom_1.Redirect, { to: '/login' }),
+          ? React.createElement(Component, Object.assign({}, routeProps))
+          : React.createElement(Redirect, { to: '/login' }),
     })
   );
 }
-PrivateRoute.propTypes = propTypes;
 exports.default = PrivateRoute;
 //# sourceMappingURL=PrivateRoute.js.map

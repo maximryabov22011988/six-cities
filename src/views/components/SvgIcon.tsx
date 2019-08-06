@@ -1,17 +1,16 @@
 import * as React from 'react';
-
 import cn from 'classnames';
 
-const propTypes = {
-  className: PropTypes.string,
-  height: PropTypes.string,
-  isShowLabel: PropTypes.bool,
-  label: PropTypes.string,
-  name: PropTypes.string,
-  width: PropTypes.string,
-};
+interface Props {
+  className?: string,
+  height: string,
+  isShowLabel?: boolean,
+  label?: string,
+  name: string,
+  width: string,
+}
 
-function SvgIcon({ className, height, isShowLabel, label, name, width }) {
+function SvgIcon({ className, height, isShowLabel, label, name, width }: Props) {
   return (
     <React.Fragment>
       <svg className={className} height={height} width={width}>
@@ -21,7 +20,5 @@ function SvgIcon({ className, height, isShowLabel, label, name, width }) {
     </React.Fragment>
   );
 }
-
-SvgIcon.propTypes = propTypes;
 
 export default SvgIcon;

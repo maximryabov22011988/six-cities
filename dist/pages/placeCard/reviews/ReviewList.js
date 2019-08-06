@@ -2,22 +2,6 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
 const ReviewItem_1 = require('./ReviewItem');
-const propTypes = {
-  reviews: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      user: PropTypes.shape({
-        id: PropTypes.number,
-        is_pro: PropTypes.bool,
-        name: PropTypes.string,
-        avatar_url: PropTypes.string,
-      }),
-      rating: PropTypes.number,
-      comment: PropTypes.string,
-      date: PropTypes.string,
-    })
-  ),
-};
 const REVIEWS_MAX = 10;
 function ReviewList({ reviews }) {
   return React.createElement(
@@ -31,6 +15,5 @@ function ReviewList({ reviews }) {
     })
   );
 }
-ReviewList.propTypes = propTypes;
 exports.default = ReviewList;
 //# sourceMappingURL=ReviewList.js.map

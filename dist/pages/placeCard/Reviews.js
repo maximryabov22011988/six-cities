@@ -5,10 +5,6 @@ const react_redux_1 = require('react-redux');
 const ReviewList_1 = require('./reviews/ReviewList');
 const operations_1 = require('../../../state/reviews/operations');
 const selectors_1 = require('../../../state/reviews/selectors');
-const propTypes = {
-  hotelId: PropTypes.number,
-  reviews: PropTypes.arrayOf(PropTypes.object),
-};
 class Reviews extends React.Component {
   componentDidMount() {
     const { hotelId, loadReviews } = this.props;
@@ -34,7 +30,6 @@ class Reviews extends React.Component {
   }
 }
 exports.Reviews = Reviews;
-Reviews.propTypes = propTypes;
 const mapStateToProps = (state) => ({
   reviews: selectors_1.getReviews(state),
 });

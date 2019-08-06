@@ -1,18 +1,19 @@
 import * as React from 'react';
-
 import cn from 'classnames';
 
 import PlaceCard from './placeCardList/PlaceCard';
 
-const propTypes = {
-  offers: PropTypes.arrayOf(PlaceCard.propTypes.offer).isRequired,
-  parentClassName: PropTypes.string,
-  onActiveOfferClick: PropTypes.func,
-  onAddToFavorities: PropTypes.func,
-  onRemoveFromFavorities: PropTypes.func,
-};
+import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../interfaces';
 
-function PlaceCardList({ offers, parentClassName, onActiveOfferClick, onAddToFavorities, onRemoveFromFavorities }) {
+interface Props {
+  offers: Array<Offer>,
+  parentClassName: string,
+  onActiveOfferClick?: ((id: number) => (event: React.MouseEvent<HTMLAnchorElement>) => void) | undefined,
+  onAddToFavorities: onAddToFavorities,
+  onRemoveFromFavorities: onRemoveFromFavorities,
+}
+
+function PlaceCardList({ offers, parentClassName, onActiveOfferClick, onAddToFavorities, onRemoveFromFavorities }: Props) {
   return (
     <div
       className={cn(
@@ -34,7 +35,5 @@ function PlaceCardList({ offers, parentClassName, onActiveOfferClick, onAddToFav
     </div>
   );
 }
-
-PlaceCardList.propTypes = propTypes;
 
 export default PlaceCardList;

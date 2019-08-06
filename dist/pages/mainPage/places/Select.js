@@ -4,20 +4,10 @@ const React = require('react');
 const classnames_1 = require('classnames');
 const withActiveItem_1 = require('../../../hocs/withActiveItem');
 const keyCodes_1 = require('../../../constants/keyCodes');
-const propTypes = {
-  caption: PropTypes.string.isRequired,
-  defaultOption: PropTypes.number.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-    })
-  ).isRequired,
-  onChangeSorting: PropTypes.func.isRequired,
-};
 class Select extends React.Component {
   constructor(props) {
     super(props);
+    this.selectRef = React.createRef();
     this.handleOpen = () => {
       this.setState({
         isOpen: true,
@@ -60,7 +50,7 @@ class Select extends React.Component {
         const Option = ({ className, onClick, onKeyUp, children }) =>
           React.createElement(
             'li',
-            { className: className, tabIndex: '0', onClick: onClick, onKeyUp: onKeyUp },
+            { className: className, tabIndex: 0, onClick: onClick, onKeyUp: onKeyUp },
             children
           );
         const WrappedOption = withActiveItem_1.default(Option);
@@ -81,7 +71,6 @@ class Select extends React.Component {
       currentOption: props.defaultOption,
       isOpen: false,
     };
-    this.selectRef = React.createRef();
   }
   componentDidMount() {
     window.addEventListener('click', this.handleOutsideClick);
@@ -104,14 +93,14 @@ class Select extends React.Component {
       {
         className: 'places__sorting',
         ref: this.selectRef,
-        tabIndex: '0',
+        tabIndex: 0,
         onClick: this.handleOutsideClick,
         onKeyDown: this.handleEscPress,
       },
       caption && React.createElement('span', { className: 'places__sorting-caption' }, caption),
       React.createElement(
         'span',
-        { className: 'places__sorting-type', tabIndex: '0', onClick: this.handleOpen, onFocus: this.handleOpen },
+        { className: 'places__sorting-type', tabIndex: 0, onClick: this.handleOpen, onFocus: this.handleOpen },
         this.getCurrentOptionText(),
         React.createElement(
           'svg',
@@ -133,6 +122,5 @@ class Select extends React.Component {
     );
   }
 }
-Select.propTypes = propTypes;
 exports.default = Select;
 //# sourceMappingURL=Select.js.map

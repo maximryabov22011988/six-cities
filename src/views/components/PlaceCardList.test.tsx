@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -29,3 +30,4 @@ it('PlaceCardList correctly render', () => {
 
   expect(placeCard).toMatchSnapshot();
 });
+*/

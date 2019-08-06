@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -17,3 +18,4 @@ it('NavItem correctly render', () => {
 
   expect(navItem).toMatchSnapshot();
 });
+*/

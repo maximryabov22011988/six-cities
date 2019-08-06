@@ -1,18 +1,13 @@
 import * as React from 'react';
-
 import cn from 'classnames';
 
-const propTypes = {
-  children: PropTypes.node,
-  isEmpty: PropTypes.bool,
-  parentClassName: PropTypes.string,
-};
+interface Props {
+  children: React.ReactNode,
+  isEmpty?: boolean,
+  parentClassName?: string,
+}
 
-const defaultProps = {
-  children: null,
-};
-
-function Content({ isEmpty, parentClassName, children }) {
+function Content({ isEmpty, parentClassName, children = null }: Props) {
   const mainClasses = cn(
     'page__main',
     parentClassName && `page__main--${parentClassName}`,
@@ -31,8 +26,5 @@ function Content({ isEmpty, parentClassName, children }) {
     </main>
   );
 }
-
-Content.propTypes = propTypes;
-Content.defaultProps = defaultProps;
 
 export default Content;

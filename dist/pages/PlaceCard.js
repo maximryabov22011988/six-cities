@@ -12,7 +12,6 @@ const Button_1 = require('../components/Button');
 const SvgIcon_1 = require('../components/SvgIcon');
 const Avatar_1 = require('../components/Avatar');
 const Map_1 = require('../components/Map');
-const PlaceCard_1 = require('../components/placeCardList/PlaceCard');
 const Reviews_1 = require('./placeCard/Reviews');
 const NearPlaces_1 = require('./placeCard/NearPlaces');
 const AddReviewsForm_1 = require('./placeCard/AddReviewsForm');
@@ -20,21 +19,6 @@ const withActiveItem_1 = require('../hocs/withActiveItem');
 const operations_1 = require('../../state/reviews/operations');
 const selectors_1 = require('../../state/offers/selectors');
 const MAX_IMAGES = 6;
-const propTypes = {
-  addOfferToFavorities: PropTypes.func.isRequired,
-  isAuthUser: PropTypes.bool.isRequired,
-  nearOffers: PropTypes.arrayOf(PlaceCard_1.default.propTypes.offer),
-  offer: PlaceCard_1.default.propTypes.offer,
-  removeOfferFromFavorities: PropTypes.func.isRequired,
-  sendReview: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.number,
-    email: PropTypes.string,
-    name: PropTypes.string,
-    avatar_url: PropTypes.string,
-    is_pro: PropTypes.bool,
-  }).isRequired,
-};
 function PlaceCard({
   isAuthUser,
   user: { avatar_url: userAvatarUrl, email },
@@ -203,7 +187,6 @@ function PlaceCard({
     )
   );
 }
-PlaceCard.propTypes = propTypes;
 const mapStateToProps = (state, ownProps) => ({
   offer: selectors_1.getCurrentOffer(state, ownProps),
   nearOffers: selectors_1.getNearOffers(state, ownProps),

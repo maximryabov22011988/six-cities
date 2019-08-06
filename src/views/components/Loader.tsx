@@ -1,15 +1,14 @@
 import * as React from 'react';
-
 import { connect } from 'react-redux';
 
 import nameSpace from '../../state/name-spaces';
 
-const propTypes = {
-  isLoading: PropTypes.bool,
-};
+interface Props {
+  isLoading: boolean,
+}
 
 const wrapStyles = {
-  position: 'fixed',
+  position: 'fixed' as 'fixed',
   left: 0,
   right: 0,
   top: 0,
@@ -21,7 +20,7 @@ const wrapStyles = {
   backgroundColor: 'rgba(255,255,255, 0.85)',
 };
 
-class Loader extends React.Component {
+class Loader extends React.Component<Props> {
   render() {
     const { isLoading } = this.props;
     return isLoading ? (
@@ -36,8 +35,6 @@ class Loader extends React.Component {
     ) : null;
   }
 }
-
-Loader.propTypes = propTypes;
 
 const mapStateToProps = (state) => ({
   isLoading: state[nameSpace.APP].isLoading,

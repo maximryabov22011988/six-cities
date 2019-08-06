@@ -2,14 +2,6 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
 const classnames_1 = require('classnames');
-const propTypes = {
-  className: PropTypes.string,
-  height: PropTypes.string,
-  isShowLabel: PropTypes.bool,
-  label: PropTypes.string,
-  name: PropTypes.string,
-  width: PropTypes.string,
-};
 function SvgIcon({ className, height, isShowLabel, label, name, width }) {
   return React.createElement(
     React.Fragment,
@@ -22,6 +14,5 @@ function SvgIcon({ className, height, isShowLabel, label, name, width }) {
     React.createElement('span', { className: classnames_1.default(!isShowLabel && 'visually-hidden') }, label)
   );
 }
-SvgIcon.propTypes = propTypes;
 exports.default = SvgIcon;
 //# sourceMappingURL=SvgIcon.js.map

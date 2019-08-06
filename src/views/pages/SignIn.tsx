@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 import Page from '../components/Page';
 import Header from '../components/Header';
 import Logo from '../components/Logo';
@@ -8,11 +7,13 @@ import Content from '../components/Content';
 
 import SignInForm from './signIn/SignInForm';
 
-const propTypes = {
-  onSignIn: PropTypes.func.isRequired,
-};
+import { onSignIn } from '../interfaces';
 
-function SignIn({ onSignIn }) {
+interface Props {
+  onSignIn: onSignIn,
+}
+
+function SignIn({ onSignIn }: Props) {
   return (
     <Page parentClassName="login">
       <Header logo={<Logo position="header" />} />
@@ -22,7 +23,5 @@ function SignIn({ onSignIn }) {
     </Page>
   );
 }
-
-SignIn.propTypes = propTypes;
 
 export default SignIn;

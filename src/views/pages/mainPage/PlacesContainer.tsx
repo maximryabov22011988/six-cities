@@ -1,19 +1,13 @@
 import * as React from 'react';
-
 import cn from 'classnames';
 
-const propTypes = {
-  isEmpty: PropTypes.bool,
-  leftPanel: PropTypes.node,
-  rightPanel: PropTypes.node,
-};
+interface Props {
+  isEmpty: boolean,
+  leftPanel: React.ReactNode,
+  rightPanel: React.ReactNode,
+}
 
-const defaultProps = {
-  leftPanel: null,
-  rightPanel: null,
-};
-
-function PlacesContainer({ isEmpty, leftPanel, rightPanel }) {
+function PlacesContainer({ isEmpty, leftPanel = null, rightPanel = null }: Props) {
   return (
     <div className="cities__places-wrapper">
       <div className={cn('cities__places-container container', isEmpty && 'cities__places-container--empty')}>
@@ -25,8 +19,5 @@ function PlacesContainer({ isEmpty, leftPanel, rightPanel }) {
     </div>
   );
 }
-
-PlacesContainer.propTypes = propTypes;
-PlacesContainer.defaultProps = defaultProps;
 
 export default PlacesContainer;

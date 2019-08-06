@@ -1,11 +1,10 @@
 import * as React from 'react';
 
-
-const propTypes = {
-  isShowValue: PropTypes.bool,
-  parentClassName: PropTypes.string,
-  rating: PropTypes.number.isRequired,
-};
+interface Props {
+  isShowValue?: boolean,
+  parentClassName: string,
+  rating: number,
+}
 
 const MAX_RATING = 5;
 
@@ -16,7 +15,7 @@ const getRatingStyles = (rating) => {
   };
 };
 
-function Rating({ parentClassName, rating, isShowValue }) {
+function Rating({ parentClassName, rating, isShowValue }: Props) {
   return (
     <div className={`${parentClassName}__rating rating`}>
       <div className={`${parentClassName}__stars rating__stars`}>
@@ -27,7 +26,5 @@ function Rating({ parentClassName, rating, isShowValue }) {
     </div>
   );
 }
-
-Rating.propTypes = propTypes;
 
 export default Rating;

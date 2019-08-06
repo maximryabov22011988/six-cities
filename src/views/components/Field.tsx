@@ -1,58 +1,46 @@
 import * as React from 'react';
-
 import cn from 'classnames';
 
-const propTypes = {
-  classes: PropTypes.shape({
-    input: PropTypes.string,
-    label: PropTypes.string,
-    wrap: PropTypes.string,
-  }),
-  disabled: PropTypes.bool,
-  id: PropTypes.string,
-  label: PropTypes.string,
-  maxLength: PropTypes.number,
-  minLength: PropTypes.number,
-  name: PropTypes.string,
-  placeholder: PropTypes.string,
-  required: PropTypes.bool,
-  type: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-};
+interface Props {
+  classes?: {
+    input: string,
+    label: string,
+    wrap: string,
+  },
+  disabled?: boolean,
+  id?: string,
+  label?: string,
+  maxLength?: number,
+  minLength?: number,
+  name?: string,
+  placeholder?: string,
+  required?: boolean,
+  type: string,
+  value: string,
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void,
+  ref?: React.RefObject<HTMLInputElement>
+}
 
-const defaultProps = {
-  type: 'text',
-};
+const Field: React.ComponentType<Props> = React.forwardRef(({ classes, label, id, type = 'text', minLength, maxLength, name, placeholder, disabled, required, value, onChange }: Props, ref?: React.Ref<HTMLInputElement>) => (
+  <div className={cn(classes.wrap, 'form__input-wrapper')}>
+    <label className={cn(classes.label, 'form__label')} htmlFor={id}>
+      {label}
+    </label>
+    <input
+      className={cn(classes.input, 'form__input')}
+      disabled={disabled}
+      id={id}
+      maxLength={maxLength}
+      minLength={minLength}
+      name={name}
+      placeholder={placeholder}
+      ref={ref}
+      required={required}
+      type={type}
+      value={value}
+      onChange={onChange}
+    />
+  </div>
+));
 
-const Field = function(
-  { classes, label, id, type, minLength, maxLength, name, placeholder, disabled, required, value, onChange },
-  ref
-) {
-  return (
-    <div className={cn(classes.wrap, 'form__input-wrapper')}>
-      <label className={cn(classes.label, 'form__label')} htmlFor={id}>
-        {label}
-      </label>
-      <input
-        className={cn(classes.input, 'form__input')}
-        disabled={disabled}
-        id={id}
-        maxLength={maxLength}
-        minLength={minLength}
-        name={name}
-        placeholder={placeholder}
-        ref={ref}
-        required={required}
-        type={type}
-        value={value}
-        onChange={onChange}
-      />
-    </div>
-  );
-};
-
-Field.propTypes = propTypes;
-Field.defaultProps = defaultProps;
-
-export default React.forwardRef(Field);
+export default Field;

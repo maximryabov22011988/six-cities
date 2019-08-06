@@ -2,12 +2,6 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
 const PlaceCardList_1 = require('../../components/PlaceCardList');
-const PlaceCard_1 = require('../../components/placeCardList/PlaceCard');
-const propTypes = {
-  offers: PropTypes.arrayOf(PlaceCard_1.default.propTypes.offer).isRequired,
-  onAddToFavorities: PropTypes.func.isRequired,
-  onRemoveFromFavorities: PropTypes.func.isRequired,
-};
 function NearPlaces({ offers, onAddToFavorities, onRemoveFromFavorities }) {
   return React.createElement(
     'div',
@@ -25,6 +19,5 @@ function NearPlaces({ offers, onAddToFavorities, onRemoveFromFavorities }) {
     )
   );
 }
-NearPlaces.propTypes = propTypes;
 exports.default = NearPlaces;
 //# sourceMappingURL=NearPlaces.js.map

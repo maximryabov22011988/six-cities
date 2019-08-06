@@ -1,18 +1,17 @@
 import * as React from 'react';
-
 import { Link } from 'react-router-dom';
 
 import Avatar from './Avatar';
 
 import { BASE_URL } from '../../api';
 
-const propTypes = {
-  avatarUrl: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),
-  email: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),
-  isAuth: PropTypes.bool.isRequired,
-};
+interface Props {
+  avatarUrl: string,
+  email: string,
+  isAuth: boolean,
+}
 
-class UserInfo extends React.PureComponent {
+class UserInfo extends React.PureComponent<Props> {
   render() {
     const { isAuth, avatarUrl, email } = this.props;
 
@@ -29,7 +28,5 @@ class UserInfo extends React.PureComponent {
     );
   }
 }
-
-UserInfo.propTypes = propTypes;
 
 export default UserInfo;

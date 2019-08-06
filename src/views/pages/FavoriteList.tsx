@@ -10,16 +10,18 @@ import Content from '../components/Content';
 import PlaceCardList from '../components/PlaceCardList';
 import Footer from '../components/Footer';
 
-const propTypes = {
-  isAuthUser: PropTypes.bool.isRequired,
-  isEmpty: PropTypes.bool,
-  offers: PropTypes.object,
-  user: PropTypes.oneOfType([PropTypes.object, PropTypes.any]),
-  onAddOfferToFavorities: PropTypes.func,
-  onRemoveOfferFromFavorities: PropTypes.func,
-};
+import { User, onAddToFavorities, onRemoveFromFavorities } from '../interfaces';
 
-class FavoriteList extends React.Component {
+interface Props {
+  isAuthUser: boolean,
+  isEmpty: boolean,
+  offers: object,
+  user: User,
+  onAddOfferToFavorities: onAddToFavorities,
+  onRemoveOfferFromFavorities: onRemoveFromFavorities,
+}
+
+class FavoriteList extends React.Component<Props> {
   handleAddToFavorities = (hotelId) => () => {
     const { onAddOfferToFavorities } = this.props;
     onAddOfferToFavorities(hotelId);
@@ -83,7 +85,5 @@ class FavoriteList extends React.Component {
     );
   }
 }
-
-FavoriteList.propTypes = propTypes;
 
 export default FavoriteList;

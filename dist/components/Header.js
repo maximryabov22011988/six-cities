@@ -1,10 +1,6 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
-const propTypes = {
-  logo: PropTypes.element,
-  userInfo: PropTypes.element,
-};
 function Header({ logo, userInfo }) {
   return React.createElement(
     'header',
@@ -25,6 +21,5 @@ function Header({ logo, userInfo }) {
     )
   );
 }
-Header.propTypes = propTypes;
 exports.default = Header;
 //# sourceMappingURL=Header.js.map

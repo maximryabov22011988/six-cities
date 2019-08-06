@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 import Page from '../components/Page';
 import Header from '../components/Header';
 import Logo from '../components/Logo';
@@ -14,34 +13,25 @@ import Places from './mainPage/Places';
 import EmptyPlaces from './mainPage/EmptyPlaces';
 import Map from '../components/Map';
 
-const propTypes = {
-  addOfferToFavorities: PropTypes.func.isRequired,
-  changeCity: PropTypes.func.isRequired,
-  changeSorting: PropTypes.func.isRequired,
-  cities: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      location: PropTypes.arrayOf(PropTypes.number),
-      zoom: PropTypes.number,
-    })
-  ).isRequired,
-  currentCity: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.arrayOf(PropTypes.number),
-  }).isRequired,
-  isAuthUser: PropTypes.bool.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  removeOfferFromFavorities: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.number,
-    email: PropTypes.string,
-    name: PropTypes.string,
-    avatar_url: PropTypes.string,
-    is_pro: PropTypes.bool,
-  }).isRequired,
-};
+import { OfferCity, City, User, Offer } from '../interfaces';
 
-class MainPage extends React.Component {
+interface Props {
+  addOfferToFavorities: (hotelId: number) => void,
+  changeCity: (city: City) => void,
+  changeSorting: (sorting: string) => void,
+  cities: Array<City>,
+  currentCity: OfferCity,
+  isAuthUser: boolean,
+  offers: Array<Offer>,
+  removeOfferFromFavorities: (hotelId: number) => void,
+  user: User
+}
+
+interface State {
+  activeOffer: number
+}
+
+class MainPage extends React.Component<Props, State> {
   state = {
     activeOffer: null,
   };
@@ -121,7 +111,5 @@ class MainPage extends React.Component {
     );
   }
 }
-
-MainPage.propTypes = propTypes;
 
 export default MainPage;

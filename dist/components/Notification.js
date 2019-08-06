@@ -6,10 +6,6 @@ const classnames_1 = require('classnames');
 const lodash_1 = require('lodash');
 const SvgIcon_1 = require('./SvgIcon');
 const name_spaces_1 = require('../../state/name-spaces');
-const propTypes = {
-  message: PropTypes.string,
-  show: PropTypes.bool,
-};
 class Notification extends React.Component {
   constructor() {
     super(...arguments);
@@ -29,7 +25,7 @@ class Notification extends React.Component {
       this.setState({
         show: true,
       });
-      this.timer = setTimeout(() => {
+      this.timer = window.setTimeout(() => {
         this.setState({
           show: false,
         });
@@ -60,7 +56,6 @@ class Notification extends React.Component {
     );
   }
 }
-Notification.propTypes = propTypes;
 const mapStateToProps = (state) => ({
   show: Boolean(lodash_1.get(state[name_spaces_1.default.APP], 'errors', false)),
   message: lodash_1.get(state[name_spaces_1.default.APP], 'errors.message', ''),

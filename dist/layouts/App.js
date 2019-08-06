@@ -19,30 +19,6 @@ const selectors_4 = require('../../state/UI/selectors');
 const operations_1 = require('../../state/app/operations');
 const operations_2 = require('../../state/favoriteOffers/operations');
 const actions_1 = require('../../state/UI/actions');
-const propTypes = {
-  addOfferToFavorities: PropTypes.func.isRequired,
-  changeCity: PropTypes.func.isRequired,
-  changeSorting: PropTypes.func.isRequired,
-  cities: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      location: PropTypes.arrayOf(PropTypes.number),
-      zoom: PropTypes.number,
-    })
-  ).isRequired,
-  currentCity: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.arrayOf(PropTypes.number),
-  }).isRequired,
-  favoriteOffers: PropTypes.object,
-  init: PropTypes.func.isRequired,
-  isAuthUser: PropTypes.bool,
-  isReadyApp: PropTypes.bool.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  removeOfferFromFavorities: PropTypes.func.isRequired,
-  signIn: PropTypes.func.isRequired,
-  user: PropTypes.object,
-};
 class App extends React.Component {
   constructor() {
     super(...arguments);
@@ -138,7 +114,6 @@ class App extends React.Component {
   }
 }
 exports.App = App;
-App.propTypes = propTypes;
 const mapStateToProps = (state) => ({
   isReadyApp: selectors_3.getIsReady(state),
   isAuthUser: selectors_3.getIsAuth(state),

@@ -1,20 +1,20 @@
 import * as React from 'react';
 
-
 import PlaceCardList from '../../components/PlaceCardList';
-import PlaceCard from '../../components/placeCardList/PlaceCard';
 import Select from './places/Select';
 
 import { SORTING_OPTIONS } from '../../constants/options';
 
-const propTypes = {
-  offers: PropTypes.arrayOf(PlaceCard.propTypes.offer).isRequired,
-  searchResultText: PropTypes.string.isRequired,
-  onActiveOfferClick: PropTypes.func.isRequired,
-  onAddToFavorities: PropTypes.func.isRequired,
-  onChangeSorting: PropTypes.func.isRequired,
-  onRemoveFromFavorities: PropTypes.func.isRequired,
-};
+import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../interfaces';
+
+interface Props {
+  offers: Array<Offer>,
+  searchResultText: string,
+  onActiveOfferClick?: ((id: number) => (event: React.MouseEvent<HTMLAnchorElement>) => void) | undefined,
+  onAddToFavorities: onAddToFavorities,
+  onChangeSorting: (sorting: string) => void,
+  onRemoveFromFavorities: onRemoveFromFavorities,
+}
 
 const defaultOptionId = 1; // Popular
 
@@ -25,7 +25,7 @@ function Places({
   onAddToFavorities,
   onChangeSorting,
   onRemoveFromFavorities,
-}) {
+}: Props) {
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
@@ -48,7 +48,5 @@ function Places({
     </section>
   );
 }
-
-Places.propTypes = propTypes;
 
 export default Places;

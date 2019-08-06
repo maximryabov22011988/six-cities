@@ -1,17 +1,20 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-const React = require('react');
-const react_test_renderer_1 = require('react-test-renderer');
-const MainPage_1 = require('./MainPage');
-const Map_1 = require('../components/Map');
+/*
+import * as React from 'react';
+import renderer from 'react-test-renderer';
+
+import MainPage from './MainPage';
+import Map from '../components/Map';
+
 const userMock = {
   avatarUrl: '/static/avatar/1.jpg',
   email: 'Oliver.conner@gmail.com',
 };
+
 const currentCityMock = {
   name: 'Cologne',
   location: [50.938361, 6.959974],
 };
+
 const citiesMock = [
   {
     name: 'Cologne',
@@ -19,6 +22,7 @@ const citiesMock = [
     zoom: 13,
   },
 ];
+
 const offersMock = [
   {
     id: 1,
@@ -39,20 +43,23 @@ const offersMock = [
     is_favorite: false,
   },
 ];
+
 it('MainPage correctly render', () => {
-  Map_1.default.prototype.componentDidMount = jest.fn();
-  const mainPage = react_test_renderer_1.default
+  Map.prototype.componentDidMount = jest.fn();
+  const mainPage = renderer
     .create(
-      React.createElement(MainPage_1.default, {
-        changeCity: jest.fn(),
-        cities: citiesMock,
-        currentCity: currentCityMock,
-        isAuthUser: true,
-        offers: offersMock,
-        user: userMock,
-      })
+      <MainPage
+        changeCity={jest.fn()}
+        cities={citiesMock}
+        currentCity={currentCityMock}
+        isAuthUser
+        offers={offersMock}
+        user={userMock}
+      />
     )
     .toJSON();
+
   expect(mainPage).toMatchSnapshot();
 });
+*/
 //# sourceMappingURL=MainPage.test.js.map

@@ -5,10 +5,6 @@ const lodash_1 = require('lodash');
 const Form_1 = require('../../components/Form');
 const Button_1 = require('../../components/Button');
 const Rating_1 = require('./addReviewsForm/Rating');
-const propTypes = {
-  hotelId: PropTypes.number.isRequired,
-  onSendReview: PropTypes.func.isRequired,
-};
 const MIN_CHARACTERS = 50;
 class AddReviewsForm extends React.Component {
   constructor(props) {
@@ -79,6 +75,5 @@ class AddReviewsForm extends React.Component {
     );
   }
 }
-AddReviewsForm.propTypes = propTypes;
 exports.default = AddReviewsForm;
 //# sourceMappingURL=AddReviewsForm.js.map
