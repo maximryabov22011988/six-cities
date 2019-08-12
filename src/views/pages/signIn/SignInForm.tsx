@@ -4,7 +4,7 @@ import Form from '../../components/Form';
 import Field from '../../components/Field';
 import Button from '../../components/Button';
 
-import { onSignIn } from '../../interfaces';
+import { onSignIn } from '../../types';
 
 const fieldClasses = {
   wrap: 'login__input-wrapper',

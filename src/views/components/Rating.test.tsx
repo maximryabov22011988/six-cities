@@ -1,12 +1,15 @@
-/*
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
+import { BrowserRouter } from "react-router-dom";
 
 import Rating from './Rating';
 
 it('Rating correctly render', () => {
-  const rating = renderer.create(<Rating rating={1} />).toJSON();
-
-  expect(rating).toMatchSnapshot();
+  const tree = renderer
+    .create(
+      <BrowserRouter>
+        <Rating parentClassName="place-card" rating={1} />)
+      </BrowserRouter>
+    ).toJSON();
+  expect(tree).toMatchSnapshot();
 });
-*/

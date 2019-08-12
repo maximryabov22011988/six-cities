@@ -1,25 +1,15 @@
-/*
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
 import Map from './Map';
+import offer from '../mocks/offer';
 
-const offersMock = [
-  {
-    city: {
-      location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13,
-      },
-    },
-  },
-];
+const offers = [offer];
 
 it(`Map correctly render`, () => {
   Map.prototype.componentDidMount = jest.fn();
-  const map = renderer.create(<Map offers={offersMock} />).toJSON();
-
-  expect(map).toMatchSnapshot();
+  const tree = renderer.create(
+    <Map offers={offers} />
+  ).toJSON();
+  expect(tree).toMatchSnapshot();
 });
-*/

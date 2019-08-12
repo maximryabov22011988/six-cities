@@ -10,7 +10,7 @@ import Content from '../components/Content';
 import PlaceCardList from '../components/PlaceCardList';
 import Footer from '../components/Footer';
 
-import { User, onAddToFavorities, onRemoveFromFavorities } from '../interfaces';
+import { User, onAddToFavorities, onRemoveFromFavorities } from '../types';
 
 interface Props {
   isAuthUser: boolean;

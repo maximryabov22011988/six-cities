@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import PlaceCard from './placeCardList/PlaceCard';
 
-import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../interfaces';
+import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../types';
 
 interface Props {
   offers: Array<Offer>;

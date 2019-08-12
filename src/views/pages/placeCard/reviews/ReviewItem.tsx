@@ -5,7 +5,7 @@ import { get } from 'lodash';
 import Avatar from '../../../components/Avatar';
 import Rating from '../../../components/Rating';
 
-import { Review } from '../../../interfaces';
+import { Review } from '../../../types';
 
 interface Props {
   review: Review;

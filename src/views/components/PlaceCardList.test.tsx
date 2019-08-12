@@ -1,33 +1,57 @@
-/*
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
+import { BrowserRouter } from "react-router-dom";
 
 import PlaceCardList from './PlaceCardList';
+import offer from '../mocks/offer';
 
-const offersMock = [
-  {
-    id: 1,
-    city: {
-      name: 'Cologne',
-      location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13,
-      },
-    },
-    title: 'The Pondhouse - A Magical Place',
-    preview_image: `img/apartment-01.jpg`,
-    price: 120,
-    type: 'house',
-    rating: 4.6,
-    is_premium: true,
-    is_favorite: false,
-  },
-];
+const offers = [offer];
 
-it('PlaceCardList correctly render', () => {
-  const placeCard = renderer.create(<PlaceCardList offers={offersMock} />).toJSON();
+it('List of places correctly render on main page', () => {
+  const tree = renderer
+    .create(
+      <BrowserRouter>
+        <PlaceCardList
+          offers={offers}
+          parentClassName="cities"
+          onActiveOfferClick={jest.fn()}
+          onAddToFavorities={jest.fn()}
+          onRemoveFromFavorities={jest.fn()}
+        />
+      </BrowserRouter>
+    ).toJSON();
 
-  expect(placeCard).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
-*/
+
+it('List of favorites places correctly render', () => {
+  const tree = renderer
+    .create(
+      <BrowserRouter>
+        <PlaceCardList
+          offers={offers}
+          parentClassName="favorites"
+          onAddToFavorities={jest.fn()}
+          onRemoveFromFavorities={jest.fn()}
+        />
+      </BrowserRouter>
+    ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('List of near places correctly render', () => {
+  const tree = renderer
+    .create(
+      <BrowserRouter>
+        <PlaceCardList
+          offers={offers}
+          parentClassName="near-places"
+          onAddToFavorities={jest.fn()}
+          onRemoveFromFavorities={jest.fn()}
+        />
+      </BrowserRouter>
+    ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

@@ -1,0 +1,367 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List of favorites places correctly render 1`] = `
+<div
+  className="favorites__places"
+>
+  <article
+    className="place-card favorites__card"
+  >
+    <div
+      className="favorites__image-wrapper place-card__image-wrapper"
+    >
+      <a
+        href="#"
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#e1e1e1",
+              "borderRadius": "4px",
+              "display": "flex",
+              "height": "110px",
+              "justifyContent": "center",
+              "width": "150px",
+            }
+          }
+        >
+          <img
+            alt="Place image"
+            className="place-card__image"
+            height={0}
+            onError={[Function]}
+            onLoad={[Function]}
+            src="https://es31-server.appspot.com/six-cities/static/hotel/17.jpg"
+            width={0}
+          />
+          <span>
+            Loading ...
+          </span>
+        </div>
+      </a>
+    </div>
+    <div
+      className="place-card__info favorites__card-info"
+    >
+      <div
+        className="place-card__price-wrapper"
+      >
+        <div
+          className="place-card__price"
+        >
+          <b
+            className="place-card__price-value"
+          >
+            €
+            161
+          </b>
+          <span
+            className="place-card__price-text"
+          >
+            / night
+          </span>
+        </div>
+        <button
+          className="place-card__bookmark-button button"
+          type="button"
+        >
+          <svg
+            className="place-card__bookmark-icon"
+            height="19"
+            width="18"
+          >
+            <use
+              xlinkHref="#icon-bookmark"
+            />
+          </svg>
+          <span
+            className="visually-hidden"
+          >
+            To bookmarks
+          </span>
+        </button>
+      </div>
+      <div
+        className="place-card__rating rating"
+      >
+        <div
+          className="place-card__stars rating__stars"
+        >
+          <span
+            style={
+              Object {
+                "width": "54.00%",
+              }
+            }
+          />
+          <span
+            className="visually-hidden"
+          >
+            Rating
+          </span>
+        </div>
+      </div>
+      <h2
+        className="place-card__name"
+      >
+        <a
+          href="/offer/1"
+          onClick={[Function]}
+        >
+          Canal View Prinsengracht
+        </a>
+      </h2>
+      <p
+        className="place-card__type"
+      >
+        house
+      </p>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`List of near places correctly render 1`] = `
+<div
+  className="places__list near-places__list"
+>
+  <article
+    className="place-card near-places__card"
+  >
+    <div
+      className="near-places__image-wrapper place-card__image-wrapper"
+    >
+      <a
+        href="#"
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#e1e1e1",
+              "borderRadius": "4px",
+              "display": "flex",
+              "height": "200px",
+              "justifyContent": "center",
+              "width": "260px",
+            }
+          }
+        >
+          <img
+            alt="Place image"
+            className="place-card__image"
+            height={0}
+            onError={[Function]}
+            onLoad={[Function]}
+            src="https://es31-server.appspot.com/six-cities/static/hotel/17.jpg"
+            width={0}
+          />
+          <span>
+            Loading ...
+          </span>
+        </div>
+      </a>
+    </div>
+    <div
+      className="place-card__info"
+    >
+      <div
+        className="place-card__price-wrapper"
+      >
+        <div
+          className="place-card__price"
+        >
+          <b
+            className="place-card__price-value"
+          >
+            €
+            161
+          </b>
+          <span
+            className="place-card__price-text"
+          >
+            / night
+          </span>
+        </div>
+        <button
+          className="place-card__bookmark-button button"
+          type="button"
+        >
+          <svg
+            className="place-card__bookmark-icon"
+            height="19"
+            width="18"
+          >
+            <use
+              xlinkHref="#icon-bookmark"
+            />
+          </svg>
+          <span
+            className="visually-hidden"
+          >
+            To bookmarks
+          </span>
+        </button>
+      </div>
+      <div
+        className="place-card__rating rating"
+      >
+        <div
+          className="place-card__stars rating__stars"
+        >
+          <span
+            style={
+              Object {
+                "width": "54.00%",
+              }
+            }
+          />
+          <span
+            className="visually-hidden"
+          >
+            Rating
+          </span>
+        </div>
+      </div>
+      <h2
+        className="place-card__name"
+      >
+        <a
+          href="/offer/1"
+          onClick={[Function]}
+        >
+          Canal View Prinsengracht
+        </a>
+      </h2>
+      <p
+        className="place-card__type"
+      >
+        house
+      </p>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`List of places correctly render on main page 1`] = `
+<div
+  className="places__list cities__places-list tabs__content"
+>
+  <article
+    className="place-card cities__place-card"
+  >
+    <div
+      className="cities__image-wrapper place-card__image-wrapper"
+    >
+      <a
+        href="#"
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#e1e1e1",
+              "borderRadius": "4px",
+              "display": "flex",
+              "height": "200px",
+              "justifyContent": "center",
+              "width": "260px",
+            }
+          }
+        >
+          <img
+            alt="Place image"
+            className="place-card__image"
+            height={0}
+            onError={[Function]}
+            onLoad={[Function]}
+            src="https://es31-server.appspot.com/six-cities/static/hotel/17.jpg"
+            width={0}
+          />
+          <span>
+            Loading ...
+          </span>
+        </div>
+      </a>
+    </div>
+    <div
+      className="place-card__info"
+    >
+      <div
+        className="place-card__price-wrapper"
+      >
+        <div
+          className="place-card__price"
+        >
+          <b
+            className="place-card__price-value"
+          >
+            €
+            161
+          </b>
+          <span
+            className="place-card__price-text"
+          >
+            / night
+          </span>
+        </div>
+        <button
+          className="place-card__bookmark-button button"
+          type="button"
+        >
+          <svg
+            className="place-card__bookmark-icon"
+            height="19"
+            width="18"
+          >
+            <use
+              xlinkHref="#icon-bookmark"
+            />
+          </svg>
+          <span
+            className="visually-hidden"
+          >
+            To bookmarks
+          </span>
+        </button>
+      </div>
+      <div
+        className="place-card__rating rating"
+      >
+        <div
+          className="place-card__stars rating__stars"
+        >
+          <span
+            style={
+              Object {
+                "width": "54.00%",
+              }
+            }
+          />
+          <span
+            className="visually-hidden"
+          >
+            Rating
+          </span>
+        </div>
+      </div>
+      <h2
+        className="place-card__name"
+      >
+        <a
+          href="/offer/1"
+          onClick={[Function]}
+        >
+          Canal View Prinsengracht
+        </a>
+      </h2>
+      <p
+        className="place-card__type"
+      >
+        house
+      </p>
+    </div>
+  </article>
+</div>
+`;

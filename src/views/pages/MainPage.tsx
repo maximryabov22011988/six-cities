@@ -13,7 +13,7 @@ import Places from './mainPage/Places';
 import EmptyPlaces from './mainPage/EmptyPlaces';
 import Map from '../components/Map';
 
-import { OfferCity, City, User, Offer } from '../interfaces';
+import { OfferCity, City, User, Offer } from '../types';
 
 interface Props {
   addOfferToFavorities: (hotelId: number) => void;

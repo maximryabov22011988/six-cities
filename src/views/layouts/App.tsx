@@ -23,7 +23,7 @@ import { init, signIn } from '../../state/app/operations';
 import { addOfferToFavorities, removeOfferFromFavorities } from '../../state/favoriteOffers/operations';
 import { changeCity, changeSorting } from '../../state/UI/actions';
 
-import { City, OfferCity, Offer, User, onAddToFavorities, onRemoveFromFavorities, onSignIn } from '../interfaces';
+import { City, OfferCity, Offer, User, onAddToFavorities, onRemoveFromFavorities, onSignIn } from '../types';
 
 interface Props {
   addOfferToFavorities: onAddToFavorities;

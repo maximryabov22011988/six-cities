@@ -5,7 +5,7 @@ import withActiveItem from '../../../hocs/withActiveItem';
 
 import { ENTER, ESC, MOUSE_LEFT_BUTTON } from '../../../constants/keyCodes';
 
-import { Option } from '../../../interfaces';
+import { Option } from '../../../types';
 
 interface Props {
   caption: string;

@@ -5,7 +5,7 @@ import Select from './places/Select';
 
 import { SORTING_OPTIONS } from '../../constants/options';
 
-import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../interfaces';
+import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../types';
 
 interface Props {
   offers: Array<Offer>;

@@ -1,27 +1,22 @@
-/*
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
+import { BrowserRouter } from "react-router-dom";
 
 import Header from './Header';
 import Logo from './Logo';
 import UserInfo from './UserInfo';
-
-const userMock = {
-  isAuth: true,
-  avatarUrl: '/static/avatar/1.jpg',
-  email: 'Oliver.conner@gmail.com',
-};
+import user from '../mocks/user';
 
 it('Header correctly render', () => {
-  const header = renderer
+  const tree = renderer
     .create(
-      <Header
-        logo={<Logo />}
-        userInfo={<UserInfo avatarUrl={userMock.avatarUrl} email={userMock.email} isAuth={userMock.isAuth} />}
-      />
-    )
-    .toJSON();
+      <BrowserRouter>
+        <Header
+          logo={<Logo position="header" />}
+          userInfo={<UserInfo avatarUrl={user.avatar_url} email={user.email} isAuth={true} />}
+        />
+      </BrowserRouter>
+    ).toJSON();
 
-  expect(header).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
-*/

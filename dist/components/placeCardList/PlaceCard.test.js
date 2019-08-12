@@ -1,47 +1,62 @@
-/*
-import * as React from 'react';
-import renderer from 'react-test-renderer';
-
-import PlaceCard from './PlaceCard';
-
-const offerMock = {
-  id: 1,
-  city: {
-    name: 'Cologne',
-    location: {
-      latitude: 52.37454,
-      longitude: 4.897976,
-      zoom: 13,
-    },
-  },
-  title: 'The Pondhouse - A Magical Place',
-  preview_image: `img/apartment-01.jpg`,
-  price: 120,
-  type: 'house',
-  rating: 4.6,
-  is_premium: true,
-  is_favorite: false,
-};
-
-it('PlaceCard correctly render', () => {
-  const handleTitleClick = jest.fn();
-  const handleImageClick = jest.fn();
-  const handleMouseEnter = jest.fn();
-  const handleMouseLeave = jest.fn();
-
-  const placeCard = renderer
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+const React = require('react');
+const renderer = require('react-test-renderer');
+const react_router_dom_1 = require('react-router-dom');
+const PlaceCard_1 = require('./PlaceCard');
+const offer_1 = require('../../mocks/offer');
+it('PlaceCard correctly render on main page', () => {
+  const tree = renderer
     .create(
-      <PlaceCard
-        offer={offerMock}
-        onImageClick={handleImageClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTitleClick={handleTitleClick}
-      />
+      React.createElement(
+        react_router_dom_1.BrowserRouter,
+        null,
+        React.createElement(PlaceCard_1.default, {
+          className: 'cities',
+          offer: offer_1.default,
+          onActiveOfferClick: jest.fn(),
+          onAddToFavorities: jest.fn(),
+          onRemoveFromFavorities: jest.fn(),
+        })
+      )
     )
     .toJSON();
-
-  expect(placeCard).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
-*/
+it('PlaceCard of near places correctly render', () => {
+  const tree = renderer
+    .create(
+      React.createElement(
+        react_router_dom_1.BrowserRouter,
+        null,
+        React.createElement(PlaceCard_1.default, {
+          className: 'near-places',
+          offer: offer_1.default,
+          onActiveOfferClick: undefined,
+          onAddToFavorities: jest.fn(),
+          onRemoveFromFavorities: jest.fn(),
+        })
+      )
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
+it('PlaceCard of favorites places correctly render', () => {
+  const tree = renderer
+    .create(
+      React.createElement(
+        react_router_dom_1.BrowserRouter,
+        null,
+        React.createElement(PlaceCard_1.default, {
+          className: 'favorites',
+          offer: offer_1.default,
+          onActiveOfferClick: undefined,
+          onAddToFavorities: jest.fn(),
+          onRemoveFromFavorities: jest.fn(),
+        })
+      )
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
 //# sourceMappingURL=PlaceCard.test.js.map

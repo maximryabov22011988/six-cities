@@ -1,28 +1,16 @@
-/*
-import * as React from 'react';
-import renderer from 'react-test-renderer';
-
-import Header from './Header';
-import Logo from './Logo';
-import UserInfo from './UserInfo';
-
-const userMock = {
-  isAuth: true,
-  avatarUrl: '/static/avatar/1.jpg',
-  email: 'Oliver.conner@gmail.com',
-};
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = require("react");
+const renderer = require("react-test-renderer");
+const react_router_dom_1 = require("react-router-dom");
+const Header_1 = require("./Header");
+const Logo_1 = require("./Logo");
+const UserInfo_1 = require("./UserInfo");
+const user_1 = require("../mocks/user");
 it('Header correctly render', () => {
-  const header = renderer
-    .create(
-      <Header
-        logo={<Logo />}
-        userInfo={<UserInfo avatarUrl={userMock.avatarUrl} email={userMock.email} isAuth={userMock.isAuth} />}
-      />
-    )
-    .toJSON();
-
-  expect(header).toMatchSnapshot();
+    const tree = renderer
+        .create(React.createElement(react_router_dom_1.BrowserRouter, null,
+        React.createElement(Header_1.default, { logo: React.createElement(Logo_1.default, { position: "header" }), userInfo: React.createElement(UserInfo_1.default, { avatarUrl: user_1.default.avatar_url, email: user_1.default.email, isAuth: true }) }))).toJSON();
+    expect(tree).toMatchSnapshot();
 });
-*/
 //# sourceMappingURL=Header.test.js.map

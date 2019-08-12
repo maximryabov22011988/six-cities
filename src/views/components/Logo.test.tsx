@@ -1,12 +1,14 @@
-/*
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
+import { BrowserRouter } from "react-router-dom";
 
 import Logo from './Logo';
 
 it('Logo correctly render', () => {
-  const logo = renderer.create(<Logo />).toJSON();
-
-  expect(logo).toMatchSnapshot();
+  const tree = renderer.create(
+    <BrowserRouter>
+      <Logo position="header" />
+    </BrowserRouter>
+  ).toJSON();
+  expect(tree).toMatchSnapshot();
 });
-*/

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import PlaceCardList from '../../components/PlaceCardList';
 
-import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../interfaces';
+import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../types';
 
 interface Props {
   offers: Array<Offer>;

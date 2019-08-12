@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import ReviewItem from './ReviewItem';
 
-import { Review } from '../../../interfaces';
+import { Review } from '../../../types';
 
 interface Props {
   reviews: Array<Review>;

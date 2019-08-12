@@ -10,7 +10,7 @@ import SvgIcon from '../SvgIcon';
 
 import withActiveItem from '../../hocs/withActiveItem';
 
-import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../interfaces';
+import { Offer, onAddToFavorities, onRemoveFromFavorities } from '../../types';
 
 interface Props {
   className: string;
@@ -19,6 +19,8 @@ interface Props {
   onAddToFavorities: onAddToFavorities;
   onRemoveFromFavorities: onRemoveFromFavorities;
 }
+
+const BookmarkButton = withActiveItem(Button);
 
 function PlaceCard({ className, offer, onActiveOfferClick, onAddToFavorities, onRemoveFromFavorities }: Props) {
   const {
@@ -31,8 +33,6 @@ function PlaceCard({ className, offer, onActiveOfferClick, onAddToFavorities, on
     is_premium: isPremium,
     is_favorite: isFavorite,
   } = offer;
-
-  const BookmarkButton = withActiveItem(Button);
 
   return (
     <article

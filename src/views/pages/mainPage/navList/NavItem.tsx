@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-import { City, onChangeCity } from '../../../interfaces';
+import { City, onChangeCity } from '../../../types';
 
 interface Props {
   city: City;

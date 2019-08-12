@@ -6,7 +6,7 @@ import ReviewList from './reviews/ReviewList';
 import { loadReviews } from '../../../state/reviews/operations';
 import { getReviews } from '../../../state/reviews/selectors';
 
-import { Review } from '../../interfaces';
+import { Review } from '../../types';
 
 interface Props {
   hotelId: number;

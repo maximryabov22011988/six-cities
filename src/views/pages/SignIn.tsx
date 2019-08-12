@@ -7,7 +7,7 @@ import Content from '../components/Content';
 
 import SignInForm from './signIn/SignInForm';
 
-import { onSignIn } from '../interfaces';
+import { onSignIn } from '../types';
 
 interface Props {
   onSignIn: onSignIn;

@@ -21,7 +21,7 @@ import withActiveItem from '../hocs/withActiveItem';
 import { sendReview } from '../../state/reviews/operations';
 import { getCurrentOffer, getNearOffers } from '../../state/offers/selectors';
 
-import { User, Offer, onAddToFavorities, onRemoveFromFavorities } from '../interfaces';
+import { User, Offer, onAddToFavorities, onRemoveFromFavorities } from '../types';
 
 const MAX_IMAGES = 6;
 

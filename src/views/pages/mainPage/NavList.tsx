@@ -4,7 +4,7 @@ import NavItem from './navList/NavItem';
 
 import withActiveItem from '../../hocs/withActiveItem';
 
-import { City, onChangeCity } from '../../interfaces';
+import { City, onChangeCity } from '../../types';
 
 interface Props {
   cities: Array<City>;

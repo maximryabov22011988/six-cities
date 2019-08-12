@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as Leaflet from 'leaflet';
 import { get } from 'lodash';
 
-import { Offer } from '../interfaces';
+import { Offer } from '../types';
 
 const mapContainerId = 'map';
 
