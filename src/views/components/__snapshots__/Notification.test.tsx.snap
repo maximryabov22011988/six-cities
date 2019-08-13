@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification correctly render 1`] = `
+<div
+  className="notification"
+>
+  <span>
+    <svg
+      height="20"
+      width="20"
+    >
+      <use
+        xlinkHref="#icon-error"
+      />
+    </svg>
+    <span
+      className="visually-hidden"
+    />
+    Error
+  </span>
+  <button
+    className="notification__btn-close"
+    onClick={[Function]}
+  >
+    <svg
+      height="14"
+      width="14"
+    >
+      <use
+        xlinkHref="#icon-close"
+      />
+    </svg>
+    <span
+      className="visually-hidden"
+    />
+  </button>
+  Error
+</div>
+`;

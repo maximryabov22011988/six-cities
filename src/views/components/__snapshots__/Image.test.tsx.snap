@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image correctly render 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "background": "#e1e1e1",
+      "borderRadius": "4px",
+      "display": "flex",
+      "height": "100px",
+      "justifyContent": "center",
+      "width": "100px",
+    }
+  }
+>
+  <img
+    height={0}
+    onError={[Function]}
+    onLoad={[Function]}
+    src="/img"
+    width={0}
+  />
+  <span>
+    Loading ...
+  </span>
+</div>
+`;

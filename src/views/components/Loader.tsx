@@ -40,4 +40,6 @@ const mapStateToProps = (state) => ({
   isLoading: state[nameSpace.APP].isLoading,
 });
 
+export { Loader };
+
 export default connect(mapStateToProps)(Loader);

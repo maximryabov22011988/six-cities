@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader correctly render 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgba(255,255,255, 0.85)",
+      "bottom": 0,
+      "display": "flex",
+      "justifyContent": "center",
+      "left": 0,
+      "position": "fixed",
+      "right": 0,
+      "top": 0,
+      "zIndex": 10000,
+    }
+  }
+>
+  <div
+    className="lds-ellipsis"
+  >
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+</div>
+`;

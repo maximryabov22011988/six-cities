@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content correctly render 1`] = `
+<main
+  className="page__main page__main--favorites"
+>
+  <div
+    className="container page__favorites-container"
+  >
+    <section
+      className="favorites"
+    />
+  </div>
+</main>
+`;

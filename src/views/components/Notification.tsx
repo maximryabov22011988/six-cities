@@ -74,4 +74,6 @@ const mapStateToProps = (state) => ({
   message: get(state[nameSpace.APP], 'errors.message', ''),
 });
 
+export { Notification };
+
 export default connect(mapStateToProps)(Notification);

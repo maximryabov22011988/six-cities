@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SvgIcon correctly render 1`] = `
+Array [
+  <svg
+    height="10"
+    width="10"
+  >
+    <use
+      xlinkHref="#icon-test"
+    />
+  </svg>,
+  <span
+    className="visually-hidden"
+  />,
+]
+`;

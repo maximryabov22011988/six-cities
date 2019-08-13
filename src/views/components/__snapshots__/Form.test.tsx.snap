@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form correctly render 1`] = `
+<form
+  className="login__form form"
+  method="get"
+  onSubmit={[MockFunction]}
+/>
+`;
