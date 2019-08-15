@@ -3,10 +3,10 @@ import * as renderer from 'react-test-renderer';
 
 import Content from './Content';
 
-it('Content correctly render', () => {
+it('Content renders correctly with mandatory props', () => {
   const tree = renderer
     .create(
-      <Content isEmpty={false} parentClassName="favorites">
+      <Content>
         {null}
       </Content>
     ).toJSON();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Notification correctly render 1`] = `
+exports[`Notification renders correctly with mandatory props 1`] = `
 <div
   className="notification"
 >

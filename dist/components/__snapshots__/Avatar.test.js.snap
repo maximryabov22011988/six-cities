@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Avatar correctly render 1`] = `
+exports[`Avatar renders correctly with mandatory props 1`] = `
 Array [
   <div
     className="header__avatar-wrapper user__avatar-wrapper false"

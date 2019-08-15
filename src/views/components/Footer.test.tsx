@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import Footer from './Footer';
 
-it('Footer correctly render', () => {
+it('Footer renders correctly with mandatory props', () => {
   const tree = renderer
     .create(
       <Footer className="footer container">

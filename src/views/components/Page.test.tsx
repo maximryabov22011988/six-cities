@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import Page from './Page';
 
-it('Page correctly render', () => {
+it('Page renders correctly with mandatory props', () => {
   const tree = renderer
     .create(
       <Page>{null}</Page>

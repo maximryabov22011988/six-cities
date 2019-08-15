@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Content correctly render 1`] = `
+exports[`Content renders correctly with mandatory props 1`] = `
 <main
-  className="page__main page__main--favorites"
+  className="page__main"
 >
   <div
-    className="container page__favorites-container"
+    className="container"
   >
     <section
-      className="favorites"
+      className=""
     />
   </div>
 </main>

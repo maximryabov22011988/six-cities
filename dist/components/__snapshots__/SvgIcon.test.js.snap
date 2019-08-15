@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SvgIcon correctly render 1`] = `
+exports[`SvgIcon renders correctly with mandatory props 1`] = `
 Array [
   <svg
     height="10"

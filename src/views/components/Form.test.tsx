@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import Form from './Form';
 
-it('Form correctly render', () => {
+it('Form renders correctly with mandatory props', () => {
   const tree = renderer
     .create(
       <Form

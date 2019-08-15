@@ -4,11 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 
 import Logo from './Logo';
 
-it('Logo correctly render', () => {
-  const tree = renderer.create(
-    <BrowserRouter>
-      <Logo position="header" />
-    </BrowserRouter>
-  ).toJSON();
+it('Logo renders correctly with mandatory props', () => {
+  const tree = renderer
+    .create(
+      <BrowserRouter>
+        <Logo position="header" />
+      </BrowserRouter>
+    ).toJSON();
+
   expect(tree).toMatchSnapshot();
 });

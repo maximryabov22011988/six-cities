@@ -1,31 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserInfo correctly render 1`] = `
-Array [
-  <li
-    className="header__nav-item user"
+exports[`UserInfo renders correctly with mandatory props 1`] = `
+<li
+  className="header__nav-item user"
+>
+  <a
+    className="header__nav-link header__nav-link--profile"
+    href="/favorites"
+    onClick={[Function]}
   >
-    <a
-      className="header__nav-link header__nav-link--profile"
-      href="/favorites"
-      onClick={[Function]}
+    <div
+      className="header__avatar-wrapper user__avatar-wrapper false"
     >
-      <div
-        className="header__avatar-wrapper user__avatar-wrapper false"
-      >
-        <img
-          alt="User avatar"
-          className="reviews__avatar user__avatar"
-          src="https://es31-server.appspot.com/six-cities/static/avatar/8.jpg"
-        />
-      </div>
-      <span
-        className="header__user-name"
-      >
-        Oliver.conner@gmail.com
-      </span>
-    </a>
-  </li>,
-  ")",
-]
+      <img
+        alt="User avatar"
+        className="reviews__avatar user__avatar"
+        src="https://es31-server.appspot.com/six-cities/static/avatar/8.jpg"
+      />
+    </div>
+    <span
+      className="header__user-name"
+    >
+      Oliver.conner@gmail.com
+    </span>
+  </a>
+</li>
 `;

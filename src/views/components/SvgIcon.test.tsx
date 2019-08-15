@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import SvgIcon from './SvgIcon';
 
-it('SvgIcon correctly render', () => {
+it('SvgIcon renders correctly with mandatory props', () => {
   const tree = renderer
     .create(
       <SvgIcon

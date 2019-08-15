@@ -4,12 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 
 import Rating from './Rating';
 
-it('Rating correctly render', () => {
+it('Rating renders correctly with mandatory props', () => {
   const tree = renderer
     .create(
       <BrowserRouter>
         <Rating parentClassName="place-card" rating={1} />)
       </BrowserRouter>
     ).toJSON();
+
   expect(tree).toMatchSnapshot();
 });

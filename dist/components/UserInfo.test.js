@@ -5,7 +5,7 @@ const renderer = require('react-test-renderer');
 const react_router_dom_1 = require('react-router-dom');
 const UserInfo_1 = require('./UserInfo');
 const user_1 = require('../mocks/user');
-it('UserInfo correctly render', () => {
+it('UserInfo renders correctly with mandatory props', () => {
   const tree = renderer
     .create(
       React.createElement(
@@ -15,8 +15,7 @@ it('UserInfo correctly render', () => {
           avatarUrl: user_1.default.avatar_url,
           email: user_1.default.email,
           isAuth: true,
-        }),
-        ')'
+        })
       )
     )
     .toJSON();

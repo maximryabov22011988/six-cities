@@ -4,7 +4,7 @@ const React = require('react');
 const renderer = require('react-test-renderer');
 const react_router_dom_1 = require('react-router-dom');
 const Logo_1 = require('./Logo');
-it('Logo correctly render', () => {
+it('Logo renders correctly with mandatory props', () => {
   const tree = renderer
     .create(
       React.createElement(

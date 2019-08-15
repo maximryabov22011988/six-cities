@@ -3,7 +3,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 const React = require('react');
 const renderer = require('react-test-renderer');
 const Form_1 = require('./Form');
-it('Form correctly render', () => {
+it('Form renders correctly with mandatory props', () => {
   const tree = renderer
     .create(React.createElement(Form_1.default, { className: 'login__form', method: 'get', onSubmit: jest.fn() }, null))
     .toJSON();

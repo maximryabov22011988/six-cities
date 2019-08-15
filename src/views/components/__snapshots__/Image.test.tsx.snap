@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Image correctly render 1`] = `
+exports[`Image renders correctly with mandatory props 1`] = `
 <div
   style={
     Object {

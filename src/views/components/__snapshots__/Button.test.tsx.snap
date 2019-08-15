@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button correctly render 1`] = `
+exports[`Button renders correctly with mandatory props 1`] = `
 <button
   className="login__submit form__submit button"
   type="button"

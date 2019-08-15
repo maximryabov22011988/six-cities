@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Rating correctly render 1`] = `
+exports[`Rating renders correctly with mandatory props 1`] = `
 Array [
   <div
     className="place-card__rating rating"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Footer correctly render 1`] = `
+exports[`Footer renders correctly with mandatory props 1`] = `
 <footer
   className="footer container"
 />
