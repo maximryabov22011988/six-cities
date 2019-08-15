@@ -6,10 +6,9 @@
   "scripts": {
     "build": "webpack --mode development",
     "start": "webpack-dev-server",
-    "test": "npm run eslint && jest",
-    "eslint": "node_modules/.bin/eslint src/",
-    "jest": "jest",
-    "jest:u": "jest -u",
+    "lint": "node_modules/.bin/eslint src/",
+    "test": "jest --config ./jest.config.js --no-cache",
+    "test:u": "jest -u",
     "format": "prettier-eslint --write \"src/**/*.tsx\""
   },
   "lint-staged": {

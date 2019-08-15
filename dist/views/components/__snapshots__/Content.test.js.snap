@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content renders correctly with mandatory props 1`] = `
+<main
+  className="page__main"
+>
+  <div
+    className="container"
+  >
+    <section
+      className=""
+    />
+  </div>
+</main>
+`;

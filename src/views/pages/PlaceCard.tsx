@@ -184,6 +184,8 @@ const mapDispatchToProps = {
   sendReview,
 };
 
+export { PlaceCard };
+
 export default withRouter(
   connect(
     mapStateToProps,

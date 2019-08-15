@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import NavList from './NavList';
-import city from '../../mocks/cities';
+import city from '../../mocks/city';
 
 const cities = [city];
 

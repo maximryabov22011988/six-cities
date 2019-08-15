@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label renders correctly with mandatory props 1`] = `
+<div
+  className="place-card__mark"
+>
+  <span>
+    Premium
+  </span>
+</div>
+`;
