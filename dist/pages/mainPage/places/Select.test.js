@@ -5,7 +5,7 @@ const renderer = require('react-test-renderer');
 const Select_1 = require('./Select');
 const options_1 = require('../../../mocks/options');
 it('Select renders correctly with mandatory props', () => {
-  const select = renderer
+  const tree = renderer
     .create(
       React.createElement(Select_1.default, {
         caption: 'Sort by',
@@ -15,6 +15,6 @@ it('Select renders correctly with mandatory props', () => {
       })
     )
     .toJSON();
-  expect(select).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
 //# sourceMappingURL=Select.test.js.map

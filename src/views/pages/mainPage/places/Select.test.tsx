@@ -4,9 +4,8 @@ import * as renderer from 'react-test-renderer';
 import Select from './Select';
 import { defaultId, options } from '../../../mocks/options';
 
-
 it('Select renders correctly with mandatory props', () => {
-  const select = renderer
+  const tree = renderer
     .create(
       <Select
         caption="Sort by"
@@ -16,5 +15,5 @@ it('Select renders correctly with mandatory props', () => {
       />
     ).toJSON();
 
-  expect(select).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });

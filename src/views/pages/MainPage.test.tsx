@@ -1,64 +1,36 @@
-/*
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
+import { BrowserRouter } from "react-router-dom";
 
 import MainPage from './MainPage';
 import Map from '../components/Map';
 
-const userMock = {
-  avatarUrl: '/static/avatar/1.jpg',
-  email: 'Oliver.conner@gmail.com',
-};
+import offer from '../mocks/offer';
+import user from '../mocks/user';
+import city from '../mocks/city';
 
-const currentCityMock = {
-  name: 'Cologne',
-  location: [50.938361, 6.959974],
-};
+const offers = [offer];
+const cities = [city];
 
-const citiesMock = [
-  {
-    name: 'Cologne',
-    location: [50.938361, 6.959974],
-    zoom: 13,
-  },
-];
-
-const offersMock = [
-  {
-    id: 1,
-    city: {
-      name: 'Cologne',
-      location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13,
-      },
-    },
-    title: 'The Pondhouse - A Magical Place',
-    preview_image: `img/apartment-01.jpg`,
-    price: 120,
-    type: 'house',
-    rating: 4.6,
-    is_premium: true,
-    is_favorite: false,
-  },
-];
-
-it('MainPage correctly render', () => {
+it('MainPage renders correctly with mandatory props', () => {
   Map.prototype.componentDidMount = jest.fn();
-  const mainPage = renderer
-    .create(
-      <MainPage
-        changeCity={jest.fn()}
-        cities={citiesMock}
-        currentCity={currentCityMock}
-        isAuthUser
-        offers={offersMock}
-        user={userMock}
-      />
-    )
-    .toJSON();
 
-  expect(mainPage).toMatchSnapshot();
+  const tree = renderer
+    .create(
+      <BrowserRouter>
+        <MainPage
+          addOfferToFavorities={jest.fn()}
+          changeCity={jest.fn()}
+          changeSorting={jest.fn()}
+          cities={cities}
+          currentCity={city}
+          isAuthUser={true}
+          offers={offers}
+          removeOfferFromFavorities={jest.fn()}
+          user={user}
+        />
+      </BrowserRouter>
+    ).toJSON();
+
+  expect(tree).toMatchSnapshot();
 });
-*/

@@ -1,65 +1,36 @@
-/*
-import * as React from 'react';
-import renderer from 'react-test-renderer';
-
-import MainPage from './MainPage';
-import Map from '../components/Map';
-
-const userMock = {
-  avatarUrl: '/static/avatar/1.jpg',
-  email: 'Oliver.conner@gmail.com',
-};
-
-const currentCityMock = {
-  name: 'Cologne',
-  location: [50.938361, 6.959974],
-};
-
-const citiesMock = [
-  {
-    name: 'Cologne',
-    location: [50.938361, 6.959974],
-    zoom: 13,
-  },
-];
-
-const offersMock = [
-  {
-    id: 1,
-    city: {
-      name: 'Cologne',
-      location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13,
-      },
-    },
-    title: 'The Pondhouse - A Magical Place',
-    preview_image: `img/apartment-01.jpg`,
-    price: 120,
-    type: 'house',
-    rating: 4.6,
-    is_premium: true,
-    is_favorite: false,
-  },
-];
-
-it('MainPage correctly render', () => {
-  Map.prototype.componentDidMount = jest.fn();
-  const mainPage = renderer
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+const React = require('react');
+const renderer = require('react-test-renderer');
+const react_router_dom_1 = require('react-router-dom');
+const MainPage_1 = require('./MainPage');
+const Map_1 = require('../components/Map');
+const offer_1 = require('../mocks/offer');
+const user_1 = require('../mocks/user');
+const city_1 = require('../mocks/city');
+const offers = [offer_1.default];
+const cities = [city_1.default];
+it('MainPage renders correctly with mandatory props', () => {
+  Map_1.default.prototype.componentDidMount = jest.fn();
+  const tree = renderer
     .create(
-      <MainPage
-        changeCity={jest.fn()}
-        cities={citiesMock}
-        currentCity={currentCityMock}
-        isAuthUser
-        offers={offersMock}
-        user={userMock}
-      />
+      React.createElement(
+        react_router_dom_1.BrowserRouter,
+        null,
+        React.createElement(MainPage_1.default, {
+          addOfferToFavorities: jest.fn(),
+          changeCity: jest.fn(),
+          changeSorting: jest.fn(),
+          cities: cities,
+          currentCity: city_1.default,
+          isAuthUser: true,
+          offers: offers,
+          removeOfferFromFavorities: jest.fn(),
+          user: user_1.default,
+        })
+      )
     )
     .toJSON();
-
-  expect(mainPage).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
-*/
 //# sourceMappingURL=MainPage.test.js.map
