@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavList renders correctly with mandatory props 1`] = `
+<ul
+  className="locations__list tabs__list"
+>
+  <li
+    className="locations__item"
+  >
+    <a
+      className="tabs__item locations__item-link"
+      href="#"
+    >
+      <span>
+        Cologne
+      </span>
+    </a>
+  </li>
+</ul>
+`;

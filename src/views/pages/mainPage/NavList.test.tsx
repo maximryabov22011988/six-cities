@@ -1,28 +1,20 @@
-/*
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
 import NavList from './NavList';
+import city from '../../mocks/cities';
 
-const currentCityMock = {
-  name: 'Cologne',
-  location: [50.938361, 6.959974],
-};
+const cities = [city];
 
-const citiesMock = [
-  {
-    name: 'Cologne',
-    location: [50.938361, 6.959974],
-    zoom: 13,
-  },
-];
+it('NavList renders correctly with mandatory props', () => {
+  const tree = renderer
+    .create(
+      <NavList
+        cities={cities}
+        currentCity="Paris"
+        onChangeCity={jest.fn()}
+      />
+    ).toJSON();
 
-it('NavList correctly render', () => {
-  const handleChangeCity = jest.fn();
-  const navList = renderer
-    .create(<NavList cities={citiesMock} currentCity={currentCityMock.name} onChangeCity={handleChangeCity} />)
-    .toJSON();
-
-  expect(navList).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
-*/

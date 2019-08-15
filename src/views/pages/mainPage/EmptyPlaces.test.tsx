@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import Nav from './Nav';
+import EmptyPlaces from './EmptyPlaces';
 
-it('Nav renders correctly with mandatory props', () => {
+it('EmptyPlaces renders correctly with mandatory props', () => {
   const tree = renderer
     .create(
-      <Nav>{null}</Nav>
+      <EmptyPlaces city="Paris"/>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

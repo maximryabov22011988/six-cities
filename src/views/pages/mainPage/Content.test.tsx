@@ -1,12 +1,15 @@
-/*
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
 import Content from './Content';
 
-it('Content correctly render', () => {
-  const content = renderer.create(<Content />).toJSON();
+it('Content renders correctly with mandatory props', () => {
+  const tree = renderer
+    .create(
+      <Content isEmpty={false}>
+        {null}
+      </Content>
+    ).toJSON();
 
-  expect(content).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
-*/

@@ -1,35 +1,26 @@
-/*
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
+import { BrowserRouter } from "react-router-dom";
 
 import Places from './Places';
+import offer from '../../mocks/offer';
 
-const offersMock = [
-  {
-    id: 1,
-    city: {
-      name: 'Cologne',
-      location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13,
-      },
-    },
-    title: 'The Pondhouse - A Magical Place',
-    preview_image: `img/apartment-01.jpg`,
-    price: 120,
-    type: 'house',
-    rating: 4.6,
-    is_premium: true,
-    is_favorite: false,
-  },
-];
+const offers = [offer];
 
-it('Places correctly render', () => {
-  const placeCard = renderer
-    .create(<Places offers={offersMock} searchResultText="1 places to stay in Paris" />)
-    .toJSON();
+it('Places renders correctly with mandatory props', () => {
+  const tree = renderer
+    .create(
+      <BrowserRouter>
+        <Places
+          offers={offers}
+          searchResultText="1 places to stay in Paris"
+          onActiveOfferClick={jest.fn()}
+          onAddToFavorities={jest.fn()}
+          onChangeSorting={jest.fn()}
+          onRemoveFromFavorities={jest.fn()}
+        />
+      </BrowserRouter>
+    ).toJSON();
 
-  expect(placeCard).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
-*/

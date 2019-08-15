@@ -1,12 +1,17 @@
-/*
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
 import PlacesContainer from './PlacesContainer';
 
-it('PlacesContainer correctly render', () => {
-  const placesContainer = renderer.create(<PlacesContainer />).toJSON();
+it('PlacesContainer renders correctly with mandatory props', () => {
+  const tree = renderer
+    .create(
+      <PlacesContainer
+        isEmpty={false}
+        leftPanel={null}
+        rightPanel={null}
+      />
+    ).toJSON();
 
-  expect(placesContainer).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
-*/

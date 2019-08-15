@@ -1,22 +1,15 @@
-/*
-import * as React from 'react';
-import renderer from 'react-test-renderer';
-
-import NavItem from './NavItem';
-
-const cityMock = {
-  name: 'Cologne',
-  location: [50.938361, 6.959974],
-  zoom: 13,
-};
-
-it('NavItem correctly render', () => {
-  const handleChangeCity = jest.fn();
-  const navItem = renderer
-    .create(<NavItem city={cityMock} className="tabs__item" onChangeCity={handleChangeCity} />)
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+const React = require('react');
+const renderer = require('react-test-renderer');
+const NavItem_1 = require('./NavItem');
+const city_1 = require('../../../mocks/city');
+it('NavItem renders correctly with mandatory props', () => {
+  const tree = renderer
+    .create(
+      React.createElement(NavItem_1.default, { city: city_1.default, className: 'tabs__item', onChangeCity: jest.fn() })
+    )
     .toJSON();
-
-  expect(navItem).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
-*/
 //# sourceMappingURL=NavItem.test.js.map
