@@ -119,7 +119,7 @@ exports[`PlaceCard correctly render on main page 1`] = `
 </article>
 `;
 
-exports[`PlaceCard of favorites places correctly render 1`] = `
+exports[`PlaceCard favorites places correctly render 1`] = `
 <article
   className="place-card favorites__card"
 >
@@ -237,7 +237,7 @@ exports[`PlaceCard of favorites places correctly render 1`] = `
 </article>
 `;
 
-exports[`PlaceCard of near places correctly render 1`] = `
+exports[`PlaceCard near places correctly render 1`] = `
 <article
   className="place-card near-places__card"
 >
