@@ -57,6 +57,6 @@ describe('Avatar rendering', () => {
   it('should render wrapper className with pro status', () => {
     props = createTestProps({ isPro: true });
     wrapper = shallow(<Avatar {...props} />);
-    expect(wrapper.find('.header__avatar-wrapper--pro')).toHaveLength(1);
+    expect(wrapper.find('.user__avatar-wrapper').hasClass('header__avatar-wrapper--pro')).toBeTruthy();
   });
 });
