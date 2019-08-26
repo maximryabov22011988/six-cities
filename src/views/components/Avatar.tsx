@@ -4,7 +4,7 @@ interface Props {
   alt: string;
   height?: string;
   isPro?: boolean;
-  name: string;
+  name?: string;
   parentClassName: string;
   showStatus?: boolean;
   src: string;

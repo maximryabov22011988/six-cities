@@ -5,14 +5,8 @@ import Avatar from './Avatar';
 
 it('Avatar renders correctly with mandatory props', () => {
   const tree = renderer
-    .create(
-      <Avatar
-        alt="User avatar"
-        name="info@test.ru"
-        parentClassName="header"
-        src="/img"
-      />
-    ).toJSON();
+    .create(<Avatar alt="User avatar" name="info@test.ru" parentClassName="header" src="/img" />)
+    .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
