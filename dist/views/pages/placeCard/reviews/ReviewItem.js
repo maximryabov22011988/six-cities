@@ -8,8 +8,8 @@ const Rating_1 = require("../../../components/Rating");
 const getDateFormat = (date) => {
     if (date) {
         return {
-            dateTime: moment().format('YYYY-MM-DD'),
-            text: moment().format('MMMM YYYY'),
+            dateTime: moment(date).format('YYYY-MM-DD'),
+            text: moment(date).format('MMMM YYYY'),
         };
     }
     return null;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 
 import MainPage from './MainPage';
 import Map from '../components/Map';
@@ -8,6 +8,7 @@ import Map from '../components/Map';
 import offer from '../mocks/offer';
 import user from '../mocks/user';
 import city from '../mocks/city';
+import currentCity from '../mocks/currentCity';
 
 const offers = [offer];
 const cities = [city];
@@ -23,14 +24,15 @@ it('MainPage renders correctly with mandatory props', () => {
           changeCity={jest.fn()}
           changeSorting={jest.fn()}
           cities={cities}
-          currentCity={city}
+          currentCity={currentCity}
           isAuthUser={true}
           offers={offers}
           removeOfferFromFavorities={jest.fn()}
           user={user}
         />
       </BrowserRouter>
-    ).toJSON();
+    )
+    .toJSON();
 
   expect(tree).toMatchSnapshot();
 });

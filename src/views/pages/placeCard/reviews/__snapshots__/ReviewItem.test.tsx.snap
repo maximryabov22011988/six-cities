@@ -54,9 +54,9 @@ exports[`ReviewItem renders correctly with mandatory props 1`] = `
     </p>
     <time
       className="reviews__time"
-      dateTime="2019-08-21"
+      dateTime="2019-05-08"
     >
-      August 2019
+      May 2019
     </time>
   </div>
 </li>

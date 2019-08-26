@@ -8,13 +8,15 @@ const Map_1 = require("../components/Map");
 const offer_1 = require("../mocks/offer");
 const user_1 = require("../mocks/user");
 const city_1 = require("../mocks/city");
+const currentCity_1 = require("../mocks/currentCity");
 const offers = [offer_1.default];
 const cities = [city_1.default];
 it('MainPage renders correctly with mandatory props', () => {
     Map_1.default.prototype.componentDidMount = jest.fn();
     const tree = renderer
         .create(React.createElement(react_router_dom_1.BrowserRouter, null,
-        React.createElement(MainPage_1.default, { addOfferToFavorities: jest.fn(), changeCity: jest.fn(), changeSorting: jest.fn(), cities: cities, currentCity: city_1.default, isAuthUser: true, offers: offers, removeOfferFromFavorities: jest.fn(), user: user_1.default }))).toJSON();
+        React.createElement(MainPage_1.default, { addOfferToFavorities: jest.fn(), changeCity: jest.fn(), changeSorting: jest.fn(), cities: cities, currentCity: currentCity_1.default, isAuthUser: true, offers: offers, removeOfferFromFavorities: jest.fn(), user: user_1.default })))
+        .toJSON();
     expect(tree).toMatchSnapshot();
 });
 //# sourceMappingURL=MainPage.test.js.map
