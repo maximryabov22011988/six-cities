@@ -22,7 +22,7 @@ describe('Loader rendering', () => {
     expect(wrapper.find('div')).toHaveLength(0);
   });
   it('should render', () => {
-    wrapper = shallow(<Loader {...props} isLoading={true} />);
+    wrapper = shallow(<Loader isLoading={true} />);
     expect(wrapper.find('.lds-ellipsis').children()).toHaveLength(4);
   });
 });

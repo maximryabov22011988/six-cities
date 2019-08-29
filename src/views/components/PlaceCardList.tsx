@@ -28,16 +28,17 @@ function PlaceCardList({
         parentClassName === 'near-places' && `${parentClassName}__list`
       )}
     >
-      {offers.map((offer) => (
-        <PlaceCard
-          className={parentClassName}
-          key={offer.id}
-          offer={offer}
-          onActiveOfferClick={parentClassName === 'cities' ? onActiveOfferClick(offer.id) : undefined}
-          onAddToFavorities={onAddToFavorities}
-          onRemoveFromFavorities={onRemoveFromFavorities}
-        />
-      ))}
+      {offers &&
+        offers.map((offer) => (
+          <PlaceCard
+            className={parentClassName}
+            key={offer.id}
+            offer={offer}
+            onActiveOfferClick={parentClassName === 'cities' ? onActiveOfferClick(offer.id) : undefined}
+            onAddToFavorities={onAddToFavorities}
+            onRemoveFromFavorities={onRemoveFromFavorities}
+          />
+        ))}
     </div>
   );
 }

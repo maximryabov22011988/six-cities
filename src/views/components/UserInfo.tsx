@@ -17,12 +17,12 @@ class UserInfo extends React.PureComponent<Props> {
 
     return (
       <li className="header__nav-item user">
-        {!isAuth ? (
-          <Link to="/login">Sign In</Link>
-        ) : (
+        {isAuth ? (
           <Link className="header__nav-link header__nav-link--profile" to="/favorites">
             <Avatar alt="User avatar" name={email} parentClassName="header" src={`${BASE_URL}${avatarUrl}`} />
           </Link>
+        ) : (
+          <Link to="/login">Sign In</Link>
         )}
       </li>
     );

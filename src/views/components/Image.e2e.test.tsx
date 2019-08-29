@@ -10,15 +10,12 @@ Enzyme.configure({ adapter: new Adapter() });
 let wrapper;
 let props;
 
-const createTestProps = (props = {}) => ({
-  height: '100',
-  src: '/img',
-  width: '100',
-  ...props,
-});
-
 beforeEach(() => {
-  props = createTestProps();
+  props = {
+    height: '100',
+    src: '/img',
+    width: '100',
+  };
   wrapper = shallow(<Image {...props} />);
 });
 

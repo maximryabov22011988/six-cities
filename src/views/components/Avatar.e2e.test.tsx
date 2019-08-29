@@ -10,17 +10,18 @@ Enzyme.configure({ adapter: new Adapter() });
 let wrapper;
 let props;
 
-const createTestProps = (props) => ({
-  alt: 'User avatar',
-  parentClassName: 'header',
-  src: '/img',
-  ...props,
+beforeEach(() => {
+  props = {
+    alt: 'User avatar',
+    parentClassName: 'header',
+    src: '/img',
+    name: 'info@test.ru',
+  };
 });
 
 describe('Avatar rendering', () => {
   describe('User name', () => {
     it('should render element', () => {
-      props = createTestProps({ name: 'info@test.ru' });
       wrapper = shallow(<Avatar {...props} />);
       expect(wrapper.find('.header__user-name')).toHaveLength(1);
     });
@@ -30,16 +31,14 @@ describe('Avatar rendering', () => {
     });
 
     it("don't should render element", () => {
-      props = createTestProps({ name: null });
-      wrapper = shallow(<Avatar {...props} />);
+      wrapper = shallow(<Avatar {...props} name={null} />);
       expect(wrapper.find('.header__user-name')).toHaveLength(0);
     });
   });
 
   describe('User status', () => {
     it('should render element', () => {
-      props = createTestProps({ showStatus: true });
-      wrapper = shallow(<Avatar {...props} />);
+      wrapper = shallow(<Avatar {...props} showStatus={true} />);
       expect(wrapper.find('.header__user-status')).toHaveLength(1);
     });
 
@@ -48,15 +47,13 @@ describe('Avatar rendering', () => {
     });
 
     it("don't should render element", () => {
-      props = createTestProps({ showStatus: false });
-      wrapper = shallow(<Avatar {...props} />);
+      wrapper = shallow(<Avatar {...props} showStatus={false} />);
       expect(wrapper.find('.header__user-status')).toHaveLength(0);
     });
   });
 
   it('should render wrapper className with pro status', () => {
-    props = createTestProps({ isPro: true });
-    wrapper = shallow(<Avatar {...props} />);
+    wrapper = shallow(<Avatar {...props} isPro={true} />);
     expect(wrapper.find('.user__avatar-wrapper').hasClass('header__avatar-wrapper--pro')).toBeTruthy();
   });
 });

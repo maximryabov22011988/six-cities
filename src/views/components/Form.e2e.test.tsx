@@ -10,15 +10,12 @@ Enzyme.configure({ adapter: new Adapter() });
 let wrapper;
 let props;
 
-const createTestProps = (props = {}) => ({
-  className: 'login__form',
-  method: 'get',
-  onSubmit: jest.fn(),
-  ...props,
-});
-
 beforeEach(() => {
-  props = createTestProps();
+  props = {
+    className: 'login__form',
+    method: 'get',
+    onSubmit: jest.fn(),
+  };
   wrapper = shallow(<Form {...props}>{null}</Form>);
 });
 

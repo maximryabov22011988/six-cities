@@ -13,18 +13,16 @@ let props;
 beforeEach(() => {
   props = {
     isEmpty: true,
-    parentClassName: 'favorites',
   };
   wrapper = shallow(<Content {...props}>{null}</Content>);
 });
 
 describe('Content rendering', () => {
-  describe('Empty CSS-class', () => {
-    it('should have CSS-class ".page__main--favorites-empty"', () => {
-      expect(wrapper.find('main').hasClass('page__main--favorites-empty')).toBeTruthy();
-    });
-    it('should have CSS-class ".favorites--empty"', () => {
-      expect(wrapper.find('section').hasClass('favorites--empty')).toBeTruthy();
-    });
+  it('should have CSS-class ".page__main--index-empty"', () => {
+    expect(wrapper.find('main').hasClass('page__main--index-empty')).toBeTruthy();
+  });
+  it('don"t should have CSS-class ".page__main--index-empty"', () => {
+    wrapper = shallow(<Content isEmpty={false}>{null}</Content>);
+    expect(wrapper.find('main').hasClass('page__main--index-empty')).toBeFalsy();
   });
 });
