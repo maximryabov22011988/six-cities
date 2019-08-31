@@ -21,14 +21,14 @@ beforeEach(() => {
 });
 
 describe('PlaceCardList rendering', () => {
-  it('should have CSS-class ".favorites__places"', () => {
+  it('should has ".favorites__places"', () => {
     expect(wrapper.find('div').hasClass('favorites__places')).toBeTruthy();
   });
-  it('should have CSS-class ".cities__places-list"', () => {
+  it('should has ".cities__places-list"', () => {
     wrapper = shallow(<PlaceCardList {...props} parentClassName="cities" />);
     expect(wrapper.find('div').hasClass('cities__places-list')).toBeTruthy();
   });
-  it('should have CSS-class ".near-places__list"', () => {
+  it('should has ".near-places__list"', () => {
     wrapper = shallow(<PlaceCardList {...props} parentClassName="near-places" />);
     expect(wrapper.find('div').hasClass('near-places__list')).toBeTruthy();
   });

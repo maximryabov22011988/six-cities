@@ -24,7 +24,7 @@ describe('UserInfo rendering', () => {
   it('should contain Avatar', () => {
     expect(wrapper.find(Avatar)).toHaveLength(1);
   });
-  it('don"t should contain Avatar', () => {
+  it('should not contain Avatar', () => {
     wrapper = shallow(<UserInfo {...props} isAuth={false} />);
     expect(wrapper.find(Avatar)).toHaveLength(0);
   });

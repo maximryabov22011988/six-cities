@@ -20,13 +20,13 @@ beforeEach(() => {
 });
 
 describe('Form rendering', () => {
-  it('should has class ".form"', () => {
+  it('should has ".form"', () => {
     expect(wrapper.find('form').hasClass('form')).toBeTruthy();
   });
 });
 
 describe('Form interactions', () => {
-  it('should call onSubmit', () => {
+  it('should call onSubmit correctly', () => {
     const handleSubmit = jest.fn();
     wrapper = shallow(
       <Form {...props} onSubmit={handleSubmit}>

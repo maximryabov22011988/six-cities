@@ -21,10 +21,10 @@ beforeEach(() => {
 });
 
 describe('SvgIcon rendering', () => {
-  it('should have CSS-class ".visually-hidden"', () => {
+  it('should has ".visually-hidden"', () => {
     expect(wrapper.find('span').hasClass('visually-hidden')).toBeTruthy();
   });
-  it('don"t should have CSS-class ".visually-hidden"', () => {
+  it('should has not ".visually-hidden"', () => {
     wrapper = shallow(<SvgIcon {...props} isShowLabel={true} />);
     expect(wrapper.find('span').hasClass('visually-hidden')).toBeFalsy();
   });

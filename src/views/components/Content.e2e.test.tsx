@@ -19,12 +19,8 @@ beforeEach(() => {
 });
 
 describe('Content rendering', () => {
-  describe('Empty CSS-class', () => {
-    it('should have CSS-class ".page__main--favorites-empty"', () => {
-      expect(wrapper.find('main').hasClass('page__main--favorites-empty')).toBeTruthy();
-    });
-    it('should have CSS-class ".favorites--empty"', () => {
-      expect(wrapper.find('section').hasClass('favorites--empty')).toBeTruthy();
-    });
+  it('should has ".page__main--favorites-empty"', () => {
+    expect(wrapper.find('main').hasClass('page__main--favorites-empty')).toBeTruthy();
+    expect(wrapper.find('section').hasClass('favorites--empty')).toBeTruthy();
   });
 });

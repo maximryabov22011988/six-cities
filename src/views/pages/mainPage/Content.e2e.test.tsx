@@ -18,10 +18,10 @@ beforeEach(() => {
 });
 
 describe('Content rendering', () => {
-  it('should have CSS-class ".page__main--index-empty"', () => {
+  it('should has ".page__main--index-empty"', () => {
     expect(wrapper.find('main').hasClass('page__main--index-empty')).toBeTruthy();
   });
-  it('don"t should have CSS-class ".page__main--index-empty"', () => {
+  it('should has not ".page__main--index-empty"', () => {
     wrapper = shallow(<Content isEmpty={false}>{null}</Content>);
     expect(wrapper.find('main').hasClass('page__main--index-empty')).toBeFalsy();
   });

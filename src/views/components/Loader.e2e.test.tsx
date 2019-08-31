@@ -18,7 +18,7 @@ beforeEach(() => {
 });
 
 describe('Loader rendering', () => {
-  it("don't should render", () => {
+  it('should not render', () => {
     expect(wrapper.find('div')).toHaveLength(0);
   });
   it('should render', () => {

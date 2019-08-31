@@ -20,17 +20,17 @@ beforeEach(() => {
 });
 
 describe('Image rendering', () => {
-  it('should render status element with "Loading ..."', () => {
+  it('should render with "Loading ..."', () => {
     expect(wrapper.state().imgStatus).toEqual('Loading ...');
     expect(wrapper.find('span')).toHaveLength(1);
     expect(wrapper.find('span').text()).toEqual('Loading ...');
   });
-  it('should render status element with "Failed to load :("', () => {
+  it('should render with "Failed to load :("', () => {
     wrapper.setState({ imgStatus: 'Failed to load :(' });
     expect(wrapper.find('span')).toHaveLength(1);
     expect(wrapper.find('span').text()).toEqual('Failed to load :(');
   });
-  it("don't should render status element", () => {
+  it('should not render status element', () => {
     wrapper.setState({ imgStatus: 'Loaded' });
     expect(wrapper.find('span')).toHaveLength(0);
   });

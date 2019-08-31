@@ -20,11 +20,11 @@ beforeEach(() => {
 });
 
 describe('PlacesContainer rendering', () => {
-  it('should have CSS-class ".cities__places-container--empty"', () => {
+  it('should has ".cities__places-container--empty"', () => {
     expect(wrapper.find('.container').hasClass('cities__places-container--empty')).toBeTruthy();
     expect(wrapper.find('.cities__map')).toHaveLength(0);
   });
-  it('don"t should have CSS-class ".cities__places-container--empty"', () => {
+  it('should has not ".cities__places-container--empty"', () => {
     wrapper = shallow(
       <PlacesContainer {...props} isEmpty={false}>
         {null}

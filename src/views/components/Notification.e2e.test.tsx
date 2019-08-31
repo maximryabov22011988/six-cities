@@ -19,11 +19,11 @@ beforeEach(() => {
 });
 
 describe('Notification interactions', () => {
-  it('should show when prop "show" to be true', () => {
+  it('should show', () => {
     expect(wrapper.find('div').hasClass('notification--show')).toBeTruthy();
     expect(wrapper.find('.notification--show').contains('Error message')).toBeTruthy();
   });
-  it('should hide when call onClick on close button', () => {
+  it('should hide', () => {
     const instance = wrapper.instance();
     const preventDefault = jest.fn();
 

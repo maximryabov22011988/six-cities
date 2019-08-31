@@ -21,7 +21,7 @@ beforeEach(() => {
 });
 
 describe('ReviewList rendering', () => {
-  it('should contain Avatar', () => {
+  it('should contain ReviewItem', () => {
     expect(wrapper.find(ReviewItem)).toHaveLength(10);
   });
 });

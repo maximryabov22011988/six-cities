@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { parseInt, isNumber } from 'lodash';
 
 import Form from '../../components/Form';
 import Button from '../../components/Button';
@@ -33,7 +32,8 @@ class AddReviewsForm extends React.Component<Props, State> {
 
   isCorrectRating = () => {
     const { rating } = this.state;
-    return isNumber(parseInt(rating));
+    const value = Number(rating);
+    return !!value && value >= 1 && value <= 5;
   };
 
   isLocked = () => !(this.isCorrectComment() && this.isCorrectRating());

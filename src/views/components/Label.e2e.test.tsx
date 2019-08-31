@@ -20,7 +20,7 @@ beforeEach(() => {
 });
 
 describe('Label rendering', () => {
-  it("don't should render", () => {
+  it('should not render', () => {
     expect(wrapper.find('span')).toHaveLength(0);
   });
   it('should render', () => {
