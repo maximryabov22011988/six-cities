@@ -77,4 +77,6 @@ const app = (state = initialState, action) => {
   }
 };
 
+export { initialState };
+
 export default app;
