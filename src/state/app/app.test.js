@@ -1,63 +1,61 @@
 import * as types from './types';
-
 import * as actions from './actions';
 import * as offerActions from '../offers/actions';
 import * as favoriteOffersActions from '../favoriteOffers/actions';
 import * as reviewsActions from '../reviews/actions';
-
 import reducer, { initialState } from './reducers';
-
 import * as selectors from './selectors';
-
 import nameSpace from '../name-spaces';
 
+import user from '../../views/mocks/user';
+
 describe('App actions', () => {
-  it('should be requestSuccess', () => {
+  it('requestSuccess', () => {
     expect(actions.requestSuccess()).toStrictEqual({
       type: types.REQUEST_SUCCESS,
     });
   });
 
-  it('should be requestFailure', () => {
+  it('requestFailure', () => {
     expect(actions.requestFailure()).toStrictEqual({
       type: types.REQUEST_FAILURE,
     });
   });
 
-  it('should be badRequest', () => {
+  it('badRequest', () => {
     expect(actions.badRequest('Error message')).toStrictEqual({
       type: types.BAD_REQUEST,
       payload: 'Error message',
     });
   });
 
-  it('should be requireAuth', () => {
+  it('requireAuth', () => {
     expect(actions.requireAuth('Error message')).toStrictEqual({
       type: types.REQUIRE_AUTH,
       payload: 'Error message',
     });
   });
 
-  it('should be resourceNotFound', () => {
+  it('resourceNotFound', () => {
     expect(actions.resourceNotFound('Error message')).toStrictEqual({
       type: types.RESOURCE_NOT_FOUND,
       payload: 'Error message',
     });
   });
 
-  it('should be requestSignIn', () => {
+  it('requestSignIn', () => {
     expect(actions.requestSignIn()).toStrictEqual({
       type: types.REQUEST_SIGN_IN,
     });
   });
 
-  it('should be toogleAuthApp', () => {
+  it('toogleAuthApp', () => {
     expect(actions.toogleAuthApp()).toStrictEqual({
       type: types.TOOGLE_AUTH_APP,
     });
   });
 
-  it('should be toogleReadyApp', () => {
+  it('toogleReadyApp', () => {
     expect(actions.toogleReadyApp()).toStrictEqual({
       type: types.TOOGLE_READY_APP,
     });
@@ -65,7 +63,7 @@ describe('App actions', () => {
 });
 
 describe('App reducer', () => {
-  it('state "isLoading" should be false', () => {
+  it('state "isLoading" should false', () => {
     const initialStateWithLoading = {
       ...initialState,
       isLoading: true,
@@ -91,7 +89,8 @@ describe('App reducer', () => {
       isLoading: false,
     });
   });
-  it('state "isLoading" should be true', () => {
+
+  it('state "isLoading" should true', () => {
     const initialStateWithoutLoading = {
       ...initialState,
       isLoading: false,
@@ -113,6 +112,7 @@ describe('App reducer', () => {
       isLoading: true,
     });
   });
+
   it('state "errors" should contain error message', () => {
     const initialStateWithoutErrors = {
       ...initialState,
@@ -131,7 +131,8 @@ describe('App reducer', () => {
       errors: 'Error message',
     });
   });
-  it('state "isSignIn" should be true', () => {
+
+  it('state "isSignIn" should true', () => {
     const initialStateWithoutSignIn = {
       ...initialState,
       auth: {
@@ -147,7 +148,8 @@ describe('App reducer', () => {
       },
     });
   });
-  it('state "isReady" should be true', () => {
+
+  it('state "isReady" should true', () => {
     const initialStateWithoutReady = {
       ...initialState,
       isReady: false,
@@ -157,6 +159,7 @@ describe('App reducer', () => {
       isReady: true,
     });
   });
+
   it('should return initialState', () => {
     expect(reducer(undefined, {})).toStrictEqual(initialState);
   });
@@ -171,6 +174,7 @@ describe('App selectors', () => {
     };
     expect(selectors.getIsReady(state)).toBeFalsy();
   });
+
   it('getIsAuth should return boolean', () => {
     const state = {
       [nameSpace.APP]: {
@@ -181,26 +185,15 @@ describe('App selectors', () => {
     };
     expect(selectors.getIsAuth(state)).toBeFalsy();
   });
-  it('getUser should return object with info', () => {
+
+  it('getUser should return user info', () => {
     const state = {
       [nameSpace.APP]: {
         auth: {
-          user: {
-            avatar_url: '/static/avatar/8.jpg',
-            email: 'Oliver.conner@gmail.com',
-            id: 1,
-            is_pro: false,
-            name: 'Oliver.conner',
-          },
+          user,
         },
       },
     };
-    expect(selectors.getUser(state)).toStrictEqual({
-      avatar_url: '/static/avatar/8.jpg',
-      email: 'Oliver.conner@gmail.com',
-      id: 1,
-      is_pro: false,
-      name: 'Oliver.conner',
-    });
+    expect(selectors.getUser(state)).toStrictEqual(user);
   });
 });

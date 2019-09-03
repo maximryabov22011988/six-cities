@@ -2,12 +2,12 @@ import * as types from './types';
 
 import { sortingName } from '../../views/constants/options';
 
-const UIInitialState = {
+const initialState = {
   currentCity: null,
   sorting: sortingName.POPULAR,
 };
 
-const UI = (state = UIInitialState, action) => {
+const UI = (state = initialState, action) => {
   switch (action.type) {
     case types.CHANGE_CITY: {
       return {
@@ -26,5 +26,7 @@ const UI = (state = UIInitialState, action) => {
     }
   }
 };
+
+export { initialState };
 
 export default UI;

@@ -2,9 +2,9 @@ import { map, without } from 'lodash';
 
 import * as types from './types';
 
-const favoriteOffersInitialState = [];
+const initialState = [];
 
-const favoriteOffers = (state = favoriteOffersInitialState, action) => {
+const favoriteOffers = (state = initialState, action) => {
   switch (action.type) {
     case types.RECEIVE_FAVORITE_OFFERS: {
       const favoriteOffers = action.payload;
@@ -24,5 +24,7 @@ const favoriteOffers = (state = favoriteOffersInitialState, action) => {
     }
   }
 };
+
+export { initialState };
 
 export default favoriteOffers;
