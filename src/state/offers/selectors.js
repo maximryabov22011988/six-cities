@@ -6,6 +6,7 @@ import { denormalizeData } from '../utils';
 import nameSpace from '../name-spaces';
 
 const getCurrentOffer = (state, props) => state[nameSpace.OFFERS][props.match.params.id];
+
 const getCurrentCity = (state) => state[nameSpace.UI].currentCity;
 
 const getOffers = createSelector(

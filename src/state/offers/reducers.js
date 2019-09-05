@@ -1,9 +1,9 @@
 import * as types from './types';
 import { normalizeData } from '../utils';
 
-const offersInitialState = {};
+const initialState = {};
 
-const offers = (state = offersInitialState, action) => {
+const offers = (state = initialState, action) => {
   switch (action.type) {
     case types.RECEIVE_OFFERS: {
       return {
@@ -23,5 +23,7 @@ const offers = (state = offersInitialState, action) => {
     }
   }
 };
+
+export { initialState };
 
 export default offers;
